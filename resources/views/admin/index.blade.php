@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
 <title>Volt - Free Bootstrap 5 Dashboard</title>
@@ -51,15 +51,15 @@
 
 <body>
 
-    @include('includes.sidebar')
-    
+    @include('layouts.admin.sidebar')
+
         <main class="content">
 
-           @include('includes.navigation')
+           @include('layouts.admin.navigation')
 
            @yield('content')
 
-    @include('includes.footer')
+    @include('layouts.admin.footer')
         </main>
 
     <!-- Core -->
@@ -103,7 +103,7 @@
 <!-- Volt JS -->
 <script src="../../assets/js/volt.js"></script>
 
-    
+
 </body>
 
 </html>
