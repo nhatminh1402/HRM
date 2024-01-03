@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.admin.base');
 });
+
+//Router cho User
+Route::get("HomePage", function() {
+    return view("user.index");
+});
