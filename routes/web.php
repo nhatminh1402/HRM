@@ -18,6 +18,12 @@ Route::get('/', function () {
 });
 
 
+Route::get('/admin/position', function () {
+    return view('admin.positions.index');
+});
+
+
+
 Route::get('/login', function () {
     return view('auth.login');
 });

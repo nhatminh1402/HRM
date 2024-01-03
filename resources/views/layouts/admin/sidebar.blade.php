@@ -272,7 +272,8 @@
                                             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                </span>
+                                    /body>
+                                    </html> </span>
                             </span>
                             <div class="multi-level collapse " role="list" id="submenu-components"
                                 aria-expanded="false">
@@ -286,12 +287,8 @@
                                                 <path
                                                     d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                             </svg>
-                                            <span class="sidebar-text">Thông tin cá nhân</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href="../../pages/components/buttons.html">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                            /body>
+                                            </html>          <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                                 class="bg-white me-3"
                                                 viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                                 <path
