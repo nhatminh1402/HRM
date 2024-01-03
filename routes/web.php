@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 //Router cho User
-Route::get("HomePage", function() {
+Route::get("HomePage", function () {
     return view("user.index");
+});
+
+Route::get("EmployeeInfor", function () {
+    return view("user.employeeInfor");
 });
