@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-
 @section('content')
     <h2 class="mb-4 pb-2 border-bottom text-primary">Quản lý phòng ban: Nhân viên HR</h2>
     <div class="row ml-4">
@@ -15,7 +14,6 @@
                         ban</label>
                     <input type="text" name="name" class="form-control" id="name">
                 </div>
-
                 <div class="mb-3">
                     <label for="name" class="form-label mb-2 font-weight-bold" value="{{ old('name') }}">Chọn nhân
                         viên</label>
@@ -26,23 +24,19 @@
                         <option value="3">PB2153232001-Trương Văn Phước</option>
                     </select>
                 </div>
-
                 <div class="mb-3">
                     <label for="create_date" class="form-label mb-2 font-weight-bold" value="{{ old('date') }}">Ngày thêm
                         nhân viên</label>
                     <input type="date" class="form-control" id="create_date">
                 </div>
                 <button class="btn btn-success"> <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>Thêm nhân viên</button>
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>Thêm nhân viên</button>
             </form>
-
         </div>
-
     </div>
-
     <div class="row ml-4">
         <h2 class="mb-4 pb-2  text-primary">Nhân viên trong phòng ban</h2>
         <div class="card">
@@ -59,7 +53,6 @@
                         <th class="border-0  text-center">Ngày thêm</th>
                         <th class="border-0  text-center">Trạng thái</th>
                         <th class="border-0  text-center rounded-end">Action</th>
-                        
                     </tr>
                     </thead>
                     <tbody>
