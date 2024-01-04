@@ -75,7 +75,6 @@
     </main>
 
     <!-- Core -->
-
     <script src="{{ asset('assets/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
