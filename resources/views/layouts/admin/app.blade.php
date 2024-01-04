@@ -38,6 +38,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('assets/img/favicon/site.webmanifest') }}">
     <link rel="mask-icon" href="{{ asset('assets/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
+    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
@@ -57,7 +58,6 @@
 </head>
 
 <body>
-
 
     @include('layouts.admin.navbar_top')
 
@@ -81,7 +81,7 @@
     <script src="{{ asset('assets/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
 
     <!-- Slider -->
-    <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/nouislider/dist/nouislider.min.js') }}"></script>
 
     <!-- Smooth scroll -->
     <script src="{{ asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
@@ -113,6 +113,14 @@
 
     <!-- Volt JS -->
     <script src="{{ asset('assets//js/volt.js') }}"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
     @yield('script')
 

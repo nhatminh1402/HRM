@@ -2,10 +2,6 @@
 
 @section('title', 'Position')
 
-@section('css')
-
-@endsection
-
 @section('content')
     <h2 class="mb-4 pb-2 border-bottom text-primary">Chức vụ</h2>
     <div class="row ml-4">
@@ -45,9 +41,10 @@
                     <thead class="thead-light">
                         <tr>
                             <th class="border-0 rounded-start text-center">STT</th>
-                            <th class="border-0  text-center">Mã chức vụ</th>
-                            <th class="border-0  text-center">Tên chức vụ</th>
-                            <th class="border-0  text-center">Lương ngày</th>
+                            <th class="border-0  text-center">Mã chuyên ngành</th>
+                            <th class="border-0  text-center">Tên chuyên ngành</th>
+                            <th class="border-0  text-center">Mã bằng cấp</th>
+                            <th class="border-0  text-center">Tên bằng cấp</th>
                             <th class="border-0  text-center">Mô tả</th>
                             <th class="border-0  text-center">Người tạo</th>
                             <th class="border-0  text-center">Ngày tạo</th>
@@ -61,9 +58,10 @@
                         <tr>
                             <td class='text-center'>1</td>
                             <td class='text-center'>MCV2153232001</td>
-                            <td class='text-center'>Phó giám đốc</td>
-                            <td class='text-center'>560, 000đ</td>
-                            <td class='text-center'>Giám đốc kinh doanh</td>
+                            <td class='text-center'>Công nghệ thông tin</td>
+                            <td class='text-center'>MBC6456165462</td>
+                            <td class='text-center'>Đại học</td>
+                            <td class='text-center'>Đại học khoa học</td>
                             <td class='text-center'>Admin</td>
                             <td class='text-center'>2024-01-01 01:10:10</td>
                             <td class='text-center'>Admin</td>
@@ -119,6 +117,12 @@
 
 @section('script')
 
-  
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 @endsection
