@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('admin.layouts.app')
 
 @section('content')
     <h2 class="mb-4 pb-2 border-bottom text-primary">Quản lý phòng ban: Nhân viên HR</h2>
