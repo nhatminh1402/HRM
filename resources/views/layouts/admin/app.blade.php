@@ -114,6 +114,14 @@
     <!-- Volt JS -->
     <script src="{{ asset('assets//js/volt.js') }}"></script>
 
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
     @yield('script')
 
 </body>

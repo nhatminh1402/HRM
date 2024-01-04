@@ -2,10 +2,6 @@
 
 @section('title', 'Position')
 
-@section('css')
-
-@endsection
-
 @section('content')
     <h2 class="mb-4 pb-2 border-bottom text-primary">Chức vụ</h2>
     <div class="row ml-4">
@@ -62,9 +58,10 @@
                         <tr>
                             <td class='text-center'>1</td>
                             <td class='text-center'>MCV2153232001</td>
-                            <td class='text-center'>MCN94626226</td>
-                            <td class='text-center'>560, 000đ</td>
-                            <td class='text-center'>Giám đốc kinh doanh</td>
+                            <td class='text-center'>Công nghệ thông tin</td>
+                            <td class='text-center'>MBC6456165462</td>
+                            <td class='text-center'>Đại học</td>
+                            <td class='text-center'>Đại học khoa học</td>
                             <td class='text-center'>Admin</td>
                             <td class='text-center'>2024-01-01 01:10:10</td>
                             <td class='text-center'>Admin</td>
