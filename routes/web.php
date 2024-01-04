@@ -32,3 +32,18 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
+
+
+Route::get('/listemployes', function(){
+    return view('admin.listemployes');
+});
+
+Route::get('/user', function(){
+    return view('admin.users');
+});
+
+
