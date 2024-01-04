@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Edit Position')
 
@@ -33,14 +33,3 @@
     </div>
 @endsection
 
-@section('script')
-
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-
-@endsection
