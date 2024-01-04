@@ -38,7 +38,17 @@ Route::get("DepartmentDetail", function () {
     return view("user.DepartmentDetail");
 });
 
-//4. Router cho trang xem bảng lương cá nhân
+//5. Router cho trang xem bảng lương cá nhân
 Route::get("Salary", function () {
     return view("user.ManageSalary");
+});
+
+//6. Router cho trang xem bảng lương cá nhân
+Route::get("Salary", function () {
+    return view("user.ManageSalary");
+});
+
+//7. Router cho trang xem danh sách công tác    
+Route::get("Schedule", function () {
+    return view("user.ManageBusinessTravel");
 });
