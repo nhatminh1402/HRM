@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('admin.layouts.app')
 @section('content')
     <div class="row">
         <div class="col-12 mb-4">
@@ -12,7 +12,7 @@
                             <h2 class="fs-5 fw-bold mb-0">Danh sách tài khoản </h2>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>

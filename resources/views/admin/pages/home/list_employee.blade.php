@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('admin.layouts.app')
 @section('content')
     <div class="row">
         <div class="d-flex justify-content-between w-100 flex-wrap">
@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="card border-0 shadow">
-            <div class="card-body"> 
+            <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
@@ -18,7 +18,7 @@
                                 <th class="border-0  text-center">Tên nhân viên</th>
                                 <th class="border-0  text-center">Giới tính</th>
                                 <th class="border-0  text-center">Ngày sinh</th>
-                                <th class="border-0  text-center"rounded-end">Tình trạng</th>
+                                <th class="border-0  text-center rounded-end">Tình trạng</th>
                             </tr>
                         </thead>
                         <tbody>
