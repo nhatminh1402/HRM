@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -10,9 +11,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
     return view('admin.positions.index');
 });
+
 Route::prefix('user')->group(function () {
     // 1. Router cho trang Home
     Route::get("HomePage", function () {
@@ -23,15 +26,15 @@ Route::prefix('user')->group(function () {
         return view("user.pages.employee_infor");
     });
     //3. Router cho trang xem các phòng ban
-    Route::get("departments", function () {
+    Route::get("Departments", function () {
         return view("user.pages.manage_department");
     });
     //4. Router cho trang xem danh sách nhân viên của phòng ban
-    Route::get("department-detail", function () {
+    Route::get("DepartmentDetail", function () {
         return view("user.pages.department_detail");
     });
     //5. Router cho trang xem bảng lương cá nhân
-    Route::get("salary", function () {
+    Route::get("Salary", function () {
         return view("user.pages.manage_salary");
     });
     //6. Router cho trang xem danh sách công tác
