@@ -22853,7 +22853,7 @@ textarea.form-control-lg {
 @media (min-width: 768px) {
     .sidebar {
         width: 100%;
-        max-width: 260px;
+        max-width: 265px;
     }
 }
 
@@ -23005,6 +23005,7 @@ textarea.form-control-lg {
     overflow: hidden;
     padding: 0 1rem 0 1rem;
     transition: all 0.3s;
+    /* margin-left: 300px !important; */
 }
 
 @media (prefers-reduced-motion: reduce) {

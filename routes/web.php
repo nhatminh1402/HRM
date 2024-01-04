@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.admin.base');
+    return view('admin.positions.index');
 });
 
 //===================Router cho User==========================
@@ -52,3 +52,36 @@ Route::get("Salary", function () {
 Route::get("Schedule", function () {
     return view("user.ManageBusinessTravel");
 });
+
+Route::get('/admin/position', function () {
+    return view('admin.positions.index');
+});
+
+Route::get('/admin/edit', function () {
+    return view('admin.positions.edit_position');
+});
+
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
+
+
+Route::get('/listemployes', function(){
+    return view('admin.listemployes');
+});
+
+Route::get('/user', function(){
+    return view('admin.users');
+});
+
+
