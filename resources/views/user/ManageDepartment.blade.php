@@ -3,6 +3,10 @@
 {{-- Định nghĩa tiêu đề --}}
 @section('title', 'Quản lý phòng ban')
 
+@section('breadcrumb-item-after', "Quản lý phòng ban")
+@section("breadcrumb-item-before","Danh sách phòng ban")
+
+
 {{-- Đinh nghĩa nội dung cho trang index ở đây --}}
 @section('content')
     <div class="row">

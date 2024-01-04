@@ -20,6 +20,7 @@
             @include('layouts.user.footer')
             {{-- end footer area --}}
         </div>
+        
     </main>
 
     @include('layouts.user.end')

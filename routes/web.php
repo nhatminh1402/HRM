@@ -29,3 +29,7 @@ Route::get("EmployeeInfor", function () {
 Route::get("Departments", function () {
     return view("user.ManageDepartment");
 });
+
+Route::get("DepartmentDetail", function () {
+    return view("user.DepartmentDetail");
+});
