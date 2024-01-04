@@ -1,4 +1,4 @@
-@extends('layouts.user.base')
+@extends('user.layouts.base')
 
 {{-- Định nghĩa tiêu đề --}}
 @section('title', 'Chi tiết phòng ban')
@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" onfocus="focused(this)"
-                                                onfocusout="defocused(this)" placeholder="Search">
+                                                    onfocusout="defocused(this)" placeholder="Search">
                                             </div>
                                         </div>
                                     </th>

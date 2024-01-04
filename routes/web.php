@@ -20,37 +20,37 @@ Route::get('/', function () {
 //===================Router cho User==========================
 // 1. Router cho trang Home
 Route::get("HomePage", function () {
-    return view("user.index");
+    return view("user.pages.index");
 });
 
 //2. Router cho trang xem thông tin chi tiết nhân viên
 Route::get("EmployeeInfor", function () {
-    return view("user.employeeInfor");
+    return view("user.pages.employee_infor");
 });
 
 //3. Router cho trang xem các phòng ban
 Route::get("Departments", function () {
-    return view("user.ManageDepartment");
+    return view("user.pages.manage_department");
 });
 
 //4. Router cho trang xem danh sách nhân viên của phòng ban
 Route::get("DepartmentDetail", function () {
-    return view("user.DepartmentDetail");
+    return view("user.pages.department_detail");
 });
 
 //5. Router cho trang xem bảng lương cá nhân
 Route::get("Salary", function () {
-    return view("user.ManageSalary");
+    return view("user.pages.manage_salary");
 });
 
-//6. Router cho trang xem bảng lương cá nhân
-Route::get("Salary", function () {
-    return view("user.ManageSalary");
-});
-
-//7. Router cho trang xem danh sách công tác    
+//6. Router cho trang xem danh sách công tác    
 Route::get("Schedule", function () {
-    return view("user.ManageBusinessTravel");
+    return view("user.pages.manage_business_travel");
+});
+
+//7. Router cho trang xem danh sách khen thưởng
+Route::get("reward", function () {
+    return view("user.pages.list_reward");
 });
 
 Route::get('/admin/position', function () {

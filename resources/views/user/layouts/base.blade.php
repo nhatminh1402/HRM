@@ -1,15 +1,15 @@
     {{-- start head area --}}
-    @include('layouts.user.head')
+    @include('user.layouts.head')
     {{-- end head area --}}
 
     {{-- start side-bar area --}}
-    @include('layouts.user.sidebar')
+    @include('user.layouts.sidebar')
     {{-- end side-bar area --}}
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
         {{-- start nav-bar area --}}
-        @include('layouts.user.navbar')
+        @include('user.layouts.navbar')
         {{-- end nav-bar area --}}
         <div class="container-fluid py-4">
             {{-- start content area --}}
@@ -17,10 +17,10 @@
             {{-- end content area --}}
 
             {{-- start footer  area --}}
-            @include('layouts.user.footer')
+            @include('user.layouts.footer')
             {{-- end footer area --}}
         </div>
         
     </main>
 
-    @include('layouts.user.end')
+    @include('user.layouts.end')

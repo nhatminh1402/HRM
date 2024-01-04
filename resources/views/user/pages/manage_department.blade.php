@@ -1,4 +1,4 @@
-@extends('layouts.user.base')
+@extends('user.layouts.base')
 
 {{-- Định nghĩa tiêu đề --}}
 @section('title', 'Quản lý phòng ban')
@@ -11,7 +11,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-            <a href="">
+            <a href="DepartmentDetail">
                 <div class="card">
                     <div class="card-header p-3 pt-2">
                         <div
@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-            <a href="">
+            <a href="DepartmentDetail">
                 <div class="card">
                     <div class="card-header p-3 pt-2">
                         <div

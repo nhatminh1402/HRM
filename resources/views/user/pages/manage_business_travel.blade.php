@@ -1,4 +1,4 @@
-@extends('layouts.user.base')
+@extends('user.layouts.base')
 
 {{-- Định nghĩa tiêu đề --}}
 @section('title', 'Quản lý phòng ban')
