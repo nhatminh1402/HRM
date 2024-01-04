@@ -22,6 +22,9 @@ Route::get('/admin/position', function () {
     return view('admin.positions.index');
 });
 
+Route::get('/admin/edit', function () {
+    return view('admin.positions.edit_position');
+});
 
 
 Route::get('/login', function () {
