@@ -24,7 +24,7 @@ Route::prefix('user')->group(function () {
     });
 
     //2. Router cho trang xem thông tin chi tiết nhân viên
-    Route::get("infor", function () {
+    Route::get("employee-infor", function () {
         return view("user.pages.employee_infor");
     });
 
@@ -56,6 +56,11 @@ Route::prefix('user')->group(function () {
     //8. Router cho trang xem lịch sử bị kỷ luật
     Route::get("punishments", function () {
         return view("user.pages.list_punishment");
+    });
+
+    //9. Router cho trang xem thông tin tài khoản
+    Route::get("infors", function () {
+        return view("user.pages.user_infors");
     });
 });
 
