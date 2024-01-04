@@ -17,40 +17,41 @@ Route::get('/', function () {
     return view('admin.positions.index');
 });
 
-//===================Router cho User==========================
-// 1. Router cho trang Home
-Route::get("HomePage", function () {
-    return view("user.pages.index");
-});
+Route::prefix('user')->group(function () {
+    // 1. Router cho trang Home
+    Route::get("HomePage", function () {
+        return view("user.pages.index");
+    });
 
-//2. Router cho trang xem thông tin chi tiết nhân viên
-Route::get("EmployeeInfor", function () {
-    return view("user.pages.employee_infor");
-});
+    //2. Router cho trang xem thông tin chi tiết nhân viên
+    Route::get("EmployeeInfor", function () {
+        return view("user.pages.employee_infor");
+    });
 
-//3. Router cho trang xem các phòng ban
-Route::get("Departments", function () {
-    return view("user.pages.manage_department");
-});
+    //3. Router cho trang xem các phòng ban
+    Route::get("Departments", function () {
+        return view("user.pages.manage_department");
+    });
 
-//4. Router cho trang xem danh sách nhân viên của phòng ban
-Route::get("DepartmentDetail", function () {
-    return view("user.pages.department_detail");
-});
+    //4. Router cho trang xem danh sách nhân viên của phòng ban
+    Route::get("DepartmentDetail", function () {
+        return view("user.pages.department_detail");
+    });
 
-//5. Router cho trang xem bảng lương cá nhân
-Route::get("Salary", function () {
-    return view("user.pages.manage_salary");
-});
+    //5. Router cho trang xem bảng lương cá nhân
+    Route::get("Salary", function () {
+        return view("user.pages.manage_salary");
+    });
 
-//6. Router cho trang xem danh sách công tác    
-Route::get("Schedule", function () {
-    return view("user.pages.manage_business_travel");
-});
+    //6. Router cho trang xem danh sách công tác    
+    Route::get("Schedule", function () {
+        return view("user.pages.manage_business_travel");
+    });
 
-//7. Router cho trang xem danh sách khen thưởng
-Route::get("reward", function () {
-    return view("user.pages.list_reward");
+    //7. Router cho trang xem danh sách khen thưởng
+    Route::get("reward", function () {
+        return view("user.pages.list_reward");
+    });
 });
 
 Route::get('/admin/position', function () {
@@ -76,12 +77,10 @@ Route::get('/dashboard', function () {
 });
 
 
-Route::get('/listemployes', function(){
+Route::get('/listemployes', function () {
     return view('admin.listemployes');
 });
 
-Route::get('/user', function(){
+Route::get('/user', function () {
     return view('admin.users');
 });
-
-
