@@ -62,6 +62,11 @@ Route::prefix('user')->group(function () {
     Route::get("infors", function () {
         return view("user.pages.user_infors");
     });
+
+     //10. Router cho trang đổi mật khẩu
+     Route::get("change-password", function () {
+        return view("user.pages.change_password");
+    });
 });
 
 Route::get('/admin/position', function () {
