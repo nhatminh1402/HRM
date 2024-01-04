@@ -25,3 +25,7 @@ Route::get("HomePage", function () {
 Route::get("EmployeeInfor", function () {
     return view("user.employeeInfor");
 });
+
+Route::get("Departments", function () {
+    return view("user.ManageDepartment");
+});

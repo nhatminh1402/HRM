@@ -119,9 +119,6 @@
                                         Ngày kết thúc</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Vị trí đảm nhiệm</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Mức lương</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,10 +141,6 @@
                                         <span class="me-2 text-xs font-weight-bold">Thực tập sinh</span>
 
                                     </td>
-                                    <td>
-                                        <span class="me-2 text-xs font-weight-bold">KHÔNG</span>
-
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -165,9 +158,6 @@
                                     <td>
                                         <span class="me-2 text-xs font-weight-bold">Thực tập sinh</span>
 
-                                    </td>
-                                    <td>
-                                        <span class="me-2 text-xs font-weight-bold">KHÔNG</span>
                                     </td>
                                 </tr>
                             </tbody>
