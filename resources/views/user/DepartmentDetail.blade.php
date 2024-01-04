@@ -22,6 +22,18 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
+                                    <th colspan="8">
+                                        <div class="input-group input-group-outline row">
+                                            <div class="col-md-9">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" onfocus="focused(this)"
+                                                onfocusout="defocused(this)" placeholder="Search">
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         MÃ NHÂN VIÊN</th>
