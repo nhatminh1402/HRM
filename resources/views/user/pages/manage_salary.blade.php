@@ -4,6 +4,7 @@
 @section('title', 'Lương cá nhân')
 
 @section('breadcrumb-item-after', 'Lương cá nhân')
+@section('breadcrumb-item-before', 'Xem chi tiết')
 
 {{-- Đinh nghĩa nội dung cho trang index ở đây --}}
 @section('content')
