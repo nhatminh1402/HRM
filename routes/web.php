@@ -20,6 +20,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         require $routeFile;
     }
 });
+
 // Router cho User
 Route::prefix('user')->name("user.")->group(function () {
 
@@ -29,24 +30,15 @@ Route::prefix('user')->name("user.")->group(function () {
         require $routeFile;
     }
 });
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/register', function () {
-    return view('auth.register');
-});
-Route::get('/dashboard', function () {
+
+Route::get('/', function () {
     return view('admin.pages.home.dashboard');
 });
-Route::get('/listemployes', function () {
-    return view('admin.listemployes');
-});
-Route::get('/user', function () {
-    return view('admin.users');
-});
+
 Route::get('/dashboard', function () {
     return view('admin.pages.home.dashboard');
 })->name('dashboard');
+
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
