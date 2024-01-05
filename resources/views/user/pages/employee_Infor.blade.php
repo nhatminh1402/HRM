@@ -1,11 +1,11 @@
-@extends('layouts.user.base')
+@extends('user.layouts.base')
 
 {{-- Định nghĩa breadcrumb --}}
 @section('breadcrumb-item-after', 'Tài khoản cá nhân')
-@section('breadcrumb-item-before', 'Thông tin cá nhân')
+@section('breadcrumb-item-before', 'Thông tin nhân sự')
 
 {{-- Định nghĩa tiêu đề --}}
-@section('title', 'Thông tin cá nhân')
+@section('title', 'Thông tin nhân sự')
 
 {{-- Đinh nghĩa nội dung cho trang hiển thị thông tin cá nhân ở đây --}}
 @section('content')
@@ -14,7 +14,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Thông tin nhân viên</h6>
+                        <h6 class="text-white text-capitalize ps-3">Thông tin nhân sự</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -34,12 +34,6 @@
                                             </h6>
                                         </div>
                                         <div class="col-md-4 text-end">
-                                            <a href="javascript:;">
-                                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                                    data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile"
-                                                    data-bs-original-title="Edit Profile"></i><span class="sr-only">Edit
-                                                    Profile</span>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -95,73 +89,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Lịch sử làm việc</h6>
-                    </div>
-                </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center justify-content-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ngày gia
-                                        nhập/nhận chức
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Ngày kết thúc</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Vị trí đảm nhiệm</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 style="text-align: center" class="mb-0 text-sm">
-                                                    12/02/2002
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle">
-
-                                        <span class="me-2 text-xs font-weight-bold">06/02/2023</span>
-
-                                    </td>
-                                    <td>
-                                        <span class="me-2 text-xs font-weight-bold">Thực tập sinh</span>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 style="text-align: center" class="mb-0 text-sm">
-                                                    07/02/2003
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <span class="me-2 text-xs font-weight-bold">Đang đảm nhiệm</span>
-                                    </td>
-                                    <td>
-                                        <span class="me-2 text-xs font-weight-bold">Thực tập sinh</span>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
