@@ -84,20 +84,25 @@ Route::prefix('admin')->group(function () {
             return view('admin.pages.department.show-department');
         })->name('show_department');
     });
-});
 
+    Route::prefix('/salary')->name('salary')->group(function(){
+        Route::get('/show_salary',function(){
+            return view('admin.pages.salary.salary');
+        });
+    });
+});
 Route::get('/login', function () {
-    return view('auth.login')->name('login');
+    return view('auth.login');
 });
 Route::get('/register', function () {
-    return view('auth.register')->name('register');
+    return view('auth.register');
 });
 Route::get('/dashboard', function () {
-    return view('admin.dashboard')->name('dashboard');;
+    return view('admin.dashboard');
 });
-Route::get('/list_employes', function () {
-    return view('admin.listemployes')->name('list_employes');;
+Route::get('/listemployes', function () {
+    return view('admin.listemployes');
 });
 Route::get('/user', function () {
-    return view('admin.users')->name('users');
+    return view('admin.users');
 });
