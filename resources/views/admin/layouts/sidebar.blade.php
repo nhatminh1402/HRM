@@ -49,7 +49,7 @@
                         </span>
                         <span class="sidebar-text">Tổng quan</span>
                     </span>
-                    <span class="link-arrow">
+                    <span class="link-arrow" >
                         <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -60,11 +60,11 @@
                 </span>
                 <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
-                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    viewBox="0 0 512 512">
                                     <path
                                         d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                 </svg>
@@ -75,7 +75,7 @@
                             <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
-                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    viewBox="0 0 512 512">
                                     <path
                                         d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                 </svg>
@@ -86,7 +86,7 @@
                             <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
-                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    viewBox="0 0 512 512">
                                     <path
                                         d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                 </svg>
@@ -98,11 +98,10 @@
             </li>
             <li class="nav-item">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                    data-bs-toggle="collapse" data-bs-target="#submenu-app">
+                    data-bs-toggle="collapse" data-bs-target="#submenu-appp">
                     <span>
                         <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
-                                class="bg-white"
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" class="bg-white"
                                 viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                 <path
                                     d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
@@ -119,7 +118,7 @@
                         </svg>
                     </span>
                 </span>
-                <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
+                <div class="multi-level collapse " role="list" id="submenu-appp" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item ">
                             <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
@@ -173,9 +172,8 @@
                     data-bs-toggle="collapse" data-bs-target="#submenu-pages">
                     <span>
                         <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                class="bg-white"
-                                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class="bg-white"
+                                viewBox="0 0 512 512">
                                 <path
                                     d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160v8c0 13.3 10.7 24 24 24H456c13.3 0 24-10.7 24-24v-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224H64V420.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512H480c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1V224H384V416H344V224H280V416H232V224H168V416H128V224zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
                             </svg>
@@ -240,8 +238,7 @@
                     data-bs-toggle="collapse" data-bs-target="#submenu-components">
                     <span>
                         <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
-                                class="bg-white"
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" class="bg-white"
                                 viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                 <path
                                     d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
@@ -259,9 +256,20 @@
 
                         </html> </span>
                 </span>
-                <div class="multi-level collapse " role="list" id="submenu-components"
-                    aria-expanded="false">
+                <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
                     <ul class="flex-column nav">
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank"
+                                href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white me-3"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+                                </svg>
+                                <span class="sidebar-text">Thông tin cá nhân</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" target="_blank"
                                 href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
@@ -327,3 +335,14 @@
 </nav>
 
 <!-- End Sidebar -->
+
+<script>
+    var submenuLinks = document.querySelectorAll('.nav-link');
+
+    Array.from(submenuLinks).forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+    });
+</script>

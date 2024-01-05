@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.positions.index');
+    return view('admin.pages.home.dashboard');
 });
 
 Route::prefix('user')->name("user.")->group(function () {
@@ -68,10 +68,6 @@ Route::prefix('user')->name("user.")->group(function () {
     })->name("login");
 });
 
-Route::get('/admin/position', function () {
-    return view('admin.positions.index');
-});
-
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('/position')->name('position.')->group(function () {
         // Danh sách + thêm mới chức vụ
@@ -103,16 +99,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 Route::get('/register', function () {
     return view('auth.register');
-});
+})->name('register');
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-});
+})->name('dashboard');
 Route::get('/listemployes', function () {
     return view('admin.listemployes');
-});
+})->name('list-employee');
 Route::get('/user', function () {
     return view('admin.users');
+})->name('users');
+
+
+Route::get('/admin/user', function() {
+    return view('admin.pages.user.personal_information');
 });
+Route::get('/admin/account', function() {
+    return view('admin.pages.user.account_information');
+});
+
