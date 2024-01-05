@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white active bg-gradient-primary" href="departments">
+                <a class="nav-link text-white active bg-gradient-primary" href="{{ route('user.departments') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="schedule">
+                <a class="nav-link text-white " href="{{ route('user.schedule') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">calendar_month</i>
                     </div>
@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="salary">
+                <a class="nav-link text-white " href="{{ route('user.salary') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">price_check</i>
                     </div>
@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="reward">
+                <a class="nav-link text-white " href="{{ route('user.reward') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">star</i>
                     </div>
@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="punishments">
+                <a class="nav-link text-white " href="{{ route('user.punishments') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">notifications</i>
                     </div>
@@ -64,7 +64,7 @@
                 </h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="../pages/dashboard.html">
+                <a class="nav-link text-white">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">timer</i>
                     </div>
@@ -72,7 +72,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="employee-infor">
+                <a class="nav-link text-white " href=" {{ route('user.employee-info') }} ">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
@@ -80,7 +80,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="infors">
+                <a class="nav-link text-white " href=" {{ route('user.infors') }} ">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">account_box</i>
                     </div>
@@ -88,7 +88,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="change-password">
+                <a class="nav-link text-white " href="{{ route('user.change-password') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">vpn_key</i>
                     </div>
@@ -96,7 +96,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/sign-up.html">
+                <a class="nav-link text-white">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">logout</i>
                     </div>

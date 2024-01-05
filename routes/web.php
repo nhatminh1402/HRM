@@ -41,7 +41,7 @@ Route::prefix('user')->name("user.")->group(function () {
     Route::get("schedule", function () {
         return view("user.pages.manage_business_travel");
     })->name('schedule');
-    
+
     //7. Router cho trang xem danh sách khen thưởng
     Route::get("reward", function () {
         return view("user.pages.list_reward");
@@ -61,6 +61,11 @@ Route::prefix('user')->name("user.")->group(function () {
     Route::get("change-password", function () {
         return view("user.pages.change_password");
     })->name("change-password");
+
+    //11. Router cho trang login
+    Route::get("login", function () {
+        return view("user.pages.login");
+    })->name("login");
 });
 
 Route::get('/admin/position', function () {
