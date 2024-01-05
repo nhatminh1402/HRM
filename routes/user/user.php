@@ -19,7 +19,7 @@ Route::get("home-page", function () {
 
 // 2. Router cho trang xem thông tin chi tiết nhân viên
 Route::get("employee-infor", function () {
-    return view("user.pages.employee_infor");
+    return view("user.pages.employee_Infor");
 })->name('employee-info');
 
 // 3. Router cho trang xem các phòng ban
