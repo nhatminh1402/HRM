@@ -65,7 +65,7 @@
                             <td class='text-center'>Admin</td>
                             <td class='text-center'>2024-01-01 01:10:10</td>
                             <td class='text-center'>
-                                <a href="" class="btn btn-warning">Sửa</a>
+                                <a href="{{route('admin.employee.edit-position')}}" class="btn btn-warning">Sửa</a>
                             </td>
                             <td class='text-center'>
                                 <a href="" class="btn btn-danger">Xóa</a>
