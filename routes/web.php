@@ -47,7 +47,6 @@ Route::get('/user', function () {
 Route::get('/dashboard', function () {
     return view('admin.pages.home.dashboard');
 })->name('dashboard');
-
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
