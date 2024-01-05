@@ -49,7 +49,7 @@
                         </span>
                         <span class="sidebar-text">Tổng quan</span>
                     </span>
-                    <span class="link-arrow" >
+                    <span class="link-arrow">
                         <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -61,10 +61,9 @@
                 <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('dashboard') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                    class="bg-white me-3"
-                                    viewBox="0 0 512 512">
+                                    class="bg-white me-3" viewBox="0 0 512 512">
                                     <path
                                         d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                 </svg>
@@ -72,10 +71,9 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('admin.dashboard.employee') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                    class="bg-white me-3"
-                                    viewBox="0 0 512 512">
+                                    class="bg-white me-3" viewBox="0 0 512 512">
                                     <path
                                         d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                 </svg>
@@ -83,10 +81,9 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('admin.dashboard.account') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                    class="bg-white me-3"
-                                    viewBox="0 0 512 512">
+                                    class="bg-white me-3" viewBox="0 0 512 512">
                                     <path
                                         d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
                                 </svg>
@@ -121,7 +118,7 @@
                 <div class="multi-level collapse " role="list" id="submenu-appp" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('admin.employee.home') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -132,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('admin.employee.major') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -143,7 +140,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('admin.employee.create-employee') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -154,7 +151,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html">
+                            <a class="nav-link" href="{{ route('admin.employee.list-employee') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -168,19 +165,21 @@
                 </div>
             </li>
             <li class="nav-item">
-                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                    data-bs-toggle="collapse" data-bs-target="#submenu-pages">
-                    <span>
-                        <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class="bg-white"
-                                viewBox="0 0 512 512">
-                                <path
-                                    d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160v8c0 13.3 10.7 24 24 24H456c13.3 0 24-10.7 24-24v-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224H64V420.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512H480c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1V224H384V416H344V224H280V416H232V224H168V416H128V224zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
-                            </svg>
+                <a class="nav-link"  href="{{ route('admin.employee.list-employee') }}">
+                    <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" data-bs-target="#collapsed">
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white" viewBox="0 0 512 512">
+                                    <path
+                                        d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160v8c0 13.3 10.7 24 24 24H456c13.3 0 24-10.7 24-24v-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224H64V420.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512H480c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1V224H384V416H344V224H280V416H232V224H168V416H128V224zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">Quản lý phòng ban</span>
                         </span>
-                        <span class="sidebar-text">Quản lý phòng ban</span>
                     </span>
-                </span>
+                </a>
             </li>
             <li class="nav-item">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
@@ -209,7 +208,7 @@
                 <div class="multi-level collapse " role="list" id="submenu-pages" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/examples/sign-in.html">
+                            <a class="nav-link" href="{{ route('admin.salary.show') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -220,7 +219,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/examples/sign-up.html">
+                            <a class="nav-link" href="{{ route('admin.salary.calculator') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -259,7 +258,7 @@
                 <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" target="_blank"
+                            <a class="nav-link" href="{{ route('admin.account.personal') }}" target="_blank"
                                 href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
@@ -271,7 +270,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" target="_blank"
+                            <a class="nav-link" href="{{ route('admin.account.account') }}" target="_blank"
                                 href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
@@ -335,14 +334,3 @@
 </nav>
 
 <!-- End Sidebar -->
-
-<script>
-    var submenuLinks = document.querySelectorAll('.nav-link');
-
-    Array.from(submenuLinks).forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-        });
-    });
-</script>
