@@ -11,21 +11,25 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// __DIR__ : in ra đường dẫn đầy đủ của thư mục chứa file hiện tại
-// glob(): hàm tìm kiếm tất cả các đường dẫn theo theo pattern truyền vào
-$listRouteAdminFile = glob(__DIR__ . '/admin/*.php');
-$listRouteUserFile = glob(__DIR__ . '/user/*.php');
-
 // Router cho admin
-foreach ($listRouteAdminFile as $routeFile) {
-    require $routeFile;
-}
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    $listRouteAdminFile = glob(__DIR__ . '/admin/*.php');
+
+    foreach ($listRouteAdminFile as $routeFile) {
+        require $routeFile;
+    }
+});
 
 // Router cho User
-foreach ($listRouteUserFile as $routeFile) {
-    require $routeFile;
-}
+Route::prefix('user')->name("user.")->group(function () {
+
+    $listRouteUserFile = glob(__DIR__ . '/user/*.php');
+
+    foreach ($listRouteUserFile as $routeFile) {
+        require $routeFile;
+    }
+});
 
 Route::get('/', function () {
     return view('admin.pages.home.dashboard');
