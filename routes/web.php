@@ -12,9 +12,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// __DIR__ : in ra đường dẫn đầy đủ của thư mục chứa file hiện tại
+// glob(): hàm tìm kiếm tất cả các đường dẫn theo theo pattern truyền vào
+$listRouteAdminFile = glob(__DIR__ . '/admin/*.php');
+$listRouteUserFile = glob(__DIR__ . '/user/*.php');
+
+// Router cho admin
+foreach ($listRouteAdminFile as $routeFile) {
+    require $routeFile;
+}
+
+// Router cho User
+foreach ($listRouteUserFile as $routeFile) {
+    require $routeFile;
+}
+
 Route::get('/', function () {
     return view('admin.pages.home.dashboard');
 });
+
+Route::get('/dashboard', function () {
+    return view('admin.pages.home.dashboard');
+})->name('dashboard');
 
 Route::get('/login', function () {
     return view('auth.login');
