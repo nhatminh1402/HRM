@@ -85,18 +85,19 @@ Route::prefix('admin')->group(function () {
         })->name('show_department');
     });
 });
+
 Route::get('/login', function () {
-    return view('auth.login');
+    return view('auth.login')->name('login');
 });
 Route::get('/register', function () {
-    return view('auth.register');
+    return view('auth.register')->name('register');
 });
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    return view('admin.dashboard')->name('dashboard');;
 });
-Route::get('/listemployes', function () {
-    return view('admin.listemployes');
+Route::get('/list_employes', function () {
+    return view('admin.listemployes')->name('list_employes');;
 });
 Route::get('/user', function () {
-    return view('admin.users');
+    return view('admin.users')->name('users');
 });
