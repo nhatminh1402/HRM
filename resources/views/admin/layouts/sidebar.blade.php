@@ -165,7 +165,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="{{ route('admin.employee.list-employee') }}">
+                <a class="nav-link"  href="{{ route('admin.department.show') }}">
                     <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                         data-bs-toggle="collapse" data-bs-target="#collapsed">
                         <span>

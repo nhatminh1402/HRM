@@ -6,17 +6,18 @@
     <link type="text/css" href="{{ asset('assets/css/user-infor.css') }}" rel="stylesheet">
 @endsection
 
+
 @section('content')
     <h2 class="mb-4 pb-2 border-bottom text-primary">Thông tin nhân viên</h2>
     <h5 class="mb-4 pb-2 border-bottom text-primary">Mã nhân viên: </h5>
     <div class="container">
         <div class="row">
-            <div class="column" style="background-color:#aaa;">
+            <div class="column">
                 <p>Ảnh nhân viên:</p>
                 <img class="image image-lg w-auto" alt="Image placeholder"
                     src="https://chuphinhthe.com/upload/product/1824-quan-3112.jpg">
             </div>
-            <div class="column" style="background-color:#ccc;">
+            <div class="column">
                 <p>Tên nhân viên: John Doe</p>
                 <p>Biệt danh: JD</p>
                 <p>Giới tính: Nam</p>
