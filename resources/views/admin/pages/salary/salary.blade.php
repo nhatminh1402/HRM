@@ -1,14 +1,13 @@
 @extends('admin.layouts.app')
 @section('content')
     <div class="row">
-        
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <!-- Breadcrumb navigation goes here -->
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h1">Danh sách nhân viên</h1>
+                    <h1 class="h1">Danh sách lương nhân viên</h1>
                 </div>
             </div>
         </div>
@@ -112,8 +111,6 @@
                                     <a href="" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
-
-                            <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </div>
