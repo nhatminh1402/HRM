@@ -258,7 +258,7 @@
                 <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.account.personal') }}" target="_blank"
+                            <a class="nav-link" href="{{ route('admin.account.personal') }}"
                                 href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
@@ -270,7 +270,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.account.account') }}" target="_blank"
+                            <a class="nav-link" href="{{ route('admin.account.account') }}"
                                 href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
