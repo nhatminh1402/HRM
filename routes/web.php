@@ -112,10 +112,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('show_department');
     });
 
-    Route::prefix('/salary')->name('salary')->group(function(){
+    Route::prefix('/salary')->name('salary.')->group(function(){
         Route::get('/show_salary',function(){
             return view('admin.pages.salary.salary');
-        });
+        })->name('show-salary');
+        Route::get('/cal_salary', function(){
+            return view('admin.pages.salary.cal-salary');
+        })->name('cal-salary');
     });
 });
 
@@ -126,7 +129,7 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    return view('admin.pages.home.dashboard');
 });
 Route::get('/listemployes', function () {
     return view('admin.listemployes');
