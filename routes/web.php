@@ -42,3 +42,4 @@ Route::get('/dashboard', function () {
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
+
