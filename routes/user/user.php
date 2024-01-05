@@ -61,3 +61,8 @@ Route::get("infors", function () {
 Route::get("change-password", function () {
     return view("user.pages.change_password");
 })->name("change-password");
+
+//11. Router cho trang hien thi timesheet
+Route::get("timesheet-user", function () {
+    return view("user.pages.time_sheet");
+})->name("timesheet-user");
