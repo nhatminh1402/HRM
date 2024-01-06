@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
         ĐĂNG NHẬP HỆ THỐNG
     </title>
@@ -22,9 +20,8 @@
     <!-- CSS Files -->
     <link id="pagestyle" href=" {{ asset('material-template/assets/css/material-dashboard.css?v=3.1.0') }} "
         rel="stylesheet" />
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
 </head>
 
 <body class="bg-gray-200">
@@ -39,29 +36,78 @@
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                                     <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">ĐĂNG NHẬP HỆ THỐNG
-                                        
                                     </h4>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form role="form" class="text-start">
-                                    <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control">
-                                    </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                    <div class="form-check form-switch d-flex align-items-center mb-3">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe" checked>
-                                        <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">ĐĂNG
-                                            NHẬP</button>
-                                    </div>
-                                </form>
+                                @if (session('numberLoginFailed') <= 3)
+                                    <form action="{{ route('login.validate') }}" method="POST" class="text-start">
+                                        @csrf
+                                        {{-- email input area --}}
+                                        <div class="input-group input-group-outline my-3 focused is-focused">
+                                            <label class="form-label">Email</label>
+                                            <input name="email" value="{{ old('email') }}" type="text"
+                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        {{-- password input --}}
+                                        <div class="input-group input-group-outline mb-3 focused is-focused">
+                                            <label class="form-label">Password</label>
+                                            <input name="password" value="{{ old('password') }}" type="password"
+                                                class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+
+                                        <div class="form-check form-switch d-flex align-items-center mb-3">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                                            <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember
+                                                me</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">ĐĂNG
+                                                NHẬP</button>
+                                        </div>
+                                    </form>
+                                @endif
+
+                                @if (session('numberLoginFailed') > 3)
+                                    <form method="post" action="{{ route('login.validateCapchaCode') }}">
+                                        @csrf
+                                        <h1 class="text-center" style="font-size: 15px;">Bạn đã nhập sai thông tin quá 3
+                                            lần. Vui lòng xác minh bạn không phải là
+                                            robot.</h1>
+
+                                        <div class="captcha">
+                                            <div style="width: 80%">
+                                                {!! captcha_img("math") !!}
+                                            </div>
+                                            <div class="input-group input-group-outline my-3 focused is-focused">
+                                                <label class="form-label">Nhập mã xác minh</label>
+                                                <input name="captcha" type="text"
+                                                    class="form-control {{ $errors->has('captcha') ? 'is-invalid' : '' }}">
+                                                @error('captcha')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">XÁC
+                                                MINH
+                                            </button>
+                                        </div>
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
