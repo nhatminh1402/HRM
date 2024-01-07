@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Middleware\Auth\CheckAdmin;
+use App\Http\Middleware\Auth\CheckUser;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 // Router cho admin
 Route::prefix('admin')
     ->name('admin.')
+    ->middleware(CheckAdmin::class)
     ->group(function () {
         $listRouteAdminFile = glob(__DIR__ . '/admin/*.php');
-
         foreach ($listRouteAdminFile as $routeFile) {
             require $routeFile;
         }
@@ -27,6 +29,7 @@ Route::prefix('admin')
 // Router cho User
 Route::prefix('user')
     ->name('user.')
+    ->middleware(CheckUser::class)
     ->group(function () {
         $listRouteUserFile = glob(__DIR__ . '/user/*.php');
 

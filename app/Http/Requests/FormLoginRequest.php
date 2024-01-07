@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
@@ -24,9 +25,8 @@ class FormLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
         ];
     }
 
@@ -35,6 +35,7 @@ class FormLoginRequest extends FormRequest
         return [
             'email.required' => 'Vui lòng nhập địa chỉ email đăng nhập',
             'email.email' => 'Địa chỉ email không hợp lệ',
+            'email.exists' => 'Email chưa được đăng ký trong hệ thống!',
             'password.required' => 'Vui lòng nhập mật khẩu đăng nhập',
         ];
     }
