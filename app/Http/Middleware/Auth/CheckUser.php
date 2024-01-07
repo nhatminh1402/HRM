@@ -16,10 +16,19 @@ class CheckUser
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Nếu chưa đăng nhập
+        if (!Auth::check()) {
+            return redirect()
+                ->route('login.index')
+                ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TIẾP TỤC TRUY CẬP!');
+        }
+
         $user = Auth::user();
         if ($user->isAdmin) {
-            return redirect()->route('login.index');
+            toastr()->error('TRANH DÀNH RIÊNG CHO NHÂN VIÊN!');
+            return redirect()->back();
         }
+
         return $next($request);
     }
 }

@@ -21,12 +21,15 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            // $request->session()->regenerate();
             if ($user->isAdmin) {
                 return redirect()->route('dashboard');
             } else {
                 return redirect()->route('user.home');
             }
         }
+
+        return redirect()
+            ->route('login.index')
+            ->with('error', 'ĐĂNG NHẬP THẤT BẠI!');
     }
 }

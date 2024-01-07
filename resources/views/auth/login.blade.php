@@ -21,7 +21,6 @@
     <link id="pagestyle" href=" {{ asset('material-template/assets/css/material-dashboard.css?v=3.1.0') }} "
         rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-
 </head>
 
 <body class="bg-gray-200">
@@ -88,7 +87,7 @@
 
                                         <div class="captcha">
                                             <div style="width: 80%">
-                                                {!! captcha_img("math") !!}
+                                                {!! captcha_img('math') !!}
                                             </div>
                                             <div class="input-group input-group-outline my-3 focused is-focused">
                                                 <label class="form-label">Nhập mã xác minh</label>
