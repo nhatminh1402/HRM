@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', 'List employee')
 @section('content')
     <div class="row">
         <div class="d-flex justify-content-between w-100 flex-wrap">

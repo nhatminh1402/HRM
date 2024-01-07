@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', 'Calculate Salary')
 @section('content')
     <h2 class="mb-4 pb-2 border-bottom text-primary">Tính lương nhân viên </h2>
     <div class="row ml-4">
