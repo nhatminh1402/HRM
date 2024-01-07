@@ -22,9 +22,14 @@ class CapChaController extends Controller
             ],
             $message,
         );
-        
+
         session()->forget('numberLoginFailed');
 
         return redirect()->route('login.index');
+    }
+
+    public function capchaReload()
+    {
+        return response()->json(['captcha' => captcha_img("math")]);
     }
 }

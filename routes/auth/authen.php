@@ -17,4 +17,7 @@ Route::prefix('login')
 
         // Router capcha validate
         Route::post('/capcha-validate', [CapChaController::class, 'validateCapchaCode'])->name('validateCapchaCode');
+
+         // Router reload capcha code
+         Route::get('/capcha-reload', [CapChaController::class, 'capchaReload'])->name('capchaReload');
     });

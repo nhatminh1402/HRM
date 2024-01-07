@@ -21,6 +21,7 @@
     <link id="pagestyle" href=" {{ asset('material-template/assets/css/material-dashboard.css?v=3.1.0') }} "
         rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-gray-200">
@@ -86,8 +87,26 @@
                                             robot.</h1>
 
                                         <div class="captcha">
-                                            <div style="width: 80%">
-                                                {!! captcha_img('math') !!}
+                                            <div class="row">
+                                                <div class="text-center">
+                                                    <span id="capcha-img">
+                                                        {!! captcha_img('math') !!}
+                                                    </span>
+                                                    <button id="reload-capcha" style="margin-top: 15px; padding: 7px"
+                                                        type="button" class="btn btn-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor"
+                                                            class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z">
+                                                            </path>
+                                                            <path
+                                                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466">
+                                                            </path>
+                                                        </svg>
+                                                        Reload
+                                                    </button>
+                                                </div>
                                             </div>
                                             <div class="input-group input-group-outline my-3 focused is-focused">
                                                 <label class="form-label">Nhập mã xác minh</label>
@@ -127,10 +146,19 @@
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+        //Request new captcha using ajax
+        $("#reload-capcha").on("click", () => {
+            $.ajax({
+                type: "get",
+                url: "login/capcha-reload",
+                success: function(response) {
+                    $("#capcha-img").html(response.captcha)
+                }
+            })
+        })
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('material-template/assets/js/material-dashboard.min.js?v=3.1.0') }}"></script>
 </body>
 
