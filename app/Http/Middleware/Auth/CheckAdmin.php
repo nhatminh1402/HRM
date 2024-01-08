@@ -24,7 +24,7 @@ class CheckAdmin
         }
 
         $user = Auth::user();
-        if (!$user->isAdmin) {
+        if (!$user->is_admin) {
             toastr()->error('TRANH DÀNH RIÊNG CHO NHÀ QUẢN TRỊ!');
             return redirect()->back();
         }
