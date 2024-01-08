@@ -46,7 +46,7 @@
                             <th class="border-0  text-center">Người tạo</th>
                             <th class="border-0  text-center">Ngày tạo</th>
                             <th class="border-0  text-center">Ngày sửa</th>
-                            <th class="border-0  text-center rounded-end">Sửa</th>
+                            <th class="border-0  text-center">Sửa</th>
                             <th class="border-0  text-center rounded-end">Xóa</th>
                         </tr>
                     </thead>
