@@ -19,7 +19,7 @@ Route::get("home-page", function () {
 
 // 2. Router cho trang xem thông tin chi tiết nhân viên
 Route::get("employee-infor", function () {
-    return view("user.pages.employee_infor");
+    return view("user.pages.employee_Infor");
 })->name('employee-info');
 
 // 3. Router cho trang xem các phòng ban
@@ -61,3 +61,8 @@ Route::get("infors", function () {
 Route::get("change-password", function () {
     return view("user.pages.change_password");
 })->name("change-password");
+
+//11. Router cho trang hien thi timesheet
+Route::get("timesheet-user", function () {
+    return view("user.pages.time_sheet");
+})->name("timesheet-user");
