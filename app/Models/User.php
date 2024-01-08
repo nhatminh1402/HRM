@@ -42,4 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function hasRoles(array $roles)
+    {
+        return $this->roles()->whereIn('name', $roles)->count();
+    }
+    public function hasPermissions(array $permissions)
+    {
+        return $this->roles()->whereHas('permissions', function ($q) use ($permissions) {
+            return $q->where('name', $permissions);
+        })->count();
+    }
 }
