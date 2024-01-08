@@ -64,7 +64,7 @@
                 </h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white">
+                <a class="nav-link text-white" href="{{ route('user.timesheet-user') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">timer</i>
                     </div>
