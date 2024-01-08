@@ -165,7 +165,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="{{ route('admin.department.show') }}">
+                <a class="nav-link" href="{{ route('admin.department.show') }}">
                     <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                         data-bs-toggle="collapse" data-bs-target="#collapsed">
                         <span>
@@ -282,7 +282,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{route('admin.account.create')}}">
+                            <a class="nav-link" href="{{ route('admin.account.create') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -293,7 +293,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{route('admin.account.list')}}">
+                            <a class="nav-link" href="{{ route('admin.account.list') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -304,7 +304,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{route('admin.account.change-password')}}">
+                            <a class="nav-link" href="{{ route('admin.account.change-password') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -315,7 +315,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/components/typography.html">
+                            <a class="nav-link" href="{{ route('logout') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
