@@ -7,7 +7,7 @@ use App\Services\TimesheetServices\TimesheetService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class TimesheerController extends Controller
+class TimesheetController extends Controller
 {
     protected $Timesheetservice;
     public function __construct(TimesheetService $Timesheetservice)

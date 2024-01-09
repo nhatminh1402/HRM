@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\TimesheerController;
+use App\Http\Controllers\Api\TimesheetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/timesheet',[TimesheerController::class,'index']);
-Route::post('/timesheet',[TimesheerController::class,'checkin']);
+Route::get('/timesheet',[TimesheetController::class,'index']);
+Route::post('/timesheet',[TimesheetController::class,'checkin']);
