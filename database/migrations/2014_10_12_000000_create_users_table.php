@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('phone_number');
+            $table->integer('created_by')->nullable();
+            $table->foreignId('role_id')->default(2)->constrained();
             $table->boolean('isAdmin')->default(false);
             $table->rememberToken();
             $table->timestamps();

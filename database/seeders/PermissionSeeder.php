@@ -16,28 +16,41 @@ class PermissionSeeder extends Seeder
         $data = [
             [
                 'name' => 'access',
+                'display_name' => 'Được truy cập vào trang này.'
             ],
 
             [
-                'name' => 'create'
+                'name' => 'create',
+                'display_name' => 'Được thêm mới nội dung trang này.'
+
             ],
 
             [
-                'name' => 'update'
+                'name' => 'update',
+                'display_name' => 'Được chỉnh sửa nội dung trang này.'
+
             ],
 
             [
-                'name' => 'delete'
+                'name' => 'delete',
+                'display_name' => 'Được xóa nội dung trang này.'
+
             ],
 
             [
-                'name' => 'search'
+                'name' => 'search',
+                'display_name' => 'Được tìm kiếm nội dung trang này.'
+
             ],
 
             [
-                'name' => 'detail'
+                'name' => 'detail',
+                'display_name' => 'Được xem chi tiết nội dung trang này.'
+
             ],
         ];
-        Permission::insert($data);
+        foreach ($data as $item) {
+            Permission::updateOrCreate(['name' => $item['name'] ],$item);
+        }
     }
 }

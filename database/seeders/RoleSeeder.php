@@ -6,7 +6,7 @@ use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RolenSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,6 +24,8 @@ class RolenSeeder extends Seeder
                 'name' => 'Supper Admin'
             ]
         ];
-        Role::insert($data);
+        foreach ($data as $item) {
+            Role::updateOrCreate(['name' => $item['name']], $item);
+        }
     }
 }

@@ -37,4 +37,5 @@ class AuthGate
         }
         return $next($request);
     }
+
 }

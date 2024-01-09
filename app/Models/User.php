@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'created_by', 'role_id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +45,10 @@ class User extends Authenticatable
         return $this->roles()->whereHas('permissions', function ($q) use ($permissions) {
             return $q->where('name', $permissions);
         })->count();
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
