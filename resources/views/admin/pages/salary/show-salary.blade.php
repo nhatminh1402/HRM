@@ -58,7 +58,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-warning">Sửa</a>
+                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -74,7 +74,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-warning">Sửa</a>
+                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -90,7 +90,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-warning">Sửa</a>
+                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -106,7 +106,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-warning">Sửa</a>
+                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>

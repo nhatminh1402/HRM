@@ -11,4 +11,7 @@ Route::prefix('/salary')->name('salary.')->group(function(){
         Route::get('/cal_salary', function(){
             return view('admin.pages.salary.cal-salary');
         })->name('calculator');
+        Route::get('/detail_salary',function(){
+            return view('admin.pages.salary.detail-salary');
+        })->name('detail');
     });
