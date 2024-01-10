@@ -27,7 +27,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function showall()
     {
-        return Employee::paginate(10);
+        return Employee::paginate(10)->withQueryString();
     }
 
     /**
