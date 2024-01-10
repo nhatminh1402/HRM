@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,12 +25,19 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+
+        $users = User::select('id')->whereIn('role_id', ['1', '2', '3'])->pluck('id');
+        foreach ($users as $user) {
+            $roleId = $user->id;
+        }
+
         return [
-            'name' => fake()->name(),
+            'name' => $this->faker->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'email_verified_at' => null,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            "role_id" => $roleId
         ];
     }
 
