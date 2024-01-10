@@ -47,25 +47,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (!empty($users))
-                                @foreach ($users as $key => $user)
+                            @if (!empty($employees))
+                                @foreach ($employees as $key => $employee)
                                     <tr>
                                         <td class='text-center'>{{ $key + 1 }}</td>
                                         <td class='text-center'>MNV</td>
                                         <td class='text-center'>
-                                            <img class="image image-md" alt="Image placeholder" src="{{ $user->image }}">
+                                            <img class="image image-md" alt="Image placeholder" src="{{ $employee->image }}">
                                         </td>
-                                        <td class='text-center'>{{ $user->full_name }}</td>
+                                        <td class='text-center'>{{ $employee->full_name }}</td>
                                         <td class='text-center'>
-                                            @if ($user->gender == 1)
+                                            @if ($employee->gender == 1)
                                                 Nam
                                             @else
                                                 Nữ
                                             @endif
                                         </td>
-                                        <td class='text-center'>{{ $user->dob }}</td>
+                                        <td class='text-center'>{{ $employee->dob }}</td>
                                         <td class='text-center'>
-                                            @if ($user->gender == 1)
+                                            @if ($employee->gender == 1)
                                                 Đang làm việc
                                             @else
                                                 Đã nghỉ việc
@@ -94,7 +94,7 @@
                             @endif
                         </tbody>
                     </table>
-                    {{ $users->withQueryString()->links() }}
+                    {{ $employees->withQueryString()->links() }}
                 </div>
 
             </div>

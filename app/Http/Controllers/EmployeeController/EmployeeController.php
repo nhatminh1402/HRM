@@ -18,10 +18,10 @@ class EmployeeController extends Controller
 
     public function showAllUser()
     {
-        $users = $this->employeeService->showallusers();
+        $employees = $this->employeeService->showallusers();
    
 
-        return view('admin.pages.employee_management.list_employee', compact('users'));
+        return view('admin.pages.employee_management.list_employee', compact('employees'));
     }
 }
 
