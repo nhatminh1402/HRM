@@ -24,7 +24,7 @@ class TimesheetService
         if ($timesheet) {
             $this->timesheetRepository->updateOnDay($id);
         } else {
-            $this->timesheetRepository->checkin($data);
+            return $this->timesheetRepository->checkin($data);
         }
         return $timesheet;
     }
