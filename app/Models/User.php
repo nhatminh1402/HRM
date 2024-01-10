@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -40,15 +41,24 @@ class User extends Authenticatable
     {
         return $this->roles()->whereIn('name', $roles)->count();
     }
-    public function hasPermissions(array $permissions)
+    public function hasPermissions($permissions)
     {
-        return $this->roles()->whereHas('permissions', function ($q) use ($permissions) {
-            return $q->where('name', $permissions);
-        })->count();
+        return $this->permissions()->where('name', $permissions)->exists();
     }
 
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+    
+
+    public function permissions(): BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class, 'user_has_permission', 'user_id', 'permission_id');
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'role_id');
     }
 }

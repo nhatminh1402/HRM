@@ -8,45 +8,19 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role as ModelsRole;
 
 class PermissioRoleSeeder extends Seeder
 {
     public function run(): void
     {
-        $roles = Role::all();
+        $permissionsAdmin = Permission::whereIn('name', ['access', 'create', 'update', 'delete', 'search', 'detail'])->pluck('id');
+        $roleAdmin = Role::whereIn('name', ['Supper Admin','Admin'])->first();
+        $roleAdmin->permissions()->sync($permissionsAdmin->toArray());
 
-        foreach ($roles as $role) {
+        $permissionsUser = Permission::whereIn('name', ['access', 'update', 'detail'])->pluck('id');
+        $roleAdmin = Role::where('name', 'User')->first();
+        $roleAdmin->permissions()->sync($permissionsUser->toArray());
 
-            if ($role->name === 'Supper Admin') {
-
-                $permissions = Permission::pluck('id');
-
-            } elseif ($role->name === 'Admin') {
-
-                $permissions = Permission::whereIn('name', ['access', 'create', 'update', 'delete', 'search', 'detail'])->pluck('id');
-
-                $users = User::where('role_id', $role->id)->pluck('id');
-
-                foreach ($users as $userId) {
-
-                    $user = User::find($userId);
-
-                    $userPermissions = $user->createdBy ? Permission::whereIn('name', ['access', 'update', 'delete', 'search'])->pluck('id')
-
-                        : Permission::whereIn('name', ['access', 'detail'])->pluck('id');
-
-                    $user->permissions()->sync($userPermissions);
-                }
-            } elseif ($role->name === 'User') {
-
-                $permissions = Permission::whereIn('name', ['access', 'detail', 'update'])->pluck('id');
-
-            } else {
-
-                $permissions = Permission::whereIn('name', ['access', 'detail'])->pluck('id');
-            }
-
-            $role->permissions()->sync($permissions);
-        }
     }
 }

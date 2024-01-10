@@ -169,6 +169,7 @@ return [
             Mews\Captcha\CaptchaServiceProvider::class,
             App\Providers\EventServiceProvider::class,
             App\Providers\RouteServiceProvider::class,
+
         ])
         ->toArray(),
 

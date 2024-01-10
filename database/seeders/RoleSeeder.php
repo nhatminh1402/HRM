@@ -15,14 +15,14 @@ class RoleSeeder extends Seeder
     {
         $data = [
             [
+                'name' => 'Supper Admin'
+            ],
+            [
                 'name' => 'Admin',
             ],
             [
                 'name' => 'User',
             ],
-            [
-                'name' => 'Supper Admin'
-            ]
         ];
         foreach ($data as $item) {
             Role::updateOrCreate(['name' => $item['name']], $item);
