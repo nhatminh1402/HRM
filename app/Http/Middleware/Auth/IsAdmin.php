@@ -19,15 +19,9 @@ class IsAdmin
         // Nếu chưa đăng nhập
         if (!Auth::check()) {
             return redirect()
-                ->route('login.index')
-                ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TIẾP TỤC TRUY CẬP!');
+                ->route('admin.login.index')
+                ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TRUY CẬP TRANG QUẢN TRỊ!');
         }
-
-        if (Auth::guard("employee")->check()) {
-            toastr()->error('TRANH DÀNH RIÊNG CHO NHÀ QUẢN TRỊ!');
-            return redirect()->back();
-        }
-
         return $next($request);
     }
 }
