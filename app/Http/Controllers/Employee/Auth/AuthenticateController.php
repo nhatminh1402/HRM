@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticateController extends Controller
 {
-    protected $guard = 'user';
-
     public function index()
     {
         return view("user.pages.login");
