@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string("nationality"); // quốc tịch
             $table->bigInteger("position_id");
             // $table->foreign('position_id')->references('id')->on('postitions');
-            $table->enum("degree", ["TRUNG HỌC, CAO ĐẲNG, ĐẠI HỌC, THẠC SĨ, TIẾN SĨ, CAO HỌC "]);
+            $table->enum("degree", ["TRUNG HỌC", "CAO ĐẲNG", "ĐẠI HỌC", "THẠC SĨ", "TIẾN SĨ", "CAO HỌC"]);
 
             $table->rememberToken();
             $table->timestamps();
