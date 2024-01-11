@@ -12,4 +12,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface EmployeeRepository extends RepositoryInterface
 {
     public function showall();
+    public function getById($id);
+    public function search($key);
 }

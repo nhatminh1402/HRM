@@ -2,18 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\Employee;
+use App\Traits\EmployeeCode;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
 class EmployeeFactory extends Factory
 {
-    protected $model = Employee::class;
-    use WithFaker;
-    
+    use EmployeeCode;
     /**
      * Define the model's default state.
      *
@@ -22,23 +20,23 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            'full_name' => $this->faker->name,
-            'gender' => $this->faker->boolean,
-            'image' => $this->faker->imageUrl,
-            'nick_name' => $this->faker->optional()->firstName,
-            'dob' => $this->faker->date,
-            'birth_place' => $this->faker->optional()->city,
-            'nationality' => $this->faker->optional()->country,
-            'marriage_status' => $this->faker->boolean,
-            'religion' => $this->faker->optional()->word,
-            'nation' => $this->faker->optional()->word,
-            'status' => $this->faker->optional()->boolean,
-            'identify_number' => $this->faker->optional()->randomNumber,
-            'card_issuance_date' => $this->faker->optional()->date,
-            'place_of_card_issuance' => $this->faker->optional()->city,
-            'id_postition' => $this->faker->optional()->randomDigit,
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            "code_employee" => $this->generateEmployeeCode("MNV"),
+            "full_name" => fake()->name(),
+            "gender" => fake()->boolean(),
+            "status" => fake()->boolean(),
+            "email" => fake()->safeEmail(),
+            'password' => Hash::make('password'),
+            "image" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+            "dob" => fake()->date(),
+            // "province_id" => fake()->numerify(),
+            // "district_id" => fake()->numerify(),
+            // "ward_id" => fake()->numerify(),
+            "nationality" => fake()->country(),
+            "position_id" => fake()->numberBetween(1, 5),
+            "degree" => fake()->randomElement(["TRUNG HỌC", "CAO ĐẲNG", "ĐẠI HỌC", "THẠC SĨ", "TIẾN SĨ", "CAO HỌC"]),
+            'remember_token' => fake()->sentence(),
+
         ];
     }
 }

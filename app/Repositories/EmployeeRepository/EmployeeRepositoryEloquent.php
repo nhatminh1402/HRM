@@ -27,7 +27,33 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function showall()
     {
-        return Employee::paginate(4)->withQueryString();
+        return $this->model->paginate(4)->withQueryString();
+    }
+
+    public function Jointable()
+    {
+     
+        return $this->model->leftJoin('provinces', 'employees.province_id', '=', 'provinces.id')
+            ->join('districts', 'employees.district_id', '=', 'districts.id')
+            ->join('wards', 'employees.ward_id', '=', 'wards.id')
+            ->select('employees.*', 'provinces.name as province_name', 'districts.name as district_name', 'wards.name as ward_name')
+            ->get();
+    }
+
+    public function getById($id)
+    {
+        return $this->Jointable()->find($id);
+    }
+    public function search($key){
+        
+        return $this->model->where('code_employee', 'LIKE', "%{$key}%")
+                            ->orWhere('full_name', 'LIKE', "%{$key}%")
+                            ->orWhere('email', 'LIKE', "%{$key}%")
+                            ->orWhere('phone_number', 'LIKE', "%{$key}%")
+                            ->orWhere('dob', 'LIKE', "%{$key}%")
+                            ->orWhere('nationality', 'LIKE', "%{$key}%")
+                            ->orWhere('degree', 'LIKE', "%{$key}%")
+                            ->latest('id')->paginate(4)->withQueryString();
     }
 
     /**
@@ -37,5 +63,4 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
 }

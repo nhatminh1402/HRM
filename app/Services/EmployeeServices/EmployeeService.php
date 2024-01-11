@@ -13,8 +13,16 @@ class EmployeeService
         $this->employeeRepository = $employeeRepository;
     }
 
-    public function showallusers()
+    public function showallemployee()
     {
         return $this->employeeRepository->showall();
+    }
+    public function getById($id)
+    {
+        return $this->employeeRepository->getById($id);
+    }
+    public function searchEmploy($key)
+    {
+        return $this->employeeRepository->search($key);
     }
 }

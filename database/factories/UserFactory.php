@@ -25,19 +25,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-
-        $users = User::select('id')->whereIn('role_id', ['1', '2', '3'])->pluck('id');
-        foreach ($users as $user) {
-            $roleId = $user->id;
-        }
-
         return [
             'name' => $this->faker->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => null,
             'password' => static::$password ??= Hash::make('123456'),
             'remember_token' => Str::random(10),
-            "role_id" => $roleId
         ];
     }
 
