@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckUser
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -23,9 +23,8 @@ class CheckUser
                 ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TIẾP TỤC TRUY CẬP!');
         }
 
-        $user = Auth::user();
-        if ($user->is_admin) {
-            toastr()->error('TRANH DÀNH RIÊNG CHO NHÂN VIÊN!');
+        if (Auth::guard("employee")->check()) {
+            toastr()->error('TRANH DÀNH RIÊNG CHO NHÀ QUẢN TRỊ!');
             return redirect()->back();
         }
 
