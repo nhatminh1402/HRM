@@ -17,6 +17,13 @@ class CaptChaController extends Controller
         return redirect()->route('login.index');
     }
 
+    public function adminValidateCapchaCode(CapChaFormRequest $request)
+    {
+        session()->forget('numberLoginFailed');
+
+        return redirect()->route('admin.login.index');
+    }
+
     public function capchaReload()
     {
         return response()->json(['captcha' => captcha_img('math')]);

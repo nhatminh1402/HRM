@@ -50,7 +50,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'created_by');
     }
-    
+
 
     public function permissions(): BelongsToMany
     {

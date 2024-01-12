@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Employee\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\EmployeeLoginRequest;
+use App\Http\Requests\Auth\AdminLoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,15 +11,15 @@ class AuthenticateController extends Controller
 {
     public function index()
     {
-        return view("user.pages.login");
+        return view("admin.pages.authentication.login");
     }
 
-    public function login(EmployeeLoginRequest $request)
+    public function login(AdminLoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('employee')->attempt($credentials)) {
-            return redirect()->route("user.home")->with("success", "ĐĂNG NHẬP THÀNH CÔNG");
+        if (Auth::attempt($credentials)) {
+            return redirect()->route("admin.dashboard")->with("success", "ĐĂNG NHẬP THÀNH CÔNG");
         }
 
         return redirect()
@@ -30,7 +30,7 @@ class AuthenticateController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('employee')->logout();
-        return redirect()->route('login.index');
+        Auth::logout();
+        return redirect()->route('admin.login.index');
     }
 }
