@@ -1,9 +1,13 @@
 @extends('admin.layouts.app')
 
+@section('css')
+
+@endsection
+
 @section('content')
     <div class="row mb-4">
-        <div class="col-2">
-            <a href="">
+        <div class="col-2 ms-2 me-2 w-30">
+            <a href="" class="me-2">
                 <button type="button" class="btn btn-success text-white"> <span class="mr-5">Thêm mới nhân viên</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
                         <path

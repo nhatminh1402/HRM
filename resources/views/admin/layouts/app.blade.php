@@ -35,19 +35,13 @@
         content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('assets/img/favicon/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('assets/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
+    <script src="{{ asset('assets/bootstrap-5.0.2-dist/bootstrap.min.css') }}"></script>
     <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Sweet Alert -->
     <link type="text/css" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
-
-    {{-- <link type="text/css" href="{{ asset('assets/scss/volt/components/_buttons.scss') }}" rel="stylesheet"> --}}
 
     <!-- Notyf -->
     <link type="text/css" href="{{ asset('assets/vendor/notyf/notyf.min.css') }}" rel="stylesheet">
