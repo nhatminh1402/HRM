@@ -12,7 +12,6 @@ class Helpers
         $uuid = Uuid::uuid4()->toString();
         $cleanedUuid = preg_replace('/[^0-9]/', '', $uuid);
         $cleanedUuid = substr($cleanedUuid, -10);
-
         return $prefix . $cleanedUuid;
     }
 }

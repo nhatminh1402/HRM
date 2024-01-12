@@ -25,11 +25,11 @@ class PositionController extends Controller
     {
         $prefix = 'MCV';
 
-        $employeeCode = Helpers::generateEmployeeCode($prefix);
+        $employeeCode = $this->positionService->getEmployeeCode($prefix);
 
         $positions = $this->positionService->getAll();
 
-        return view('admin.pages.employee_management.index', compact('positions','employeeCode'));
+        return view('admin.pages.employee_management.index', compact('positions', 'employeeCode'));
     }
 
     /**
@@ -48,7 +48,7 @@ class PositionController extends Controller
         return redirect()->route('admin.employee.home')->with('success', 'Create position success!');
     }
 
-     /**
+    /**
      * Show the form for creating a new resource.
      */
     /**
@@ -67,7 +67,6 @@ class PositionController extends Controller
         //
     }
 
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -77,7 +76,6 @@ class PositionController extends Controller
 
         return view('admin.pages.employee_management.edit_position', compact('position'));
     }
-
 
     /**
      * Update the specified resource in storage.

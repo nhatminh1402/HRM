@@ -70,7 +70,8 @@
                                 <td class='text-center'>{{ $position->created_at }}</td>
                                 <td class='text-center'>{{ $position->updated_at }}</td>
                                 <td class='text-center'>
-                                    <a href="{{ route('admin.employee.edit-position', $position->id ) }}" class="btn btn-warning">Sửa</a>
+                                    <a href="{{ route('admin.employee.edit-position', $position->id) }}"
+                                        class="btn btn-warning">Sửa</a>
                                 </td>
                                 <td class='text-center'>
                                     <form action="" method="POST"
@@ -85,7 +86,7 @@
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
-                {{$positions->links()}}
+                {{ $positions->links() }}
             </div>
         </div>
     </div>

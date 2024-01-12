@@ -54,7 +54,6 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         return $position;
     }
 
-
     /**
      * Boot up the repository, pushing criteria
      */

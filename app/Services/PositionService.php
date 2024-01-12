@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers;
 use App\Models\Position;
 use App\Repositories\PositionRepository;
 use Exception;
@@ -24,6 +25,13 @@ class PositionService
         return $this->positionRepository->getAll();
     }
 
+    public function getEmployeeCode($prefix)
+    {
+        $employeeCode = Helpers::generateEmployeeCode($prefix);
+
+        return $employeeCode;
+    }
+
     public function create(array $data)
     {
         $position = new Position();
@@ -31,7 +39,7 @@ class PositionService
         $position->fill($data);
 
         $position->save();
-        
+
         return $position;
     }
 
