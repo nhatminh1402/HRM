@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\EmployeeRepository\EmployeeRepository;
+use App\Repositories\EmployeeRepository\EmployeeRepositoryEloquent;
 use App\Repositories\PositionRepository;
 use App\Repositories\PositionRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
@@ -13,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(EmployeeRepository::class, EmployeeRepositoryEloquent::class);
         $this->app->bind(PositionRepository::class,PositionRepositoryEloquent::class);
     }
 
