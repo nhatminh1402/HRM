@@ -9,6 +9,10 @@ Route::prefix('/employees')->name('employee.')->group(function () {
         return view('admin.pages.employee_management.create_employee');
     })->name('create-employee');
 
+    Route::get('/add', function () {
+        return view('admin.pages.employee_management.add_employee');
+    })->name('add-employee');
+
     // Danh sách nhân viên
     Route::get('/lists', function () {
         return view('admin.pages.employee_management.list_employee');
