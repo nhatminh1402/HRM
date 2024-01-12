@@ -21,7 +21,6 @@
     <link id="pagestyle" href=" {{ asset('material-template/assets/css/material-dashboard.css?v=3.1.0') }} "
         rel="stylesheet" />
     <script src="{{ asset('lib\jquery-3.7.1.min') }}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-gray-200">
