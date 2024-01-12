@@ -21,7 +21,7 @@
                 </div>
                 <div class="column">
                     <p>Tên nhân viên: {{ $employee->full_name }}</p>
-                    <p>Mã nhân viên: {{ $employee->code_employee}}</p>
+                    <p>Mã nhân viên: {{ $employee->code_employee }}</p>
                     <p>Giới tính: @if ($employee->gender == 1)
                             Nam
                         @else
@@ -38,11 +38,12 @@
                 </div>
                 <div class="column">
                     <p>Bằng cấp: {{ $employee->degree }} </p>
-                    <p>Địa chỉ: {{ $employee->ward->name }}, {{ $employee->district->name }}, {{ $employee->province->name }}</p>
+                    <p>Địa chỉ: {{ $employee->ward->name ?? '' }}, {{ $employee->district->name ?? '' }},
+                        {{ $employee->province->name ?? '' }}</p>
                     <p>DB Chuyên môn: Kỹ sư Công nghệ thông tin</p>
                     <p>DB Phòng ban: IT</p>
                     <p>DB Chức vụ: Nhân viên</p>
-                    <p>Trạng thái:  
+                    <p>Trạng thái:
                         @if ($employee->status == 1)
                             <span class="text-white bg-success rounded fw-bold p-2 ml-3">Đang làm việc</span>
                         @else
