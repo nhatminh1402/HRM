@@ -15,7 +15,7 @@ class PermissioRoleSeeder extends Seeder
     public function run(): void
     {
         $permissionsAdmin = Permission::whereIn('name', ['access', 'create', 'update', 'delete', 'search', 'detail'])->pluck('id');
-        $roleAdmin = Role::whereIn('name', ['Supper Admin','Admin'])->first();
+        $roleAdmin = Role::where('name', ['Admin'])->first();
         $roleAdmin->permissions()->sync($permissionsAdmin->toArray());
 
         $permissionsUser = Permission::whereIn('name', ['access', 'update', 'detail'])->pluck('id');

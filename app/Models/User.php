@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -50,15 +51,31 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'created_by');
     }
-    
+
 
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'user_has_permission', 'user_id', 'permission_id');
     }
 
-    public function role()
+    /**
+     * Get the role associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function role(): HasOne
     {
-        return $this->hasOne(Role::class, 'id', 'role_id');
+        return $this->hasOne(Role::class,'id', 'role_id');
+    }
+
+    /**
+     * Get the position associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function position(): HasOne
+    {
+        return $this->hasOne(Position::class);
+
     }
 }

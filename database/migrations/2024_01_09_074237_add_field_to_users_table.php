@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('created_by')->nullable();
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -24,7 +24,6 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
            $table->dropColumn(['created_by']);
-           $table->dropForeign(['role_id']);
         });
     }
 };
