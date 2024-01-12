@@ -3,18 +3,16 @@
 namespace App;
 
 use Illuminate\Support\Facades\Hash;
+use Ramsey\Uuid\Uuid;
 
 class Helpers
 {
     public static function generateEmployeeCode($prefix)
     {
-        $timestamp = time();
-        $hashedTimestamp = Hash::make($timestamp);
-        $cleanedTimestamp = preg_replace('/[^0-9]/', '', $hashedTimestamp);
-        $cleanedTimestamp = substr($cleanedTimestamp, -10); 
+        $uuid = Uuid::uuid4()->toString();
+        $cleanedUuid = preg_replace('/[^0-9]/', '', $uuid);
+        $cleanedUuid = substr($cleanedUuid, -10);
 
-        return $prefix . $cleanedTimestamp;
+        return $prefix . $cleanedUuid;
     }
-
-
 }

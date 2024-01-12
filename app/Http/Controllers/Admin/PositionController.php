@@ -23,7 +23,7 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $prefix = 'MVN';
+        $prefix = 'MCV';
 
         $employeeCode = Helpers::generateEmployeeCode($prefix);
 
