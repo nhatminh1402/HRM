@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use App\Repositories\EmployeeRepository\EmployeeRepository;
 use App\Repositories\EmployeeRepository\EmployeeRepositoryEloquent;
+use App\Repositories\PositionRepository;
+use App\Repositories\PositionRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(EmployeeRepository::class, EmployeeRepositoryEloquent::class);
+        $this->app->bind(PositionRepository::class,PositionRepositoryEloquent::class);
     }
 
     /**
@@ -22,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrapFive();  
+        Paginator::useBootstrapFive();
     }
 }

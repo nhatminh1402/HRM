@@ -1,9 +1,32 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Danh sách nhân viên')
+@section('css')
+
+@endsection
 
 @section('content')
-
+    <div class="row mb-4">
+        <div class="col-2 ms-2 me-2 w-30">
+            <a href="" class="me-2">
+                <button type="button" class="btn btn-success text-white"> <span class="mr-5">Thêm mới nhân viên</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                    </svg>
+                </button>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="">
+                <button type="button" class="btn btn-success text-white"><span>Xuất file Excel</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                        <path
+                            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                    </svg>
+                </button>
+            </a>
+        </div>
+    </div>
     <div class="row">
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">

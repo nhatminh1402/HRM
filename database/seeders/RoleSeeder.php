@@ -15,9 +15,6 @@ class RoleSeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'Supper Admin'
-            ],
-            [
                 'name' => 'Admin',
             ],
             [
