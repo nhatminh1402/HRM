@@ -34,8 +34,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
      
         return $this->model->leftJoin('provinces', 'employees.province_id', '=', 'provinces.id')
-            ->join('districts', 'employees.district_id', '=', 'districts.id')
-            ->join('wards', 'employees.ward_id', '=', 'wards.id')
+            ->leftJoin('districts', 'employees.district_id', '=', 'districts.id')
+            ->leftJoin('wards', 'employees.ward_id', '=', 'wards.id')
             ->select('employees.*', 'provinces.name as province_name', 'districts.name as district_name', 'wards.name as ward_name')
             ->get();
     }

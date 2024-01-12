@@ -21,6 +21,7 @@
                 </div>
                 <div class="column">
                     <p>Tên nhân viên: {{ $employee->full_name }}</p>
+                    <p>Mã nhân viên: {{ $employee->code_employee}}</p>
                     <p>Giới tính: @if ($employee->gender == 1)
                             Nam
                         @else
@@ -28,25 +29,20 @@
                         @endif
                     </p>
                     <p>Ngày sinh: {{ $employee->dob }}</p>
-                    <p>DB Nơi sinh: Hà Nội</p>
-                    <p>DB Số CCCD: 123456789</p>
-                    <p>DB Ngày cấp: 01/01/2010</p>
-                    <p>DB Nơi cấp: Hà Nội</p>
-                    <p>DB Nguyên quán: Hà Nội</p>
-                    <p>DB Quốc tịch: {{ $employee->nationality }}</p>
+                    <p>Số điện thoại: {{ $employee->phone_number }}</p>
+                    <p>Email: {{ $employee->email }}</p>
+                    <p>Số CCCD: {{ $employee->identify_number }}</p>
+                    <p>Quốc tịch: {{ $employee->nationality }}</p>
                     <p>DB Tộc: Kinh</p>
                     <p>DB Tôn giáo: Không</p>
                 </div>
                 <div class="column">
-                    <p>DB Hộ khẩu: Hà Nội</p>
-                    <p>DB Trạm trú: Hà Nội</p>
                     <p>Bằng cấp: {{ $employee->degree }} </p>
-                    <p>Địa chỉ: {{ $employee->ward_name }}, {{ $employee->district_name }}, {{ $employee->province_name }}
-                    </p>
+                    <p>Địa chỉ: {{ $employee->ward_name }}, {{ $employee->district_name }}, {{ $employee->province_name }}</p>
                     <p>DB Chuyên môn: Kỹ sư Công nghệ thông tin</p>
                     <p>DB Phòng ban: IT</p>
                     <p>DB Chức vụ: Nhân viên</p>
-                    <p>Trạng thái:
+                    <p>Trạng thái:  
                         @if ($employee->status == 1)
                             <span class="text-white bg-success rounded fw-bold p-2 ml-3">Đang làm việc</span>
                         @else

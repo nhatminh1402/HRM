@@ -28,7 +28,7 @@ class EmployeeController extends Controller
     public function getDetailEmployee($id)
     {
         $employee = $this->employeeService->getById($id);
-        // dd($employee);
+   
         return view('admin.pages.employee_management.detail_employee', compact('employee'));
     }
     public function searchEmploy(Request $request)
