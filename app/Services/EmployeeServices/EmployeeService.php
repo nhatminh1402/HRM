@@ -17,10 +17,12 @@ class EmployeeService
     {
         return $this->employeeRepository->showall();
     }
+
     public function getById($id)
     {
         return $this->employeeRepository->getById($id);
     }
+
     public function searchEmploy($key)
     {
         return $this->employeeRepository->search($key);

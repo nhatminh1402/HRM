@@ -20,6 +20,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
      *
      * @return string
      */
+    const DEFAULT_PER_PAGE = 4;
+
     public function model()
     {
         return Employee::class;
@@ -27,12 +29,12 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function showall()
     {
-        return $this->model->paginate(4)->withQueryString();
+        return $this->model->paginate(self::DEFAULT_PER_PAGE)->withQueryString();
     }
 
     public function Jointable()
     {
-     
+
         return $this->model->leftJoin('provinces', 'employees.province_id', '=', 'provinces.id')
             ->leftJoin('districts', 'employees.district_id', '=', 'districts.id')
             ->leftJoin('wards', 'employees.ward_id', '=', 'wards.id')
@@ -44,19 +46,26 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         return $this->Jointable()->find($id);
     }
-    public function search($key){
-        
-        return $this->model->where('code_employee', 'LIKE', "%{$key}%")
-                            ->orWhere('full_name', 'LIKE', "%{$key}%")
-                            ->orWhere('email', 'LIKE', "%{$key}%")
-                            ->orWhere('phone_number', 'LIKE', "%{$key}%")
-                            ->orWhere('dob', 'LIKE', "%{$key}%")
-                            ->orWhere('nationality', 'LIKE', "%{$key}%")
-                            ->orWhere('degree', 'LIKE', "%{$key}%")
-                            ->latest('id')->paginate(4)->withQueryString();
+    public function search($key)
+    {
+        $query = $this->model->latest('id');
+
+        if (!empty($key)) {
+            $query->where(function ($q) use ($key) {
+                $q->where('code_employee', 'LIKE', "%{$key}%")
+                    ->orWhere('full_name', 'LIKE', "%{$key}%")
+                    ->orWhere('email', 'LIKE', "%{$key}%")
+                    ->orWhere('phone_number', 'LIKE', "%{$key}%")
+                    ->orWhere('dob', 'LIKE', "%{$key}%")
+                    ->orWhere('nationality', 'LIKE', "%{$key}%")
+                    ->orWhere('degree', 'LIKE', "%{$key}%");
+            });
+        }
+
+        return $query->paginate(self::DEFAULT_PER_PAGE)->withQueryString();
     }
 
-    /**
+    /** 
      * Boot up the repository, pushing criteria
      */
     public function boot()

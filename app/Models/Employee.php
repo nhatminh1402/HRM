@@ -11,4 +11,6 @@ class Employee extends Authenticatable
     use HasFactory;
 
     protected $guard = "employee";
+
+    
 }
