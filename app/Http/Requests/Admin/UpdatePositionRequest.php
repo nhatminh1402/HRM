@@ -22,7 +22,6 @@ class UpdatePositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code_position' => 'required|string|max:13',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
             // 'employee_id' => 'required|integer',
@@ -38,9 +37,6 @@ class UpdatePositionRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'code_position.required' => 'Vui lòng nhập mã chức vụ.',
-            'code_position.string' => 'Mã chức vụ phải là một chuỗi.',
-            'code_position.max' => 'Mã chức vụ không được vượt quá :max ký tự.',
             'name.required' => 'Vui lòng nhập tên chức vụ.',
             'name.string' => 'Tên chức vụ phải là một chuỗi.',
             'name.max' => 'Tên chức vụ không được vượt quá :max ký tự.',

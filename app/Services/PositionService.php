@@ -34,9 +34,16 @@ class PositionService
 
     public function create(array $data)
     {
+        $dataHtml = Helpers::stripHtmlTags($data);
+
+        $prefix = 'MCV';
+        if ($dataHtml) {
+            $dataHtml['code_position'] = $this->getEmployeeCode($prefix);
+        }
+
         $position = new Position();
 
-        $position->fill($data);
+        $position->fill($dataHtml);
 
         $position->save();
 
@@ -50,6 +57,8 @@ class PositionService
 
     public function update(array $data, $id)
     {
-        return $this->positionRepository->update($data, $id);
+        $dataHtml = Helpers::stripHtmlTags($data);
+
+        return $this->positionRepository->update($dataHtml, $id);
     }
 }

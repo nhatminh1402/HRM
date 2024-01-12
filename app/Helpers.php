@@ -14,4 +14,13 @@ class Helpers
         $cleanedUuid = substr($cleanedUuid, -10);
         return $prefix . $cleanedUuid;
     }
+
+    public static function stripHtmlTags($data)
+    {
+        if (isset($data['description'])) {
+            $data['description'] = preg_replace('/<p[^>]*>/', '', $data['description']);
+            $data['description'] = preg_replace('/<\/p>/', '', $data['description']);
+        }
+        return $data;
+    }
 }

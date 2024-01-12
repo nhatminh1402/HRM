@@ -11,8 +11,8 @@
                 @method('PUT')
                 <div class="mb-3">
                     <label for="code_position" class="form-label mb-2 font-weight-bold">Mã chức vụ</label>
-                    <input type="text" name="code_position" class="form-control"
-                        value="{{ old('code_position', $position->code_position) }}">
+                    <input type="text" name="code_position" class="form-control" value="{{ $position->code_position }}"
+                        readonly disabled>
                     @error('code_position')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror

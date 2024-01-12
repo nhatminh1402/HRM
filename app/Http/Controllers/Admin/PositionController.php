@@ -39,12 +39,8 @@ class PositionController extends Controller
     {
         $data = $request->all();
 
-        if (isset($data['description'])) {
-            $data['description'] = preg_replace('/<p[^>]*>/', '', $data['description']);
-            $data['description'] = preg_replace('/<\/p>/', '', $data['description']);
-        }
-
         $this->positionService->create($data);
+
         return redirect()->route('admin.employee.home')->with('success', 'Create position success!');
     }
 
@@ -84,11 +80,6 @@ class PositionController extends Controller
     {
         try {
             $data = $request->all();
-
-            if (isset($data['description'])) {
-                $data['description'] = preg_replace('/<p[^>]*>/', '', $data['description']);
-                $data['description'] = preg_replace('/<\/p>/', '', $data['description']);
-            }
 
             $position = $this->positionService->update($data, $id);
 
