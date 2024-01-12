@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class PreventLoginAgain
+class PreventEmployeeLoginAgain
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class PreventLoginAgain
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check()) {
+        if (Auth::guard("employee")->check()) {
             toastr()->success('BẠN ĐÃ ĐĂNG NHẬP VÀO HỆ THỐNG!');
             return redirect()->back();
         }

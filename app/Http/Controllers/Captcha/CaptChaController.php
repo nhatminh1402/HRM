@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Captcha;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CapChaFormRequest;
@@ -8,13 +8,20 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 
-class CapChaController extends Controller
+class CaptChaController extends Controller
 {
     public function validateCapchaCode(CapChaFormRequest $request)
     {
         session()->forget('numberLoginFailed');
 
         return redirect()->route('login.index');
+    }
+
+    public function adminValidateCapchaCode(CapChaFormRequest $request)
+    {
+        session()->forget('numberLoginFailed');
+
+        return redirect()->route('admin.login.index');
     }
 
     public function capchaReload()

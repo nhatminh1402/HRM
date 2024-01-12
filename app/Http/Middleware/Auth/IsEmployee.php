@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckUser
+class IsEmployee
 {
     /**
      * Handle an incoming request.
@@ -17,18 +17,11 @@ class CheckUser
     public function handle(Request $request, Closure $next): Response
     {
         // Nếu chưa đăng nhập
-        if (!Auth::check()) {
+        if (!Auth::guard("employee")->check()) {
             return redirect()
                 ->route('login.index')
                 ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TIẾP TỤC TRUY CẬP!');
         }
-
-        $user = Auth::user();
-        if ($user->is_admin) {
-            toastr()->error('TRANH DÀNH RIÊNG CHO NHÂN VIÊN!');
-            return redirect()->back();
-        }
-
         return $next($request);
     }
 }
