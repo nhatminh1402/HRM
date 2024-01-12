@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-
-
     protected $employeeService;
     public function __construct(EmployeeService $employeeService)
     {
@@ -20,17 +18,15 @@ class EmployeeController extends Controller
     public function showAllEmployee()
     {
         $employees = $this->employeeService->showallemployee();
-
-
         return view('admin.pages.employee_management.list_employee', compact('employees'));
     }
 
     public function getDetailEmployee($id)
     {
         $employee = $this->employeeService->getById($id);
-   
         return view('admin.pages.employee_management.detail_employee', compact('employee'));
     }
+    
     public function searchEmploy(Request $request)
     {
         $key = $request->get('key');
