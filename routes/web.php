@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\Auth\CheckAdmin;
 use App\Http\Middleware\Auth\CheckUser;
+use App\Http\Middleware\Auth\IsAdmin;
 use App\Http\Middleware\Auth\IsEmployee;
 use Illuminate\Support\Facades\Route;
 /*
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Router cho admin
 Route::prefix('admin')
     ->name('admin.')
-    // ->middleware(CheckAdmin::class)
+    ->middleware(IsAdmin::class)
     ->group(function () {
         $listRouteAdminFile = glob(__DIR__ . '/admin/*.php');
         foreach ($listRouteAdminFile as $routeFile) {

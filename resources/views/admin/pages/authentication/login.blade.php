@@ -20,8 +20,7 @@
     <!-- CSS Files -->
     <link id="pagestyle" href=" {{ asset('material-template/assets/css/material-dashboard.css?v=3.1.0') }} "
         rel="stylesheet" />
-    <script src="{{ asset('lib\jquery-3.7.1.min') }}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="{{ asset('lib/jquery-3.7.1.min') }}"></script>
 </head>
 
 <body class="bg-gray-200">
@@ -35,13 +34,14 @@
                         <div class="card z-index-0 fadeIn3 fadeInBottom">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                                    <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">ĐĂNG NHẬP HỆ THỐNG
+                                    <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">ĐĂNG NHẬP TRANG QUẢN
+                                        TRỊ
                                     </h4>
                                 </div>
                             </div>
                             <div class="card-body">
                                 @if (session('numberLoginFailed') <= 3)
-                                    <form action="{{ route('login.submit') }}" method="post" class="text-start">
+                                    <form action="{{ route('admin.login.submit') }}" method="post" class="text-start">
                                         @csrf
                                         {{-- email input area --}}
                                         <div class="input-group input-group-outline my-3 focused is-focused">
@@ -80,7 +80,7 @@
                                 @endif
 
                                 @if (session('numberLoginFailed') > 3)
-                                    <form method="post" action="{{ route('login.validateCapchaCode') }}">
+                                    <form method="post" action="{{ route('admin.login.validateCapchaCode') }}">
                                         @csrf
                                         <h1 class="text-center" style="font-size: 15px;">Bạn đã nhập sai thông tin quá 3
                                             lần. Vui lòng xác minh bạn không phải là
@@ -150,7 +150,7 @@
         $("#reload-capcha").on("click", () => {
             $.ajax({
                 type: "get",
-                url: "login/capcha-reload",
+                url: "{{ url('login/capcha-reload') }} ",
                 success: function(response) {
                     $("#capcha-img").html(response.captcha)
                 }

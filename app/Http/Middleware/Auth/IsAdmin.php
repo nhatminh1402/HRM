@@ -20,9 +20,8 @@ class IsAdmin
         if (!Auth::check()) {
             return redirect()
                 ->route('admin.login.index')
-                ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TIẾP TỤC TRUY CẬP!');
+                ->with('error', 'VUI LÒNG ĐĂNG NHẬP ĐỂ TRUY CẬP TRANG QUẢN TRỊ!');
         }
-
         return $next($request);
     }
 }
