@@ -35,11 +35,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function Jointable()
     {
 
-        return $this->model->leftJoin('provinces', 'employees.province_id', '=', 'provinces.id')
-            ->leftJoin('districts', 'employees.district_id', '=', 'districts.id')
-            ->leftJoin('wards', 'employees.ward_id', '=', 'wards.id')
-            ->select('employees.*', 'provinces.name as province_name', 'districts.name as district_name', 'wards.name as ward_name')
-            ->get();
+        return $this->model->with('province', 'district', 'ward')->get();
     }
 
     public function getById($id)

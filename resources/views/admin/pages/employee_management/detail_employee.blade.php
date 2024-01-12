@@ -38,7 +38,7 @@
                 </div>
                 <div class="column">
                     <p>Bằng cấp: {{ $employee->degree }} </p>
-                    <p>Địa chỉ: {{ $employee->ward_name }}, {{ $employee->district_name }}, {{ $employee->province_name }}</p>
+                    <p>Địa chỉ: {{ $employee->ward->name }}, {{ $employee->district->name }}, {{ $employee->province->name }}</p>
                     <p>DB Chuyên môn: Kỹ sư Công nghệ thông tin</p>
                     <p>DB Phòng ban: IT</p>
                     <p>DB Chức vụ: Nhân viên</p>
