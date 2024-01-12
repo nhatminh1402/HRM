@@ -21,17 +21,26 @@ class PositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $prefix = 'MCV';
+    public function index(Request $request)
+{
+    $prefix = 'MCV';
 
-        $employeeCode = $this->positionService->getEmployeeCode($prefix);
+    $employeeCode = $this->positionService->getEmployeeCode($prefix);
 
-        $positions = $this->positionService->getAll();
+    $key = $request->get('key');
 
-        return view('admin.pages.employee_management.index', compact('positions', 'employeeCode'));
+    $key = str_replace('%', '\%', $key);
+
+    $positions = $this->positionService->getAll();
+
+    if ($key) {
+        $positions = $this->positionService->searchPosition($key);
     }
 
+    $pageNumber = $request->query('page');
+
+    return view('admin.pages.employee_management.index', compact('positions', 'employeeCode', 'pageNumber'));
+}
     /**
      * Store a newly created resource in storage.
      */
@@ -70,7 +79,9 @@ class PositionController extends Controller
     {
         $position = $this->positionService->edit($id);
 
-        return view('admin.pages.employee_management.edit_position', compact('position'));
+        $pageNumber = request('page');
+
+        return view('admin.pages.employee_management.edit_position', compact('position', 'pageNumber'));
     }
 
     /**
@@ -83,7 +94,9 @@ class PositionController extends Controller
 
             $position = $this->positionService->update($data, $id);
 
-            return redirect()->route('admin.employee.home')
+            $pageNumber = $request->input('page');
+
+            return redirect()->route('admin.employee.home', ['page' => $pageNumber])
                 ->with('success', 'Cập nhật chức vụ thành công!')
                 ->with('position', $position);
 
@@ -98,6 +111,8 @@ class PositionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->positionService->delete($id);
+
+        return redirect()->back();
     }
 }

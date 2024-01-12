@@ -61,4 +61,14 @@ class PositionService
 
         return $this->positionRepository->update($dataHtml, $id);
     }
+
+    public function searchPosition($key)
+    {
+        return $this->positionRepository->search($key);
+    }
+
+    public function delete($id)
+    {
+        return $this->positionRepository->delete($id);
+    }
 }

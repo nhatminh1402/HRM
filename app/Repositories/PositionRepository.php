@@ -20,4 +20,7 @@ interface PositionRepository extends RepositoryInterface
     public function edit($id);
 
     public function delete($id);
+
+    public function search($key);
+
 }
