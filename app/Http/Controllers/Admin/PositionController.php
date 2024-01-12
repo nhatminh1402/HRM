@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreatePositionRequest;
 use App\Http\Requests\Admin\UpdatePositionRequest;
@@ -22,10 +23,13 @@ class PositionController extends Controller
      */
     public function index()
     {
+        $prefix = 'MVN';
+
+        $employeeCode = Helpers::generateEmployeeCode($prefix);
 
         $positions = $this->positionService->getAll();
 
-        return view('admin.pages.employee_management.index', compact('positions'));
+        return view('admin.pages.employee_management.index', compact('positions','employeeCode'));
     }
 
     /**
@@ -33,8 +37,26 @@ class PositionController extends Controller
      */
     public function store(CreatePositionRequest $request)
     {
-        $this->positionService->create($request->all());
-        return redirect()->route('admin.employee.home')->with('success', 'Cretae positon success!');
+        $data = $request->all();
+
+        if (isset($data['description'])) {
+            $data['description'] = preg_replace('/<p[^>]*>/', '', $data['description']);
+            $data['description'] = preg_replace('/<\/p>/', '', $data['description']);
+        }
+
+        $this->positionService->create($data);
+        return redirect()->route('admin.employee.home')->with('success', 'Create position success!');
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     */
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -63,7 +85,14 @@ class PositionController extends Controller
     public function update(UpdatePositionRequest $request, $id)
     {
         try {
-            $position = $this->positionService->update($request->all(), $id);
+            $data = $request->all();
+
+            if (isset($data['description'])) {
+                $data['description'] = preg_replace('/<p[^>]*>/', '', $data['description']);
+                $data['description'] = preg_replace('/<\/p>/', '', $data['description']);
+            }
+
+            $position = $this->positionService->update($data, $id);
 
             return redirect()->route('admin.employee.home')
                 ->with('success', 'Cập nhật chức vụ thành công!')

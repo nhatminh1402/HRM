@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Position;
 use App\Repositories\PositionRepository;
 use Exception;
+use Illuminate\Http\Request;
 
 /**
  * Class PositionService.
@@ -26,9 +27,11 @@ class PositionService
     public function create(array $data)
     {
         $position = new Position();
+
         $position->fill($data);
-        
+
         $position->save();
+        
         return $position;
     }
 

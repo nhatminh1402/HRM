@@ -11,7 +11,7 @@
                 <div class="mb-3">
                     <label for="code_position" class="form-label mb-2 font-weight-bold">Mã chức vụ</label>
                     <input type="text" class="form-control" name="code_position" id="code_position"
-                        value="{{ old('code_position') }}">
+                        value="{{ $employeeCode }}" readonly disabled>
                     @error('code_position')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror

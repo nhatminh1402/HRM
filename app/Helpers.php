@@ -10,7 +10,7 @@ class Helpers
     {
         $timestamp = time();
         $hashedTimestamp = Hash::make($timestamp);
-        $cleanedTimestamp = preg_replace('/[0-9]/', '', $hashedTimestamp);
+        $cleanedTimestamp = preg_replace('/[^0-9]/', '', $hashedTimestamp);
         $uniqueId = substr($cleanedTimestamp, 0, 10);
 
         return $prefix . $uniqueId;
