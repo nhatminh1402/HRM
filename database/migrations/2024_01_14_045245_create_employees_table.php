@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("code_employee")->unique();
             $table->string("full_name");
             $table->boolean("gender");
-            $table->boolean("status");
+            $table->boolean("status")->nullable();
             $table->string("email")->unique();
             $table->string("password");
             $table->string("image");
@@ -26,9 +26,11 @@ return new class extends Migration
             $table->unsignedBigInteger("province_id")->nullable(); // tỉnh - thành phố
             $table->unsignedBigInteger("district_id")->nullable(); // Quận Huyện
             $table->unsignedBigInteger("ward_id")->nullable(); // phuong
-            $table->string("nationality"); // quốc tịch
+            // $table->string("nationality"); // quốc tịch
             $table->unsignedBigInteger("position_id");
+            $table->unsignedBigInteger("department_id");
             $table->enum("degree", ["THPT", "CAO ĐẲNG", "ĐẠI HỌC", "CAO HỌC"]);
+            $table->string("major");
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('province_id')->references('id')->on('provinces');

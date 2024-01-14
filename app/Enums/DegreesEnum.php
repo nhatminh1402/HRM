@@ -13,8 +13,8 @@ use BenSampo\Enum\Enum;
  */
 final class DegreesEnum extends Enum
 {
-    public const THPT = 0;
-    public const CAO_DANG = 1;
-    public const DAI_HOC = 2;
-    public const CAO_HOC = 3;
+    public const THPT = 'THPT';
+    public const CAO_DANG = 'CAO ĐẲNG';
+    public const DAI_HOC = 'ĐẠI HỌC';
+    public const CAO_HOC = 'CAO HỌC';
 }
