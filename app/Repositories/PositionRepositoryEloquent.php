@@ -25,9 +25,16 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         return Position::class;
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         return $this->model->latest('id')->paginate(3);
     }
+
+    public function all($columns = ['*'])
+    {
+        return $this->model->all($columns);
+    }
+
 
     public function create(array $data)
     {
@@ -61,5 +68,4 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
 }

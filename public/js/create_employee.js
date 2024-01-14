@@ -9,8 +9,8 @@ $("#upload-img-area").on("click", function () {
     $("#file-field").click()
 })
 
-$('#datepicker').datepicker({
-    uiLibrary: 'bootstrap5'
+$(document).ready(function () {
+    $('.select-extension').select2();
 });
 
 // Validate image upload

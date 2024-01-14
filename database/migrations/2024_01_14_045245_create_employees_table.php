@@ -23,17 +23,14 @@ return new class extends Migration
             $table->string("phone_number");
             $table->unsignedBigInteger("identify_number")->nullable(); // CMND
             $table->date("dob");
-            // $table->unsignedBigInteger("place_of_birth_id")->nullable(); // nơi sinh (thành phố)
             $table->unsignedBigInteger("province_id")->nullable(); // tỉnh - thành phố
             $table->unsignedBigInteger("district_id")->nullable(); // Quận Huyện
             $table->unsignedBigInteger("ward_id")->nullable(); // phuong
             $table->string("nationality"); // quốc tịch
             $table->unsignedBigInteger("position_id");
-            // $table->foreign('position_id')->references('id')->on('postitions');
-            $table->enum("degree", ["TRUNG HỌC", "CAO ĐẲNG", "ĐẠI HỌC", "THẠC SĨ", "TIẾN SĨ", "CAO HỌC"]);
+            $table->enum("degree", ["THPT", "CAO ĐẲNG", "ĐẠI HỌC", "CAO HỌC"]);
             $table->rememberToken();
             $table->timestamps();
-            // $table->foreign('place_of_birth_id')->references('id')->on('provinces');
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->foreign('district_id')->references('id')->on('districts');
             $table->foreign('ward_id')->references('id')->on('wards');
