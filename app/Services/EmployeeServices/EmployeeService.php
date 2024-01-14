@@ -44,7 +44,7 @@ class EmployeeService
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
-            File::delete($attributes["image"]);
+            File::delete(public_path('uploads/' . $attributes['image']));
             return response()->json(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
