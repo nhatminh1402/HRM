@@ -72,19 +72,6 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         }
     }
 
-    public function search($key)
-    {
-        $query = $this->model->latest('id');
-
-        if (!empty($key)) {
-            $query->where(function ($q) use ($key) {
-                $q->where('name', 'LIKE', "%{$key}%");
-            });
-        }
-
-        return $query->paginate(self::DEFAULT_PER_PAGE)->withQueryString();
-    }
-
     /**
      * Boot up the repository, pushing criteria
      */
@@ -92,4 +79,15 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function search($key)
+    {
+        return $this->model
+            ->searchByName($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByDescription($key);
+            })
+            ->paginate(self::DEFAULT_PER_PAGE);
+    }
 }
+

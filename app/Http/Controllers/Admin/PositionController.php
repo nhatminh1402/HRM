@@ -6,6 +6,7 @@ use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreatePositionRequest;
 use App\Http\Requests\Admin\UpdatePositionRequest;
+use App\Models\Position;
 use App\Services\PositionService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -22,25 +23,21 @@ class PositionController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-{
-    $prefix = 'MCV';
+    {
+        $prefix = 'MCV';
 
-    $employeeCode = $this->positionService->getEmployeeCode($prefix);
+        $employeeCode = $this->positionService->getEmployeeCode($prefix);
 
-    $key = $request->get('key');
+        $positions = $this->positionService->getAll();
 
-    $key = str_replace('%', '\%', $key);
+        if ($request->input('key')) {
+            $positions = $this->positionService->searchPosition($request->input('key'));
+        }
 
-    $positions = $this->positionService->getAll();
+        $pageNumber = $request->query('page');
 
-    if ($key) {
-        $positions = $this->positionService->searchPosition($key);
+        return view('admin.pages.employee_management.index', compact('positions', 'employeeCode', 'pageNumber'));
     }
-
-    $pageNumber = $request->query('page');
-
-    return view('admin.pages.employee_management.index', compact('positions', 'employeeCode', 'pageNumber'));
-}
     /**
      * Store a newly created resource in storage.
      */
@@ -53,9 +50,6 @@ class PositionController extends Controller
         return redirect()->route('admin.employee.home')->with('success', 'Create position success!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     /**
      * Show the form for creating a new resource.
      */

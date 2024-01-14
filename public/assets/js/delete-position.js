@@ -1,6 +1,8 @@
-$(document).ready(function() {
-    $('#btn-delete').on('click', function(event) {
+$(document).ready(function () {
+    $('.btn-delete').on('click', function (event) {
         event.preventDefault();
+
+        var form = $(this).closest('.form-delete');
 
         Swal.fire({
             title: 'Xác nhận',
@@ -11,7 +13,7 @@ $(document).ready(function() {
             cancelButtonText: 'Hủy',
         }).then((result) => {
             if (result.isConfirmed) {
-                $('#form-delete').submit();
+                form.submit();
             }
         });
     });
