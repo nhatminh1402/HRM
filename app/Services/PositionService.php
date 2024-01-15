@@ -25,11 +25,6 @@ class PositionService
         return $this->positionRepository->getAll();
     }
 
-    public function all($columns = ['*'])
-    {
-        return $this->positionRepository->all($columns);
-    }
-
     public function getEmployeeCode($prefix)
     {
         $employeeCode = Helpers::generateEmployeeCode($prefix);
@@ -65,5 +60,15 @@ class PositionService
         $dataHtml = Helpers::stripHtmlTags($data);
 
         return $this->positionRepository->update($dataHtml, $id);
+    }
+
+    public function searchPosition($key)
+    {
+        return $this->positionRepository->search($key);
+    }
+
+    public function delete($id)
+    {
+        return $this->positionRepository->delete($id);
     }
 }

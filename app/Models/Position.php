@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -29,5 +30,15 @@ class Position extends Model
     public function employee(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+    public function scopeSearchByName(mixed $query, string $key)
+    {
+        return $key ? $query->where('name', 'like', '%' . $key . '%')->latest('id') : $query;
+    }
+
+    public function scopeSearchByDescription(mixed $query, string $key)
+    {
+        return $key ? $query->where('description', 'like', '%' . $key . '%')->latest('id') : $query;
+
     }
 }

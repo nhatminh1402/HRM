@@ -14,7 +14,11 @@
         content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard" />
     <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/fontawesome-free-6.5.1-web/js/all.min.js') }}">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -35,14 +39,12 @@
         content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg">
 
     <!-- Favicon -->
-    <script src="{{ asset('assets/bootstrap-5.0.2-dist/bootstrap.min.css') }}"></script>
+
+    <script src="{{ asset('assets/bootstrap-5.0.2/css/bootstrap.min.css') }}"></script>
     <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-
-    <!-- Sweet Alert -->
-    <link type="text/css" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
-
+    
     <!-- Notyf -->
     <link type="text/css" href="{{ asset('assets/vendor/notyf/notyf.min.css') }}" rel="stylesheet">
 
@@ -69,7 +71,6 @@
 
     </main>
 
-    <!-- Core -->
     <script src="{{ asset('assets/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
@@ -89,8 +90,6 @@
     <!-- Datepicker -->
     <script src="{{ asset('assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
 
-    <!-- Sweet Alerts 2 -->
-    <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 
     <!-- Moment JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>

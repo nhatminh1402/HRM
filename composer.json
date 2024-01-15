@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "bensampo/laravel-enum": "^6.8",
         "cr/hashcli": "dev-master",
         "guzzlehttp/guzzle": "^7.2",
         "hoangphi/vietnam-maps": "^1.3",

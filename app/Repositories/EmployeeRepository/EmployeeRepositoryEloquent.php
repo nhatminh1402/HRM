@@ -42,7 +42,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         return $this->Jointable()->find($id);
     }
-
     public function search($key)
     {
         $query = $this->model->latest('id');
@@ -60,11 +59,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         }
 
         return $query->paginate(self::DEFAULT_PER_PAGE)->withQueryString();
-    }
-
-    public function create(array $attributes)
-    {
-        return $this->model->create($attributes);
     }
 
     /** 

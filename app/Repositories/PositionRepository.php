@@ -13,8 +13,6 @@ interface PositionRepository extends RepositoryInterface
 {
     public function getAll();
 
-    public function all($columns = ['*']);
-
     public function create(array $data);
 
     public function update(array $data, $id);
@@ -22,4 +20,6 @@ interface PositionRepository extends RepositoryInterface
     public function edit($id);
 
     public function delete($id);
+
+    public function search($key);
 }

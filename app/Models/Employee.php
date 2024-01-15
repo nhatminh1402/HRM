@@ -11,42 +11,20 @@ class Employee extends Authenticatable
     use HasFactory;
 
     protected $guard = "employee";
-
-    protected $fillable = [
-        'full_name',
-        'code_employee',
-        'phone_number',
-        'image',
-        'email',
-        'identify_number',
-        'dob',
-        'gender',
-        'degree',
-        'major',
-        'department_id',
-        'position_id',
-        'province_id',
-        'district_id',
-        'ward_id',
-        'password'
-    ];
-
+    protected $fillable = ['province_id','district_id','ward_id'];
     public function province()
     {
-        return $this->belongsTo(Province::class, 'province_id', 'id');
+        return $this->belongsTo(Province::class,'province_id','id');
     }
 
     public function district()
     {
-        return $this->belongsTo(District::class, 'district_id', 'id');
+        return $this->belongsTo(District::class,'district_id','id');
     }
 
     public function ward()
     {
-        return $this->belongsTo(Ward::class, 'ward_id', 'id');
+        return $this->belongsTo(Ward::class, 'ward_id','id');
     }
-
-    protected $casts = [
-        'password' => 'hashed'
-    ];
+    
 }
