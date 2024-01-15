@@ -27,15 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-<<<<<<< HEAD
-            // $permissions = Permission::all();
-
-            // foreach ($permissions as $permission) {
-            //     Gate::define($permission->name, function ($user) use ($permission) {
-            //         return $user->hasPermissions($permission->name);
-            //     });
-            // }
-=======
         $permissions = Permission::all();
 
         foreach ($permissions as $permission) {
@@ -43,6 +34,5 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->hasPermissions($permission->name);
             });
         }
->>>>>>> 89b69c0e05ab31da5c5cfd824eabab8f8c31b4d3
     }
 }
