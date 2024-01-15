@@ -15,11 +15,11 @@ interface DisciplineRepository extends RepositoryInterface
 
     public function create(array $data);
 
-    // public function update(array $data, $id);
+    public function update(array $data, $id);
 
     public function edit($id);
 
-    // public function delete($id);
+    public function delete($id);
 
-    // public function search($key);
+    public function search($key);
 }

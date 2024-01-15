@@ -59,4 +59,14 @@ class DisciplineService
 
         return $this->disciplineRepository->update($dataHtms, $id);
     }
+
+    public function delete($id)
+    {
+        return $this->disciplineRepository->delete($id);
+    }
+
+    public function searchDiscipline($key)
+    {
+        return $this->disciplineRepository->search($key);
+    }
 }

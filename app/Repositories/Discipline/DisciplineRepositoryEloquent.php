@@ -57,6 +57,32 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
         return $discipline;
     }
 
+    public function delete($id)
+    {
+        try {
+            $discipline = $this->model->find($id);
+
+            if (!$discipline) {
+                throw new \Exception("Không tìm thấy loại kỷ luật !");
+            }
+
+            $discipline->delete($id);
+
+        } catch (\Throwable $th) {
+            throw new \Exception("Đã xảy ra lỗi, vui lòng thử lại !");
+        }
+    }
+
+    public function search($key)
+    {
+        return $this->model
+        ->searchByName($key)
+        ->orWhere(function ($query) use ($key){
+            $query->searchByDescription($key);
+        })
+        ->paginate(self::DEFAULT_PER_PAGE);
+    }
+
     /**
      * Boot up the repository, pushing criteria
      */

@@ -27,9 +27,9 @@ class DisciplineController extends Controller
 
         $disciplines = $this->disciplineService->getAll();
 
-        // if ($request->input('key')) {
-        //     $disciplines = $this->disciplineService->searDiscipline($request->input('key'));
-        // }
+        if ($request->input('key')) {
+            $disciplines = $this->disciplineService->searchDiscipline($request->input('key'));
+        }
 
         $pageNumber = $request->query('page');
 
@@ -98,8 +98,10 @@ class DisciplineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function troy(string $id)
+    public function destroy($id)
     {
-        //
+        $this->disciplineService->delete($id);
+
+        return redirect()->back();
     }
 }

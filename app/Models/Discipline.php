@@ -29,4 +29,15 @@ class Discipline extends Model
     {
         return $this->hasMany(Employee::class);
     }
+
+    public function scopeSearchByName(mixed $query, string $key)
+    {
+        return $key ? $query->where('name', 'LIKE', '%' . $key . '%')->latest('id') : $query;
+    }
+
+    public function scopeSearchByDescription(mixed $query, string $key)
+    {
+        return $key ? $query->where('description', 'LIKE', '%' . $key . '%')->latest('id') : $query;
+    }
+
 }
