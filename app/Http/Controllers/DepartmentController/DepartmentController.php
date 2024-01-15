@@ -14,7 +14,7 @@ class DepartmentController extends Controller
     {
         $this->departmentService = $departmentService;
     }
-    
+
     public function showallBlockDeparment()
     {
         $departments = $this->departmentService->getAllDeparment();
@@ -38,7 +38,8 @@ class DepartmentController extends Controller
     {
         try {
             $department = $this->departmentService->getDetailDepartment($id);
-            return view('admin.pages.department.manage-department', compact('department'));
+            $employees = $this->departmentService->getEmployees($id);
+            return view('admin.pages.department.manage-department', compact('department', 'employees'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'không tìm thấy phòng bang ');
         }
@@ -55,10 +56,11 @@ class DepartmentController extends Controller
         }
     }
 
-    public function destroyDepartment($id){
+    public function destroyDepartment($id)
+    {
         try {
             $updateDepartment = $this->departmentService->deleteDepartment($id);
-            return redirect()->back()->with('success', 'Xóa  phòng ban thành công!');  
+            return redirect()->back()->with('success', 'Xóa  phòng ban thành công!');
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Lỗi xóa phòng ban: ' . $e->getMessage());

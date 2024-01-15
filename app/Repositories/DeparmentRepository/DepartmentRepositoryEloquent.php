@@ -50,6 +50,10 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
     {
         return $this->model->find($id)->delete();
     }
+
+    public function getListEmployee($id){
+        return $this->getById($id)->employee;
+    }
     /**
      * Boot up the repository, pushing criteria
      */

@@ -42,11 +42,16 @@ class DepartmentService
     public function updateDepartment(array $data, $id)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-        return $this->departmentRepository->update($dataHtml,$id);
+        return $this->departmentRepository->update($dataHtml, $id);
     }
 
-    public function deleteDepartment($id){
+    public function deleteDepartment($id)
+    {
         return $this->departmentRepository->delete($id);
+    }
+    public function getEmployees($id)
+    {
+        return $this->departmentRepository->getListEmployee($id);
     }
 
     public function all($columns = ['*'])
