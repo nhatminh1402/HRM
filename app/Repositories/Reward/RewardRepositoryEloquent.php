@@ -7,6 +7,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Reward\RewardRepository;
 use App\Validators\Reward\RewardValidator;
+use Exception;
 
 /**
  * Class RewardRepositoryEloquent.
@@ -27,7 +28,11 @@ class RewardRepositoryEloquent extends BaseRepository implements RewardRepositor
 
     public function create(array $attributes)
     {
-        return $this->model->create($attributes);
+        try {
+            return $this->model->create($attributes);
+        } catch (Exception $e) {
+            return abort(500);
+        }
     }
 
 

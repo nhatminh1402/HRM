@@ -5,10 +5,18 @@ namespace App\Http\Controllers\Admin\ManageReward;
 use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateRewardRequest;
+use App\Services\Reward\RewardService;
 use Illuminate\Http\Request;
 
 class ManageRewardController extends Controller
 {
+    private $rewardService;
+
+    public function __construct(RewardService $rewardService)
+    {
+        $this->rewardService = $rewardService;
+    }
+
     public function create()
     {
         // auto genarate reward code
@@ -18,5 +26,9 @@ class ManageRewardController extends Controller
 
     public function store(CreateRewardRequest $request)
     {
+        $data = $request->all();
+        $this->rewardService->create($data);
+        toastr()->success('THÊM MỚI THÀNH CÔNG');
+        return redirect()->route("admin.reward.index");
     }
 }
