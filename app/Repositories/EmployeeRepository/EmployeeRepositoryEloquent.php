@@ -34,7 +34,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function Jointable()
     {
-
         return $this->model->with('province', 'district', 'ward', 'department', 'position')->get();
     }
 

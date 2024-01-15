@@ -18,7 +18,6 @@ class Position extends Model
         'code_position',
         'name',
         'description',
-        // 'employee_id',
         'salary_day'
     ];
 
