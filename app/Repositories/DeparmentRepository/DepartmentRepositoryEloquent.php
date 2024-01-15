@@ -41,7 +41,7 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
         return $this->model->findOrfail($id);
     }
 
-    public function updatedata(array $data, $id)
+    public function update(array $data, $id)
     {
         return $this->getById($id)->update($data);
     }

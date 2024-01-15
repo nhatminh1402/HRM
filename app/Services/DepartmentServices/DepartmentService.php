@@ -42,7 +42,7 @@ class DepartmentService
     public function updateDepartment(array $data, $id)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-        return $this->departmentRepository->updatedata($dataHtml,$id);
+        return $this->departmentRepository->update($dataHtml,$id);
     }
 
     public function deleteDepartment($id){
