@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Department;
 use App\Repositories\DeparmentRepository\DepartmentRepository;
 use App\Repositories\DeparmentRepository\DepartmentRepositoryEloquent;
+use App\Repositories\Discipline\DisciplineRepository;
+use App\Repositories\Discipline\DisciplineRepositoryEloquent;
 use App\Repositories\EmployeeRepository\EmployeeRepository;
 use App\Repositories\EmployeeRepository\EmployeeRepositoryEloquent;
 use App\Repositories\Location\Province\ProvinceRepository as ProvinceProvinceRepository;
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(DepartmentRepository::class,DepartmentRepositoryEloquent::class);
         $this->app->bind(ProvinceProvinceRepository::class,ProvinceRepositoryEloquent::class);
         $this->app->bind(WardRepository::class, WardRepositoryEloquent::class);
+        $this->app->bind(DisciplineRepository::class, DisciplineRepositoryEloquent::class);
     }
 
     /**

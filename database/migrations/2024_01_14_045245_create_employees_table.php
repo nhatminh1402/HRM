@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Discipline;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -36,6 +37,8 @@ return new class extends Migration
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->foreign('district_id')->references('id')->on('districts');
             $table->foreign('ward_id')->references('id')->on('wards');
+            $table->unsignedBigInteger('discipline_id')->nullable();
+            $table->foreign('discipline_id')->references('id')->on('disciplines');
         });
     }
 
