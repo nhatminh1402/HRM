@@ -46,10 +46,10 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
         return $this->getById($id)->update($data);
     }
 
-    public function delete($id){
-       return   $this->model->find($id)->delete();
+    public function delete($id)
+    {
+        return $this->model->find($id)->delete();
     }
-
     /**
      * Boot up the repository, pushing criteria
      */

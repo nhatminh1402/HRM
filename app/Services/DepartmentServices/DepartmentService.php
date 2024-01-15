@@ -53,7 +53,4 @@ class DepartmentService
     {
         return $this->departmentRepository->all($columns);
     }
-
-
-
 }
