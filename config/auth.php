@@ -36,9 +36,15 @@ return [
     */
 
     'guards' => [
+        // xác thực dành cho user là admin
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        // xác thực dành cho employee
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
         ],
     ],
 
@@ -64,11 +70,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Employee::class,
+        ],
     ],
 
     /*
