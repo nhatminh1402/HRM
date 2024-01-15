@@ -26,19 +26,21 @@ return new class extends Migration
             $table->date("dob");
             $table->unsignedBigInteger("province_id")->nullable(); // tỉnh - thành phố
             $table->unsignedBigInteger("district_id")->nullable(); // Quận Huyện
-            $table->unsignedBigInteger("ward_id")->nullable(); // phuong
-            // $table->string("nationality"); // quốc tịch
+            $table->unsignedBigInteger("ward_id")->nullable(); // phường
+            $table->unsignedBigInteger("reward_id")->nullable(); // phường
             $table->unsignedBigInteger("position_id");
             $table->unsignedBigInteger("department_id");
             $table->enum("degree", ["THPT", "CAO ĐẲNG", "ĐẠI HỌC", "CAO HỌC"]);
             $table->string("major");
             $table->rememberToken();
             $table->timestamps();
+            // Tạo liên kết khóa ngoại
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->foreign('district_id')->references('id')->on('districts');
             $table->foreign('ward_id')->references('id')->on('wards');
-            $table->unsignedBigInteger('discipline_id')->nullable();
-            $table->foreign('discipline_id')->references('id')->on('disciplines');
+            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('reward_id')->references('id')->on('rewards');
         });
     }
 
