@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreatePositionRequest;
 use App\Http\Requests\Admin\UpdatePositionRequest;
 use App\Models\Position;
-use App\Services\PositionService;
+use App\Services\Position\PositionService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
