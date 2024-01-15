@@ -36,9 +36,6 @@
                             viên</label>
                         <select class="form-select mb-0">
                             <option selected>Chọn nhân viên</option>
-                            <option value="1">PB2153232001-Trương Văn Phước</option>
-                            <option value="2">PB2153232001-Trương Văn Phước</option>
-                            <option value="3">PB2153232001-Trương Văn Phước</option>
                         </select>
                     </div>
                     <button class="btn btn-success"> <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
