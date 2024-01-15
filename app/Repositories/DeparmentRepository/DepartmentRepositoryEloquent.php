@@ -47,7 +47,7 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
     }
 
     public function delete($id){
-        return $this->model->delete();
+       return   $this->model->find($id)->delete();
     }
 
     /**
