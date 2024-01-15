@@ -70,12 +70,9 @@
                     id="topbarInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
             </div>
         </form>
-
         <div class="card border-0 shadow">
             <div class="card-body">
-
                 <div class="table-responsive">
-
                     <table class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                             <tr>
@@ -98,7 +95,7 @@
                                         <td class='text-center'>{{ $employee->code_employee }}</td>
                                         <td class='text-center'>
                                             <img class="image image-md" alt="Image placeholder"
-                                                src="{{ $employee->image }}">
+                                                src="\uploads\{{ $employee->image }}">
                                         </td>
                                         <td class='text-center'>{{ $employee->full_name }}</td>
                                         <td class='text-center'>
@@ -142,10 +139,7 @@
                     </table>
                     {{ $employees->withQueryString()->links() }}
                 </div>
-
             </div>
         </div>
-
     </div>
-
 @endsection
