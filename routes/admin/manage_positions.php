@@ -21,4 +21,11 @@ Route::prefix('/position')->name('employee.')->group(function () {
         return view('admin.pages.employee_management.major');
     })->name('major');
 
+    // Tìm kiêm danh sách chức vụ
+    Route::get('/search', [PositionController::class, 'index'])->name('search-position');
+
+    // Xóa chức vụ
+    Route::delete('/position/{id}', [PositionController::class, 'destroy'])->name('position.destroy');
+
+
 });

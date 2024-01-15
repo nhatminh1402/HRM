@@ -3,10 +3,10 @@
 @section('title', 'Edit Position')
 
 @section('content')
-    <h2 class="mb-4 pb-2 border-bottom text-primary">Sửa chức vụ</h2>
-    <div class="row ml-4">
+    <h2 class="mt-4 mb-4 pb-2 border-bottom text-primary">Sửa chức vụ</h2>
+    <div class="row ml-4 w-100">
         <div class="col-12 mb-4">
-            <form action="{{ route('admin.employee.positions.update', $position->id) }}" method="POST">
+            <form action="{{ route('admin.employee.positions.update', ['id' => $position->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -35,8 +35,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ strip_tags(old('description', $position->description)) }}</textarea>
+                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ (old('description', $position->description)) }}</textarea>
                 </div>
+                <input type="hidden" name="page" value="{{ $pageNumber }}">
                 <button class="btn btn-success">Lưu lại</button>
             </form>
         </div>
