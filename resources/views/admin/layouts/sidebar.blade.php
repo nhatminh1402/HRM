@@ -208,8 +208,7 @@
                 <div class="multi-level collapse " role="list" id="reward-discipline" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="">
-                                {{-- {{ route('admin.reward.index') }} --}}
+                            <a class="nav-link" href="{{ route('admin.reward.index') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -234,36 +233,52 @@
                 </div>
             </li>
             <li class="nav-item">
-                <span class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-pages" aria-expanded="true">
+                <span class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                    data-bs-target="#submenu-pages" aria-expanded="true">
                     <span>
                         <span class="sidebar-icon">
-                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"></path>
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                                    clip-rule="evenodd"></path>
                                 <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
                             </svg>
                         </span>
                         <span class="sidebar-text">Quản lý lương</span>
                     </span>
                     <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                     </span>
                 </span>
-                <div class="multi-level collapse show" role="list" id="submenu-pages" aria-expanded="false" style="">
+                <div class="multi-level collapse show" role="list" id="submenu-pages" aria-expanded="false"
+                    style="">
                     <ul class="flex-column nav">
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8010/admin/salary/show_salary">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class="bg-white me-3" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white me-3"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z">
+                                    </path>
                                 </svg>
                                 <span class="sidebar-text">Bảng tính lương</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8010/admin/salary/cal_salary">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class="bg-white me-3" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white me-3"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z">
+                                    </path>
                                 </svg>
                                 <span class="sidebar-text">Tính lương</span>
                             </a>
