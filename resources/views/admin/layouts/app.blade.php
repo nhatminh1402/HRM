@@ -44,7 +44,6 @@
     <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-    
     <!-- Notyf -->
     <link type="text/css" href="{{ asset('assets/vendor/notyf/notyf.min.css') }}" rel="stylesheet">
 
