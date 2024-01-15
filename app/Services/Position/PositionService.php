@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Position;
 
 use App\Helpers;
 use App\Models\Position;
-use App\Repositories\PositionRepository;
+use App\Repositories\Position\PositionRepository;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -23,6 +23,11 @@ class PositionService
     public function getAll()
     {
         return $this->positionRepository->getAll();
+    }
+
+    public function all($columns = ['*'])
+    {
+        return $this->positionRepository->all($columns);
     }
 
     public function getEmployeeCode($prefix)

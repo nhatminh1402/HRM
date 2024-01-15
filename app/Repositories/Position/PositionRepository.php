@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Position;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 
@@ -12,6 +12,8 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface PositionRepository extends RepositoryInterface
 {
     public function getAll();
+
+    public function all($columns = ['*']);
 
     public function create(array $data);
 

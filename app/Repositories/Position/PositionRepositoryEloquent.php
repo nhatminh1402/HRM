@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Position;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\PositionRepository;
+use App\Repositories\Position\PositionRepository;
 use App\Models\Position;
-use App\Validators\PositionValidator;
 
 /**
  * Class PositionRepositoryEloquent.
@@ -29,6 +28,11 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     public function getAll()
     {
         return $this->model->latest('id')->paginate(self::DEFAULT_PER_PAGE);
+    }
+
+    public function all($columns = ['*'])
+    {
+        return $this->model->all($columns);
     }
 
     public function create(array $data)
