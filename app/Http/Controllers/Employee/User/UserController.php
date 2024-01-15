@@ -13,7 +13,6 @@ class UserController extends Controller
     public function __construct(EmployeeService $employeeService)
     {
         $this->employeeService = $employeeService;
-
     }
     public function getEmployeeInfor()
     {
