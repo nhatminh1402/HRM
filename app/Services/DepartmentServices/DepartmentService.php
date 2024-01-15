@@ -49,6 +49,11 @@ class DepartmentService
         return $this->departmentRepository->delete($id);
     }
 
+    public function all($columns = ['*'])
+    {
+        return $this->departmentRepository->all($columns);
+    }
+
 
 
 }
