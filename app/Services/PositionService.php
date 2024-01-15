@@ -25,6 +25,11 @@ class PositionService
         return $this->positionRepository->getAll();
     }
 
+    public function all($columns = ['*'])
+    {
+        return $this->positionRepository->all($columns);
+    }
+
     public function getEmployeeCode($prefix)
     {
         $employeeCode = Helpers::generateEmployeeCode($prefix);
