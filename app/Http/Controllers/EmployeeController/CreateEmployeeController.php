@@ -6,7 +6,7 @@ use App\Enums\DegreesEnum;
 use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateEmployeeRequest;
-use App\Services\Department\DepartmentService;
+use App\Services\DepartmentServices\DepartmentService;
 use App\Services\EmployeeServices\EmployeeService;
 use App\Services\Location\ProvinceService;
 use App\Services\Position\PositionService;

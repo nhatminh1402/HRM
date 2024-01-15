@@ -4,29 +4,27 @@
     <h2 class="mb-4 pb-2 border-bottom text-primary">Tạo phòng ban</h2>
     <div class="row ml-4">
         <div class="col-12 mb-4">
-            <form action="">
+            <form action="{{ route('admin.department.post_add') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                    <label for="code" class="form-label mb-2 font-weight-bold" value="{{ old('code') }}">Mã phòng ban
-                    </label>
-                    <input type="text" name="code" class="form-control" id="code">
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label mb-2 font-weight-bold" value="{{ old('name') }}">Tên phòng
+                    <label for="name" class="form-label mb-2 font-weight-bold">Tên phòng
                         ban</label>
-                    <input type="text" name="name" class="form-control" id="name">
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="name">
+                    @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
                     <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ old('description') }}</textarea>
+                    @error('description')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="create_date" class="form-label mb-2 font-weight-bold" value="{{ old('date') }}">Ngày
-                        tạo</label>
-                    <input type="date" class="form-control" id="create_date">
-                </div>
-                <button class="btn btn-success"> <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+                <button class="btn btn-success" type="submit"> <svg class="icon icon-xs me-2" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>Thêm phòng ban</button>
@@ -52,62 +50,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class='text-center'>1</td>
-                            <td class='text-center'>PB2153232001</td>
-                            <td class='text-center'>Nhân viên HR</td>
-                            <td class='text-center'>Đảm nhiệm quản luý nhân viên</td>
-                            <td class='text-center'>Admin</td>
-                            <td class='text-center'>2024-01-01 01:10:10</td>
-                            <td class='text-center'>2024-01-01 01:10:10</td>
+                        @if (!empty($departments))
+                            @foreach ($departments as $key => $department)
+                                <tr>
+                                    <td class='text-center'>{{ $key + 1 }}</td>
+                                    <td class='text-center'>{{ $department->code_department }}</td>
+                                    <td class='text-center'>{{ $department->name }}</td>
+                                    <td class='text-center'>{{ $department->description }}</td>
+                                    <td class='text-center'>Admin</td>
+                                    <td class='text-center'>{{ $department->created_at }}</td>
+                                    <td class='text-center'>{{ $department->updated_at }}</td>
 
 
-                            <td class='text-center'>
-                                <a href="" class="btn btn-warning">Sửa</a>
-                            </td>
-                            <td class='text-center'>
-                                <a href="" class="btn btn-danger">Xóa</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class='text-center'>1</td>
-                            <td class='text-center'>PB2153232001</td>
-                            <td class='text-center'>Nhân viên HR</td>
-                            <td class='text-center'>Đảm nhiệm quản lý nhân viên</td>
-                            <td class='text-center'>Admin</td>
-                            <td class='text-center'>2024-01-01 01:10:10</td>
-                            <td class='text-center'>2024-01-01 01:10:10</td>
-
-
-                            <td class='text-center'>
-                                <a href="" class="btn btn-warning">Sửa</a>
-                            </td>
-                            <td class='text-center'>
-                                <a href="" class="btn btn-danger">Xóa</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class='text-center'>1</td>
-                            <td class='text-center'>PB2153232001</td>
-                            <td class='text-center'>Nhân viên HR</td>
-                            <td class='text-center'>Đảm nhiệm quản lý nhân viên</td>
-                            <td class='text-center'>Admin</td>
-                            <td class='text-center'>2024-01-01 01:10:10</td>
-                            <td class='text-center'>2024-01-01 01:10:10</td>
-
-
-                            <td class='text-center'>
-                                <a href="" class="btn btn-warning">Sửa</a>
-                            </td>
-                            <td class='text-center'>
-                                <a href="" class="btn btn-danger">Xóa</a>
-                            </td>
-                        </tr>
-
+                                    <td class='text-center'>
+                                        <a href="{{ route('admin.department.detail', $department->id) }}"
+                                            class="btn btn-warning">Sửa</a>
+                                    </td>
+                                    <td class='text-center'>
+                                        <form method="POST"
+                                            action="{{ route('admin.department.delete', $department->id) }}"
+                                            onSubmit="return confirm('Do you want to Deparment {{ $department->name }}?')">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Xóa </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
+                {{ $departments->links() }}
             </div>
         </div>
     </div>

@@ -67,6 +67,11 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $this->model->create($attributes);
     }
 
+    public function all($columns = ['*'])
+    {
+        return $this->model->all($columns);
+    }
+    
     /** 
      * Boot up the repository, pushing criteria
      */
