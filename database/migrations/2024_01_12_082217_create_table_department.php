@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('created_by')->nullable();
-            $table->foreignId('role_id')->constrained();
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('code_department');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -22,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-           $table->dropColumn(['created_by']);
-           $table->dropForeign(['role_id']);
-        });
+        Schema::dropIfExists('table_department');
     }
 };
