@@ -27,8 +27,8 @@ return new class extends Migration
             $table->unsignedBigInteger("district_id")->nullable(); // Quận Huyện
             $table->unsignedBigInteger("ward_id")->nullable(); // phường
             $table->unsignedBigInteger("reward_id")->nullable(); // phường
-            $table->unsignedBigInteger("position_id");
-            $table->unsignedBigInteger("department_id");
+            $table->unsignedBigInteger("position_id")->nullable();
+            $table->unsignedBigInteger("department_id")->nullable();
             $table->enum("degree", ["THPT", "CAO ĐẲNG", "ĐẠI HỌC", "CAO HỌC"]);
             $table->string("major");
             $table->rememberToken();

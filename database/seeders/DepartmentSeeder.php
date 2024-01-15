@@ -15,19 +15,19 @@ class DepartmentSeeder extends Seeder
     {
         $data = [
             [
-                'code_department' => Helpers::generateEmployeeCode('MPB'),
+                'code_department' => Helpers::generateCode('MPB'),
                 'name' => 'Nhân viên HR',
                 'description' => "Quản lý khu vực 22",
         
             ],
             [
-                'code_department' => Helpers::generateEmployeeCode('MPB'),
+                'code_department' => Helpers::generateCode('MPB'),
                 'name' => 'Phát triên web',
                 'description' => "Quản lý khu vực 21",
             
             ],
             [
-                'code_department' => Helpers::generateEmployeeCode('MPB'),
+                'code_department' => Helpers::generateCode('MPB'),
                 'name' => 'Nhân viên phát triển AI',
                 'description' => "Quản lý khu vực 2",
               

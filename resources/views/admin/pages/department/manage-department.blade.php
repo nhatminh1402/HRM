@@ -35,7 +35,12 @@
                         <label for="name" class="form-label mb-2 font-weight-bold" value="{{ old('name') }}">Chọn nhân
                             viên</label>
                         <select class="form-select mb-0">
-                            <option selected>Chọn nhân viên</option>
+                            <option value="">Chọn nhân viên</option>
+                            @if (!empty($employeesHaveDeparmentNull))
+                                @foreach ($employeesHaveDeparmentNull as $employee)
+                                    <option value="">{{ $employee->full_name }}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                     <button class="btn btn-success"> <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
@@ -68,18 +73,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class='text-center'>{{ $key+1 }}</td>
+                                        <td class='text-center'>{{ $key + 1 }}</td>
                                         <td class='text-center'>{{ $employee->code_employee }}</td>
                                         <td class='text-center'>
                                             <img class="image image-md" alt="Image placeholder"
-                                                src="/uploads/{{ $employee->image}}">
+                                                src="/uploads/{{ $employee->image }}">
                                         </td>
                                         <td class='text-center'>{{ $employee->full_name }}</td>
-                                        <td class='text-center'>{{ $employee->gender ? "Name": "Nữ" }}</td>
-                                        <td class='text-center'>{{ $employee->dob}}</td>
-                                        <td class='text-center'>{{ $employee->department->name}}</td>
+                                        <td class='text-center'>{{ $employee->gender ? 'Name' : 'Nữ' }}</td>
+                                        <td class='text-center'>{{ $employee->dob }}</td>
+                                        <td class='text-center'>{{ $employee->department->name }}</td>
                                         <td class='text-center'>{{ $employee->created_at->format('Y-m-d') }}</td>
-                                        <td class='text-center'>{{ $employee->status ? "Đang làm viêc":"Đã nghĩ việc" }}</td>
+                                        <td class='text-center'>{{ $employee->status ? 'Đang làm viêc' : 'Đã nghĩ việc' }}
+                                        </td>
                                         <td class='text-center'>
                                             <a href="" class="btn btn-danger">Xóa</a>
                                         </td>

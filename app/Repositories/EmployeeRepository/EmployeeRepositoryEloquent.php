@@ -66,6 +66,10 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $this->model->create($attributes);
     }
 
+    public function getEmployeDepartmentNull(){
+        return $this->model->where("department_id", null)->get();
+    }
+
     public function all($columns = ['*'])
     {
         return $this->model->all($columns);

@@ -48,4 +48,9 @@ class EmployeeService
             return response()->json(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function getEmployeeDepartmentNull()
+    {
+        return $this->employeeRepository->getEmployeDepartmentNull();
+    }
 }

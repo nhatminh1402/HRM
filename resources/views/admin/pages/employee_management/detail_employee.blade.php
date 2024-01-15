@@ -35,8 +35,8 @@
                     <p>Bằng cấp: {{ $employee->degree }} </p>
                     <p>Địa chỉ: {{ $employee->ward->name ?? '' }}, {{ $employee->district->name ?? '' }},
                         {{ $employee->province->name ?? '' }}</p>
-                    <p>Phòng ban:{{ $employee->department->name }}</p>
-                    <p>Chức vụ: {{ $employee->position->name }}</p>
+                    <p>Phòng ban:{{ $employee->department->name ?? '' }}</p>
+                    <p>Chức vụ: {{ $employee->position->name ?? '' }}</p>
                     <p>Trạng thái:
                         @if ($employee->status == 1)
                             <span class="text-white bg-success rounded fw-bold p-2 ml-3">Đang làm việc</span>

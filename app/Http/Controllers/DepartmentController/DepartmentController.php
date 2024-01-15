@@ -5,14 +5,17 @@ namespace App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateDepartmentRequest;
 use App\Services\DepartmentServices\DepartmentService;
-use Illuminate\Http\Request;
+use App\Services\EmployeeServices\EmployeeService;
+
 
 class DepartmentController extends Controller
 {
     protected $departmentService;
-    public function __construct(DepartmentService $departmentService)
+    protected $employeeeService;
+    public function __construct(DepartmentService $departmentService, EmployeeService $employeeeService)
     {
         $this->departmentService = $departmentService;
+        $this->employeeeService = $employeeeService;
     }
 
     public function showallBlockDeparment()
@@ -39,7 +42,8 @@ class DepartmentController extends Controller
         try {
             $department = $this->departmentService->getDetailDepartment($id);
             $employees = $this->departmentService->getEmployees($id);
-            return view('admin.pages.department.manage-department', compact('department', 'employees'));
+            $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
+            return view('admin.pages.department.manage-department', compact('department', 'employees','employeesHaveDeparmentNull'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'không tìm thấy phòng bang ');
         }
