@@ -9,7 +9,7 @@ use App\Http\Requests\Admin\CreateEmployeeRequest;
 use App\Services\Department\DepartmentService;
 use App\Services\EmployeeServices\EmployeeService;
 use App\Services\Location\ProvinceService;
-use App\Services\PositionService;
+use App\Services\Position\PositionService;
 use App\Traits\ImgProcess;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
