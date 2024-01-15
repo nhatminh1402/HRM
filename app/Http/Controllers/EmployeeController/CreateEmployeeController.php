@@ -36,7 +36,7 @@ class CreateEmployeeController extends Controller
     public function create()
     {
         // genarate employee code
-        $employeeId = Helpers::generateEmployeeCode('MNV');
+        $employeeId = Helpers::generateCode('MNV');
         // get a list degree from enum
         $listDegree = DegreesEnum::asArray();
         //get a list positions

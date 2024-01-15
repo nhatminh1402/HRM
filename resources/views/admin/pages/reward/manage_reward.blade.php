@@ -28,15 +28,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <form action="">
+                <form action="" method="post">
+                    @csrf
                     <div class="row">
                         <div class="mb-3">
                             <label class="form-label">MÃ KHEN THƯỞNG</label>
-                            <input type="text" class="form-control" disabled>
+                            <input name="code_reward" type="text" class="form-control" value="{{ $rewardCode }}"
+                                disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">TÊN KHEN THƯỞNG</label>
-                            <input type="text" class="form-control">
+                            <input name="name" type="text" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
