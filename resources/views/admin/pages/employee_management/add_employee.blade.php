@@ -92,8 +92,8 @@
                                         <label class="small mb-1">GIỚI TÍNH</label>
                                         <select name="gender" class="form-select form-control"
                                             aria-label="Default select example">
-                                            <option value="0">Nam</option>
-                                            <option value="1">Nữ</option>
+                                            <option value="1">Nam</option>
+                                            <option value="0">Nữ</option>
                                         </select>
                                         <div class="err-area"></div>
                                     </div>
