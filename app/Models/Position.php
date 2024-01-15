@@ -13,7 +13,7 @@ class Position extends Model
     use HasFactory, WithFaker;
 
     protected $table = "positions";
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'code_position',
         'name',
@@ -39,6 +39,5 @@ class Position extends Model
     public function scopeSearchByDescription(mixed $query, string $key)
     {
         return $key ? $query->where('description', 'like', '%' . $key . '%')->latest('id') : $query;
-
     }
 }
