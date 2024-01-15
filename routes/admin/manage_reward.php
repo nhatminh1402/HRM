@@ -7,6 +7,6 @@ Route::prefix('/reward')->name('reward.')->group(function () {
     // Hiển thị view khen thưởng
 
     Route::get('/', function () {
-        return view("admin.pages.reward.ManageReward");
+        return view("admin.pages.reward.manage_reward");
     })->name('index');
 });
