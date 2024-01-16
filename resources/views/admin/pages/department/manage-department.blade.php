@@ -34,11 +34,11 @@
                     <div class="mb-3">
                         <label for="name" class="form-label mb-2 font-weight-bold" value="{{ old('name') }}">Chọn nhân
                             viên</label>
-                        <select class="form-select mb-0">
+                        <select class="form-select mb-0" name="id_employee" >
                             <option value="">Chọn nhân viên</option>
                             @if (!empty($employeesHaveDeparmentNull))
                                 @foreach ($employeesHaveDeparmentNull as $employee)
-                                    <option value="">{{ $employee->full_name }}</option>
+                                    <option value="{{$employee->id}}">{{ $employee->code_employee."-".$employee->full_name}}</option>
                                 @endforeach
                             @endif
                         </select>

@@ -47,11 +47,6 @@ class DepartmentService
 
     public function deleteDepartment($id)
     {
-        $employees = $this->departmentRepository->getListEmployee($id);
-        foreach ($employees as $employee) {
-            $employee->department_id = null;
-            $employee->save();
-        }
         return $this->departmentRepository->delete($id);
     }
     public function getEmployees($id)

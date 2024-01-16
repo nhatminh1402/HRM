@@ -33,8 +33,7 @@ class DepartmentController extends Controller
     public function addDepartment(CreateDepartmentRequest $request)
     {
         $this->departmentService->createDepartment($request->all());
-        return redirect()->route('admin.department.show')->with("success", "Create position success!");
-
+        return redirect()->back()->with("success", "Create position success!");
     }
 
     public function getDetailDepartment($id)
@@ -43,7 +42,7 @@ class DepartmentController extends Controller
             $department = $this->departmentService->getDetailDepartment($id);
             $employees = $this->departmentService->getEmployees($id);
             $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
-            return view('admin.pages.department.manage-department', compact('department', 'employees','employeesHaveDeparmentNull'));
+            return view('admin.pages.department.manage-department', compact('department', 'employees', 'employeesHaveDeparmentNull'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'không tìm thấy phòng bang ');
         }
@@ -52,8 +51,14 @@ class DepartmentController extends Controller
     public function updateDepartment(CreateDepartmentRequest $request, $id)
     {
         try {
-            $updateDepartment = $this->departmentService->updateDepartment($request->all(), $id);
-            return redirect()->route('admin.department.add')->with('success', 'Cập nhật chức vụ thành công!');
+            $data['name'] = $request->name;
+            $data['description'] = $request->description;
+            $employee_id = $request->id_employee;
+            if (!empty($employee_id)) {
+                $this->employeeeService->setDepartment_id($employee_id, $id);
+            }
+            $this->departmentService->updateDepartment($data, $id);
+            return redirect()->route('admin.department.add')->with('success', 'Cập nhật phòng ban thành công!');
         } catch (\Exception $e) {
             return redirect()->route('admin.department.add')
                 ->with('error', 'Lỗi khi cập nhật phòng ban: ' . $e->getMessage());
