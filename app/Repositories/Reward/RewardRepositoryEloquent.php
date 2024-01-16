@@ -3,6 +3,7 @@
 namespace App\Repositories\Reward;
 
 use App\Models\Reward;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Reward\RewardRepository;
@@ -42,6 +43,15 @@ class RewardRepositoryEloquent extends BaseRepository implements RewardRepositor
             ->paginate(self::DEFAULT_PER_PAGE);
     }
 
+    public function delete($id)
+    {
+        try {
+            $reward = $this->model->findOrFail($id);
+            $reward->delete();
+        } catch (ModelNotFoundException $exeption) {
+            return abort(404);
+        }
+    }
     /**
      * Boot up the repository, pushing criteria
      */

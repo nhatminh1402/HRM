@@ -30,4 +30,9 @@ class RewardService
     {
         return $this->rewardRepository->search();
     }
+
+    public function delete($id)
+    {
+        $this->rewardRepository->delete($id);
+    }
 }

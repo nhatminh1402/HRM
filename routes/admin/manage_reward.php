@@ -10,4 +10,6 @@ Route::prefix('/reward')
         Route::get('/', [ManageRewardController::class, 'create'])->name('index');
         // Thêm mới loại khen thưởng
         Route::post('/store', [ManageRewardController::class, 'store'])->name('store');
+        // Xóa loại khen thưởng
+        Route::post('/delete/{id}', [ManageRewardController::class, 'delete'])->name('delete');
     });

@@ -27,11 +27,9 @@ class ManageRewardController extends Controller
         return view('admin.pages.reward.manage_reward', compact('rewardCode', 'listRewards'));
     }
 
-    public function store(CreateRewardRequest $request)
+    public function delete($id)
     {
-        $data = $request->all();
-        $this->rewardService->create($data);
-        toastr()->success('THÊM MỚI THÀNH CÔNG');
-        return redirect()->route('admin.reward.index');
+        $this->rewardService->delete($id);
+        return back()->with('success', 'Xóa thành công!');
     }
 }
