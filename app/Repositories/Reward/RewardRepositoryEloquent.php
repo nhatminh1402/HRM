@@ -16,11 +16,8 @@ use Exception;
  */
 class RewardRepositoryEloquent extends BaseRepository implements RewardRepository
 {
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
+    const DEFAULT_PER_PAGE = 5;
+
     public function model()
     {
         return Reward::class;
@@ -35,6 +32,15 @@ class RewardRepositoryEloquent extends BaseRepository implements RewardRepositor
         }
     }
 
+    public function search()
+    {
+        $query = $this->model->orderBy('id', 'desc');
+        return $query
+            ->orderBy('id', 'desc')
+            ->searchByName()
+            ->searchByDescription()
+            ->paginate(self::DEFAULT_PER_PAGE);
+    }
 
     /**
      * Boot up the repository, pushing criteria
