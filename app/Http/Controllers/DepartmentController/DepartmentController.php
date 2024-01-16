@@ -58,7 +58,7 @@ class DepartmentController extends Controller
                 $this->employeeeService->setDepartment_id($employee_id, $id);
             }
             $this->departmentService->updateDepartment($data, $id);
-            return redirect()->route('admin.department.add')->with('success', 'Cập nhật phòng ban thành công!');
+            return redirect()->back()->with('success', 'Cập nhật phòng ban thành công!');
         } catch (\Exception $e) {
             return redirect()->route('admin.department.add')
                 ->with('error', 'Lỗi khi cập nhật phòng ban: ' . $e->getMessage());
