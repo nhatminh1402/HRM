@@ -33,7 +33,7 @@ class DepartmentController extends Controller
     public function addDepartment(CreateDepartmentRequest $request)
     {
         $this->departmentService->createDepartment($request->all());
-        return redirect()->back()->with("success", "Create position success!");
+        return redirect()->back()->with("success", "Tạo phòng ban thành công!");
     }
 
     public function getDetailDepartment($id)
@@ -68,7 +68,7 @@ class DepartmentController extends Controller
     public function destroyDepartment($id)
     {
         try {
-            $updateDepartment = $this->departmentService->deleteDepartment($id);
+            $this->departmentService->deleteDepartment($id);
             return redirect()->back()->with('success', 'Xóa  phòng ban thành công!');
         } catch (\Exception $e) {
             return redirect()->back()

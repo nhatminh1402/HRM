@@ -27,7 +27,7 @@ function confirmDeleteDeparment(event) {
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('formDeleteDeparment').submit()
+            window.location.href = event.target.href;
         }
     });
 }
