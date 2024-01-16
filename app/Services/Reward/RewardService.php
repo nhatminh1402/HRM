@@ -5,9 +5,6 @@ namespace App\Services\Reward;
 use App\Repositories\Reward\RewardRepository;
 use Exception;
 
-/**
- * Class PositionService.
- */
 class RewardService
 {
     private $rewardRepository;
@@ -19,11 +16,7 @@ class RewardService
 
     public function create(array $attributes)
     {
-        try {
-            return $this->rewardRepository->create($attributes);
-        } catch (Exception $e) {
-            return abort(500);
-        }
+        return $this->rewardRepository->create($attributes);
     }
 
     public function search()
