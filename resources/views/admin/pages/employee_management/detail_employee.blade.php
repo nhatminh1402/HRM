@@ -15,7 +15,9 @@
             <div class="row">
                 <div class="column">
                     <p>DB Ảnh nhân viên:</p>
-                    <img class="image image-lg w-auto" alt="Image placeholder" src="/uploads/{{ $employee->image }}">
+                    <img class="image image-lg w-auto" alt="Image placeholder"
+                        src="https://chuphinhthe.com/upload/product/1824-quan-3112.jpg">
+                    {{-- src="{{ $employee->image }}"> --}}
                 </div>
                 <div class="column">
                     <p>Tên nhân viên: {{ $employee->full_name }}</p>
@@ -30,13 +32,17 @@
                     <p>Số điện thoại: {{ $employee->phone_number }}</p>
                     <p>Email: {{ $employee->email }}</p>
                     <p>Số CCCD: {{ $employee->identify_number }}</p>
+                    <p>Quốc tịch: {{ $employee->nationality }}</p>
+                    <p>DB Tộc: Kinh</p>
+                    <p>DB Tôn giáo: Không</p>
                 </div>
                 <div class="column">
                     <p>Bằng cấp: {{ $employee->degree }} </p>
                     <p>Địa chỉ: {{ $employee->ward->name ?? '' }}, {{ $employee->district->name ?? '' }},
                         {{ $employee->province->name ?? '' }}</p>
-                    <p>Phòng ban:{{ $employee->department->name }}</p>
-                    <p>Chức vụ: {{ $employee->position->name }}</p>
+                    <p>DB Chuyên môn: Kỹ sư Công nghệ thông tin</p>
+                    <p>DB Phòng ban: IT</p>
+                    <p>DB Chức vụ: Nhân viên</p>
                     <p>Trạng thái:
                         @if ($employee->status == 1)
                             <span class="text-white bg-success rounded fw-bold p-2 ml-3">Đang làm việc</span>
@@ -47,4 +53,5 @@
             </div>
         </div>
     @endif
+
 @endsection

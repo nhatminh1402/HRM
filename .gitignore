@@ -18,6 +18,3 @@ yarn-error.log
 /.idea
 /.vscode
 package.lock.json
-public/uploads
-/app/Entities
-public/lib/select/dist/.DS_Store
