@@ -8,9 +8,6 @@ use App\Repositories\Position\PositionRepository;
 use Exception;
 use Illuminate\Http\Request;
 
-/**
- * Class PositionService.
- */
 class PositionService
 {
     protected $positionRepository;
