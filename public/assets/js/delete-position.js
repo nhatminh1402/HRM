@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('.btn-delete').on('click', function (event) {
         event.preventDefault();
 
-        var form = $(this).closest('.form-delete');
+        var form = $(this).closest('#form-delete');
 
         Swal.fire({
             title: 'Xác nhận',
