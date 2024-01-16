@@ -75,5 +75,4 @@ class DepartmentController extends Controller
                 ->with('error', 'Lỗi xóa phòng ban: ' . $e->getMessage());
         }
     }
-
 }
