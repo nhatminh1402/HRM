@@ -15,5 +15,7 @@ interface RewardRepository extends RepositoryInterface
     public function search();
     public function all($columns = ['*']);
     public function delete($id);
+    public function update(array $attributes, $id);
+    public function find($id, $columns = ['*']);
 
 }
