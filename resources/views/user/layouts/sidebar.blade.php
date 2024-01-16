@@ -9,8 +9,9 @@
             <img src="{{ asset('material-template/assets/img/img_avatar.png') }}" class="navbar-brand-img h-100"
                 alt="main_logo">
             <span style="text-align: center" class="ms-1 font-weight-bold text-white">
-                {{ Auth::guard('employee')->user()->full_name }} <br>
+                Lê Bá Nhật Minh <br>
                 <div style="font-size: 13px">
+                    Nhân viên
                 </div>
             </span>
         </a>

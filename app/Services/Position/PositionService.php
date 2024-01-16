@@ -32,7 +32,7 @@ class PositionService
 
     public function getEmployeeCode($prefix)
     {
-        $employeeCode = Helpers::generateEmployeeCode($prefix);
+        $employeeCode = Helpers::generateCode($prefix);
 
         return $employeeCode;
     }

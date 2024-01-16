@@ -16,19 +16,19 @@ class PositionSeeder extends Seeder
     {
         $data = [
             [
-                'code_position' => Helpers::generateEmployeeCode('MCV'),
+                'code_position' => Helpers::generateCode('MCV'),
                 'name' => 'Giám đốc kinh doan',
                 'description' => "Quản lý khu vực 22",
                 'salary_day' => '2000000'
             ],
             [
-                'code_position' => Helpers::generateEmployeeCode('MCV'),
+                'code_position' => Helpers::generateCode('MCV'),
                 'name' => 'Trưởng phòng kinh doan',
                 'description' => "Quản lý khu vực 21",
                 'salary_day' => '1000000'
             ],
             [
-                'code_position' => Helpers::generateEmployeeCode('MCV'),
+                'code_position' => Helpers::generateCode('MCV'),
                 'name' => 'Tổng giám đốc',
                 'description' => "Quản lý khu vực 2",
                 'salary_day' => '3000000'

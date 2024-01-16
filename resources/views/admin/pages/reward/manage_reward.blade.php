@@ -28,35 +28,19 @@
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <form action="{{ route('admin.reward.store') }}" method="post">
-                    @csrf
+                <form action="">
                     <div class="row">
                         <div class="mb-3">
                             <label class="form-label">MÃ KHEN THƯỞNG</label>
-                            <input name="code_reward" type="text"
-                                class="form-control {{ $errors->has('code_reward') ? 'is-invalid' : '' }}"
-                                value="{{ $rewardCode }}" readonly>
-                            @error('code_reward')
-                                <div class="invalid-feedback"> {{ $message }}</div>
-                            @enderror
+                            <input type="text" class="form-control" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">TÊN KHEN THƯỞNG</label>
-                            <input name="name" type="text"
-                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                value="{{ old('name') }}">
-                            @error('name')
-                                <div class="invalid-feedback"> {{ $message }}</div>
-                            @enderror
+                            <input type="text" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                            <textarea value="{{ old('description') }}" name="description"
-                                class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" rows="50"
-                                cols="50"></textarea>
-                            @error('description')
-                                <div class="invalid-feedback"> {{ $message }}</div>
-                            @enderror
+                            <textarea name="description" class="form-control" id="description" rows="50" cols="50"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
