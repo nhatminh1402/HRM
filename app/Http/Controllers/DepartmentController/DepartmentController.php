@@ -75,4 +75,15 @@ class DepartmentController extends Controller
                 ->with('error', 'Lỗi xóa phòng ban: ' . $e->getMessage());
         }
     }
+
+    public function destroyEmployeeDepartment($id)
+    {
+        try {
+            $this->employeeeService->setDepartment_id($id, null);
+            return redirect()->back()->with('success', 'Xóa nhân viên khỏi phòng ban thành công');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.department.add')
+                ->with('error', 'Lỗi khi cập nhật phòng ban: ' . $e->getMessage());
+        }
+    }
 }

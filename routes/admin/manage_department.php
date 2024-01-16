@@ -11,4 +11,5 @@ Route::prefix('/department')->name('department.')->group(function () {
     Route::get('/department/{id}', [DepartmentController::class, 'getDetailDepartment'])->name('detail');
     Route::put('/department/update/{id}',[DepartmentController::class,'updateDepartment'])->name('update');
     Route::delete('/department/delete/{id}',[DepartmentController::class, 'destroyDepartment'])->name('delete');
+    Route::get('/department/delete/employee/{id}',[DepartmentController::class,'destroyEmployeeDepartment'])->name('deleteEmployee');
 });
