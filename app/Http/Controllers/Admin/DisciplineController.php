@@ -102,6 +102,6 @@ class DisciplineController extends Controller
     {
         $this->disciplineService->delete($id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Xóa loại kỷ luật thành công!');
     }
 }
