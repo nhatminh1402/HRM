@@ -104,10 +104,6 @@
                     </thead>
                     <tbody>
                         @foreach ($listRewards as $reward)
-                            @php
-                                $allParams = request()->all();
-                                $allParams['id'] = $reward->id;
-                            @endphp
                             <tr>
                                 <td>{{ $reward->code_reward }}</td>
                                 <td>{{ $reward->name }}</td>
@@ -115,7 +111,7 @@
                                 <td>{{ $reward->created_at }}</td>
                                 <td>{{ $reward->updated_at }}</td>
                                 <td class="text-center d-flex jusitfy-content-center">
-                                    <a href="{{ route('admin.reward.show', $allParams) }}">
+                                    <a href="{{ route('admin.reward.show', $reward->id) }}">
                                         <button class="btn btn-warning me-3">Sửa</button>
                                     </a>
                                     <form action="{{ route('admin.reward.delete', $reward->id) }}" method="post">

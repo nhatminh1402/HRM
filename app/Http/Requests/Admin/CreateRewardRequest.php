@@ -23,7 +23,7 @@ class CreateRewardRequest extends FormRequest
     {
         return [
             'code_reward' => 'required',
-            'name' => 'required|max:255|unique:rewards,name',
+            'name' => 'required|max:255',
             'description' => 'nullable|max:255',
         ];
     }

@@ -28,11 +28,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                @php
-                    $allParams = request()->all();
-                    $allParams['id'] = $reward->id;
-                @endphp
-                <form action="{{ route('admin.reward.update', $allParams) }}" method="POST">
+                <form action="{{ route('admin.reward.update', $reward->id) }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="mb-3">
@@ -55,9 +51,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                            <textarea value="{{ old('description', $reward->description) }}" name="description"
-                                class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" rows="50"
-                                cols="50"></textarea>
+                            <textarea name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description"
+                                rows="50" cols="50"> {!! old('name', $reward->description) !!}</textarea>
                             @error('description')
                                 <div class="invalid-feedback"> {{ $message }}</div>
                             @enderror

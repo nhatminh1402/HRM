@@ -20,6 +20,7 @@ class ManageRewardController extends Controller
 
     public function create(Request $request)
     {
+        session()->forget('url_previous');
         //get list employee
         $listRewards = $this->rewardService->search();
         // auto genarate reward code
@@ -41,23 +42,16 @@ class ManageRewardController extends Controller
         return back()->with('success', 'Xóa thành công!');
     }
 
-    public function show(Request $requets)
+    public function show($id)
     {
-        if ($requets->has('id')) {
-            $id = $requets->id;
-            $reward = $this->rewardService->find($id);
-            return view('admin.pages.reward.update_reward', compact('reward'));
-        }
-        return abort(404);
+        session(['url_previous' => url()->previous()]);
+        $reward = $this->rewardService->find($id);
+        return view('admin.pages.reward.update_reward', compact('reward'));
     }
 
-    public function update(CreateRewardRequest $requets)
+    public function update(CreateRewardRequest $requets, $id)
     {
-        if ($requets->has('id')) {
-            $id = $requets->id;
-            $this->rewardService->update($requets->all(), $id);
-            return redirect()->route('admin.reward.index', $requets->except('id'))->with("success", "CẬP NHẬT THÀNH CÔNG!");
-        }
-        return abort(404);
+        $this->rewardService->update($requets->all(), $id);
+        return redirect(session('url_previous'))->with("success", "CẬP NHẬT THÀNH CÔNG!");
     }
 }
