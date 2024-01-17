@@ -61,7 +61,7 @@
                 <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard') }}">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3" viewBox="0 0 512 512">
                                     <path
@@ -182,8 +182,77 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.project.home') }}">
+                    <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" data-bs-target="#collapsed">
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white" viewBox="0 0 512 512">
+                                    <path
+                                        d="M243.4 2.6l-224 96c-14 6-21.8 21-18.7 35.8S16.8 160 32 160v8c0 13.3 10.7 24 24 24H456c13.3 0 24-10.7 24-24v-8c15.2 0 28.3-10.7 31.3-25.6s-4.8-29.9-18.7-35.8l-224-96c-8-3.4-17.2-3.4-25.2 0zM128 224H64V420.3c-.6 .3-1.2 .7-1.8 1.1l-48 32c-11.7 7.8-17 22.4-12.9 35.9S17.9 512 32 512H480c14.1 0 26.5-9.2 30.6-22.7s-1.1-28.1-12.9-35.9l-48-32c-.6-.4-1.2-.7-1.8-1.1V224H384V416H344V224H280V416H232V224H168V416H128V224zM256 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">Quản lý dự án</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                    data-bs-toggle="collapse" data-bs-target="#submenu-pages">
+                    data-bs-toggle="collapse" data-bs-target="#reward-discipline">
+                    <span>
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                                    clip-rule="evenodd"></path>
+                                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">Khen thưởng - Kỷ luật</span>
+                    </span>
+                    <span class="link-arrow">
+                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </span>
+                <div class="multi-level collapse " role="list" id="reward-discipline" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                {{-- {{ route('admin.reward.index') }} --}}
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white me-3"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+                                </svg>
+                                <span class="sidebar-text">Khen thưởng</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.discipline.home') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                    class="bg-white me-3"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+                                </svg>
+                                <span class="sidebar-text">Kỷ luật</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                    data-bs-target="#submenu-pages" aria-expanded="true">
                     <span>
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -205,26 +274,29 @@
                         </svg>
                     </span>
                 </span>
-                <div class="multi-level collapse " role="list" id="submenu-pages" aria-expanded="false">
+                <div class="multi-level collapse show" role="list" id="submenu-pages" aria-expanded="false"
+                    style="">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.salary.show') }}">
+                            <a class="nav-link" href="http://localhost:8010/admin/salary/show_salary">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                     <path
-                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z">
+                                    </path>
                                 </svg>
                                 <span class="sidebar-text">Bảng tính lương</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.salary.calculator') }}">
+                            <a class="nav-link" href="http://localhost:8010/admin/salary/cal_salary">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                     <path
-                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+                                        d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z">
+                                    </path>
                                 </svg>
                                 <span class="sidebar-text">Tính lương</span>
                             </a>
@@ -252,7 +324,6 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-
                         </html> </span>
                 </span>
                 <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
@@ -315,7 +386,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('logout') }}">
+                            <a class="nav-link" href="{{ route('admin.logout') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                     class="bg-white me-3"
                                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->

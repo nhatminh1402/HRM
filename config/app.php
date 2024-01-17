@@ -167,10 +167,9 @@ return [
             App\Providers\AuthServiceProvider::class,
             // App\Providers\BroadcastServiceProvider::class,
             Mews\Captcha\CaptchaServiceProvider::class,
-            // Spatie\Permission\PermissionServiceProvider::class,
             App\Providers\EventServiceProvider::class,
             App\Providers\RouteServiceProvider::class,
-            Prettus\Repository\Providers\RepositoryServiceProvider::class
+
         ])
         ->toArray(),
 
