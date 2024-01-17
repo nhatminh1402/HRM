@@ -1,4 +1,7 @@
 img {
     margin-left: -27px !important;
-    max-width: 308% !important;
+}
+
+#navbar-search-main {
+    width: 30% !important;
 }
