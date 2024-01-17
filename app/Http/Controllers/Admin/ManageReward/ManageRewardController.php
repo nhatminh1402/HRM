@@ -42,16 +42,19 @@ class ManageRewardController extends Controller
         return back()->with('success', 'Xóa thành công!');
     }
 
-    public function show($id)
+    public function edit($id)
     {
-        session(['url_previous' => url()->previous()]);
+        if (!session('url_previous')) {
+            session(['url_previous' => url()->previous()]);
+        }
         $reward = $this->rewardService->find($id);
+
         return view('admin.pages.reward.update_reward', compact('reward'));
     }
 
     public function update(CreateRewardRequest $requets, $id)
     {
         $this->rewardService->update($requets->all(), $id);
-        return redirect(session('url_previous'))->with("success", "CẬP NHẬT THÀNH CÔNG!");
+        return redirect(session('url_previous') ?? 'admin/reward')->with("success", "CẬP NHẬT THÀNH CÔNG!");
     }
 }

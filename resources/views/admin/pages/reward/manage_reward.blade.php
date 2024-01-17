@@ -111,7 +111,7 @@
                                 <td>{{ $reward->created_at }}</td>
                                 <td>{{ $reward->updated_at }}</td>
                                 <td class="text-center d-flex jusitfy-content-center">
-                                    <a href="{{ route('admin.reward.show', $reward->id) }}">
+                                    <a href="{{ route('admin.reward.edit', $reward->id) }}">
                                         <button class="btn btn-warning me-3">Sửa</button>
                                     </a>
                                     <form action="{{ route('admin.reward.delete', $reward->id) }}" method="post">

@@ -13,7 +13,7 @@ Route::prefix('/reward')
         // Xóa loại khen thưởng
         Route::post('/delete/{id}', [ManageRewardController::class, 'delete'])->name('delete');
         // Form update
-        Route::get('/show/{id}', [ManageRewardController::class, 'show'])->name('show');
+        Route::get('/edit/{id}', [ManageRewardController::class, 'edit'])->name('edit');
         // Update
         Route::post('/update/{id}', [ManageRewardController::class, 'update'])->name('update');
     });
