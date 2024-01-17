@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\EmployeeController;
+namespace App\Http\Controllers\Employee;
 
 use App\Enums\DegreesEnum;
 use App\Helpers;
