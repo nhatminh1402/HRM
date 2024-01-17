@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TimesheetRequest;
-use App\Services\TimesheetServices\TimesheetService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Services\Timesheet\TimesheetService;
+
 
 class TimesheetController extends Controller
 {

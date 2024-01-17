@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\Timesheetrepository\TimesheetRepository;
-use App\Repositories\Timesheetrepository\TimesheetRepositoryEloquent;
-use App\Models\Department;
+use App\Repositories\Timesheet\TimesheetRepository;
+use App\Repositories\Timesheet\TimesheetRepositoryEloquent;
 use App\Repositories\Deparment\DepartmentRepository;
 use App\Repositories\Deparment\DepartmentRepositoryEloquent;
 use App\Repositories\Discipline\DisciplineRepository;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Timesheetrepository;
+namespace App\Repositories\Timesheet;
 
 use Illuminate\Support\Arr;
 use Prettus\Repository\Contracts\RepositoryInterface;

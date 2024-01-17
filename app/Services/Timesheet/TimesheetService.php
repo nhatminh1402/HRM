@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\TimesheetServices;
+namespace App\Services\Timesheet;
 
-use App\Repositories\Timesheetrepository\TimesheetRepository;
+use App\Repositories\Timesheet\TimesheetRepository;
 
 class TimesheetService
 {

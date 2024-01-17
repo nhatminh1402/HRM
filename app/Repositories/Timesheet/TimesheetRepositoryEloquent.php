@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Timesheetrepository;
+namespace App\Repositories\Timesheet;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\Timesheetrepository\TimesheetRepository;
+use App\Repositories\Timesheet\TimesheetRepository;
 use App\Models\Timesheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
