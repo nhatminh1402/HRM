@@ -28,19 +28,35 @@
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <form action="">
+                <form action="{{ route('admin.reward.store') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="mb-3">
                             <label class="form-label">MÃ KHEN THƯỞNG</label>
-                            <input type="text" class="form-control" disabled>
+                            <input name="code_reward" type="text"
+                                class="form-control {{ $errors->has('code_reward') ? 'is-invalid' : '' }}"
+                                value="{{ $rewardCode }}" readonly>
+                            @error('code_reward')
+                                <div class="invalid-feedback"> {{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">TÊN KHEN THƯỞNG</label>
-                            <input type="text" class="form-control">
+                            <input name="name" type="text"
+                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                value="{{ old('name') }}">
+                            @error('name')
+                                <div class="invalid-feedback"> {{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                            <textarea name="description" class="form-control" id="description" rows="50" cols="50"></textarea>
+                            <textarea value="{{ old('description') }}" name="description"
+                                class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" rows="50"
+                                cols="50"></textarea>
+                            @error('description')
+                                <div class="invalid-feedback"> {{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -55,7 +71,7 @@
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <h5>DANH SÁCH LOẠI KHEN THƯỞNG</h5>
+                        <h5 id="list-reward">DANH SÁCH LOẠI KHEN THƯỞNG</h5>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group d-flex justify-content-end">
@@ -95,7 +111,9 @@
                                 <td>{{ $reward->created_at }}</td>
                                 <td>{{ $reward->updated_at }}</td>
                                 <td class="text-center d-flex jusitfy-content-center">
-                                    <button class="btn btn-warning me-3">Sửa</button>
+                                    <a href="{{ route('admin.reward.edit', $reward->id) }}">
+                                        <button class="btn btn-warning me-3">Sửa</button>
+                                    </a>
                                     <form action="{{ route('admin.reward.delete', $reward->id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-delete btn-danger" type="button">Xóa</button>
@@ -118,4 +136,13 @@
 
 @section('script')
     <script src="{{ asset('js/manage_reward.js') }}"></script>
+    @if (session('success'))
+        <script>
+            const listReward = document.getElementById("list-reward");
+            listReward.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        </script>
+    @endif
 @endsection

@@ -28,4 +28,14 @@ class RewardService
     {
         $this->rewardRepository->delete($id);
     }
+
+    public function find($id, $columns = ['*'])
+    {
+        return $this->rewardRepository->find($id, $columns);
+    }
+
+    public function update(array $attributes, $id)
+    {
+        return $this->rewardRepository->update($attributes, $id);
+    }
 }
