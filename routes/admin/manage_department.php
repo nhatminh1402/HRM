@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DepartmentController\DepartmentController;
+use App\Http\Controllers\Department\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 // Phòng ban
@@ -11,4 +11,5 @@ Route::prefix('/department')->name('department.')->group(function () {
     Route::get('/department/{id}', [DepartmentController::class, 'getDetailDepartment'])->name('detail');
     Route::put('/department/update/{id}',[DepartmentController::class,'updateDepartment'])->name('update');
     Route::delete('/department/delete/{id}',[DepartmentController::class, 'destroyDepartment'])->name('delete');
+    Route::get('/department/delete/employee/{id}',[DepartmentController::class,'destroyEmployeeDepartment'])->name('deleteEmployee');
 });

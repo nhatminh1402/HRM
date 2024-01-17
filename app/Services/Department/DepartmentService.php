@@ -1,8 +1,8 @@
 <?php
-namespace App\Services\DepartmentServices;
+namespace App\Services\Department;
 
 use App\Helpers;
-use App\Repositories\DeparmentRepository\DepartmentRepository;
+use App\Repositories\Deparment\DepartmentRepository;
 
 class DepartmentService
 {
@@ -19,7 +19,7 @@ class DepartmentService
 
     public function getEmployeeCode($prefix)
     {
-        $employeeCode = Helpers::generateEmployeeCode($prefix);
+        $employeeCode = Helpers::generateCode($prefix);
         return $employeeCode;
     }
 
@@ -42,11 +42,16 @@ class DepartmentService
     public function updateDepartment(array $data, $id)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-        return $this->departmentRepository->update($dataHtml,$id);
+        return $this->departmentRepository->update($dataHtml, $id);
     }
 
-    public function deleteDepartment($id){
+    public function deleteDepartment($id)
+    {
         return $this->departmentRepository->delete($id);
+    }
+    public function getEmployees($id)
+    {
+        return $this->departmentRepository->getListEmployee($id);
     }
 
     public function all($columns = ['*'])

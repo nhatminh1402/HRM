@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\EmployeeRepository;
+namespace App\Repositories\Employee;
 
 use App\Models\Employee;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\EmployeeRepository\EmployeeRepository;
+use App\Repositories\Employee\EmployeeRepository;
 use App\Validators\EmployeeRepository\EmployeeValidator;
 
 /**
@@ -34,8 +34,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function Jointable()
     {
+        return $this->model->with('province', 'district', 'ward', 'department', 'position')->get();
 
-        return $this->model->with('province', 'district', 'ward')->get();
     }
 
     public function getById($id)
@@ -67,11 +67,16 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $this->model->create($attributes);
     }
 
+    public function getEmployeDepartmentNull()
+    {
+        return $this->model->where("department_id", null)->get();
+    }
+
     public function all($columns = ['*'])
     {
         return $this->model->all($columns);
     }
-    
+
     /** 
      * Boot up the repository, pushing criteria
      */

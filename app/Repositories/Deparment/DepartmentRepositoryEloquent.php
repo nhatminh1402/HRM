@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\DeparmentRepository;
+namespace App\Repositories\Deparment;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\DeparmentRepository\DepartmentRepository;
+use App\Repositories\Deparment\DepartmentRepository;
 use App\Models\Department;
-use App\Validators\DeparmentRepository\DepartmentRepositoryValidator;
+
 
 /**
  * Class DepartmentRepositoryRepositoryEloquent.
@@ -49,6 +49,10 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
     public function delete($id)
     {
         return $this->model->find($id)->delete();
+    }
+
+    public function getListEmployee($id){
+        return $this->getById($id)->employee;
     }
     /**
      * Boot up the repository, pushing criteria

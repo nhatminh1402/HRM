@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Captcha\CaptChaController;
-use App\Http\Controllers\Employee\Auth\AuthenticateController;
+use App\Http\Controllers\User\Auth\AuthenticateController;
 use App\Http\Middleware\Auth\PreventEmployeeLoginAgain;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticateController as AdminAuthenticate;
