@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Employee\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\EmployeeServices\EmployeeService;
+use App\Services\Employee\EmployeeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

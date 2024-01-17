@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\EmployeeRepository;
+namespace App\Repositories\Employee;
 
 use App\Models\Employee;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\EmployeeRepository\EmployeeRepository;
+use App\Repositories\Employee\EmployeeRepository;
 use App\Validators\EmployeeRepository\EmployeeValidator;
 
 /**

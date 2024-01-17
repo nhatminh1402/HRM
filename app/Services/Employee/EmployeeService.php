@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Services\EmployeeServices;
+namespace App\Services\Employee;
 
-use App\Repositories\EmployeeRepository\EmployeeRepository;
+use App\Repositories\Employee\EmployeeRepository;
 use App\Traits\ImgProcess;
 use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 

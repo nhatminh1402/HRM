@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateDepartmentRequest;
 use App\Services\Department\DepartmentService;
-use App\Services\EmployeeServices\EmployeeService;
+use App\Services\Employee\EmployeeService;
 
 
 class DepartmentController extends Controller
