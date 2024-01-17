@@ -31,12 +31,11 @@ class Discipline extends Model
 
     public function scopeSearchByName(mixed $query, string $key)
     {
-        return $key ? $query->where('name', 'LIKE', '%' . $key . '%')->latest('id') : $query;
+        return $key ? $query->where('name', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByDescription(mixed $query, string $key)
     {
-        return $key ? $query->where('description', 'LIKE', '%' . $key . '%')->latest('id') : $query;
+        return $key ? $query->where('description', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
-
 }

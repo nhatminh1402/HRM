@@ -32,11 +32,11 @@ class Position extends Model
     }
     public function scopeSearchByName(mixed $query, string $key)
     {
-        return $key ? $query->where('name', 'like', '%' . $key . '%')->latest('id') : $query;
+        return $key ? $query->where('name', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByDescription(mixed $query, string $key)
     {
-        return $key ? $query->where('description', 'like', '%' . $key . '%')->latest('id') : $query;
+        return $key ? $query->where('description', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
 }
