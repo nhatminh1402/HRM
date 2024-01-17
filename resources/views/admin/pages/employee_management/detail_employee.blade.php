@@ -16,7 +16,7 @@
                 <div class="column">
                     <p>Ảnh nhân viên:</p>
                     <img class="image image-lg w-auto" alt="Image placeholder"
-                        src="/upload/{{ $employee->image }}">
+                        src="/uploads/{{ $employee->image }}">
                 </div>
                 <div class="column">
                     <p>Tên nhân viên: {{ $employee->full_name }}</p>
