@@ -9,32 +9,31 @@
 
 {{-- Đinh nghĩa nội dung cho trang hiển thị thông tin cá nhân ở đây --}}
 @section('content')
-    @if (!empty($user))
-        <div class="row">
-            <div class="col-12">
-                <div class="card my-4">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                            <h6 class="text-white text-capitalize ps-3">Thông tin nhân sự</h6>
-                        </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Thông tin nhân sự</h6>
                     </div>
-                    <div class="card-body px-0 pb-2">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="img-avatar" style="padding: 20px; text-align:center">
-                                    <img style="width: 95%" src="/uploads/{{ $user->image }}" alt="">
-                                </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="img-avatar" style="padding: 20px; text-align:center">
+                                <img style="width: 95%" src=" {{ asset('material-template/assets/img/img_avatar.png') }} "
+                                    alt="">
                             </div>
-                            <div class="col-md-9">
-                                <div class="card card-plain h-100">
-                                    <div class="card-header pb-0 p-3">
-                                        <div class="row">
-                                            <div class="col-md-8 d-flex align-items-center">
-                                                <h6 class="mb-0">MÃ NHÂN VIÊN: {{ $user->code_employee }}
-                                                </h6>
-                                            </div>
-                                            <div class="col-md-4 text-end">
-                                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card card-plain h-100">
+                                <div class="card-header pb-0 p-3">
+                                    <div class="row">
+                                        <div class="col-md-8 d-flex align-items-center">
+                                            <h6 class="mb-0">MÃ NHÂN VIÊN : MNV333120461
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-4 text-end">
                                         </div>
                                     </div>
                                     <div class="card-body p-3">
@@ -106,5 +105,5 @@
                 </div>
             </div>
         </div>
-    @endif
+    </div>
 @endsection

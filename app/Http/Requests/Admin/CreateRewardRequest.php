@@ -23,8 +23,8 @@ class CreateRewardRequest extends FormRequest
     {
         return [
             'code_reward' => 'required',
-            'name' => 'required|max:255',
-            'description' => 'nullable|max:255'
+            'name' => 'required|max:255|unique:rewards,name',
+            'description' => 'nullable|max:255',
         ];
     }
 
@@ -33,8 +33,9 @@ class CreateRewardRequest extends FormRequest
         return [
             'code_reward.required' => 'Vui lòng không để trống!',
             'name.required' => 'Vui lòng nhập tên khen thưởng!',
+            'name.uniqle' => 'Tên khen thưởng đã tồn tại!',
             'name.max' => 'Độ dài tối đa không được vượt quá 255 ký tự!',
-            'description.max' => 'Độ dài tối đa không được vượt quá 255 ký tự!'
+            'description.max' => 'Độ dài tối đa không được vượt quá 255 ký tự!',
         ];
     }
 }

@@ -107,6 +107,6 @@ class PositionController extends Controller
     {
         $this->positionService->delete($id);
 
-        return redirect()->back();
+        return redirect()->back()->with('Xóa chức vụ thành công!');
     }
 }

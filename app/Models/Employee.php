@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Authenticatable
 {
@@ -59,4 +61,14 @@ class Employee extends Authenticatable
     protected $casts = [
         'password' => 'hashed'
     ];
+
+    /**
+     * Get all of the discipline for the Employee
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function discipline(): BelongsToMany
+    {
+        return $this->belongsToMany(Discipline::class);
+    }
 }

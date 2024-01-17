@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ward extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id'; 
     protected $fillable = ['name', 'district_id'];
     public function districts()
     {

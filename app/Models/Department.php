@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
-    protected $table = 'departments';
-    protected $primaryKey = 'id';
-    protected $fillable = [
+    protected $table= 'departments';
+    protected $fillable=[
         'code_department',
         'name',
         'description',

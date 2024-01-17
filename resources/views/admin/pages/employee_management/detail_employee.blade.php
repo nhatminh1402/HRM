@@ -15,7 +15,9 @@
             <div class="row">
                 <div class="column">
                     <p>DB Ảnh nhân viên:</p>
-                    <img class="image image-lg w-auto" alt="Image placeholder" src="/uploads/{{ $employee->image }}">
+                    <img class="image image-lg w-auto" alt="Image placeholder"
+                        src="https://chuphinhthe.com/upload/product/1824-quan-3112.jpg">
+                    {{-- src="{{ $employee->image }}"> --}}
                 </div>
                 <div class="column">
                     <p>Tên nhân viên: {{ $employee->full_name }}</p>
@@ -30,6 +32,9 @@
                     <p>Số điện thoại: {{ $employee->phone_number }}</p>
                     <p>Email: {{ $employee->email }}</p>
                     <p>Số CCCD: {{ $employee->identify_number }}</p>
+                    <p>Quốc tịch: {{ $employee->nationality }}</p>
+                    <p>DB Tộc: Kinh</p>
+                    <p>DB Tôn giáo: Không</p>
                 </div>
                 <div class="column">
                     <p>Bằng cấp: {{ $employee->degree }} </p>
@@ -47,4 +52,5 @@
             </div>
         </div>
     @endif
+
 @endsection

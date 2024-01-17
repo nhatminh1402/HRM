@@ -17,7 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+deha-hrm/public/uploads
 package.lock.json
-public/uploads
-/app/Entities
-public/lib/select/dist/.DS_Store

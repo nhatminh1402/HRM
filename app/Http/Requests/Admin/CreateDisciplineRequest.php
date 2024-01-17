@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePositionRequest extends FormRequest
+class CreateDisciplineRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,10 @@ class CreatePositionRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
-            'salary_day' => 'required|numeric',
         ];
     }
 
-     /**
+    /**
      * Get the error messages for the defined validation rules.
      *
      * @return array<string, string>
@@ -40,8 +39,6 @@ class CreatePositionRequest extends FormRequest
             'name.string' => 'Tên chức vụ phải là một chuỗi.',
             'name.max' => 'Tên chức vụ không được vượt quá :max ký tự.',
             'description.string' => 'Mô tả phải là một chuỗi.',
-            'salary_day.required' => 'Vui lòng nhập ngày lương.',
-            'salary_day.numeric' => 'Ngày lương phải là một số.',
         ];
     }
 }

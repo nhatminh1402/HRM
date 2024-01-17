@@ -8,9 +8,6 @@ use App\Repositories\Position\PositionRepository;
 use Exception;
 use Illuminate\Http\Request;
 
-/**
- * Class PositionService.
- */
 class PositionService
 {
     protected $positionRepository;
@@ -32,7 +29,7 @@ class PositionService
 
     public function getEmployeeCode($prefix)
     {
-        $employeeCode = Helpers::generateEmployeeCode($prefix);
+        $employeeCode = Helpers::generateCode($prefix);
 
         return $employeeCode;
     }
