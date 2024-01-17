@@ -13,32 +13,28 @@
             <form action="" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="code_project" class="form-label mb-2 font-weight-bold">Mã dự án</label>
-                    <input type="text" class="form-control" name="code_project" id="code_project"
-                        value="" readonly disabled>
+                    <label for="code_project" class="form-label mb-2 font-weight-bold">Mã dự án:</label>
+                    <input type="text" class="form-control" name="code_project" id="code_project" value="" readonly
+                        disabled>
                     @error('code_project')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label mb-2 font-weight-bold">Tên dự án</label>
+                    <label for="name" class="form-label mb-2 font-weight-bold">Tên dự án<span
+                            class="text-danger">*</span>:</label>
                     <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}">
                     @error('name')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="employee" class="form-label mb-2 font-weight-bold">Chọn nhân viên</label>
-                    <select name="employee" id="employee" class="form-select" aria-label="Default select example">
-                        <option selected>--Chọn nhân viên--</option>
-                        <option value="male">Nam</option>
-                        <option value="female">Nữ</option>
-                    </select>
-                    @error('name')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
+                    <label for="tags" class="form-label font-weight-bold">Chọn nhân viên<span
+                            class="text-danger">*</span>:</label>
+                    <div id="selectedEmployees" class="mb-2"></div>
+                    <input id="tags" name="list-employee" class="form-control p-4"
+                        placeholder="Nhập nhân viên vào dự án" value="" tabindex="-1">
                 </div>
-
                 <div class="mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
                     <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ strip_tags(old('description')) }}</textarea>
@@ -50,8 +46,7 @@
             <div class="mb-3 mb-lg-0">
                 <h3 class="h3">Danh sách dự án </h3>
             </div>
-            <form class="navbar-search w-25 mb-4" id="navbar-search-main"
-                action="" method="GET">
+            <form class="navbar-search w-25 mb-4" id="navbar-search-main" action="" method="GET">
                 <div class="input-group input-group-merge search-bar">
                     <span class="input-group-text" id="topbar-addon">
                         <svg class="icon icon-xs" x-description="Heroicon name: solid/search"
@@ -86,4 +81,61 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Khởi tạo Select2 cho trường nhập
+            $('#tags').select2({
+                placeholder: 'Chọn nhân viên',
+                allowClear: true
+            });
+
+            // Xử lý sự kiện khi một nhân viên được chọn
+            $('#tags').on('select2:select', function(e) {
+                var employeeName = e.params.data.text;
+                var employeeButton = '<button type="button" class="btn btn-primary mr-2">' + employeeName +
+                    '</button>';
+
+                $('#selectedEmployees').append(employeeButton);
+
+                // Cập nhật giá trị trong trường nhập
+                var inputVal = $('#tags').val();
+                if (inputVal) {
+                    inputVal += ', ' + employeeName;
+                } else {
+                    inputVal = employeeName;
+                }
+                $('#tags').val(inputVal);
+            });
+
+            // Xử lý sự kiện khi một nhân viên bị xóa
+            $('#tags').on('select2:unselect', function(e) {
+                var employeeName = e.params.data.text;
+
+                $('#selectedEmployees button').each(function() {
+                    if ($(this).text() === employeeName) {
+                        $(this).remove();
+                        return false;
+                    }
+                });
+
+                // Cập nhật giá trị trong trường nhập
+                var inputVal = $('#tags').val();
+                if (inputVal) {
+                    var employeeList = inputVal.split(', ');
+                    var updatedList = employeeList.filter(function(name) {
+                        return name !== employeeName;
+                    });
+                    $('#tags').val(updatedList.join(', '));
+                } else {
+                    $('#tags').val('');
+                }
+            });
+        });
+    </script>
 @endsection
