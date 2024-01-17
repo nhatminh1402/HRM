@@ -59,8 +59,6 @@ class Employee extends Authenticatable
         return $this->belongsTo(Position::class, 'position_id', 'id');
     }
     
-    
-
     protected $casts = [
         'password' => 'hashed'
     ];
