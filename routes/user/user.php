@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Employee\User\UserController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,7 @@ Route::get("home-page", function () {
 })->name('home');
 
 // 2. Router cho trang xem thông tin chi tiết nhân viên
-Route::get("employee-infor", function () {
-    return view("user.pages.employee_Infor");
-})->name('employee-info');
+Route::get("employee-infor",[UserController::class,'getEmployeeInfor'])->name('employee-info');
 
 // 3. Router cho trang xem các phòng ban
 Route::get("departments", function () {
