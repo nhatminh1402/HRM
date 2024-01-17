@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\User\User\UserController;
+use App\Http\Controllers\User\User\UserUploadImgController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,11 @@ Route::get("home-page", function () {
 })->name('home');
 
 // 2. Router cho trang xem thông tin chi tiết nhân viên
-Route::get("employee-infor",[UserController::class,'getEmployeeInfor'])->name('employee-info');
+Route::get("employee-infor",[UserUploadImgController::class,'getEmployeeInfor'])->name('employee-info');
+Route::post('employee-infor/upload-Image',[UserUploadImgController::class,'imageUpload'])->name('uploadImage');
+Route::get('employee-infor/delete-Image/{imageName}',[UserUploadImgController::class,'deleteImage'])->name('deleteImage');
+//11. Router cho trang hien thi timesheet
+Route::get("timesheet-user", [UserUploadImgController::class,'showtimesheet'])->name("timesheet-user");
 
 // 3. Router cho trang xem các phòng ban
 Route::get("departments", function () {
@@ -62,6 +66,3 @@ Route::get("change-password", function () {
 })->name("change-password");
 
 //11. Router cho trang hien thi timesheet
-Route::get("timesheet-user", function () {
-    return view("user.pages.time_sheet");
-})->name("timesheet-user");
