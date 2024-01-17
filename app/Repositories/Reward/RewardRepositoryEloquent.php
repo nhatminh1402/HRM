@@ -26,11 +26,7 @@ class RewardRepositoryEloquent extends BaseRepository implements RewardRepositor
 
     public function create(array $attributes)
     {
-        try {
-            return $this->model->create($attributes);
-        } catch (Exception $e) {
-            return abort(500);
-        }
+        return $this->model->create($attributes);
     }
 
     public function search()
@@ -52,6 +48,26 @@ class RewardRepositoryEloquent extends BaseRepository implements RewardRepositor
             return abort(404);
         }
     }
+
+    public function update(array $attributes, $id)
+    {
+        try {
+            $reward = $this->model->findOrFail($id);
+            $reward->update($attributes);
+        } catch (ModelNotFoundException $exeption) {
+            return abort(404);
+        }
+    }
+
+    public function find($id, $columns = ['*'])
+    {
+        try {
+            return $this->model->findOrFail($id);
+        } catch (ModelNotFoundException $exeption) {
+            return abort(404);
+        }
+    }
+    
     /**
      * Boot up the repository, pushing criteria
      */
