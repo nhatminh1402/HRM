@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Department;
-use App\Repositories\DeparmentRepository\DepartmentRepository;
-use App\Repositories\DeparmentRepository\DepartmentRepositoryEloquent;
+use App\Repositories\Deparment\DepartmentRepository;
+use App\Repositories\Deparment\DepartmentRepositoryEloquent;
 use App\Repositories\Discipline\DisciplineRepository;
 use App\Repositories\Discipline\DisciplineRepositoryEloquent;
 use App\Repositories\EmployeeRepository\EmployeeRepository;

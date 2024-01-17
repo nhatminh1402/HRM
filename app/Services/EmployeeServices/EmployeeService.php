@@ -54,7 +54,7 @@ class EmployeeService
         return $this->employeeRepository->getEmployeDepartmentNull();
     }
 
-    public function setDepartment_id($employee_id, $department_id)
+    public function setDepartmentId($employee_id, $department_id)
     {
         $employee = $this->employeeRepository->getById($employee_id);
         $employee->department_id = $department_id;

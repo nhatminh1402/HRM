@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\DepartmentController;
+namespace App\Http\Controllers\Department;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateDepartmentRequest;
-use App\Services\DepartmentServices\DepartmentService;
+use App\Services\Department\DepartmentService;
 use App\Services\EmployeeServices\EmployeeService;
 
 
@@ -55,7 +55,7 @@ class DepartmentController extends Controller
             $data['description'] = $request->description;
             $employee_id = $request->id_employee;
             if (!empty($employee_id)) {
-                $this->employeeeService->setDepartment_id($employee_id, $id);
+                $this->employeeeService->setDepartmentId($employee_id, $id);
             }
             $this->departmentService->updateDepartment($data, $id);
             return redirect()->back()->with('success', 'Cập nhật phòng ban thành công!');
@@ -79,7 +79,7 @@ class DepartmentController extends Controller
     public function destroyEmployeeDepartment($id)
     {
         try {
-            $this->employeeeService->setDepartment_id($id, null);
+            $this->employeeeService->setDepartmentId($id, null);
             return redirect()->back()->with('success', 'Xóa nhân viên khỏi phòng ban thành công');
         } catch (\Exception $e) {
             return redirect()->route('admin.department.add')

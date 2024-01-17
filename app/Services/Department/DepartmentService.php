@@ -1,8 +1,8 @@
 <?php
-namespace App\Services\DepartmentServices;
+namespace App\Services\Department;
 
 use App\Helpers;
-use App\Repositories\DeparmentRepository\DepartmentRepository;
+use App\Repositories\Deparment\DepartmentRepository;
 
 class DepartmentService
 {

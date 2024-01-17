@@ -84,7 +84,7 @@
                                         <td class='text-center'>{{ $employee->full_name }}</td>
                                         <td class='text-center'>{{ $employee->gender ? 'Name' : 'Nữ' }}</td>
                                         <td class='text-center'>{{ $employee->dob }}</td>
-                                        <td class='text-center'>{{ $employee->departments->name ?? '' }}</td>
+                                        <td class='text-center'>{{ $employee->department->name ?? '' }}</td>
                                         <td class='text-center'>{{ $employee->created_at->format('Y-m-d') }}</td>
                                         <td class='text-center'>{{ $employee->status ? 'Đang làm viêc' : 'Đã nghĩ việc' }}
                                         </td>

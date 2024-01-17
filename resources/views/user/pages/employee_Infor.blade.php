@@ -83,7 +83,7 @@
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                                             class="text-dark">Thuộc phòng ban:</strong>&nbsp;
-                                                        {{ $user->departments->name ?? '' }}
+                                                        {{ $user->department->name ?? '' }}
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                                             class="text-dark">Trạng thái: </strong>&nbsp;
