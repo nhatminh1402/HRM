@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\EmployeeController\CreateEmployeeController;
-use App\Http\Controllers\EmployeeController\EmployeeController;
+use App\Http\Controllers\Employee\CreateEmployeeController;
+use App\Http\Controllers\Employee\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 

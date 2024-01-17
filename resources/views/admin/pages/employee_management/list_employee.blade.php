@@ -98,7 +98,7 @@
                                         <td class='text-center'>{{ $employee->code_employee }}</td>
                                         <td class='text-center'>
                                             <img class="image image-md" alt="Image placeholder"
-                                                src="{{ $employee->image }}">
+                                                src="/uploads/{{ $employee->image }}">
                                         </td>
                                         <td class='text-center'>{{ $employee->full_name }}</td>
                                         <td class='text-center'>

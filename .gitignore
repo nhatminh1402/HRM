@@ -17,5 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-deha-hrm/public/uploads
+public/uploads
 package.lock.json
