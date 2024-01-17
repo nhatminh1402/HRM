@@ -13,7 +13,7 @@ Route::prefix('/project')->name('project.')->group(function () {
      // Sửa dự án
      Route::get('/edit', function(){
         return view('admin.pages.project.edit_project');
-    })->name('home');
+    })->name('edit');
 
     // //Thêm mới chức vụ
     // Route::post('/', [PositionController::class, 'store'])->name('positions.store');
