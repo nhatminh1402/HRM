@@ -18,4 +18,5 @@ yarn-error.log
 /.idea
 /.vscode
 deha-hrm/public/uploads
+public/upload
 package.lock.json
