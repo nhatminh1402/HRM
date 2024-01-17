@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Employee\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\EmployeeLoginRequest;
@@ -19,7 +19,7 @@ class AuthenticateController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('employee')->attempt($credentials)) {
-            return redirect()->route("user.home")->with("success", "ĐĂNG NHẬP THÀNH CÔNG");
+            return redirect()->route("user.employee-info")->with("success", "ĐĂNG NHẬP THÀNH CÔNG");
         }
 
         return redirect()

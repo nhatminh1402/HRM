@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Services\EmployeeServices;
+namespace App\Services\Employee;
 
-use App\Repositories\EmployeeRepository\EmployeeRepository;
+use App\Repositories\Employee\EmployeeRepository;
 use App\Traits\ImgProcess;
 use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -47,5 +46,17 @@ class EmployeeService
             File::delete(public_path('uploads/' . $attributes['image']));
             return response()->json(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public function getEmployeeDepartmentNull()
+    {
+        return $this->employeeRepository->getEmployeDepartmentNull();
+    }
+
+    public function setDepartmentId($employee_id, $department_id)
+    {
+        $employee = $this->employeeRepository->getById($employee_id);
+        $employee->department_id = $department_id;
+        $employee->save();
     }
 }

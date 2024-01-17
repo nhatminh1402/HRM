@@ -48,6 +48,16 @@ class Employee extends Authenticatable
         return $this->belongsTo(Ward::class, 'ward_id', 'id');
     }
 
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id', 'id');
+    }
+    
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id', 'id');
+    }
+
     protected $casts = [
         'password' => 'hashed'
     ];

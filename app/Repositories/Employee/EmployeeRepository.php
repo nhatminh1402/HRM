@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\EmployeeRepository;
+namespace App\Repositories\Employee;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 
@@ -15,6 +15,7 @@ interface EmployeeRepository extends RepositoryInterface
     public function getById($id);
     public function search($key);
     public function create(array $attributes);
+    public function getEmployeDepartmentNull();
     public function all($columns = ['*']);
 
     
