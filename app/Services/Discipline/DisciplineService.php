@@ -26,7 +26,6 @@ class DisciplineService
     public function getDisciplineCode($prefix)
     {
         $employeeCode = Helpers::generateCode($prefix);
-
         return $employeeCode;
     }
 
@@ -40,11 +39,8 @@ class DisciplineService
         }
 
         $discipline = new Discipline();
-
         $discipline->fill($dataHtml);
-
         $discipline->save();
-
         return $discipline;
     }
 
@@ -56,7 +52,6 @@ class DisciplineService
     public function update(array $data, $id)
     {
         $dataHtms = Helpers::stripHtmlTags($data);
-
         return $this->disciplineRepository->update($dataHtms, $id);
     }
 

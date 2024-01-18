@@ -8,6 +8,7 @@ use App\Repositories\Discipline\DesciplineRepository;
 use App\Entities\Discipline\Descipline;
 use App\Models\Discipline;
 use App\Validators\Discipline\DesciplineValidator;
+use Illuminate\Http\Response;
 
 /**
  * Class DesciplineRepositoryEloquent.
@@ -47,13 +48,11 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
         $discipline = $this->model->find($id);
 
         if (!$discipline) {
-            throw new \Exception('Không tìm thấy loại kỷ luật !');
+            return response()->json(['Không tìm thấy loại kỷ luật'], Response::HTTP_NOT_FOUND);
         }
 
         $discipline->fill($data);
-
         $discipline->save();
-
         return $discipline;
     }
 
@@ -67,7 +66,6 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
             }
 
             $discipline->delete($id);
-
         } catch (\Throwable $th) {
             throw new \Exception("Đã xảy ra lỗi, vui lòng thử lại !");
         }

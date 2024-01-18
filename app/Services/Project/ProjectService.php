@@ -28,7 +28,6 @@ class ProjectService
     public function getProjectCode($prefix)
     {
         $projectCode = Helpers::generateCode($prefix);
-
         return $projectCode;
     }
 
@@ -40,7 +39,6 @@ class ProjectService
     public function createProject(array $data)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-
         $prefix = 'MDA';
 
         if ($dataHtml) {
@@ -48,13 +46,20 @@ class ProjectService
         }
 
         $project = Project::create($dataHtml);
-
         $employeeIds = $data['selected_employees'];
-        
         $employees = Employee::whereIn('id', $employeeIds)->get();
-
         $project->employees()->attach($employees);
-
         return $project;
     }
+
+    public function edit($id)
+    {
+        return $this->projectRepository->find($id);
+    }
+
+    public function update(array $data, $id) {
+        $data = Helpers::stripHtmlTags($data);
+        return $this->projectRepository->update($data, $id);
+    }
+
 }

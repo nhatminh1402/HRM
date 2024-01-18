@@ -7,6 +7,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Project\ProjectRepository;
 use App\Models\Project;
+use Illuminate\Http\Response;
 
 /**
  * Class ProjectRepositoryEloquent.
@@ -16,7 +17,6 @@ use App\Models\Project;
 class ProjectRepositoryEloquent extends BaseRepository implements ProjectRepository
 {
     const DEFAULT_PER_PAGE = 4;
-
     /**
      * Specify Model class name
      *
@@ -42,18 +42,17 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         return Employee::all();
     }
 
-    public function edit($id)
-    {
-        return $this->model->find($id);
-    }
-
     public function update(array $data, $id)
     {
         $project = $this->model->find($id);
 
         if ($project) {
-            # code...
+            return response()->json(['message' => 'Không tìm thấy dự án'], Response::HTTP_NOT_FOUND);
         }
+
+        $project->fill($data);
+        $project->save();
+        return $project;
     }
 
 

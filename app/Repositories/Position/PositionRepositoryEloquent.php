@@ -54,9 +54,7 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         }
 
         $position->fill($data);
-
         $position->save();
-
         return $position;
     }
 
@@ -70,7 +68,6 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
             }
 
             $position->delete($id);
-
         } catch (\Throwable $th) {
             throw new \Exception("Đã xảy ra lỗi, vui lòng thử lại !");
         }

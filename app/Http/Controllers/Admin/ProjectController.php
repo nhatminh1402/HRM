@@ -22,15 +22,10 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $prefix = 'MDA';
-
         $projectCode = $this->projectService->getProjectCode($prefix);
-
         $projects = $this->projectService->getAll();
-
         $employees = $this->projectService->getAllEmployees();
-
         $pageNumber = $request->query('page');
-
         return view('admin.pages.project.index', compact('projectCode', 'employees', 'projects', 'pageNumber'));
     }
 
@@ -40,18 +35,8 @@ class ProjectController extends Controller
     public function store(CreateOrUpdateProjectRequest $request)
     {
         $data = $request->all();
-
         $this->projectService->createProject($data);
-
         return redirect()->route('admin.project.home')->with('success', 'Create position success!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -59,7 +44,9 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = $this->projectService->edit($id);
+        $pageNumber = request('page');
+        return view('admin.pages.project.edit_project', compact('project', 'pageNumber'));
     }
 
     /**

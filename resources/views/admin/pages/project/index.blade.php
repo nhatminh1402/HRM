@@ -106,7 +106,7 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $project->code_project }}</td>
                                     <td class='text-center'>{{ $project->name }}</td>
-                                    <td class='text-center'>{{ $project->description ?? 'Chưa có mô tả' }}</td>
+                                    <td class='text-center'>{{ $project->description ?? 'Chưa có mô tả!' }}</td>
                                     <td class='text-center'>{{ $project->created_at }}</td>
                                     <td class='text-center'>{{ $project->updated_at }}</td>
                                     <td class='text-center'>

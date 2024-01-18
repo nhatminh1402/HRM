@@ -22,33 +22,24 @@ class PositionService
         return $this->positionRepository->getAll();
     }
 
-    public function all($columns = ['*'])
-    {
-        return $this->positionRepository->all($columns);
-    }
-
     public function getEmployeeCode($prefix)
     {
         $employeeCode = Helpers::generateCode($prefix);
-
         return $employeeCode;
     }
 
     public function create(array $data)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-
         $prefix = 'MCV';
+
         if ($dataHtml) {
             $dataHtml['code_position'] = $this->getEmployeeCode($prefix);
         }
 
         $position = new Position();
-
         $position->fill($dataHtml);
-
         $position->save();
-
         return $position;
     }
 
@@ -60,7 +51,6 @@ class PositionService
     public function update(array $data, $id)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-
         return $this->positionRepository->update($dataHtml, $id);
     }
 
