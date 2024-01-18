@@ -13,7 +13,6 @@ class ProjectEmployeeSeeder extends Seeder
         $projects = Project::all();
 
         foreach ($projects as $project) {
-
             $selectedEmployeeIds = [1,2,3];
             $employees = Employee::whereIn('id', $selectedEmployeeIds)->get();
 

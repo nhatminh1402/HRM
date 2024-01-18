@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CreateOrUpdateProject;
 use App\Http\Requests\Admin\CreateOrUpdateProjectRequest;
 use App\Services\Project\ProjectService;
 use Illuminate\Http\Request;
@@ -52,16 +51,18 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateOrUpdateProjectRequest $request, string $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        try {
+            $data = $request->all();
+            $project = $this->projectService->update($data, $id);
+            $pageNumber = $request->input('page');
+            return redirect()->route('admin.project.home', ['pahe' => $pageNumber])
+                ->with('success', 'Cập nhật dự án thành công !')
+                ->with('project', $project);
+        } catch (\Exception $e) {
+            return redirect()->back()
+            ->with('error', 'Lỗi khi cập nhật dự án !' . $e->getMessage());
+        }
     }
 }

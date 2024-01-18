@@ -25,7 +25,6 @@ class PositionController extends Controller
         $prefix = 'MCV';
         $employeeCode = $this->positionService->getEmployeeCode($prefix);
         $positions = $this->positionService->getAll();
-
         if ($request->input('key')) {
             $positions = $this->positionService->searchPosition($request->input('key'));
         }
@@ -65,7 +64,6 @@ class PositionController extends Controller
             return redirect()->route('admin.employee.home', ['page' => $pageNumber])
                 ->with('success', 'Cập nhật chức vụ thành công!')
                 ->with('position', $position);
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Lỗi khi cập nhật chức vụ: ' . $e->getMessage());

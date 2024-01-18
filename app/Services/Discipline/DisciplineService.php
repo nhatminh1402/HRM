@@ -32,7 +32,6 @@ class DisciplineService
     public function create(array $data)
     {
         $dataHtml = Helpers::stripHtmlTags($data);
-
         $prefix = 'MKL';
         if ($dataHtml) {
             $dataHtml['code_discipline'] = $this->getDisciplineCode($prefix);

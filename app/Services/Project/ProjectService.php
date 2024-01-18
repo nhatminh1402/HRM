@@ -40,7 +40,6 @@ class ProjectService
     {
         $dataHtml = Helpers::stripHtmlTags($data);
         $prefix = 'MDA';
-
         if ($dataHtml) {
             $dataHtml['code_project'] = $this->getProjectCode($prefix);
         }

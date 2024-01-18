@@ -32,7 +32,6 @@ class PositionService
     {
         $dataHtml = Helpers::stripHtmlTags($data);
         $prefix = 'MCV';
-
         if ($dataHtml) {
             $dataHtml['code_position'] = $this->getEmployeeCode($prefix);
         }

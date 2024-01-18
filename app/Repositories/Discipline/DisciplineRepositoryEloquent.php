@@ -4,10 +4,7 @@ namespace App\Repositories\Discipline;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\Discipline\DesciplineRepository;
-use App\Entities\Discipline\Descipline;
 use App\Models\Discipline;
-use App\Validators\Discipline\DesciplineValidator;
 use Illuminate\Http\Response;
 
 /**
@@ -46,7 +43,6 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
     public function update(array $data, $id)
     {
         $discipline = $this->model->find($id);
-
         if (!$discipline) {
             return response()->json(['Không tìm thấy loại kỷ luật'], Response::HTTP_NOT_FOUND);
         }
@@ -60,14 +56,13 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
     {
         try {
             $discipline = $this->model->find($id);
-
             if (!$discipline) {
-                throw new \Exception("Không tìm thấy loại kỷ luật !");
+                return response()->json(['message' => 'Không tìm thấy loại kỷ luật !'], Response::HTTP_NOT_FOUND);
             }
 
             $discipline->delete($id);
         } catch (\Throwable $th) {
-            throw new \Exception("Đã xảy ra lỗi, vui lòng thử lại !");
+            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại !'], Response::HTTP_NOT_FOUND);
         }
     }
 

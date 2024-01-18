@@ -24,7 +24,6 @@ class DisciplineController extends Controller
         $prefix = 'MKL';
         $disciplineCode = $this->disciplineService->getDisciplineCode($prefix);
         $disciplines = $this->disciplineService->getAll();
-
         if ($request->input('key')) {
             $disciplines = $this->disciplineService->searchDiscipline($request->input('key'));
         }
@@ -64,7 +63,6 @@ class DisciplineController extends Controller
             return redirect()->route('admin.discipline.home', ['page' => $pageNumber])
                 ->with('success', 'Cập nhật loại kỷ luật thành công !')
                 ->with('discipline', $discipline);
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Lỗi khi cập nhật loại kỷ luật !: ' . $e->getMessage());

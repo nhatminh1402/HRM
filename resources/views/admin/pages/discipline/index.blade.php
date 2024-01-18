@@ -12,7 +12,7 @@
 
 @section('content')
     <h2 class="mt-3 mb-4 pb-2 border-bottom text-primary">Quản lý kỷ luật</h2>
-    <form action="" method="POST" class="mb-4">
+    <form action="{{route('admin.discipline.store')}}" method="POST" class="mb-4">
         <div class="row ml-4">
             @csrf
             <div class="col-12 mb-3">

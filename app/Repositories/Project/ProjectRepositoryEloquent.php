@@ -55,7 +55,6 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         return $project;
     }
 
-
     /**
      * Boot up the repository, pushing criteria
      */
@@ -63,5 +62,4 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
 }
