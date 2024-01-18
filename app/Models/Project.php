@@ -13,6 +13,7 @@ class Project extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
+        'code_project',
         'name',
         'description'
     ];

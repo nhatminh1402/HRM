@@ -39,7 +39,6 @@
         content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg">
 
     <!-- Favicon -->
-
     <script src="{{ asset('assets/bootstrap-5.0.2/css/bootstrap.min.css') }}"></script>
     <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -69,7 +68,6 @@
         @include('admin.layouts.footer')
 
     </main>
-
     <script src="{{ asset('assets/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
@@ -106,7 +104,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <!-- Volt JS -->
-    <script src="{{ asset('assets//js/volt.js') }}"></script>
+    <script src="{{ asset('assets/js/volt.js') }}"></script>
 
     <script>
         ClassicEditor

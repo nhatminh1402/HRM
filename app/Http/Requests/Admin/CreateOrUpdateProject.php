@@ -13,6 +13,7 @@ class CreateOrUpdateProject extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'selected_employees' => 'required',
             'description' => 'nullable|string|max:255',
         ];
     }
@@ -27,6 +28,7 @@ class CreateOrUpdateProject extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên chức vụ.',
             'name.string' => 'Tên chức vụ phải là một chuỗi.',
+            'selected_employees' => 'Vui lòng nhập nhân viên',
             'name.max' => 'Tên chức vụ không được vượt quá :max ký tự.',
             'description.string' => 'Mô tả phải là một chuỗi.',
         ];

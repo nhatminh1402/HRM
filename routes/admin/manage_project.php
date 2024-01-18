@@ -1,17 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\PositionController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/project')->name('project.')->group(function () {
-    // Danh sách + thêm mớ dự án
-    Route::get('/', function(){
-        return view('admin.pages.project.index');
-    })->name('home');
+   // Danh sách + thêm mới chức vụ
+   Route::get('/', [ProjectController::class, 'index'])->name('home');
 
-     // Sửa dự án
-     Route::get('/edit', function(){
-        return view('admin.pages.project.edit_project');
-    })->name('edit');
+   //Thêm mới chức vụ
+   Route::post('/create', [ProjectController::class, 'store'])->name('store');
+
 });

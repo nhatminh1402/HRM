@@ -3,19 +3,22 @@
 @section('title', 'Project')
 
 @section('css')
-
+    <script src="{{ asset('lib/jquery-3.7.1.min') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/create-project.css') }}">
+    <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
 @endsection
 
 @section('content')
     <h2 class="mt-3 mb-4 pb-2 border-bottom text-primary">Quản lý dự án</h2>
     <div class="row ml-4">
         <div class="col-12 mb-4">
-            <form action="" method="POST">
+            <form action="{{ route('admin.project.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="code_project" class="form-label mb-2 font-weight-bold">Mã dự án:</label>
-                    <input type="text" class="form-control" name="code_project" id="code_project" value="" readonly
-                        disabled>
+                    <input type="text" class="form-control" name="code_project" id="code_project"
+                        value="{{ $projectCode }}" readonly disabled>
                     @error('code_project')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -28,12 +31,23 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="tags" class="form-label font-weight-bold">Chọn nhân viên<span
+                <div class="col-md-12 mb-3">
+                    <label for="tags" class="form-label form-control-sm font-weight-bold">Chọn nhân viên<span
                             class="text-danger">*</span>:</label>
-                    <div id="selectedEmployees" class="mb-2"></div>
-                    <input id="tags" name="list-employee" class="form-control p-4"
-                        placeholder="Nhập nhân viên vào dự án" value="" tabindex="-1">
+                    <select name="selected_employees[]" class="js-example-basic-multiple-limit form-control pb-4 d-flex"
+                        multiple>
+                        <div class="d-flex">
+                            @foreach ($employees as $employee)
+                                <div class="p-2">
+                                    <option class="form-control" value="{{ $employee->id }}">{{ $employee->full_name }}
+                                    </option>
+                                </div>
+                            @endforeach
+                        </div>
+                    </select>
+                    @error('selected_employees')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
@@ -84,57 +98,10 @@
 @endsection
 
 @section('script')
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
     <script>
         $(document).ready(function() {
-            // Khởi tạo Select2 cho trường nhập
-            $('#tags').select2({
-                placeholder: 'Chọn nhân viên',
-                allowClear: true
-            });
-
-            // Xử lý sự kiện khi một nhân viên được chọn
-            $('#tags').on('select2:select', function(e) {
-                var employeeName = e.params.data.text;
-                var employeeButton = '<button type="button" class="btn btn-primary mr-2">' + employeeName +
-                    '</button>';
-
-                $('#selectedEmployees').append(employeeButton);
-
-                // Cập nhật giá trị trong trường nhập
-                var inputVal = $('#tags').val();
-                if (inputVal) {
-                    inputVal += ', ' + employeeName;
-                } else {
-                    inputVal = employeeName;
-                }
-                $('#tags').val(inputVal);
-            });
-
-            // Xử lý sự kiện khi một nhân viên bị xóa
-            $('#tags').on('select2:unselect', function(e) {
-                var employeeName = e.params.data.text;
-
-                $('#selectedEmployees button').each(function() {
-                    if ($(this).text() === employeeName) {
-                        $(this).remove();
-                        return false;
-                    }
-                });
-
-                // Cập nhật giá trị trong trường nhập
-                var inputVal = $('#tags').val();
-                if (inputVal) {
-                    var employeeList = inputVal.split(', ');
-                    var updatedList = employeeList.filter(function(name) {
-                        return name !== employeeName;
-                    });
-                    $('#tags').val(updatedList.join(', '));
-                } else {
-                    $('#tags').val('');
-                }
+            $('.js-example-basic-multiple-limit').select2({
+                maximumSelectionLength: 10
             });
         });
     </script>

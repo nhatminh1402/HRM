@@ -2,12 +2,11 @@
 
 namespace App\Repositories\Project;
 
+use App\Models\Employee;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Project\ProjectRepository;
-use App\Entities\Project\Project;
-use App\Models\Employee;
-use App\Validators\Project\ProjectValidator;
+use App\Models\Project;
 
 /**
  * Class ProjectRepositoryEloquent.
@@ -28,9 +27,19 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         return Project::class;
     }
 
+    public function getAll()
+    {
+        return $this->model->latest('id')->paginate(self::DEFAULT_PER_PAGE);
+    }
+
     public function create(array $data)
     {
-        $employees = request()->input('list-employee');
+        return $this->model->created($data);
+    }
+
+    public function getAllEmployees()
+    {
+        return Employee::all();
     }
 
     /**

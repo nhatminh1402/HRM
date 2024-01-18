@@ -15,18 +15,22 @@ class ProjectSeeder extends Seeder
     {
         $data = [
             [
+                'code_project' => 'MDA123457891',
                 'name' => 'Dự án bán hàng TTTM',
                 'description' => 'Dự án trung tâm Huế '
             ],
             [
+                'code_project' => 'MDA123467891',
                 'name' => 'Dự án quản lý nhân sự',
                 'description' => 'Dự án trung tâm Đà Nẵng'
             ],
             [
+                'code_project' => 'MDA138567891',
                 'name' => 'Dự án bán hàng TTTM',
                 'description' => 'Dự án trung tâm Hồ Chí Minh'
             ],
             [
+                'code_project' => 'MDA2834867491',
                 'name' => 'Dự án bán hàng TTTM',
                 'description' => 'Dự án trung tâm Quảng Nam'
             ]

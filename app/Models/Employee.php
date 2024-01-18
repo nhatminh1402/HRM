@@ -81,9 +81,4 @@ class Employee extends Authenticatable
     {
         return $this->belongsToMany(Project::class, 'employee_has_project', 'employee_id', 'project_id');
     }
-
-    public function getAllEmployees()
-    {
-        return Employee::all();
-    }
 }
