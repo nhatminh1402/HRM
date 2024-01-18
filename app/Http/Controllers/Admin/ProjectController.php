@@ -50,7 +50,7 @@ class ProjectController extends Controller
     public function store(CreateOrUpdateProject $request)
     {
         $data = $request->all();
-        
+
         $this->projectService->createProject($data);
 
         return redirect()->route('admin.project.home')->with('success', 'Create position success!');
