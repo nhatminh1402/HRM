@@ -27,9 +27,6 @@ class ProjectController extends Controller
         $projects = $this->projectService->getAll();
 
         $employees = $this->projectService->getAllEmployees();
-        // if ($request->input('key')) {
-        //    $projects = $this->projectService->searchProject($request->key('key'));
-        // }
 
         $pageNumber = $request->query('page');
 
