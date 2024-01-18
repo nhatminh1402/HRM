@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Timesheet extends Model
 {
-    use HasFactory;
+    
     protected $table = 'timesheet';
     protected $fillable = [
         'employee_id'

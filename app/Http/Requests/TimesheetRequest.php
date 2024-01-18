@@ -2,16 +2,17 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\ApiTimeSheet;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\FormRequest;
+
 
 class TimesheetRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
+    use ApiTimeSheet;
     public function authorize(): bool
     {
         return true;
@@ -35,12 +36,8 @@ class TimesheetRequest extends FormRequest
             'employee_id.integer' => 'The employee ID must be an integer.',
         ];
     }
-
-    protected function failedValidation(Validator $validator)
+    public function failedValidation(Validator $validator)
     {
-        $response = new Response([
-            'errors' => $validator->errors(),
-        ], Response::HTTP_UNPROCESSABLE_ENTITY);
-        throw (new ValidationException($validator, $response));
+        $this->failedValidate($validator);
     }
 }

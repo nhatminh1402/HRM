@@ -27,19 +27,19 @@ class TimesheetRepositoryEloquent extends BaseRepository implements TimesheetRep
 
     public function showall()
     {
-        return Timesheet::all();
+        return $this->model->all();
     }
 
     public function gettimesheet($data)
     {
-        return Timesheet::where('employee_id', $data)
+        return $this->model->where('employee_id', $data)
             ->whereDate('created_at', now()->format('Y-m-d'))
             ->first();
     }
 
     public function checkin(array $data)
     {
-        return Timesheet::create($data);
+        return $this->model->create($data);
     }
 
     public function updateOnDay($data)

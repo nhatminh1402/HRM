@@ -39,8 +39,8 @@ class UserUploadImgController extends Controller
         $imageDeleted = $this->userService->deleteImage($imageName);
         if ($imageDeleted) {
             return redirect()->back()->withSuccess('The image has been deleted successfully');
-        } else {
-            return redirect()->back()->withErrors('Cannot find the image to delete');
         }
+        return redirect()->back()->withErrors('Cannot find the image to delete');
+
     }
 }
