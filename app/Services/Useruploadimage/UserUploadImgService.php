@@ -44,8 +44,7 @@ class UserUploadImgService
         if (File::exists($imagePath)) {
             File::delete($imagePath);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

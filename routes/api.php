@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\API\TimesheetController;
 use App\Http\Controllers\API\LocationController;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
