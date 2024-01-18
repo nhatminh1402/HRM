@@ -15,7 +15,6 @@ class ProjectEmployeeSeeder extends Seeder
         foreach ($projects as $project) {
 
             $selectedEmployeeIds = [1,2,3];
-
             $employees = Employee::whereIn('id', $selectedEmployeeIds)->get();
 
             foreach ($employees as $employee) {

@@ -35,6 +35,7 @@ class ProjectSeeder extends Seeder
                 'description' => 'Dự án trung tâm Quảng Nam'
             ]
         ];
+        
         foreach ($data as $item) {
             Project::updateOrCreate(['name' => $item['name']], $item);
         }
