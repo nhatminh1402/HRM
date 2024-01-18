@@ -8,7 +8,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 
-class AccountController extends Controller
+class PasswordController extends Controller
 {
     public function showViewChangePassword()
     {

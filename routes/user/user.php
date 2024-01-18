@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\User\Auth\AccountController;
+use App\Http\Controllers\User\Auth\PasswordController;
 use App\Http\Controllers\User\User\UserController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -58,10 +58,10 @@ Route::get('infors', function () {
 })->name('infors');
 
 //10. Router cho view đổi mật khẩu
-Route::get('change-password', [AccountController::class, 'showViewChangePassword'])->name('view-change-password');
+Route::get('change-password', [PasswordController::class, 'showViewChangePassword'])->name('view-change-password');
 
 //11. Router đổi mật khẩu
-Route::post('change-password', [AccountController::class, 'changePassword'])->name('change-password');
+Route::post('change-password', [PasswordController::class, 'changePassword'])->name('change-password');
 
 //12. Router cho trang hiển thị timesheet
 Route::get('timesheet-user', function () {
