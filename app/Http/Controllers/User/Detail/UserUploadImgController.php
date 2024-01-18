@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User\User;
+namespace App\Http\Controllers\User\Detail;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImagesTrainRequest;
 use App\Services\Employee\EmployeeService;
 use App\Services\Useruploadimage\UserUploadImgService;
-use App\Models\Timesheet;
+
 
 class UserUploadImgController extends Controller
 {

@@ -14,23 +14,10 @@ class TimesheetController extends Controller
     {
         $this->Timesheetservice = $Timesheetservice;
     }
-
-    public function index()
-    {
-        return $this->Timesheetservice->showall();
-    }
-
-
-    public function create()
-    {
-        //
-    }
-
+    
     public function checkin(TimesheetRequest $request)
     {
-
         $timesheet = $this->Timesheetservice->checkin($request->all(), $request->employee_id);
-
         return response()->json(['message' => 'Timesheet created or updated successfully', 'data' => $timesheet], 201);
     }
 }

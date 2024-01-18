@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\User\User\TimesheetController;
-use App\Http\Controllers\User\User\UserUploadImgController;
+use App\Http\Controllers\User\Timesheet\TimesheetController;
+use App\Http\Controllers\User\Detail\UserUploadImgController;
 use App\Http\Controllers\User\Auth\PasswordController;
 use App\Http\Controllers\User\User\UserController;
 use Illuminate\Support\Facades\Route;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\User;
+namespace App\Http\Controllers\User\Timesheet;
 
 use App\Http\Controllers\Controller;
 use App\Services\Timesheet\TimesheetService;

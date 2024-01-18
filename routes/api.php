@@ -21,6 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get("/districts", [LocationController::class, "getDistrictsByProvinceId"]);
 Route::get("/wards", [LocationController::class, "getWardsByDistrcitId"]);
-Route::get('/timesheet',[TimesheetController::class,'index']);
 Route::post('/timesheet',[TimesheetController::class,'checkin']);
 
