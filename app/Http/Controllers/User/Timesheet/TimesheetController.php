@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class TimesheetController extends Controller
 {
     protected $timeSheetService;
+
     public function __construct(TimesheetService $timeSheetService)
     {
         $this->timeSheetService = $timeSheetService;
     }
+    
     public function showtimesheet()
     {
         $idUser = $this->timeSheetService->getIdUser();
