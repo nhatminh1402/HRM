@@ -35,8 +35,8 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </span>
-                <input type="text" name="key" value="{{ request('key') }}" class="form-control" id="topbarInputIconLeft"
-                    placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
+                <input type="text" name="key" value="{{ request('key') }}" class="form-control"
+                    id="topbarInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
             </div>
         </form>
     </div>
@@ -93,7 +93,8 @@
                                         </a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="" class="bg-danger d-inline-block p-2">
+                                        <a href="{{ route('admin.employee.form-edit', $employee->id) }}"
+                                            class="bg-danger d-inline-block p-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                                                 viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                                 <path
