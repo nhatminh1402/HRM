@@ -42,6 +42,21 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         return Employee::all();
     }
 
+    public function edit($id)
+    {
+        return $this->model->find($id);
+    }
+
+    public function update(array $data, $id)
+    {
+        $project = $this->model->find($id);
+
+        if ($project) {
+            # code...
+        }
+    }
+
+
     /**
      * Boot up the repository, pushing criteria
      */

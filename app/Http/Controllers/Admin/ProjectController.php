@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateOrUpdateProject;
+use App\Http\Requests\Admin\CreateOrUpdateProjectRequest;
 use App\Services\Project\ProjectService;
 use Illuminate\Http\Request;
 
@@ -34,17 +35,9 @@ class ProjectController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateOrUpdateProject $request)
+    public function store(CreateOrUpdateProjectRequest $request)
     {
         $data = $request->all();
 

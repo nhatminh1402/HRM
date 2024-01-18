@@ -15,5 +15,9 @@ interface ProjectRepository extends RepositoryInterface
 
     public function create(array $data);
 
+    public function edit($id);
+
+    public function update(array $data, $id);
+
     public function getAllEmployees();
 }
