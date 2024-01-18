@@ -12,7 +12,6 @@ class TimesheetController extends Controller
     public function __construct(TimesheetService $timeSheetService)
     {
         $this->timeSheetService = $timeSheetService;
-
     }
     public function showtimesheet()
     {
