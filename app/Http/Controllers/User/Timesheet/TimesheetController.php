@@ -18,10 +18,6 @@ class TimesheetController extends Controller
     {
         $idUser = $this->timeSheetService->getIdUser();
         $timesheets = $this->timeSheetService->showTimeSheet($idUser);
-        // dd( $timesheets);
         return view('user.pages.time_sheet', compact('timesheets'));
-    }
-
-    
-    
+    }   
 }

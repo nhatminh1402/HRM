@@ -20,7 +20,6 @@ class TimesheetService
 
     public function showall()
     {
-
         return $this->timesheetRepository->showall();
     }
 

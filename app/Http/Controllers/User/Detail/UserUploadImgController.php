@@ -43,7 +43,4 @@ class UserUploadImgController extends Controller
             return redirect()->back()->withErrors('Cannot find the image to delete');
         }
     }
-    
-
-
 }

@@ -43,6 +43,4 @@ class TimesheetRequest extends FormRequest
         ], Response::HTTP_UNPROCESSABLE_ENTITY);
         throw (new ValidationException($validator, $response));
     }
-
-
 }
