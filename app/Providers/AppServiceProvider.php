@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Department;
+use App\Repositories\Timesheet\TimesheetRepository;
+use App\Repositories\Timesheet\TimesheetRepositoryEloquent;
 use App\Repositories\Deparment\DepartmentRepository;
 use App\Repositories\Deparment\DepartmentRepositoryEloquent;
 use App\Repositories\Discipline\DisciplineRepository;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(TimesheetRepository::class,TimesheetRepositoryEloquent::class);
         $this->app->bind(EmployeeRepository::class, EmployeeRepositoryEloquent::class);
         $this->app->bind(PositionRepository::class, PositionRepositoryEloquent::class);
         $this->app->bind(DepartmentRepository::class, DepartmentRepositoryEloquent::class);

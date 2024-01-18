@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\User\Timesheet\TimesheetController;
+use App\Http\Controllers\User\Detail\UserUploadImgController;
 use App\Http\Controllers\User\Auth\PasswordController;
 use App\Http\Controllers\User\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +22,9 @@ Route::get('home-page', function () {
 })->name('home');
 
 // 2. Router cho trang xem thông tin chi tiết nhân viên
-Route::get('employee-infor', [UserController::class, 'getEmployeeInfor'])->name('employee-info');
+Route::get("employee-infor",[UserUploadImgController::class,'getEmployeeInfor'])->name('employee-info');
+Route::post('employee-infor/upload-Image',[UserUploadImgController::class,'imageUpload'])->name('uploadImage');
+Route::get('employee-infor/delete-Image/{imageName}',[UserUploadImgController::class,'deleteImage'])->name('deleteImage');
 
 // 3. Router cho trang xem các phòng ban
 Route::get('departments', function () {
@@ -64,6 +68,5 @@ Route::get('change-password', [PasswordController::class, 'showViewChangePasswor
 Route::post('change-password', [PasswordController::class, 'changePassword'])->name('change-password');
 
 //12. Router cho trang hiển thị timesheet
-Route::get('timesheet-user', function () {
-    return view('user.pages.time_sheet');
-})->name('timesheet-user');
+Route::get("timesheet-user", [TimesheetController::class,'showtimesheet'])->name("timesheet-user");
+
