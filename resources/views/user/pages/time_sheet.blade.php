@@ -56,109 +56,31 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (!empty($timesheets))
+                                    
+                               @foreach ( $timesheets as $ket=>$item )
                                 <tr>
                                     <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">MNV2064</h6>
+                                        <h6 style="margin-left: 20px" class="mb-0">{{ $item->employee->code_employee}}</h6>
                                     </td>
                                     <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">Lê Bá Nhật Minh</h6>
+                                        <h6 style="margin-left: 20px" class="mb-0">{{ $item->employee->full_name}}</h6>
                                     </td>
                                     <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">12/02/2022</h6>
+                                        <h6 style="margin-left: 20px" class="mb-0">{{ $item->created_at->format('d/m/Y') }}</h6>
                                     </td>
                                     <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8:30</h6>
+                                        <h6 style="margin-left: 20px" class="mb-0">{{ $item->created_at->format('H:i') }}</h6>
                                     </td>
                                     <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">17:30</h6>
+                                        <h6 style="margin-left: 20px" class="mb-0">{{ $item->updated_at->format('H:i') }}</h6>
                                     </td>
                                     <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8h</h6>
+                                        <h6 style="margin-left: 20px" class="mb-0">{{ $item->workingtime }}</h6>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">MNV2064</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">Lê Bá Nhật Minh</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">12/02/2022</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">17:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8h</h6>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">MNV2064</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">Lê Bá Nhật Minh</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">12/02/2022</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">17:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8h</h6>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">MNV2064</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">Lê Bá Nhật Minh</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">12/02/2022</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">17:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8h</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">MNV2064</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">Lê Bá Nhật Minh</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">12/02/2022</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">17:30</h6>
-                                    </td>
-                                    <td class="text-center">
-                                        <h6 style="margin-left: 20px" class="mb-0">8h</h6>
-                                    </td>
-                                </tr>
+                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

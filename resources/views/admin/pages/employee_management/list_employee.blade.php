@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', 'Danh sách nhân viên')
 
 @section('css')
 @endsection
@@ -64,7 +65,7 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $employee->code_employee }}</td>
                                     <td class='text-center'>
-                                        <img class="image image-md" alt="Image placeholder" src="{{ $employee->image }}">
+                                        <img class="image image-md" alt="Image placeholder" src="/uploads/{{$employee->image }}">
                                     </td>
                                     <td class='text-center'>{{ $employee->full_name }}</td>
                                     <td class='text-center'>
