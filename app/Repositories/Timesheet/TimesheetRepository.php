@@ -16,4 +16,7 @@ interface TimesheetRepository extends RepositoryInterface
     public function gettimesheet($data);
     public function checkin(array $data);
     public function updateOnDay($data);
+    public function showTimesheet($id);
+
+
 }

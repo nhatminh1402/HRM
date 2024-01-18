@@ -43,11 +43,7 @@ class UserUploadImgController extends Controller
             return redirect()->back()->withErrors('Cannot find the image to delete');
         }
     }
+    
+    
 
-    public function showtimesheet()
-    {
-        $timesheets = Timesheet::where('employee_id', $this->userService->getIdUser())->get();
-        // dd($timesheets);
-        return view('user.pages.time_sheet', compact('timesheets'));
-    }
 }

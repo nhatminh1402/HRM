@@ -52,7 +52,7 @@ class Employee extends Authenticatable
     {
         return $this->belongsTo(Department::class, 'department_id', 'id');
     }
-    
+
     public function position()
     {
         return $this->belongsTo(Position::class, 'position_id', 'id');
@@ -70,5 +70,9 @@ class Employee extends Authenticatable
     public function discipline(): BelongsToMany
     {
         return $this->belongsToMany(Discipline::class);
+    }
+    public function timeSheet()
+    {
+        return $this->hasMany(TimeSheet::class,'employee_id','id');
     }
 }

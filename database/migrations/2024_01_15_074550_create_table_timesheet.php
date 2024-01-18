@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_timesheet', function (Blueprint $table) {
+        Schema::create('timesheet', function (Blueprint $table) {
             $table->id();
-            $table->integer('employee_id');
+            $table->unsignedBigInteger("employee_id")->nullable(); 
+            $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();
+
         });
+
+        
     }
 
     /**

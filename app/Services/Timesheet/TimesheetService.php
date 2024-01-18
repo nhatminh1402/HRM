@@ -3,6 +3,7 @@
 namespace App\Services\Timesheet;
 
 use App\Repositories\Timesheet\TimesheetRepository;
+use Illuminate\Support\Facades\Auth;
 
 class TimesheetService
 {
@@ -10,6 +11,11 @@ class TimesheetService
     public function __construct(TimesheetRepository $timesheetRepository)
     {
         $this->timesheetRepository = $timesheetRepository;
+    }
+
+    public function getIdUser()
+    {
+        return Auth::guard('employee')->user()->id;
     }
 
     public function showall()
@@ -27,5 +33,10 @@ class TimesheetService
             return $this->timesheetRepository->checkin($data);
         }
         return $timesheet;
+    }
+
+    public function showTimeSheet($id)
+    {
+        return $this->timesheetRepository->showTimesheet($id);
     }
 }

@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Timesheet extends Model
 {
     use HasFactory;
-    protected $table = 'table_timesheet';
+    protected $table = 'timesheet';
     protected $fillable = [
         'employee_id'
     ];
+    function employee()
+    {
+        return $this->belongsTo(Employee::class,'employee_id','id');
+    }
 }

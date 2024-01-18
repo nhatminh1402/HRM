@@ -6,8 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Timesheet\TimesheetRepository;
 use App\Models\Timesheet;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+
 
 /**
  * Class TimesheetRepositoryEloquent.
@@ -39,7 +38,6 @@ class TimesheetRepositoryEloquent extends BaseRepository implements TimesheetRep
     }
 
     public function checkin(array $data)
-
     {
         return Timesheet::create($data);
     }
@@ -49,7 +47,11 @@ class TimesheetRepositoryEloquent extends BaseRepository implements TimesheetRep
         return $this->gettimesheet($data)->touch();
     }
 
-
+    public function showTimesheet($id)
+    {  
+        return $this->model->with('employee')->where('employee_id', $id)->selectRaw('*, timediff(updated_at, created_at) as workingtime')->get();
+    }
+    
     /**
      * Boot up the repository, pushing criteria
      */
