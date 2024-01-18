@@ -3,6 +3,7 @@
 namespace App\Services\Project;
 
 use App\Helpers;
+use App\Models\Employee;
 use App\Models\Project;
 use App\Repositories\Project\ProjectRepository;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,6 @@ class ProjectService
 
     public function createProject(array $data)
     {
-
         $dataHtml = Helpers::stripHtmlTags($data);
 
         $prefix = 'MDA';
@@ -47,20 +47,14 @@ class ProjectService
             $dataHtml['code_project'] = $this->getProjectCode($prefix);
         }
 
-        $project = new Project();
+        $project = Project::create($dataHtml);
 
-        $project->fill($dataHtml);
+        $employeeIds = $data['selected_employees'];
+        
+        $employees = Employee::whereIn('id', $employeeIds)->get();
 
-        $project->save();
+        $project->employees()->attach($employees);
 
-        foreach ($data['selected_employees'] as $value) {
-            DB::table('employee_has_project')->insert(
-                [
-                    'employee_id' => $value,
-                    'project_id' => $project->id
-                ]
-            );
-        }
         return $project;
     }
 }
