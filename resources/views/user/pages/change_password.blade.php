@@ -21,21 +21,43 @@
                 <div class="card mb-4">
                     <div class="card-header">CẬP NHẬT MẬT KHẨU</div>
                     <div class="card-body">
-                        <form>
+                        <form action="{{ route('user.change-password') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label class="small mb-1">Mật khẩu hiện tại</label>
-                                <input class="form-control" type="passowrd">
+                                <input name="current_password"
+                                    class="form-control {{ $errors->has('current_password') ? 'is-invalid' : '' }}"
+                                    type="password">
+                                @error('current_password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1">Mật khẩu mới</label>
-                                <input class="form-control" type="passowrd">
+                                <input name="new_password"
+                                    class="form-control {{ $errors->has('new_password') ? 'is-invalid' : '' }}"
+                                    type="password">
+                                @error('new_password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1">Xác nhận mật khẩu</label>
-                                <input class="form-control" type="passowrd">
+                                <input name="confirm_password"
+                                    class="form-control {{ $errors->has('confirm_password') ? 'is-invalid' : '' }}"
+                                    type="password">
+                                @error('confirm_password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save changes</button>
+                            <button class="btn btn-primary" type="submit">Save changes</button>
                         </form>
                     </div>
                 </div>
