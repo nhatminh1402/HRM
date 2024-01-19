@@ -16,6 +16,8 @@ use App\Repositories\Location\Ward\WardRepository;
 use App\Repositories\Location\Ward\WardRepositoryEloquent;
 use App\Repositories\Position\PositionRepository;
 use App\Repositories\Position\PositionRepositoryEloquent;
+use App\Repositories\Project\ProjectRepository;
+use App\Repositories\Project\ProjectRepositoryEloquent;
 use App\Repositories\Reward\RewardRepository;
 use App\Repositories\Reward\RewardRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(WardRepository::class, WardRepositoryEloquent::class);
         $this->app->bind(RewardRepository::class, RewardRepositoryEloquent::class);
         $this->app->bind(DisciplineRepository::class, DisciplineRepositoryEloquent::class);
+        $this->app->bind(ProjectRepository::class, ProjectRepositoryEloquent::class);
     }
 
     /**

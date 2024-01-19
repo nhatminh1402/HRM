@@ -21,6 +21,7 @@ class RoleSeeder extends Seeder
                 'name' => 'User',
             ],
         ];
+        
         foreach ($data as $item) {
             Role::updateOrCreate(['name' => $item['name']], $item);
         }
