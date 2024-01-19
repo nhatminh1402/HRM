@@ -73,6 +73,17 @@ class Employee extends Authenticatable
     {
         return $this->belongsToMany(Discipline::class);
     }
+
+    /**
+     * The projects that belong to the Employee
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'employee_has_project', 'employee_id', 'project_id');
+    }
+    
     public function timeSheet()
     {
         return $this->hasMany(TimeSheet::class, 'employee_id', 'id');

@@ -8,6 +8,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Validators\EmployeeRepository\EmployeeValidator;
+use Illuminate\Http\Response;
 
 /**
  * Class EmployeeRepositoryEloquent.
@@ -93,5 +94,15 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function getAllEmployee()
+    {
+        $this->model->all();
+    }
+
+    public function getByIds(array $employeeIds)
+    {
+        return $this->model->whereIn('id', $employeeIds)->get();
     }
 }

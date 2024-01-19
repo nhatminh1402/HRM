@@ -25,16 +25,6 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         return Position::class;
     }
 
-    public function getAll()
-    {
-        return $this->model->latest('id')->paginate(self::DEFAULT_PER_PAGE);
-    }
-
-    public function all($columns = ['*'])
-    {
-        return $this->model->all($columns);
-    }
-
     public function create(array $data)
     {
         return $this->model->created($data);
@@ -48,29 +38,34 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     public function update(array $data, $id)
     {
         $position = $this->model->find($id);
-
         if (!$position) {
             throw new \Exception("Không tìm thấy chức vụ!");
         }
 
         $position->fill($data);
-
         $position->save();
-
         return $position;
+    }
+
+    public function getAll()
+    {
+        return $this->model->latest('id')->paginate(self::DEFAULT_PER_PAGE);
+    }
+
+    public function all($columns = ['*'])
+    {
+        return $this->model->all($columns);
     }
 
     public function delete($id)
     {
         try {
             $position = $this->model->find($id);
-
             if (!$position) {
                 throw new \Exception("Không tìm thấy chức vụ!");
             }
 
             $position->delete($id);
-
         } catch (\Throwable $th) {
             throw new \Exception("Đã xảy ra lỗi, vui lòng thử lại !");
         }
