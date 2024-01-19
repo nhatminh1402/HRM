@@ -43,7 +43,7 @@
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
                     <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ strip_tags(old('description')) }}</textarea>
                 </div>
-                <button class="btn btn-success">
+                <button class="btn btn-success text-white">
                     <svg class="mb-1 me-2" xmlns="http://www.w3.org/2000/svg" height="16" width="14"
                         viewBox="0 0 448 512">
                         <path

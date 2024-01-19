@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Project;
 
-use App\Models\Employee;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Project\ProjectRepository;
@@ -32,27 +31,54 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         return $this->model->latest('id')->paginate(self::DEFAULT_PER_PAGE);
     }
 
-    public function create(array $data)
-    {
-        return $this->model->created($data);
-    }
-
-    public function getAllEmployees()
-    {
-        return Employee::all();
-    }
-
     public function update(array $data, $id)
     {
         $project = $this->model->find($id);
 
-        if ($project) {
+        if (!$project) {
             return response()->json(['message' => 'Không tìm thấy dự án'], Response::HTTP_NOT_FOUND);
         }
 
         $project->fill($data);
         $project->save();
         return $project;
+    }
+
+    public function edit($id)
+    {
+        return $this->model->with('employees')->find($id);
+    }
+
+    public function delete($id)
+    {
+        try {
+            $project = $this->model->find($id);
+
+            if (!$project) {
+                return response()->json(['message' => 'Không tìm thấy dự án!'], Response::HTTP_NOT_FOUND);
+            }
+
+            $project->removeAllEmployee();
+
+            if (!$project->delete()) {
+                return response()->json(['message' => 'Lỗi khi xóa dự án!'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return response()->json(['message' => 'Xóa dự án thành công!'], Response::HTTP_OK);
+
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại!'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function search($key)
+    {
+        return $this->model
+            ->searchByName($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByDescription($key);
+            })
+            ->paginate(self::DEFAULT_PER_PAGE);
     }
 
     /**

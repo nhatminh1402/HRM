@@ -11,14 +11,17 @@ use Illuminate\Http\Request;
 class PositionService
 {
     protected $positionRepository;
-
     public function __construct(PositionRepository $positionRepository)
     {
         $this->positionRepository = $positionRepository;
     }
 
-    public function getAll()
+    public function all($column = ['*'])
     {
+        return $this->positionRepository->all($column = ['*']);
+    }
+
+    public function getAll() {
         return $this->positionRepository->getAll();
     }
 

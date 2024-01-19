@@ -27,4 +27,24 @@ class Project extends Model
     {
         return $this->belongsToMany(Employee::class, 'employee_has_project', 'project_id', 'employee_id');
     }
+
+    public function addEmployee(array $employeeIds)
+    {
+        return $this->employees()->sync($employeeIds);
+    }
+
+    public function removeAllEmployee()
+    {
+        return $this->employees()->detach();
+    }
+
+    public function scopeSearchByName(mixed $query, string $key)
+    {
+        return $key ? $query->where('name', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+    }
+
+    public function scopeSearchByDescription(mixed $query, string $key)
+    {
+        return $key ? $query->where('description', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+    }
 }

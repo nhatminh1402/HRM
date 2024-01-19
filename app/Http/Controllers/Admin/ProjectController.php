@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     protected $projectService;
-
     public function __construct(ProjectService $projectService)
     {
         $this->projectService = $projectService;
@@ -23,7 +22,12 @@ class ProjectController extends Controller
         $prefix = 'MDA';
         $projectCode = $this->projectService->getProjectCode($prefix);
         $projects = $this->projectService->getAll();
-        $employees = $this->projectService->getAllEmployees();
+        $employees = $this->projectService->getAllEmployee();
+
+        if ($request->input('key')) {
+            $projects = $this->projectService->searchProject($request->input('key'));
+        }
+
         $pageNumber = $request->query('page');
         return view('admin.pages.project.index', compact('projectCode', 'employees', 'projects', 'pageNumber'));
     }
@@ -45,7 +49,9 @@ class ProjectController extends Controller
     {
         $project = $this->projectService->edit($id);
         $pageNumber = request('page');
-        return view('admin.pages.project.edit_project', compact('project', 'pageNumber'));
+        $selectedEmployees = $project->employees->pluck('id')->toArray();
+        $employees = $this->projectService->getAllEmployee();
+        return view('admin.pages.project.edit_project', compact('project', 'pageNumber', 'selectedEmployees', 'employees'));
     }
 
     /**
@@ -57,12 +63,21 @@ class ProjectController extends Controller
             $data = $request->all();
             $project = $this->projectService->update($data, $id);
             $pageNumber = $request->input('page');
-            return redirect()->route('admin.project.home', ['pahe' => $pageNumber])
+            return redirect()->route('admin.project.home', ['page' => $pageNumber])
                 ->with('success', 'Cập nhật dự án thành công !')
                 ->with('project', $project);
         } catch (\Exception $e) {
             return redirect()->back()
             ->with('error', 'Lỗi khi cập nhật dự án !' . $e->getMessage());
         }
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $this->projectService->delete($id);
+        return redirect()->back()->with('success', 'Xóa dự án thành công!');
     }
 }

@@ -12,7 +12,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface ProjectRepository extends RepositoryInterface
 {
     public function getAll();
-    public function create(array $data);
     public function update(array $data, $id);
-    public function getAllEmployees();
+    public function search($key);
 }

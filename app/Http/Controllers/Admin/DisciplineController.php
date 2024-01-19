@@ -24,6 +24,7 @@ class DisciplineController extends Controller
         $prefix = 'MKL';
         $disciplineCode = $this->disciplineService->getDisciplineCode($prefix);
         $disciplines = $this->disciplineService->getAll();
+
         if ($request->input('key')) {
             $disciplines = $this->disciplineService->searchDiscipline($request->input('key'));
         }

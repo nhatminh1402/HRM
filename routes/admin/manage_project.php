@@ -13,4 +13,8 @@ Route::prefix('/project')->name('project.')->group(function () {
     // Sửa chức dự án
     Route::get('/edit-project/{id}', [ProjectController::class, 'edit'])->name('edit-project');
     Route::put('/update/{id}', [ProjectController::class, 'update'])->name('update');
+    // Xóa dự án
+    Route::delete('/project/{id}', [ProjectController::class, 'destroy'])->name('destroy');
+    //Tìm kiếm dự án
+    Route::get('/search', [ProjectController::class, 'index'])->name('search');
 });

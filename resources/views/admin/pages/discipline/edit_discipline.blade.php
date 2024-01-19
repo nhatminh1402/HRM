@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ (old('description', $discipline->description)) }}</textarea>
+                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ strip_tags(old('description', $discipline->description)) }}</textarea>
                 </div>
                 <input type="hidden" name="page" value="{{ $pageNumber }}">
                 <button class="btn btn-success">Lưu lại</button>
