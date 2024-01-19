@@ -17,13 +17,14 @@
 @endsection
 
 @section('content')
-    <h2 class="mb-4 pb-2 border-bottom text-primary">Thêm mới nhân viên</h2>
+    <h2 class="mb-4 pb-2 border-bottom text-primary">CẬP NHẬT THÔNG TIN</h2>
     <div id="form-employee">
         @csrf
         <div class="container-fluid">
             <div class="container-xl px-4 mt-4">
                 <div class="row">
                     <div class="col-xl-4">
+                        <input name="employeeID" type="text" value="{{ $employee->id }}" hidden>
                         <!-- Profile picture card-->
                         <div class="card">
                             <div class="card-header">ẢNH ĐẠI DIỆN</div>
@@ -154,7 +155,7 @@
                                                     {{ $position->name }} </option>
                                             @endforeach
                                         </select>
-                                        <div class="err-area"></div>
+
                                     </div>
                                 </div>
                                 <!-- Form Row-->
@@ -163,15 +164,17 @@
                                         <label class="small mb-1">TRẠNG THÁI HOẠT ĐỘNG</label>
                                         <div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="0"
-                                                    {{ $employee->status == 1 ? 'checked' : '' }}>
+                                                <input name="status" class="form-check-input" type="radio"
+                                                    value="1" {{ $employee->status == 1 ? 'checked' : '' }}>
                                                 <label class="form-check-label">Đang làm
                                                     việc</label>
+                                                <div class="err-area"></div>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="1"
-                                                    {{ $employee->status == 0 ? 'checked' : '' }}>
+                                                <input name="status" class="form-check-input" type="radio"
+                                                    value="0" {{ $employee->status == 0 ? 'checked' : '' }}>
                                                 <label class="form-check-label">Đã nghỉ việc</label>
+                                                <div class="err-area"></div>
                                             </div>
                                         </div>
                                         <div class="err-area"></div>
@@ -216,13 +219,13 @@
                                             <div class="err-area"></div>
                                         </div>
                                     </div>
+                                    <!-- Save changes button-->
+                                    <div class="col-md-3 mt-3">
+                                        <button id="btn-submit" type="button" class="btn btn-primary"
+                                            type="button">CẬP NHẬT
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Save changes button-->
-                            <div class="col-md-3">
-                                <button id="btn-submit" type="button" class="btn btn-primary" type="button">THÊM
-                                    MỚI
-                                </button>
                             </div>
                         </div>
                     </div>

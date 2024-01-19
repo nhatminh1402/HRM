@@ -62,6 +62,6 @@ class EmployeeService
 
     public function update(array $attributes, $id)
     {
-        $this->employeeRepository->update($attributes, $id);
+        return $this->employeeRepository->update($attributes, $id);
     }
 }

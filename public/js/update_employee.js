@@ -6,6 +6,9 @@ let form_data = new FormData()
 // Validate dữ liệu phía front-end trước khi submit
 let isError = false
 
+// Biến kiểm tra xem người dùng có thay đổi ảnh hay không
+let imageChanged = false;
+
 // Action hiển thị cửa sổ chọn file
 $("#upload-img-area").on("click", function () {
     $("#file-field").click()
@@ -14,6 +17,7 @@ $("#upload-img-area").on("click", function () {
 $(document).ready(function () {
     $('.select-extension').select2();
 });
+
 
 // Validate image upload
 $(function () {
@@ -47,6 +51,8 @@ $(function () {
 
             // Thêm ảnh vào formdata và render
             form_data.append("image_file", fileUpload)
+            // Cập nhật lại trạng thái người dùng có chọn thay đổi file
+            imageChanged = true
             $("#upload-img-area").html(img)
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -57,10 +63,13 @@ $(function () {
     })
 })
 
-
 function sendRequestToSaveEmployee() {
+    // Lấy ra employee ID cần chỉnh sửa thông tin
+    let url = window.location.href
+    let elementURL = url.split('/')
+    let employee_id = elementURL[elementURL.length - 1]
     $.ajax({
-        url: "/admin/employees/update",
+        url: "/admin/employees/update/" + employee_id,
         processData: false,
         contentType: false,
         method: "post",
@@ -69,13 +78,10 @@ function sendRequestToSaveEmployee() {
         success: function (response) {
             Swal.fire({
                 icon: 'success',
-                title: 'Thêm mới thành công',
+                title: 'CẬP NHẬT THÔNG TIN THÀNH CÔNG',
+                timer: 1000,
                 showConfirmButton: false
             });
-
-            setTimeout(function () {
-                location.replace("/admin/employees/lists");
-            }, 3000);
         }, error: function (xhr, status, error) {
             if (xhr.status === 422) {
                 let errorData = xhr.responseJSON.errors;
@@ -101,8 +107,8 @@ $("#btn-submit").on("click", () => {
     $("#form-employee .is-invalid").removeClass("is-invalid")
     $("div.err-area").html('')
     //=======get all input type is text==========
-    //employee code
-    let employee_code = $("#form-employee input[name='employee_code']")
+    //employee id
+    let employee_id = $("#form-employee input[name='employeeID']")
     //full name
     let full_name = $("#form-employee input[name='full_name']")
     //phone number
@@ -115,10 +121,6 @@ $("#btn-submit").on("click", () => {
     let dob = $("#form-employee input[name='dob']")
     // major
     let major = $("#form-employee input[name='major']")
-    //password
-    let password = $("#form-employee input[name='password']")
-    //password
-    let rePassword = $("#form-employee input[name='re-password']")
     //=======get all input type is select==========
     // gender input
     let gender = $("select[name='gender'] option:selected")
@@ -134,14 +136,17 @@ $("#btn-submit").on("click", () => {
     let district_id = $("select#district-select option:selected")
     //ward_id
     let ward_id = $("select#ward-select option:selected")
+    //=======get all input type is check-box==========
+    let status = $("input[type='radio'][name='status']:checked")
+
+    alert(status.val())
 
     // validate input
-    isError = isInputEmptyValue([employee_code, full_name, phone_number, email, identify_number, dob, major, password,
-        rePassword])
+    isError = isInputEmptyValue([employee_id, full_name, phone_number, email, identify_number, dob, major])
     //validate select
     isError = isSelectUnselectValue([province_id, district_id, ward_id])
     //validate img
-    if (!form_data.get("image_file") && !("#file-field").val()) {
+    if (!form_data.get("image_file") && imageChanged == true) {
         isError = true
         Swal.fire({
             icon: "error",
@@ -151,7 +156,7 @@ $("#btn-submit").on("click", () => {
     }
 
     if (isError == false) {
-        form_data.append('code_employee', employee_code.val());
+        form_data.append('employee_id', employee_id.val());
         form_data.append('full_name', full_name.val());
         form_data.append('phone_number', phone_number.val());
         form_data.append('email', email.val());
@@ -165,8 +170,7 @@ $("#btn-submit").on("click", () => {
         form_data.append('province_id', province_id.val());
         form_data.append('district_id', district_id.val());
         form_data.append('ward_id', ward_id.val());
-        form_data.append('password', password.val());
-        form_data.append('re_password', rePassword.val());
+        form_data.append('status', status.val());
         form_data.append('_token', $("input[name='_token']").val());
         //ajax request
         sendRequestToSaveEmployee()

@@ -14,7 +14,7 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,17 +24,16 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $idEmployee = request()->id;
-        dd($this);
+        $employeeId = request()->employee_id;
         return [
-            'image_file' => 'required|image|mimes:jpeg,png,jpg',
+            'image_file' => Rule::when(request()->image_file, 'required|image|mimes:jpeg,png,jpg'),
             'full_name' => 'bail|required',
             'phone_number' => 'bail|required|numeric|digits:10',
             'email' => [
                 'bail',
                 'required',
                 'email',
-                Rule::unique('employee')->ignore($idEmployee, 'id')
+                Rule::unique('employees', 'email')->ignore($employeeId)
 
             ],
             'identify_number' => 'bail|required|numeric|digits:12',
@@ -47,6 +46,7 @@ class UpdateEmployeeRequest extends FormRequest
             'province_id' => 'bail|required|exists:provinces,id',
             'district_id' => 'bail|required|exists:districts,id',
             'ward_id' => 'bail|required|exists:wards,id',
+            'status' => 'bail|required|in:0,1'
         ];
     }
 
@@ -56,6 +56,7 @@ class UpdateEmployeeRequest extends FormRequest
             'full_name.required' => 'Vui lòng nhập họ tên.',
             'phone_number.required' => 'Vui lòng nhập số điện thoại.',
             'phone_number.integer' => 'Số điện thoại không hợp lệ',
+            'phone_number.digits' => 'Định dạng không hợp lệ',
             'email.required' => 'Vui lòng nhập địa chỉ email.',
             'email.email' => 'Địa chỉ email không hợp lệ.',
             'identify_number.required' => 'Vui lòng nhập số CCCD.',

@@ -4,14 +4,18 @@ namespace App\Http\Controllers\Employee;
 
 use App\Enums\DegreesEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UpdateEmployeeRequest;
 use App\Services\Department\DepartmentService;
 use App\Services\Employee\EmployeeService;
 use App\Services\Location\ProvinceService;
 use App\Services\Position\PositionService;
-use Illuminate\Http\Request;
+use App\Traits\ImgProcess;
+use Illuminate\Http\Client\Events\ResponseReceived;
+use Response;
 
 class UpdateEmployeeController extends Controller
 {
+    use ImgProcess;
     protected $employeeService;
     private $provinceService;
     private $positionService;
@@ -40,8 +44,25 @@ class UpdateEmployeeController extends Controller
         return view('admin.pages.employee_management.update_infor', compact('employee', 'listProvince', 'listDegree', 'listPositons', 'listDepartments'));
     }
 
-    public function update(UpdateEmployeeController $request, $id)
+    public function update(UpdateEmployeeRequest $request, $id)
     {
-        $this->employeeService->update($request->all(), $id);
+        $dataEmployee = $request->all();
+
+        if ($request->hasFile('image_file')) {
+            $file_upload = $request->image_file;
+            //rename file
+            $file_name = $this->renameIMG($file_upload);
+            $dataEmployee = array_merge($request->all(), ["image" => $file_name]);
+            //store in local server
+            $this->saveImage($file_upload, "uploads", $file_name);
+            //delete current file
+            $employee = $this->employeeService->getById($id);
+            $imgOldName = $employee->image;
+            $this->deleteImage('uploads', $imgOldName);
+        }
+
+        // update employee infor to db
+        $this->employeeService->update($dataEmployee, $id);
+        return response()->json(null, \Illuminate\Http\Response::HTTP_NO_CONTENT);
     }
 }

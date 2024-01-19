@@ -81,7 +81,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         try {
             $employee = $this->model->findOrFail($id);
-            $employee->update($attributes);
+            return $employee->update($attributes);
         } catch (ModelNotFoundException $exeption) {
             return abort(404);
         }
