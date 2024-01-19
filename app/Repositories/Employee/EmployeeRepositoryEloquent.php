@@ -3,6 +3,7 @@
 namespace App\Repositories\Employee;
 
 use App\Models\Employee;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Employee\EmployeeRepository;
@@ -36,7 +37,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function Jointable()
     {
         return $this->model->with('province', 'district', 'ward', 'department', 'position')->get();
-
     }
 
     public function getById($id)
@@ -70,12 +70,22 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function getEmployeDepartmentNull()
     {
-        return $this->model->where("department_id", null)->get();
+        return $this->model->where('department_id', null)->get();
     }
 
     public function all($columns = ['*'])
     {
         return $this->model->all($columns);
+    }
+
+    public function update(array $attributes, $id)
+    {
+        try {
+            $employee = $this->model->findOrFail($id);
+            return $employee->update($attributes);
+        } catch (ModelNotFoundException $exeption) {
+            return abort(404);
+        }
     }
 
     /**
