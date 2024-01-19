@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
 class Employee extends Authenticatable
 {
     use HasFactory;
@@ -80,5 +81,10 @@ class Employee extends Authenticatable
     public function projects(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'employee_has_project', 'employee_id', 'project_id');
+    }
+    
+    public function timeSheet()
+    {
+        return $this->hasMany(TimeSheet::class,'employee_id','id');
     }
 }
