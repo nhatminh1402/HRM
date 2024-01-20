@@ -106,64 +106,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-xl-12">
-                <div class="card border-0 shadow">
-                    <div class="card-header border-bottom d-flex align-items-center justify-content-between"
-                        style="margin-bottom: 20px">
-                        <div class="col">
-                            <h2 class="fs-5 fw-bold mb-0" style="height: 58px; padding-top: 19px"> Images user
-                            </h2>
-                        </div>
-                        <div id="images-upload-notice" style="display: none" class="alert alert-danger alert-dismissible"
-                            role="alert"></div>
-                    </div>
-                    <div class="card-body">
-                        <div class="col-md-10 mb-3" id="img-list">
-                            @if (count($images) > 0)
-                                <div id="image-preview" style="margin-top: 10px">
-                                    <div class="row">
-                                        @foreach ($images as $img)
-                                            <div class="col-md-2 mb-3">
-                                                <div class="image-container position-relative">
-                                                    <img src="{{ asset('usersimages/' . $idUser . '/' . $img) }}"
-                                                        class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
-                                                    <a href="{{ route('user.deleteImage', ['imageName' => $img]) }}">
-                                                        <span
-                                                            class="close position-absolute top-0 end-0 text-danger">&times;</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('user.uploadImage') }}" method="post" enctype="multipart/form-data"
-                            class="row g-3 needs-validation" novalidate>
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <label for="images">User images selection</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control-plaintext @error('image.*') is-invalid @enderror"
-                                            name="image[]" id="images" accept="" multiple required />
-                                    </div>
-                                    @error('image.*')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <button type="submit"
-                                    class="btn-danger    btn btn-gray-800 mt-2 animate-up-2">Upload</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     @endif
 @endsection
