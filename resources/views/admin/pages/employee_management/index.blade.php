@@ -69,7 +69,7 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $position->code_position }}</td>
                                     <td class='text-center'>{{ $position->name }}</td>
-                                    <td class='text-center'>{{ $position->salary_day }}</td>
+                                    <td class='text-center'>{{ number_format($position->salary_day, 0, ',', ',') . ' ₫' }}</td>
                                     <td class='text-center'>{{ $position->description ?? 'Chưa có mô tả' }}</td>
                                     <td class='text-center'>{{ $position->created_at }}</td>
                                     <td class='text-center'>{{ $position->updated_at }}</td>
