@@ -64,5 +64,4 @@ $(document).ready(function () {
     $('input[name=salary_day]').on('keydown ', function() {
         $('#error_salary').html('');
     });
-
 });

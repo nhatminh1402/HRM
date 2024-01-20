@@ -3,8 +3,8 @@
 @section('title', 'Edit Project')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/edit-project.css') }}">
     <script src="{{ asset('lib/jquery-3.7.1.min') }}"></script>
-    <link rel="stylesheet" href="{{ asset('assets/css/create-project.css') }}">
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
 @endsection

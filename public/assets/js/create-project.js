@@ -65,7 +65,6 @@ $(document).ready(function () {
         $('#error_name').html('');
     });
 
-
     $('#selected_employees').on('change', function() {
         if ($(this).val() && $(this).val().length > 0) {
             $('#error_select').html('');

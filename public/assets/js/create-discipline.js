@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     let editor;
-
     ClassicEditor
         .create(document.querySelector('#description'))
         .then(newEditor => {
