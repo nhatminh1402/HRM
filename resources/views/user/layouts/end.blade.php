@@ -272,7 +272,6 @@
             submitButton.addEventListener('click', function() {
                 myDropzone.processQueue();
             });
-
             this.on("complete", function() {
                 if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
                     var _this = this;
@@ -280,9 +279,7 @@
                 }
                 load_images();
             });
-
         }
-
     };
 
     load_images();
