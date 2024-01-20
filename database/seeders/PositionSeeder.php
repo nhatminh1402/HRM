@@ -34,6 +34,7 @@ class PositionSeeder extends Seeder
                 'salary_day' => '3000000'
             ],
         ];
+        
         foreach ($data as $item) {
             Position::updateOrCreate([
                 'code_position' => $item['code_position'],

@@ -3,10 +3,12 @@
 namespace App\Repositories\Employee;
 
 use App\Models\Employee;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Validators\EmployeeRepository\EmployeeValidator;
+use Illuminate\Http\Response;
 
 /**
  * Class EmployeeRepositoryEloquent.
@@ -35,7 +37,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function Jointable()
     {
         return $this->model->with('province', 'district', 'ward', 'department', 'position')->get();
-
     }
 
     public function getById($id)
@@ -69,7 +70,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function getEmployeDepartmentNull()
     {
-        return $this->model->where("department_id", null)->get();
+        return $this->model->where('department_id', null)->get();
     }
 
     public function all($columns = ['*'])
@@ -77,11 +78,31 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $this->model->all($columns);
     }
 
-    /** 
+    public function update(array $attributes, $id)
+    {
+        try {
+            $employee = $this->model->findOrFail($id);
+            return $employee->update($attributes);
+        } catch (ModelNotFoundException $exeption) {
+            return abort(404);
+        }
+    }
+
+    /**
      * Boot up the repository, pushing criteria
      */
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function getAllEmployee()
+    {
+        $this->model->all();
+    }
+
+    public function getByIds(array $employeeIds)
+    {
+        return $this->model->whereIn('id', $employeeIds)->get();
     }
 }

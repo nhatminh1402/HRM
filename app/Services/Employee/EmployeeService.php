@@ -59,4 +59,9 @@ class EmployeeService
         $employee->department_id = $department_id;
         $employee->save();
     }
+
+    public function update(array $attributes, $id)
+    {
+        return $this->employeeRepository->update($attributes, $id);
+    }
 }
