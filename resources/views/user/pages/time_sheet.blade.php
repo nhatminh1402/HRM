@@ -18,6 +18,40 @@
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
+                    <form form action="{{ route('user.timesheet-user') }}" method="GET">
+                        <div class="row g-2 mt-4">
+                            <div class="col-auto mt-3">
+                                <label class="font-weight-bold" for="month">Tháng:</label>
+                            </div>
+                            <div class="col-auto ">
+                                <select class="form-select" name="month" id="month">
+                                    @for ($m = 1; $m <= 12; $m++)
+                                        <option value="{{ $m }}"
+                                            @if ($selectedMonth == $m) selected @endif>
+                                            {{ DateTime::createFromFormat('!m', $m)->format('F') }}
+                                        </option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="col-auto mt-3">
+                                <label class="font-weight-bold" for="year">Năm:</label>
+
+                            </div>
+                            <div class="col-auto w-10 ">
+                                <select class="form-select" name="year" id="year">
+                                    @for ($y = 2020; $y <= 2030; $y++)
+                                        <option value="{{ $y }}"
+                                            @if ($selectedYear == $y) selected @endif>
+                                            {{ $y }}
+                                        </option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Hiển thị</button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <thead>
@@ -26,28 +60,8 @@
                                         <div class="input-group input-group-outline row">
                                             <div class="col-md-9">
                                             </div>
-                                            <div class="col-md-3">
-                                                <form action="{{ route('user.timesheet-user') }}" method="GET">
-                                                    <label for="month">Month:</label>
-                                                    <select name="month" id="month">
-                                                        @for ($m = 1; $m <= 12; $m++)
-                                                            <option value="{{ $m }}"
-                                                                @if ($selectedMonth == $m) selected @endif>
-                                                                {{ DateTime::createFromFormat('!m', $m)->format('F') }}
-                                                            </option>
-                                                        @endfor
-                                                    </select>
-                                                    <label for="year">Year:</label>
-                                                    <select name="year" id="year">
-                                                        @for ($y = 2020; $y <= 2030; $y++)
-                                                            <option value="{{ $y }}"
-                                                                @if ($selectedYear == $y) selected @endif>
-                                                                {{ $y }}
-                                                            </option>
-                                                        @endfor
-                                                    </select>
-                                                    <button type="submit">Show</button>
-                                                </form>
+                                            <div class="row">
+
                                             </div>
                                         </div>
                                     </th>
