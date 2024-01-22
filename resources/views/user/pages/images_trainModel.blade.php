@@ -12,7 +12,7 @@
 
 <div class="container-fluid">
     <br />
-    <h3>Image Upload in Laravel using Dropzone</h3>
+    <h3>Image Upload For Train Model</h3>
     <br />
 
     <div class="panel panel-default">
