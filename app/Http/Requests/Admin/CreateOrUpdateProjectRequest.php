@@ -11,6 +11,10 @@ class CreateOrUpdateProjectRequest extends FormRequest
      */
     public function rules(): array
     {
+        if (!array_key_exists('selected_employees', request()->all())) {
+            request()->merge(['selected_employees' => []]);
+        }
+
         return [
             'name' => 'required|string|max:255',
             'selected_employees' => 'required',
@@ -26,10 +30,10 @@ class CreateOrUpdateProjectRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Vui lòng nhập tên chức vụ.',
-            'name.string' => 'Tên chức vụ phải là một chuỗi.',
+            'name.required' => 'Vui lòng nhập tên dự án.',
+            'name.string' => 'Tên dự án phải là một chuỗi.',
             'selected_employees' => 'Vui lòng nhập nhân viên',
-            'name.max' => 'Tên chức vụ không được vượt quá :max ký tự.',
+            'name.max' => 'Tên dự án không được vượt quá :max ký tự.',
             'description.string' => 'Mô tả phải là một chuỗi.',
         ];
     }

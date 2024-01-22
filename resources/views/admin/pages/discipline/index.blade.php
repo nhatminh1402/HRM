@@ -135,7 +135,7 @@
                                 @enderror
                             </div>
                             <div class="col-12 mb-3">
-                                <label for="name" class="form-label mb-2 font-weight-bold">Tên kỷ luật <span
+                                <label for="name" class="form-label mb-2 font-weight-bold">Tên kỷ luật<span
                                         class="text-danger">*</span>:</label>
                                 <input type="text" name="name" class="form-control" id="name"
                                     value="{{ old('name') }}">

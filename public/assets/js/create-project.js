@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.js-example-basic-multiple-limit').select2({
+    $('.select-employees').select2({
         maximumSelectionLength: 10
     });
 

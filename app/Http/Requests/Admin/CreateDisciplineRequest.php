@@ -35,9 +35,9 @@ class CreateDisciplineRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Vui lòng nhập tên chức vụ.',
-            'name.string' => 'Tên chức vụ phải là một chuỗi.',
-            'name.max' => 'Tên chức vụ không được vượt quá :max ký tự.',
+            'name.required' => 'Vui lòng nhập tên loại kỷ luật.',
+            'name.string' => 'Tên kỷ luật phải là một chuỗi.',
+            'name.max' => 'Tên kỷ luật không được vượt quá :max ký tự.',
             'description.string' => 'Mô tả phải là một chuỗi.',
         ];
     }
