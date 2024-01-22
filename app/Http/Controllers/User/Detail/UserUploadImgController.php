@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\User\Detail;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ImagesTrainRequest;
 use App\Services\Employee\EmployeeService;
 use App\Services\Useruploadimage\UserUploadImgService;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class UserUploadImgController extends Controller
 {
@@ -17,30 +18,29 @@ class UserUploadImgController extends Controller
         $this->employeeService = $employeeService;
         $this->userService = $userService;
     }
-    public function getEmployeeInfor()
+    
+    public function index()
     {
-        $idUser = $this->userService->getIdUser();
-        $user = $this->employeeService->getById($idUser);
-        $images = $this->userService->getImages();
-        return view('user.pages.employee_Infor', ['images' => $images], compact('user', 'images', 'idUser'));
+        return view('user.pages.images_trainModel');
     }
 
-    public function imageUpload(ImagesTrainRequest $request)
+    public function upload(Request $request)
     {
-        if (!$request->hasFile('image')) {
-            return redirect()->back()->withErrors('Error');
-        }
-        $imageNames = $this->userService->uploadImages($request->image);
-        return redirect()->back()->withSuccess('You have successfully uploaded images')->with('image', $imageNames);
+        $file = $request->file('file');
+        $response = $this->userService->uploadImage($file);
+        return response()->json($response);
     }
 
-    public function deleteImage($imageName)
+    public function fetch()
     {
-        $imageDeleted = $this->userService->deleteImage($imageName);
-        if ($imageDeleted) {
-            return redirect()->back()->withSuccess('The image has been deleted successfully');
-        }
-        return redirect()->back()->withErrors('Cannot find the image to delete');
+        $response = $this->userService->fetchImages();
+        return response()->json($response);
+    }
 
+    public function delete(Request $request)
+    {
+        $imageName = $request->get('name');
+        $response = $this->userService->deleteImage($imageName);
+        return response()->json($response);
     }
 }

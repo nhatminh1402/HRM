@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Timesheet;
 
 use App\Http\Controllers\Controller;
 use App\Services\Timesheet\TimesheetService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TimesheetController extends Controller
@@ -14,11 +15,13 @@ class TimesheetController extends Controller
     {
         $this->timeSheetService = $timeSheetService;
     }
-    
-    public function showtimesheet()
+
+    public function showTimesheet(Request $request)
     {
-        $idUser = $this->timeSheetService->getIdUser();
-        $timesheets = $this->timeSheetService->showTimeSheet($idUser);
-        return view('user.pages.time_sheet', compact('timesheets'));
-    }   
+        $selectedMonth = $request->input('month') ?? Carbon::now()->month;
+        $selectedYear = $request->input('year') ?? Carbon::now()->year;
+        $dates = $this->timeSheetService->showTimeSheet( $selectedYear,$selectedMonth);
+        return view('user.pages.time_sheet', compact('dates', 'selectedMonth', 'selectedYear'));
+    }
 }
+

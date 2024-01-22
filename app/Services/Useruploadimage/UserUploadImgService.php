@@ -2,6 +2,7 @@
 namespace App\Services\Useruploadimage;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class UserUploadImgService
@@ -10,41 +11,37 @@ class UserUploadImgService
     {
         return Auth::guard('employee')->user()->id;
     }
-    public function getImages()
+
+    public function uploadImage($file)
     {
-        $imageDirectory = public_path('usersimages/' . $this->getIdUser());
-        $images = [];
-        if (File::exists($imageDirectory)) {
-            $imageFiles = File::files($imageDirectory);
-            foreach ($imageFiles as $file) {
-                $extension = strtolower($file->getExtension());
-                if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'svg'])) {
-                    $images[] = $file->getFilename();
-                }
-            }
+        if (!$file) {
+            return ['status' => 'error', 'message' => 'No images uploaded'];
         }
-        return $images;
+        $imageName = Str::random(3) . '_' . $file->getClientOriginalName();
+        $file->move(public_path('usersimages/' . $this->getIdUser()), $imageName);
+        return ['status' => 'success', 'message' => 'Image uploaded successfully'];
     }
 
-    public function uploadImages($imageFiles)
+    public function fetchImages()
     {
-        $imageNames = [];
-        foreach ($imageFiles as $value) {
-            $imageName = $value->getClientOriginalName();
-            $value->move(public_path('usersimages/' . $this->getIdUser()), $imageName);
+        $images = File::allFiles(public_path('usersimages/' . $this->getIdUser()));
+        $imageData = [];
 
-            $imageNames[] = $imageName;
+        foreach ($images as $image) {
+            $imageData[] = [
+                'filename' => $image->getFilename(),
+                'url' => asset('usersimages/' . $this->getIdUser() . '/' . $image->getFilename())
+            ];
         }
-        return $imageNames;
+        return ['status' => 'success', 'images' => $imageData];
     }
 
     public function deleteImage($imageName)
     {
-        $imagePath = public_path('usersimages/' . $this->getIdUser() . '/' . $imageName);
-        if (File::exists($imagePath)) {
-            File::delete($imagePath);
-            return true;
+        if ($imageName) {
+            File::delete(public_path('usersimages/' . $this->getIdUser() . '/' . $imageName));
         }
-        return false;
+        return ['status' => 'success', 'message' => 'Image deleted successfully'];
     }
+
 }

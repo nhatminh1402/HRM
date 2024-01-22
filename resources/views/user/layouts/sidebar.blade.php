@@ -65,7 +65,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">timer</i>
                     </div>
-                    <span class="nav-link-text ms-1">Time-sheet</span>
+                    <span class="nav-link-text ms-1">Bảng chấm công</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -74,6 +74,14 @@
                         <i class="material-icons opacity-10">person</i>
                     </div>
                     <span class="nav-link-text ms-1">Thông tin nhân sự</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white " href=" {{ route('user.images') }} ">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Ảnh nhận dạng</span>
                 </a>
             </li>
             <li class="nav-item">
