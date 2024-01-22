@@ -3,8 +3,9 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateRewardRequest extends FormRequest
+class UpdateRewardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +22,12 @@ class CreateRewardRequest extends FormRequest
      */
     public function rules(): array
     {
+        $rewardId = request()->id;
         return [
-            'name' => 'required|max:255|unique:rewards,name',
-            'description' => 'nullable|max:255',
+            'name' => [
+                'required',
+                Rule::unique('rewards', 'name')->ignore($rewardId)
+            ],
         ];
     }
 
@@ -32,8 +36,6 @@ class CreateRewardRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên khen thưởng!',
             'name.unique' => 'Tên khen thưởng đã tồn tại!',
-            'name.max' => 'Độ dài tối đa không được vượt quá 255 ký tự!',
-            'description.max' => 'Độ dài tối đa không được vượt quá 255 ký tự!',
         ];
     }
 }

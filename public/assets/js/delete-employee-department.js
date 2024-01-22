@@ -1,10 +1,23 @@
 $(document).ready(function () {
+    
 
-    $('.js-example-basic-multiple-limit').select2({
-        maximumSelectionLength: 10
+    function hideSelected(value) {
+        if (value && !value.selected) {
+            return $("<span>" + value.text + "</span>");
+        }
+    }
+
+    $(".js-example-basic-multiple-limit").select2({
+        maximumSelectionLength: 10,
+        allowClear: true,
+        placeholder: {
+            id: "",
+            placeholder: "Leave blank to ...",
+        },
+        templateResult: hideSelected,
     });
 
-    
+
     $(".btn-delete").on("click", function (event) {
         event.preventDefault();
         var deleteUrl = $(this).attr("href");
@@ -25,12 +38,11 @@ $(document).ready(function () {
     });
 
     let editor;
-        ClassicEditor.create(document.querySelector("#description"))
-            .then((newEditor) => {
-                editor = newEditor;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
+    ClassicEditor.create(document.querySelector("#description"))
+        .then((newEditor) => {
+            editor = newEditor;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 });

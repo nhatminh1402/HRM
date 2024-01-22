@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin\ManageReward;
 use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateRewardRequest;
+use App\Http\Requests\Admin\UpdateRewardRequest;
 use App\Models\Reward;
 use App\Services\Reward\RewardService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ManageRewardController extends Controller
 {
@@ -32,8 +34,7 @@ class ManageRewardController extends Controller
     {
         $data = $request->all();
         $this->rewardService->create($data);
-        toastr()->success('THÊM MỚI THÀNH CÔNG');
-        return redirect()->route('admin.reward.index');
+        return response()->json([], Response::HTTP_CREATED);
     }
 
     public function delete($id)
@@ -52,7 +53,7 @@ class ManageRewardController extends Controller
         return view('admin.pages.reward.update_reward', compact('reward'));
     }
 
-    public function update(CreateRewardRequest $requets, $id)
+    public function update(UpdateRewardRequest $requets, $id)
     {
         $this->rewardService->update($requets->all(), $id);
         return redirect(session('url_previous') ?? 'admin/reward')->with("success", "CẬP NHẬT THÀNH CÔNG!");

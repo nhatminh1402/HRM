@@ -34,11 +34,12 @@ class DepartmentController extends Controller
     public function addDepartment(CreateDepartmentRequest $request)
     {
         $department = $this->departmentService->createDepartment($request->all());
-        $employee_id = $request->id_employee;
-        if (!empty($employee_id)) {
-            $this->employeeeService->setDepartmentId($employee_id, $department->id);
+        $employees_id = $request->id_employee;
+        if (!empty($employees_id)) {
+            foreach ($employees_id as $employee_id) {
+                $this->employeeeService->setDepartmentId($employee_id, $department->id);
+            }
         }
-        return redirect()->back()->with("success", "Tạo phòng ban thành công!");
     }
 
     public function getDetailDepartment($id)
@@ -56,10 +57,11 @@ class DepartmentController extends Controller
     public function updateDepartment(CreateDepartmentRequest $request, $id)
     {
         try {
+
             $data['name'] = $request->name;
             $data['description'] = $request->description;
 
-            $employees_id= $request->id_employee;
+            $employees_id = $request->id_employee;
             if (!empty($employees_id)) {
                 foreach ($employees_id as $employee_id) {
                     $this->employeeeService->setDepartmentId($employee_id, $id);

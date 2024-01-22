@@ -11,31 +11,23 @@
         }
     </style>
 @endsection
+
+@section('page-title', 'CẬP NHẬT KHEN THƯỞNG')
+
+
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <div class="row">
-                    <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
-                        <p style="font-size: 22px; font-weight: bold" class="mb-0 text-center  text-lg-start">QUẢN LÝ LOẠI
-                            KHEN THƯỞNG
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
                 <form action="{{ route('admin.reward.update', $reward->id) }}" method="POST">
                     @csrf
                     <div class="row">
+                        <input type="text" name="id" value="{{ $reward->id }}" hidden>
                         <div class="mb-3">
                             <label class="form-label">MÃ KHEN THƯỞNG</label>
                             <input name="code_reward" type="text"
                                 class="form-control {{ $errors->has('code_reward') ? 'is-invalid' : '' }}"
-                                value="{{ $reward->code_reward }}" readonly>
+                                value="{{ $reward->code_reward }}" disabled>
                             @error('code_reward')
                                 <div class="invalid-feedback"> {{ $message }}</div>
                             @enderror
@@ -69,13 +61,15 @@
 
 @section('script')
     <script src="{{ asset('js/manage_reward.js') }}"></script>
-    @if (session('success'))
-        <script>
-            const listReward = document.getElementById("list-reward");
-            listReward.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+    <script>
+        let editor;
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .then(newEditor => {
+                editor = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
             });
-        </script>
-    @endif
+    </script>
 @endsection
