@@ -50,7 +50,7 @@
             </ul>
         </li>
         {{-- Quản lý phòng ban --}}
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.department.show') }}">
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.department.add') }}">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('CoreUI/vendors/@coreui/icons/svg/free.svg#cil-building') }}"></use>
                 </svg> Quản lý phòng ban</a>

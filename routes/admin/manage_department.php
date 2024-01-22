@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Phòng ban
 Route::prefix('/department')->name('department.')->group(function () {
-    Route::get('/show_department', [DepartmentController::class, 'showallBlockDeparment'])->name('show');
-    Route::get('/add_department',  [DepartmentController::class, 'showallDeparment'])->name('add');
+    Route::get('/',  [DepartmentController::class, 'showallDeparment'])->name('add');
     Route::post('/add_department', [DepartmentController::class, 'addDepartment'])->name('post_add');
     Route::get('/department/{id}', [DepartmentController::class, 'getDetailDepartment'])->name('detail');
     Route::put('/department/update/{id}',[DepartmentController::class,'updateDepartment'])->name('update');

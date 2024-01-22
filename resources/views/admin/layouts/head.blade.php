@@ -52,5 +52,6 @@
     <!-- Volt JS -->
     <script src="{{ asset('assets/js/volt.js') }}"></script>
 
+    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     @yield('css')
 </head>

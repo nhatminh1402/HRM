@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 @section('title', 'Department manage')
+@section('css')
+    <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
+@endsection
 @section('content')
     @if (!empty($department))
         <h2 class="mb-4 pb-2 border-bottom text-primary">Phòng ban: {{ $department->name }}</h2>
@@ -30,25 +34,24 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="mb-3">
-                        <label for="name" class="form-label mb-2 font-weight-bold" value="{{ old('name') }}">Chọn nhân
+                        <label for="name" class="form-label mb-2 font-weight-bold" value="{{ old('name') }}">Chọn
+                            nhân
                             viên</label>
-                        <select class="form-select mb-0" name="id_employee">
-                            <option value="">Chọn nhân viên</option>
-                            @if (!empty($employeesHaveDeparmentNull))
-                                @foreach ($employeesHaveDeparmentNull as $employee)
-                                    <option value="{{ $employee->id }}">
-                                        {{ $employee->code_employee . '-' . $employee->full_name }}</option>
-                                @endforeach
-                            @endif
+                        <select id="selected_employees" name="id_employee[]"
+                            class="form-control js-example-basic-multiple-limit" multiple>
+                            @foreach ($employeesHaveDeparmentNull as $employee)
+                                <option value="{{ $employee->id }}">{{ $employee->full_name }}</option>
+                            @endforeach
                         </select>
+
+
                     </div>
                     <button class="btn btn-success"> <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                        </svg>Thêm nhân viên</button>
+                        </svg>Cập nhật</button>
                 </form>
             </div>
         </div>
@@ -95,8 +98,8 @@
                                                     height="16" width="14" viewBox="0 0 448 512">
                                                     <path
                                                         d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3
-                                                                                            32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2
-                                                                                            6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                                                                                                        32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2
+                                                                                                        6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
                                                         fill="#fff" />
                                                 </svg></a>
                                         </td>
