@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 @section('title', 'THÊM LOẠI KHEN THƯỞNG')
+
 @section('css')
     <style>
         .card-header:hover {
@@ -11,67 +12,18 @@
         }
     </style>
 @endsection
+
+@section('page-title', 'QUẢN LÝ LOẠI KHEN THƯỞNG')
+
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <div class="row">
-                    <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
-                        <p style="font-size: 22px; font-weight: bold" class="mb-0 text-center  text-lg-start">QUẢN LÝ LOẠI
-                            KHEN THƯỞNG
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <form action="{{ route('admin.reward.store') }}" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="mb-3">
-                            <label class="form-label">MÃ KHEN THƯỞNG</label>
-                            <input name="code_reward" type="text"
-                                class="form-control {{ $errors->has('code_reward') ? 'is-invalid' : '' }}"
-                                value="{{ $rewardCode }}" readonly>
-                            @error('code_reward')
-                                <div class="invalid-feedback"> {{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">TÊN KHEN THƯỞNG</label>
-                            <input name="name" type="text"
-                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                value="{{ old('name') }}">
-                            @error('name')
-                                <div class="invalid-feedback"> {{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                            <textarea value="{{ old('description') }}" name="description"
-                                class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" rows="50"
-                                cols="50"></textarea>
-                            @error('description')
-                                <div class="invalid-feedback"> {{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-success">THÊM MỚI</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <h5 id="list-reward">DANH SÁCH LOẠI KHEN THƯỞNG</h5>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            THÊM MỚI
+                        </button>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group d-flex justify-content-end">
@@ -110,14 +62,16 @@
                                 <td>{!! empty($reward->description) ? 'CHƯA CÓ MÔ TẢ' : $reward->description !!}</td>
                                 <td>{{ $reward->created_at }}</td>
                                 <td>{{ $reward->updated_at }}</td>
-                                <td class="text-center d-flex jusitfy-content-center">
-                                    <a href="{{ route('admin.reward.edit', $reward->id) }}">
-                                        <button class="btn btn-warning me-3">Sửa</button>
-                                    </a>
-                                    <form action="{{ route('admin.reward.delete', $reward->id) }}" method="post">
-                                        @csrf
-                                        <button class="btn btn-delete btn-danger" type="button">Xóa</button>
-                                    </form>
+                                <td class="text-center">
+                                    <div class="d-flex ">
+                                        <a href="{{ route('admin.reward.edit', $reward->id) }}">
+                                            <button class="btn btn-warning me-3">Sửa</button>
+                                        </a>
+                                        <form action="{{ route('admin.reward.delete', $reward->id) }}" method="post">
+                                            @csrf
+                                            <button class="btn btn-delete btn-danger" type="button">Xóa</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -132,17 +86,46 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade modal-add-reward" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">THÊM MỚI LOẠI KHEN THƯỞNG</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="bg-white rounded shadow p-3 mb-4 mt-4">
+                                @csrf
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label class="form-label">TÊN KHEN THƯỞNG</label>
+                                        <input name="name" type="text" class="form-control">
+                                        <div class="err-area"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
+                                        <textarea name="description" class="form-control" id="description" rows="10" cols="5"></textarea>
+                                        <div class="err-area"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="btn-submit" type="button" class="btn btn-primary">THÊM</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/manage_reward.js') }}"></script>
-    @if (session('success'))
-        <script>
-            const listReward = document.getElementById("list-reward");
-            listReward.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        </script>
-    @endif
+    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
+    <script type="module" src="{{ asset('js/manage_reward.js') }}"></script>
 @endsection
