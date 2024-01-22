@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateDisciplineRequest;
 use App\Services\Discipline\DisciplineService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class DisciplineController extends Controller
 {
@@ -38,8 +39,9 @@ class DisciplineController extends Controller
      */
     public function store(CreateDisciplineRequest $request)
     {
-        $this->disciplineService->create($request->all());
-        return redirect()->route('admin.discipline.home')->with('success', 'Create discipline succerss !');
+        $data = $request->all();
+        $disciplineCretae = $this->disciplineService->create($data);
+        return $this->senSuccessResponse($disciplineCretae, 'Kỷ luật đã thêm thành công', Response::HTTP_CREATED);
     }
 
     /**
