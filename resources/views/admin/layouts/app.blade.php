@@ -17,7 +17,8 @@
 
     <script src="{{ asset('assets/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
+    {{-- ckeditor --}}
+    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     @yield('css')
 </head>
 

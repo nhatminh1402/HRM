@@ -60,7 +60,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <script src="{{ asset('js/manage_reward.js') }}"></script>
     <script>
         let editor;
