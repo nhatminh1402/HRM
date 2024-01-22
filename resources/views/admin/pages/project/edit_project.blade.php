@@ -3,8 +3,8 @@
 @section('title', 'Edit Project')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/edit-project.css') }}">
     <script src="{{ asset('lib/jquery-3.7.1.min') }}"></script>
-    <link rel="stylesheet" href="{{ asset('assets/css/create-project.css') }}">
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
 @endsection
@@ -13,7 +13,7 @@
     <h2 class="mt-4 mb-4 pb-2 border-bottom text-primary">Sửa dự án</h2>
     <div class="row ml-4 w-100">
         <div class="col-12 mb-4">
-            <form action="{{route('admin.project.update', ['id' => $project->id])}}" method="POST">
+            <form action="{{ route('admin.project.update', ['id' => $project->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -34,9 +34,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="employee" class="form-label mb-2 font-weight-bold">Chọn nhân viên</label>
-                    <select name="selected_employees[]" class="js-example-basic-multiple-limit form-control pb-4 d-flex" multiple>
+                    <select name="selected_employees[]" class="js-example-basic-multiple-limit form-control pb-4 d-flex"
+                        multiple>
                         @foreach ($employees as $employee)
-                            <option value="{{ $employee->id }}" @if(in_array($employee->id, $selectedEmployees)) selected @endif>
+                            <option value="{{ $employee->id }}" @if (in_array($employee->id, $selectedEmployees)) selected @endif>
                                 {{ $employee->full_name }}
                             </option>
                         @endforeach
@@ -62,6 +63,16 @@
             $('.js-example-basic-multiple-limit').select2({
                 maximumSelectionLength: 10
             });
+
+            let editor;
+            ClassicEditor
+                .create(document.querySelector('#description'))
+                .then(newEditor => {
+                    editor = newEditor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         });
     </script>
 @endsection

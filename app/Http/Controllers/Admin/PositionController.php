@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\CreatePositionRequest;
 use App\Http\Requests\Admin\UpdatePositionRequest;
 use App\Services\Position\PositionService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PositionController extends Controller
 {
@@ -38,8 +39,8 @@ class PositionController extends Controller
     public function store(CreatePositionRequest $request)
     {
         $data = $request->all();
-        $this->positionService->create($data);
-        return redirect()->route('admin.employee.home')->with('success', 'Create position success!');
+        $positionCreate =  $this->positionService->create($data);
+        return $this->senSuccessResponse($positionCreate, 'Chức vụ đã được thêm thành công', Response::HTTP_CREATED);
     }
 
     /**

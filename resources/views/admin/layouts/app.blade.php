@@ -20,5 +20,9 @@
         </div>
         @include('admin.layouts.footer')
     </div>
+
+    @yield('script')
+
 </body>
+
 </html>
