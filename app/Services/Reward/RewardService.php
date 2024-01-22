@@ -2,6 +2,7 @@
 
 namespace App\Services\Reward;
 
+use App\Helpers;
 use App\Repositories\Reward\RewardRepository;
 use Exception;
 
@@ -16,6 +17,8 @@ class RewardService
 
     public function create(array $attributes)
     {
+        //auto genarate reward code
+        $attributes['code_reward'] = Helpers::generateCode('MKT');
         return $this->rewardRepository->create($attributes);
     }
 
