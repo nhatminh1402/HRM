@@ -139,8 +139,6 @@ $("#btn-submit").on("click", () => {
     //=======get all input type is check-box==========
     let status = $("input[type='radio'][name='status']:checked")
 
-    alert(status.val())
-
     // validate input
     isError = isInputEmptyValue([employee_id, full_name, phone_number, email, identify_number, dob, major])
     //validate select
