@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateOrUpdateProjectRequest;
 use App\Services\Project\ProjectService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProjectController extends Controller
 {
@@ -38,8 +39,8 @@ class ProjectController extends Controller
     public function store(CreateOrUpdateProjectRequest $request)
     {
         $data = $request->all();
-        $this->projectService->createProject($data);
-        return redirect()->route('admin.project.home')->with('success', 'Create position success!');
+        $porjectCreate = $this->projectService->createProject($data);
+        return $this->senSuccessResponse($porjectCreate, 'Thêm mới dự án thành công', Response::HTTP_CREATED);
     }
 
     /**

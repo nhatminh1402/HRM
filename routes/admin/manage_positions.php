@@ -8,7 +8,7 @@ Route::prefix('/position')->name('employee.')->group(function () {
     // Danh sách + thêm mới chức vụ
     Route::get('/', [PositionController::class, 'index'])->name('home');
     //Thêm mới chức vụ
-    Route::post('/', [PositionController::class, 'store'])->name('positions.store');
+    Route::post('/create', [PositionController::class, 'store'])->name('positions.store');
     // Sửa chức vụ
     Route::get('/edit-position/{id}', [PositionController::class, 'edit'])->name('edit-position');
     Route::put('/update/{id}', [PositionController::class, 'update'])->name('positions.update');

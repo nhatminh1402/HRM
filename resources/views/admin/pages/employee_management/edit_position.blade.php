@@ -35,11 +35,25 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ (old('description', $position->description)) }}</textarea>
+                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ old('description', $position->description) }}</textarea>
                 </div>
                 <input type="hidden" name="page" value="{{ $pageNumber }}">
                 <button class="btn btn-success">Lưu lại</button>
             </form>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        let editor;
+
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .then(newEditor => {
+                editor = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection
