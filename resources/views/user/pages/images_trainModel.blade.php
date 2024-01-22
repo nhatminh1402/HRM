@@ -9,7 +9,9 @@
 
 {{-- Đinh nghĩa nội dung cho trang hiển thị thông tin cá nhân ở đây --}}
 @section('content')
-
+@section('include-script')
+    <script type="text/javascript" src="{{ asset('assets/js/add-images-trainModel.js') }}" > </script>
+@endsection
 <div class="container-fluid">
     <br />
     <h3>Image Upload For Train Model</h3>
