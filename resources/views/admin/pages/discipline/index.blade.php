@@ -6,6 +6,8 @@
 
 @endsection
 
+@section('page-title', 'Quản lý kỷ luật')
+
 @section('script')
     <script src="{{ asset('assets/js/delete-discipline.js') }}"></script>
     <script src="{{ asset('assets/js/create-discipline.js') }}"></script>
@@ -13,7 +15,6 @@
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <h2 class="mt-3 mb-4 pb-2 border-bottom text-primary">Quản lý kỷ luật</h2>
     <div class="d-flex justify-content-between w-100 flex-wrap">
         <div class="mb-3 mb-lg-0">
             <h3 class="h3 mb-3">Danh sách loại kỷ luật </h3>

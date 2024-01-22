@@ -46,13 +46,13 @@ $(document).ready(function () {
                 }, 1000);
             },
             error: function(xhr) {
-                if (!name) {
-                    $('#error_name').html('Xin vui lòng nhập tên dự án');
-                } else {
+                if (name) {
                     $('#error_name').html('');
+                } else {
+                    $('#error_name').html('Xin vui lòng nhập tên dự án');
                 }
 
-                if (!selected_employees || selected_employees.length === 0) {
+                if (selected_employees || selected_employees.length > 0) {
                     $('#error_select').html('Xin vui lòng chọn nhân viên');
                 } else {
                     $('#error_select').html('');
