@@ -41,7 +41,7 @@
                     <label for="employee" class="form-label mb-2 font-weight-bold">Chọn nhân viên<span class="text-danger">*</span>:</label>
                     <select name="selected_employees[]" class="js-example-basic-multiple-limit form-control pb-4 d-flex" multiple>
                         @foreach ($employees as $employee)
-                            <option value="{{ $employee->id }}" @if (in_array($employee->id, array_key_exists('selected_employees', old()) == true ? old('selected_employees') : $selectedEmployees)) selected @endif>
+                            <option value="{{ $employee->id }}" @if (in_array($employee->id, array_key_exists('selected_employees', old()) ? old('selected_employees') : $selectedEmployees)) selected @endif>
                                 {{ $employee->full_name }}
                             </option>
                         @endforeach
