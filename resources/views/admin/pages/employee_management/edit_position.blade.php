@@ -40,7 +40,7 @@
                 </div>
                 <input type="hidden" name="page" value="{{ $pageNumber }}">
                 <div class="col-md-">
-                    <button class="btn btn-success">Lưu lại</button>
+                    <button class="btn btn-success text-white">Lưu lại</button>
                 </div>
             </form>
         </div>

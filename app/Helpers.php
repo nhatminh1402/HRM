@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Hash;
 use Ramsey\Uuid\Uuid;
 
 class Helpers
@@ -18,8 +17,7 @@ class Helpers
     public static function stripHtmlTags($data)
     {
         if (isset($data['description'])) {
-            $data['description'] = preg_replace('/<p[^>]*>/', '', $data['description']);
-            $data['description'] = preg_replace('/<\/p>/', '', $data['description']);
+            $data['description'] = strip_tags($data['description']);
         }
         return $data;
     }
