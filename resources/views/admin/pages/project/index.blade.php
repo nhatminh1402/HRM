@@ -8,7 +8,6 @@
     <script src="{{ asset('assets/js/create-project.js') }}"></script>
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
 @endsection
 
 @section('content')

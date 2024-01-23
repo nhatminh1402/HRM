@@ -1,6 +1,15 @@
 $(document).ready(function () {
+
+    function hideSelected(value) {
+        if (value && !value.selected) {
+            return $('<span>' + value.text + '</span>');
+        }
+    }
+
     $('.select-employees').select2({
-        maximumSelectionLength: 10
+        maximumSelectionLength: 10,
+        templateResult: hideSelected,
+
     });
 
     let editor;
@@ -45,7 +54,7 @@ $(document).ready(function () {
                     location.replace("/admin/project");
                 }, 1000);
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 if (name) {
                     $('#error_name').html('');
                 } else {
@@ -65,7 +74,7 @@ $(document).ready(function () {
         $('#error_name').html('');
     });
 
-    $('#selected_employees').on('change', function() {
+    $('#selected_employees').on('change', function () {
         if ($(this).val() && $(this).val().length > 0) {
             $('#error_select').html('');
         }

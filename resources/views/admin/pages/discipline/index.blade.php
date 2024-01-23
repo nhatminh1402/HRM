@@ -6,8 +6,6 @@
 
 @endsection
 
-@section('page-title', 'Quản lý kỷ luật')
-
 @section('script')
     <script src="{{ asset('assets/js/delete-discipline.js') }}"></script>
     <script src="{{ asset('assets/js/create-discipline.js') }}"></script>
