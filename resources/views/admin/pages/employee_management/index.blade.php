@@ -9,11 +9,11 @@
 @section('script')
     <script src="{{ asset('assets/js/delete-position.js') }}"></script>
     <script src="{{ asset('assets/js/create-position.js') }}"></script>
+    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
 @endsection
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <h2 class="mt-3 mb-4 pb-2 border-bottom text-primary">Chức vụ</h2>
     <div class="row ml-4">
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
@@ -23,7 +23,7 @@
                         viewBox="0 0 448 512">
                         <path
                             d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
-                            fill="green"></path>
+                            fill="white"></path>
                     </svg>Thêm chức vụ
                 </button>
             </div>
@@ -69,7 +69,7 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $position->code_position }}</td>
                                     <td class='text-center'>{{ $position->name }}</td>
-                                    <td class='text-center'>{{ number_format($position->salary_day, 0, ',', ',') . ' ₫' }}</td>
+                                    <td class='text-center'>{{ number_format($position->salary_day, 0, ',', ',') . ' Đ' }}</td>
                                     <td class='text-center'>{{ $position->description ?? 'Chưa có mô tả' }}</td>
                                     <td class='text-center'>{{ $position->created_at }}</td>
                                     <td class='text-center'>{{ $position->updated_at }}</td>
@@ -140,7 +140,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label mb-2 font-weight-bold">Tên chức vụ</label>
+                            <label for="name" class="form-label mb-2 font-weight-bold">Tên chức vụ<span class="text-danger">*</span>:</label>
                             <input type="text" name="name" class="form-control" id="name"
                                 value="{{ old('name') }}">
                             <div class="text-danger" id="error_name"></div>
@@ -149,7 +149,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="salary_day" class="form-label mb-2 font-weight-bold">Lương ngày</label>
+                            <label for="salary_day" class="form-label mb-2 font-weight-bold">Lương ngày<span class="text-danger">*</span>:</label>
                             <input type="number" class="form-control" id="salary_day" name="salary_day"
                                 value="{{ old('salary_day') }}" >
                             <div class="text-danger" id="error_salary"></div>

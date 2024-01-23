@@ -26,12 +26,12 @@
     <!-- start main side bar -->
     @include('admin.layouts.sidebar')
     <!-- end main side bar -->
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <div class="wrapper d-flex flex-column min-vh-100 bg-white">
         <!-- start header -->
         @include('admin.layouts.header')
         <!-- end header -->
-        <div class="body flex-grow-1 px-3">
-            <div class="container-lg">
+        <div class="body flex-grow-1 px-3 bg-white">
+            <div class="container-fluid">
                 @yield('content')
             </div>
         </div>

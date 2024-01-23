@@ -50,14 +50,4 @@
             </li>
         </ul>
     </div>
-    <div class="header-divider"></div>
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb my-0 ms-2">
-                <li class="breadcrumb-item">
-                    <span>@yield('page-title')</span>
-                </li>
-            </ol>
-        </nav>
-    </div>
 </header>
