@@ -62,7 +62,7 @@ class EmployeeService
 
     public function update(array $attributes, $id)
     {
-        return $this->employeeRepository->update($attributes, $id);
+        $this->employeeRepository->update($attributes, $id);
     }
 
     public function getWorkingDaysInMonth($employeeId)

@@ -26,6 +26,8 @@ $(function () {
 
         if (fileUpload) {
             const img = document.createElement("img")
+            img.style.width = "100%";
+            img.style.height = "auto";
             img.file = fileUpload;
 
             var allowedImageTypes = [
@@ -121,6 +123,7 @@ $("#btn-submit").on("click", () => {
     let dob = $("#form-employee input[name='dob']")
     // major
     let major = $("#form-employee input[name='major']")
+    let basic_salary = $("#form-employee input[name='basic_salary']")
     //=======get all input type is select==========
     // gender input
     let gender = $("select[name='gender'] option:selected")
@@ -140,7 +143,7 @@ $("#btn-submit").on("click", () => {
     let status = $("input[type='radio'][name='status']:checked")
 
     // validate input
-    isError = isInputEmptyValue([employee_id, full_name, phone_number, email, identify_number, dob, major])
+    isError = isInputEmptyValue([employee_id, full_name, phone_number, email, identify_number, dob, major, basic_salary])
     //validate select
     isError = isSelectUnselectValue([province_id, district_id, ward_id])
     //validate img
@@ -170,6 +173,7 @@ $("#btn-submit").on("click", () => {
         form_data.append('ward_id', ward_id.val());
         form_data.append('status', status.val());
         form_data.append('_token', $("input[name='_token']").val());
+        form_data.append('basic_salary', basic_salary.val());
         //ajax request
         sendRequestToSaveEmployee()
     }

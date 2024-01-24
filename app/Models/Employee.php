@@ -33,7 +33,8 @@ class Employee extends Authenticatable
         'salary_id',
         'ward_id',
         'password',
-        'status'
+        'status',
+        'basic_salary'
     ];
 
     public function province()
@@ -93,5 +94,10 @@ class Employee extends Authenticatable
     public function timeSheet()
     {
         return $this->hasMany(Timesheet::class, 'employee_id', 'id');
+    }
+
+    public function timelines()
+    {
+        return $this->hasMany(TimeLine::class, 'employee_id', 'id');
     }
 }

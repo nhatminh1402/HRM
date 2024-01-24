@@ -34,8 +34,8 @@
                             <div id="upload-img-area" class="card-body text-center" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="CLICK ĐỂ UPLOAD ẢNH">
                                 <!-- Profile picture image-->
-                                <img class="img-account-profile rounded-circle mb-2"
-                                    src="{{ asset('uploads/' . $employee->image) }}" alt="">
+                                <img class="img-account-profile" src="{{ asset('uploads/' . $employee->image) }}"
+                                    alt="">
                                 <!-- Profile picture help block-->
                             </div>
                         </div>
@@ -106,8 +106,7 @@
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label class="small mb-1">BẰNG CẤP</label>
-                                        <select name="degree" class="form-select form-control"
-                                            aria-label="Default select example">
+                                        <select name="degree" class="form-select" aria-label="Default select example">
                                             <option value="{{ $listDegree['THPT'] }}"
                                                 {{ $employee->degree == $listDegree['THPT'] ? 'selected' : '' }}>THPT
                                             </option>
@@ -135,7 +134,7 @@
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label class="small mb-1">PHÒNG BAN</label>
-                                        <select name="department_id" class="form-select form-control"
+                                        <select name="department_id" class="form-select"
                                             aria-label="Default select example">
                                             @foreach ($listDepartments as $department)
                                                 <option value="{{ $department->id }}"
@@ -147,7 +146,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="small mb-1">CHỨC VỤ</label>
-                                        <select name="position_id" class="form-select form-control"
+                                        <select name="position_id" class="form-select"
                                             aria-label="Default select example">
                                             @foreach ($listPositons as $position)
                                                 <option value="{{ $position->id }}"
@@ -182,12 +181,21 @@
                                 </div>
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
+                                    <div class="col-md-12">
+                                        <label class="small mb-1">LƯƠNG CƠ BẢN</label>
+                                        <input name="basic_salary" type="number" class="form-control"
+                                            placeholder="Nhập lương cơ bản" value="{{ $employee->basic_salary }}">
+                                        <div class="err-area"></div>
+                                    </div>
+                                </div>
+                                <!-- Form Row-->
+                                <div class="row gx-3 mb-3">
                                     <div class="row">
                                         <label class="small mb-1">ĐỊA CHỈ</label>
                                         <div class="col-md-4">
                                             <label style="font-size: 11px" class="small mb-1">TỈNH/THÀNH PHỐ</label>
                                             <select name="province_id" style="border: 1px solid red !important"
-                                                id="province-select" class="form-select form-control select-extension">
+                                                id="province-select" class="form-select select-extension">
                                                 <option value="un-check">CHỌN TỈNH/THÀNH PHỐ</option>
                                                 @foreach ($listProvince as $province)
                                                     <option value="{{ $province->id }}"
@@ -202,7 +210,8 @@
                                             <label style="font-size: 11px" class="small mb-1">QUẬN/HUYỆN</label>
                                             <select id="district-select" name="district_id"
                                                 class="form-select form-control select-extension">
-                                                <option value="{{ $employee->ward->id }}"> {{ $employee->ward->name }}
+                                                <option value="{{ $employee->district->id }}">
+                                                    {{ $employee->district->name }}
                                                 </option>
                                             </select>
                                             <div class="err-area"></div>
@@ -212,8 +221,7 @@
                                             <select name="ward_id" id="ward-select"
                                                 class="form-select form-control select-extension"
                                                 aria-label="Default select example">
-                                                <option value="{{ $employee->district->id }}">
-                                                    {{ $employee->district->name }}
+                                                <option value="{{ $employee->ward->id }}"> {{ $employee->ward->name }}
                                                 </option>
                                             </select>
                                             <div class="err-area"></div>
