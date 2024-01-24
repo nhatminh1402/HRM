@@ -1,5 +1,11 @@
 @extends('admin.layouts.app')
+
 @section('title', 'Show Salary')
+
+@section('css')
+
+@endsection
+
 @section('content')
     <div class="row">
         <div class="py-4">
@@ -14,8 +20,13 @@
         </div>
         <div class="col-12 mb-4">
             <form action="">
-                <button class="btn btn-success"> 
-                    Xuất Excel<svg class="icon icon-xxs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg></button>
+                <button class="btn btn-success">
+                    Xuất Excel<svg class="icon icon-xxs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z"
+                            clip-rule="evenodd" />
+                    </svg></button>
             </form>
         </div>
         <div class="card border-0 shadow">
@@ -58,7 +69,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
+                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -74,7 +85,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
+                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -90,7 +101,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
+                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -106,7 +117,7 @@
                                 <td class="text-center">8,000,000</td>
                                 <td class="text-center">2024-01-01</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail')}}" class="btn btn-success">Xem</a>
+                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-danger">Xóa</a>
@@ -119,3 +130,4 @@
         </div>
     </div>
 @endsection
+

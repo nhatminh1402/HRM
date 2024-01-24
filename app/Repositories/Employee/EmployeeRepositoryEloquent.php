@@ -8,6 +8,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Validators\EmployeeRepository\EmployeeValidator;
+use Carbon\Carbon;
 use Illuminate\Http\Response;
 
 /**
@@ -104,5 +105,36 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function getByIds(array $employeeIds)
     {
         return $this->model->whereIn('id', $employeeIds)->get();
+    }
+    public function countWorkDayInMonth($employeeId)
+    {
+        $firstDayOfMonth = now()->startOfMonth();
+        $lastDayOfMonth = now()->endOfMonth();
+
+        $workDays = $this->model->with('timeSheet')
+            ->where('id', $employeeId)
+            ->whereHas('timeSheet', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
+                $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
+            })
+            ->get()
+            ->flatMap(function ($employee) {
+                return $employee->timeSheet->pluck('created_at')->map(function ($date) {
+                    return $date->format('Y-m-d');
+                });
+            })
+            ->unique()
+            ->count();
+
+        return $workDays;
+    }
+
+    public function getBasicSalary($employeeId)
+    {
+        $employee = $this->model->findOrFail($employeeId);
+        
+        if ($employee) {
+            return $employee->basic_salary;
+        }
+        return null;
     }
 }

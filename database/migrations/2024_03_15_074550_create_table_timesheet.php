@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('timesheet', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("employee_id")->nullable(); 
+            $table->unsignedBigInteger("employee_id")->nullable();
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();
         });

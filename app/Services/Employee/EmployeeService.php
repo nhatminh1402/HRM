@@ -64,4 +64,9 @@ class EmployeeService
     {
         return $this->employeeRepository->update($attributes, $id);
     }
+
+    public function getWorkingDaysInMonth($employeeId)
+    {
+        return $this->employeeRepository->countWorkDayInMonth($employeeId);
+    }
 }

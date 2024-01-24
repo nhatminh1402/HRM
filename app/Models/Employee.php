@@ -30,6 +30,7 @@ class Employee extends Authenticatable
         'position_id',
         'province_id',
         'district_id',
+        'salary_id',
         'ward_id',
         'password',
         'status'
@@ -60,6 +61,11 @@ class Employee extends Authenticatable
         return $this->belongsTo(Position::class, 'position_id', 'id');
     }
 
+    public function salary()
+    {
+        return $this->belongsTo(Salary::class, 'salary_id', 'id');
+    }
+
     protected $casts = [
         'password' => 'hashed'
     ];
@@ -83,9 +89,9 @@ class Employee extends Authenticatable
     {
         return $this->belongsToMany(Project::class, 'employee_has_project', 'employee_id', 'project_id');
     }
-    
+
     public function timeSheet()
     {
-        return $this->hasMany(TimeSheet::class, 'employee_id', 'id');
+        return $this->hasMany(Timesheet::class, 'employee_id', 'id');
     }
 }

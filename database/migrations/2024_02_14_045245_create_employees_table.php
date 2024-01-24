@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string("password");
             $table->string("image");
             $table->string("phone_number");
+            $table->double('basic_salary')->nullable();
             $table->unsignedBigInteger("identify_number")->nullable(); // CMND
             $table->date("dob");
             $table->unsignedBigInteger("province_id")->nullable(); // tỉnh - thành phố
