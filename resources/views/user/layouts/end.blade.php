@@ -260,6 +260,14 @@
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+    let editor;
+    ClassicEditor.create(document.querySelector("#description"))
+        .then((newEditor) => {
+            editor = newEditor;
+        })
+        .catch((error) => {
+                console.error(error);}
+        )
 </script>
 
 <!-- Github buttons -->

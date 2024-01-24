@@ -10,6 +10,8 @@ use App\Repositories\Discipline\DisciplineRepository;
 use App\Repositories\Discipline\DisciplineRepositoryEloquent;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Repositories\Employee\EmployeeRepositoryEloquent;
+use App\Repositories\Leave\LeaveRepository;
+use App\Repositories\Leave\LeaveRepositoryEloquent;
 use App\Repositories\Location\Province\ProvinceRepository as ProvinceProvinceRepository;
 use App\Repositories\Location\Province\ProvinceRepositoryEloquent;
 use App\Repositories\Location\Ward\WardRepository;
@@ -39,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RewardRepository::class, RewardRepositoryEloquent::class);
         $this->app->bind(DisciplineRepository::class, DisciplineRepositoryEloquent::class);
         $this->app->bind(ProjectRepository::class, ProjectRepositoryEloquent::class);
+        $this->app->bind(LeaveRepository::class, LeaveRepositoryEloquent::class);
     }
 
     /**

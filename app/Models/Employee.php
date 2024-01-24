@@ -88,4 +88,9 @@ class Employee extends Authenticatable
     {
         return $this->hasMany(TimeSheet::class, 'employee_id', 'id');
     }
+
+    public function leave()
+    {
+        return $this->hasMany(Leave::class, 'employee_id', 'id');
+    }
 }
