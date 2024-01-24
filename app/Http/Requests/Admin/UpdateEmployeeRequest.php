@@ -46,7 +46,8 @@ class UpdateEmployeeRequest extends FormRequest
             'province_id' => 'bail|required|exists:provinces,id',
             'district_id' => 'bail|required|exists:districts,id',
             'ward_id' => 'bail|required|exists:wards,id',
-            'status' => 'bail|required|in:0,1'
+            'status' => 'bail|required|in:0,1',
+            'basic_salary' => 'bail|required|numeric|min:0'
         ];
     }
 
@@ -81,7 +82,10 @@ class UpdateEmployeeRequest extends FormRequest
             'ward_id.exists' => 'Phường/xã không tồn tại.',
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự.',
-            'email.unique' => 'Email đã tồn tại trong hệ thống.'
+            'email.unique' => 'Email đã tồn tại trong hệ thống.',
+            'basic_salary.required' => 'Trường lương cơ bản là bắt buộc.',
+            'basic_salary.numeric' => 'Trường lương cơ bản phải là một số.',
+            'basic_salary.min' => 'Lương cơ bản không thể âm.',
         ];
     }
 }

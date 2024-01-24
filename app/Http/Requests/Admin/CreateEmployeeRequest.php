@@ -41,6 +41,7 @@ class CreateEmployeeRequest extends FormRequest
             'ward_id' => 'bail|required|exists:wards,id',
             'password' => 'bail|required|min:6',
             're_password' => 'required|same:password',
+            'basic_salary' => 'bail|required|numeric|min:0'
         ];
     }
 
@@ -50,6 +51,7 @@ class CreateEmployeeRequest extends FormRequest
             'full_name.required' => 'Vui lòng nhập họ tên.',
             'phone_number.required' => 'Vui lòng nhập số điện thoại.',
             'phone_number.integer' => 'Số điện thoại không hợp lệ',
+            'phone_number.digits' => 'Số điện thoại hợp lệ là số có 10 chữ số',
             'email.required' => 'Vui lòng nhập địa chỉ email.',
             'email.email' => 'Địa chỉ email không hợp lệ.',
             'identify_number.required' => 'Vui lòng nhập số CCCD.',
@@ -76,7 +78,10 @@ class CreateEmployeeRequest extends FormRequest
             'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự.',
             're_password.required' => 'Vui lòng nhập lại mật khẩu.',
             're_password.same' => 'Mật khẩu xác nhận không khớp với mật khẩu.',
-            'email.unique' => 'Email đã tồn tại trong hệ thống.'
+            'email.unique' => 'Email đã tồn tại trong hệ thống.',
+            'basic_salary.required' => 'Trường lương cơ bản là bắt buộc.',
+            'basic_salary.numeric' => 'Trường lương cơ bản phải là một số.',
+            'basic_salary.min' => 'Lương cơ bản không thể âm.',
         ];
     }
 }

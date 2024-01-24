@@ -3,7 +3,6 @@
 @section('title', 'Create Employeee')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap-5.0.2/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('material-template/assets/css/user/account_infor.css') }}">
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
@@ -85,15 +84,14 @@
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
                                             <label class="small mb-1">NGÀY SINH</label>
-                                            <input name="dob" style="height: 44px" type="date" class="form-control">
+                                            <input name="dob" type="date" class="form-select">
                                             <div class="err-area"></div>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="small mb-1">GIỚI TÍNH</label>
-                                            <select name="gender" class="form-select form-control"
-                                                aria-label="Default select example">
-                                                <option value="0">Nam</option>
-                                                <option value="1">Nữ</option>
+                                            <select name="gender" class="form-select">
+                                                <option value="1">Nam</option>
+                                                <option value="0">Nữ</option>
                                             </select>
                                             <div class="err-area"></div>
                                         </div>
@@ -117,8 +115,7 @@
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
                                             <label class="small mb-1">BẰNG CẤP</label>
-                                            <select name="degree" class="form-select form-control"
-                                                aria-label="Default select example">
+                                            <select name="degree" class="form-select">
                                                 <option value="{{ $listDegree['THPT'] }}">THPT</option>
                                                 <option value="{{ $listDegree['CAO_DANG'] }}">CAO ĐẲNG</option>
                                                 <option value="{{ $listDegree['DAI_HOC'] }}">ĐẠI HỌC</option>
@@ -137,7 +134,7 @@
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
                                             <label class="small mb-1">PHÒNG BAN</label>
-                                            <select name="department_id" class="form-select form-control"
+                                            <select name="department_id" class="form-select"
                                                 aria-label="Default select example">
                                                 @foreach ($listDepartments as $department)
                                                     <option value="{{ $department->id }}">{{ $department->name }}
@@ -148,12 +145,21 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="small mb-1">CHỨC VỤ</label>
-                                            <select name="position_id" class="form-select form-control"
+                                            <select name="position_id" class="form-select"
                                                 aria-label="Default select example">
                                                 @foreach ($listPositons as $position)
                                                     <option value="{{ $position->id }}"> {{ $position->name }} </option>
                                                 @endforeach
                                             </select>
+                                            <div class="err-area"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Form Row-->
+                                    <div class="row gx-3 mb-3">
+                                        <div class="col-md-12">
+                                            <label class="small mb-1">LƯƠNG CƠ BẢN</label>
+                                            <input name="basic_salary" type="number" class="form-control"
+                                                placeholder="Nhập lương cơ bản">
                                             <div class="err-area"></div>
                                         </div>
                                     </div>
