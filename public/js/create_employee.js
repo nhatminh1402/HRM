@@ -1,5 +1,4 @@
 import { isInputEmptyValue, isSelectUnselectValue, addErrorToInput } from "./module/validate_data.js"
-
 // Khai báo form data
 let form_data = new FormData()
 
@@ -15,6 +14,12 @@ $(document).ready(function () {
     $('.select-extension').select2();
 });
 
+//remove error when type
+$("#form-employee input").on("keypress", function () {
+    $(this).removeClass('is-invalid')
+    $(this).nextAll('.err-area').first().html("")
+});
+
 // Validate image upload
 $(function () {
     $("#file-field").on("change", function () {
@@ -22,6 +27,8 @@ $(function () {
 
         if (fileUpload) {
             const img = document.createElement("img")
+            img.style.width = "100%";
+            img.style.height = "auto";
             img.file = fileUpload;
 
             var allowedImageTypes = [
@@ -119,6 +126,7 @@ $("#btn-submit").on("click", () => {
     let password = $("#form-employee input[name='password']")
     //password
     let rePassword = $("#form-employee input[name='re-password']")
+    let basic_salary = $("#form-employee input[name='basic_salary']")
     //=======get all input type is select==========
     // gender input
     let gender = $("select[name='gender'] option:selected")
@@ -136,7 +144,7 @@ $("#btn-submit").on("click", () => {
     let ward_id = $("select#ward-select option:selected")
 
     // validate input
-    isError = isInputEmptyValue([employee_code, full_name, phone_number, email, identify_number, dob, major, password, rePassword])
+    isError = isInputEmptyValue([employee_code, full_name, phone_number, email, identify_number, dob, major, password, rePassword, basic_salary])
     //validate select
     isError = isSelectUnselectValue([province_id, district_id, ward_id])
     //validate img
@@ -167,6 +175,7 @@ $("#btn-submit").on("click", () => {
         form_data.append('password', password.val());
         form_data.append('re_password', rePassword.val());
         form_data.append('_token', $("input[name='_token']").val());
+        form_data.append('basic_salary', basic_salary.val());
         //ajax request
         sendRequestToSaveEmployee()
     }

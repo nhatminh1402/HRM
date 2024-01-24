@@ -65,7 +65,10 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function create(array $attributes)
     {
-        return $this->model->create($attributes);
+        // insert dữ liệu cho bảng nhân viên
+        $employee = $this->model->create($attributes);
+        // cập nhật dữ liệu cho bảng timeline của nhân viên vừa được tạo
+        $employee->timelines()->create($attributes);
     }
 
     public function getEmployeDepartmentNull()
@@ -82,7 +85,16 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         try {
             $employee = $this->model->findOrFail($id);
-            return $employee->update($attributes);
+            $salaryUpdate = $attributes['basic_salary'];
+            $positionUpdate = $attributes['position_id'];
+
+            if ($salaryUpdate != $employee->basic_salary || $positionUpdate != $employee->position_id) { // nếu có thay đổi về lương hoặc chức vụ thì lưu vào timeline
+                $employee->timelines()->create($attributes);
+            }
+
+            // Cập nhật lại thông tin nhân viên
+            $employee->update($attributes);
+
         } catch (ModelNotFoundException $exeption) {
             return abort(404);
         }
