@@ -22,4 +22,6 @@ Route::prefix('/employees')
         Route::get('/edit/{id}', [UpdateEmployeeController::class, 'showViewUpdate'])->name('form-edit');
         // Lưu thông tin chỉnh sửa
         Route::post('/update/{id}', [UpdateEmployeeController::class, 'update'])->name('update');
+        // Xuất file execl thông tin nhân viên
+        Route::get('/export', [EmployeeController::class, 'export'])->name('export');
     });

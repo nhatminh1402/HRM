@@ -64,4 +64,9 @@ class EmployeeService
     {
         $this->employeeRepository->update($attributes, $id);
     }
+
+    public function all($columns = ['*'])
+    {
+        return $this->employeeRepository->all($columns);
+    }
 }

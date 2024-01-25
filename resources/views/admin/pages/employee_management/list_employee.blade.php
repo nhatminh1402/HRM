@@ -16,7 +16,7 @@
                     </svg>
                 </button>
             </a>
-            <a href="">
+            <a href="{{ route('admin.employee.export') }}">
                 <button type="button" class="btn btn-success text-white"><span>Xuất file Excel</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
                         <path
@@ -49,7 +49,7 @@
                         <tr>
                             <th class="border-0 rounded-start text-center">STT</th>
                             <th class="border-0  text-center">Mã nhân viên</th>
-                            <th class="border-0  text-center">Ảnh</th>
+                            <th style="width: 250px" class="border-0  text-center">Ảnh</th>
                             <th class="border-0  text-center">Tên nhân viên</th>
                             <th class="border-0  text-center">Giới tính</th>
                             <th class="border-0  text-center">Ngày sinh</th>
@@ -65,7 +65,8 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $employee->code_employee }}</td>
                                     <td class='text-center'>
-                                        <img class="image image-md" alt="Image placeholder" src="/uploads/{{$employee->image }}">
+                                        <img style="width: 100%" class="image image-md" alt="Image placeholder"
+                                            src="/uploads/{{ $employee->image }}">
                                     </td>
                                     <td class='text-center'>{{ $employee->full_name }}</td>
                                     <td class='text-center'>
