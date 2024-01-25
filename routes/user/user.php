@@ -74,10 +74,11 @@ Route::get('timesheet-user', [TimesheetController::class, 'showtimesheet'])->nam
 //13. Router cho trang xem timeline nhân viên
 Route::get('timeline', [TimelineController::class, 'index'])->name('timeline');
 
-//14. Router cho trang hiển thị ảnh train model
+//11. Router cho trang hiển thị ảnh train model
 Route::group(['prefix' => 'images'], function () {
     Route::get('/', [UserUploadImgController::class, 'index'])->name('images');
     Route::post('/upload', [UserUploadImgController::class, 'upload'])->name('dropzone.upload');
     Route::get('/fetch', [UserUploadImgController::class, 'fetch'])->name('dropzone.fetch');
     Route::get('/delete', [UserUploadImgController::class, 'delete'])->name('dropzone.delete');
 });
+
