@@ -12,7 +12,5 @@ Route::prefix('/salary')->name('salary.')->group(function(){
 
         Route::post('/store', [SalaryController::class, 'store'])->name('store');
 
-        Route::get('/detail_salary',function(){
-            return view('admin.pages.salary.detail-salary');
-        })->name('detail');
+        Route::get('/seach', [SalaryController::class, 'index'])->name('search');
     });

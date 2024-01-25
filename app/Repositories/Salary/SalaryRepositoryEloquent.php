@@ -6,9 +6,6 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Salary\SalaryRepository;
 use App\Models\Salary;
-use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class SalaryRepositoryEloquent.
@@ -17,6 +14,7 @@ use Illuminate\Support\Facades\DB;
  */
 class SalaryRepositoryEloquent extends BaseRepository implements SalaryRepository
 {
+    const DEFAULT_PER_PAGE = 4;
     /**
      * Specify Model class name
      *
@@ -27,18 +25,9 @@ class SalaryRepositoryEloquent extends BaseRepository implements SalaryRepositor
         return Salary::class;
     }
 
-    public function getNamePosition()
+    public function all($columns = ['*'])
     {
-        $positionNames = [];
-
-        $salaries = $this->model->with('positions')->get();
-
-        foreach ($salaries as $salary) {
-            $positionName = $salary->position->name;
-            $positionNames[] = $positionName;
-        }
-
-        return $positionNames;
+        return $this->model->latest('id')->paginate(self::DEFAULT_PER_PAGE);
     }
 
     /**
@@ -49,4 +38,25 @@ class SalaryRepositoryEloquent extends BaseRepository implements SalaryRepositor
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function search($key)
+    {
+        return $this->model
+            ->searchByCodeSalary($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByMonthSalary($key)
+                    ->orWhere(function ($query) use ($key) {
+                        $query->searchByNameEmployee($key)
+                            ->orWhere(function ($query) use ($key) {
+                                $query->searchByNamePosition($key)
+                                    ->orWhere(function ($query) use ($key) {
+                                        $query->searchByWorkDay($key)
+                                            ->orWhere(function ($query) use ($key) {
+                                                $query->searchByCreatedAt($key);
+                                            });
+                                    });
+                            });
+                    });
+            })
+            ->paginate(self::DEFAULT_PER_PAGE);
+    }
 }

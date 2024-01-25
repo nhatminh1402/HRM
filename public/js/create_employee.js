@@ -84,20 +84,20 @@ function sendRequestToSaveEmployee() {
                 location.replace("/admin/employees/lists");
             }, 3000);
         }, error: function (xhr, status, error) {
-            if (xhr.status === 422) {
-                let errorData = xhr.responseJSON.errors;
-                addErrorToInput(errorData);
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'LỖI HỆ THỐNG! VUI LÒNG THỬ LẠI SAU',
-                    showConfirmButton: false
-                });
+            // if (xhr.status === 422) {
+            //     let errorData = xhr.responseJSON.errors;
+            //     addErrorToInput(errorData);
+            // } else {
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'LỖI HỆ THỐNG! VUI LÒNG THỬ LẠI SAU',
+            //         showConfirmButton: false
+            //     });
 
-                setTimeout(function () {
-                    location.reload();
-                }, 3000);
-            }
+            //     setTimeout(function () {
+            //         location.reload();
+            //     }, 3000);
+            // }
         }
     })
 }

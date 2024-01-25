@@ -28,6 +28,11 @@ class SalaryService
         return $this->employeeRepository->all();
     }
 
+    public function getAll()
+    {
+        return $this->salaryRepository->all();
+    }
+
     public function getSalaryCode($prefix)
     {
         $salaryCode = Helpers::generateCode($prefix);
@@ -42,26 +47,41 @@ class SalaryService
         if ($dataHtml) {
             $dataHtml['code_salary'] = $this->getSalaryCode($prefix);
         }
-        $employeeId = $data['selected_employees'] ?? '';
+
+        $employeeId = $dataHtml['selected_employees'] ?? '';
         $basicSalary = $this->employeeRepository->getBasicSalary($employeeId);
         $workDays = $this->employeeRepository->countWorkDayInMonth($employeeId);
 
         $totalSalary = ($basicSalary / 22) * $workDays;
 
-        $salary = new Salary();
-        $salary->code_salary = $dataHtml['code_salary'];
-        $salary->monthly_salary = $totalSalary;
-        $salary->workday = $workDays;
-        $salary->real_leaders = 0;
-        $salary->employee_id = $employeeId;
+        $salary = Salary::updateOrCreate(
+            ['employee_id' => $employeeId],
+            [
+                'code_salary' => $dataHtml['code_salary'],
+                'monthly_salary' => $totalSalary,
+                'workday' => $workDays,
+                'real_leaders' => $totalSalary,
+            ]
+        );
 
-        $salary->save();
-
+        $salary->whereMonth('created_at', '=', now()->month)
+            ->whereYear('created_at', '=', now()->year)
+            ->first();
         return $salary;
     }
+
 
     public function getNamePosition()
     {
         return $this->salaryRepository->getNamePosition();
+    }
+
+    public function getMonthSalaries()
+    {
+        return $this->salaryRepository->getMonthSalaries();
+    }
+
+    public function searchSalary($key) {
+        return $this->salaryRepository->search($key);
     }
 }

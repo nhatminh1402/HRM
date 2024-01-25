@@ -98,6 +98,6 @@ class Employee extends Authenticatable
 
     public function timelines()
     {
-        return $this->hasMany(TimeLine::class, 'employee_id', 'id');
+        return $this->hasMany(Timeline::class, 'employee_id', 'id');
     }
 }

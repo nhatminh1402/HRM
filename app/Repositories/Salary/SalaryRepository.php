@@ -11,6 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface SalaryRepository extends RepositoryInterface
 {
-    public function getNamePosition();
-    public function getMonthSalary();
+    public function search($key);
 }

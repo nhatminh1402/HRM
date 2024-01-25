@@ -18,9 +18,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 mb-4">
+        <div class="col-12 mb-4 d-flex justify-content-between">
             <form action="">
-                <button class="btn btn-success">
+                <button class="btn btn-success text-white">
                     Xuất Excel<svg class="icon icon-xxs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path fill-rule="evenodd"
@@ -28,20 +28,25 @@
                             clip-rule="evenodd" />
                     </svg></button>
             </form>
+            <form class="navbar-search w-25 mb-4" id="navbar-search-main" action="{{ route('admin.salary.search') }}"
+            method="GET">
+            <div class="input-group input-group-merge search-bar">
+                <span class="input-group-text" id="topbar-addon">
+                    <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </span>
+                <input type="text" name="key" value="{{ request()->key }}" class="form-control"
+                    id="topbarInputIconLeft" placeholder="Tìm kiếm theo tên chức vụ" aria-label="Search"
+                    aria-describedby="topbar-addon">
+            </div>
+        </form>
         </div>
         <div class="card border-0 shadow">
             <div class="card-body">
-                <div class="input-group my-3 w-50">
-                    <span class="input-group-text">
-                        <svg class="icon icon-xs" x-description="Heroicon name: solid/search"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -54,80 +59,32 @@
                                 <th class="border-gray-200 text-center">Ngày công</th>
                                 <th class="border-gray-200 text-center">Thục lãnh</th>
                                 <th class="border-gray-200 text-center">Ngày chấm</th>
-                                <th class="border-gray-200 text-center">Sửa</th>
-                                <th class="border-gray-200 text-center rounded-end">Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">ML001</td>
-                                <td class="text-center">John Doe</td>
-                                <td class="text-center">Nhân viên</td>
-                                <td class="text-center">10,000,000</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">8,000,000</td>
-                                <td class="text-center">2024-01-01</td>
-                                <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td class="text-center">ML001</td>
-                                <td class="text-center">John Doe</td>
-                                <td class="text-center">Nhân viên</td>
-                                <td class="text-center">10,000,000</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">8,000,000</td>
-                                <td class="text-center">2024-01-01</td>
-                                <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">3</td>
-                                <td class="text-center">ML001</td>
-                                <td class="text-center">John Doe</td>
-                                <td class="text-center">Nhân viên</td>
-                                <td class="text-center">10,000,000</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">8,000,000</td>
-                                <td class="text-center">2024-01-01</td>
-                                <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">4</td>
-                                <td class="text-center">ML001</td>
-                                <td class="text-center">John Doe</td>
-                                <td class="text-center">Nhân viên</td>
-                                <td class="text-center">10,000,000</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">8,000,000</td>
-                                <td class="text-center">2024-01-01</td>
-                                <td class="text-center">
-                                    <a href="{{ route('admin.salary.detail') }}" class="btn btn-success">Xem</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
+                            @if ($salaries->isEmpty())
+                                <td colspan="9" class="text-lg-center w-100">Không tìm thấy bảng lương!</td>
+                            @else
+                                @foreach ($salaries as $key => $salary)
+                                    <tr>
+                                        <td class='text-center'>{{ $key + 1 }}</td>
+                                        <td class='text-center'>{{ $salary->code_salary }}</td>
+                                        <td class='text-center'>{{ $salary->employee->full_name }}</td>
+                                        <td class='text-center'>{{ $salary->employee->position->name }}</td>
+                                        <td class='text-center'>{{ number_format($salary->monthly_salary, 0, '', ','). ' VNĐ' }}</td>
+                                        <td class='text-center'>{{ $salary->workday }}</td>
+                                        <td class='text-center'>{{ number_format($salary->real_leaders, 0, '', ','). ' VNĐ' }}</td>
+                                        <td class='text-center'>{{ date_format($salary->created_at, 'H:i:s d-m-Y') }}</td>
+                                        <td class='text-center'>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
+                    {{ $salaries->appends(request()->only('key'))->links() }}
                 </div>
             </div>
         </div>
     </div>
 @endsection
-

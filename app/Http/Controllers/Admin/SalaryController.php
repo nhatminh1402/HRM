@@ -22,14 +22,20 @@ class SalaryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $prefix = 'ML';
-        $salary_code = $this->salaryService->getSalaryCode($prefix);
+        $salaries = $this->salaryService->getAll();
         $employeeNames = $this->salaryService->getAllEmployee();
-        $positionname = $this->salaryService->getNamePosition();
 
-        return view('admin.pages.salary.index', compact('salary_code'));
+        foreach ($employeeNames as $employee) {
+            $workDay = $this->employeeService->getWorkingDaysInMonth($employee);
+        }
+
+        if ($request->input('key')) {
+            $salaries = $this->salaryService->searchSalary($request->input('key'));
+        }
+
+        return view('admin.pages.salary.index', compact('salaries', 'employeeNames'));
     }
 
     /**
@@ -37,7 +43,7 @@ class SalaryController extends Controller
      */
     public function create()
     {
-        $currentDate = Carbon::now()->format('d/m/Y');
+        $currentDate = Carbon::now()->format('Y-m-d H:i:s');
         $prefix = 'ML';
         $salaryCode = $this->salaryService->getSalaryCode($prefix);
         $employees = $this->salaryService->getAllEmployee();
@@ -69,37 +75,5 @@ class SalaryController extends Controller
         }
 
         return response()->json(['message' => 'Không tìm thấy dự án!'], Response::HTTP_NOT_FOUND);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

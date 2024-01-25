@@ -38,10 +38,10 @@
                     @enderror
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="create_date" class="form-label mb-2 font-weight-bold">Ngày tính
+                    <label for="created_at" class="form-label mb-2 font-weight-bold">Ngày tính
                         lương</label>
-                    <input type="text" name="create_date" value="{{ $currentDate }}" class="form-control"
-                        id="create_date" readonly disabled>
+                    <input type="text" name="created_at" value="{{ $currentDate }}" class="form-control"
+                        id="created_at" readonly disabled>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-success text-white">
-                        Tính lương nhân viên</button>
+                        Lưu lại</button>
                 </div>
             </form>
         </div>
@@ -70,7 +70,7 @@
                 });
 
             $('.select-employees').change(function() {
-                var selectedEmployeeId = $(this).val(); //1/2/3 true
+                var selectedEmployeeId = $(this).val();
                 var selectedEmployeeWorkday = {!! json_encode($countWorkDaysString) !!};
                 var countWorkDays = JSON.parse(selectedEmployeeWorkday);
                 var workDays = countWorkDays[selectedEmployeeId];

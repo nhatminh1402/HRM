@@ -89,11 +89,10 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             $salaryUpdate = $attributes['basic_salary'];
             $positionUpdate = $attributes['position_id'];
 
-            if ($salaryUpdate != $employee->basic_salary || $positionUpdate != $employee->position_id) { // nếu có thay đổi về lương hoặc chức vụ thì lưu vào timeline
+            if ($salaryUpdate != $employee->basic_salary || $positionUpdate != $employee->position_id) {
                 $employee->timelines()->create($attributes);
             }
 
-            // Cập nhật lại thông tin nhân viên
             $employee->update($attributes);
 
         } catch (ModelNotFoundException $exeption) {
@@ -118,6 +117,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         return $this->model->whereIn('id', $employeeIds)->get();
     }
+
     public function countWorkDayInMonth($employeeId)
     {
         $firstDayOfMonth = now()->startOfMonth();
@@ -136,14 +136,13 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             })
             ->unique()
             ->count();
-
         return $workDays;
     }
 
     public function getBasicSalary($employeeId)
     {
         $employee = $this->model->findOrFail($employeeId);
-        
+
         if ($employee) {
             return $employee->basic_salary;
         }
