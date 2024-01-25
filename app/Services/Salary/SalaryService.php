@@ -6,6 +6,7 @@ use App\Helpers;
 use App\Models\Salary;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Repositories\Salary\SalaryRepository;
+use App\Repositories\Timesheet\TimesheetRepository;
 use Carbon\Carbon;
 
 /**
@@ -16,11 +17,13 @@ class SalaryService
     protected $salaryRepository;
     protected $employeeRepository;
 
-    public function __construct(SalaryRepository $salaryRepository, EmployeeRepository $employeeRepository)
+    protected $timesheetRepository;
+
+    public function __construct(SalaryRepository $salaryRepository, EmployeeRepository $employeeRepository, TimesheetRepository $timesheetRepository)
     {
         $this->salaryRepository = $salaryRepository;
-
         $this->employeeRepository = $employeeRepository;
+        $this->timesheetRepository = $timesheetRepository;
     }
 
     public function getAllEmployee()
@@ -50,8 +53,9 @@ class SalaryService
 
         $employeeId = $dataHtml['selected_employees'] ?? '';
         $basicSalary = $this->employeeRepository->getBasicSalary($employeeId);
-        $workDays = $this->employeeRepository->countWorkDayInMonth($employeeId);
-
+        $month = Carbon::now()->month;
+        $year =  Carbon::now()->year;
+        $workDays =  $this->timesheetRepository->countWorkDayInMonth($employeeId, $month, $year);
         $totalSalary = ($basicSalary / 22) * $workDays;
 
         $salary = Salary::updateOrCreate(

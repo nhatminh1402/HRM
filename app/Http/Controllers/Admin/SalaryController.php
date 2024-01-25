@@ -28,14 +28,14 @@ class SalaryController extends Controller
         $employeeNames = $this->salaryService->getAllEmployee();
 
         foreach ($employeeNames as $employee) {
-            $workDay = $this->employeeService->getWorkingDaysInMonth($employee);
-        }
+            $workDay = $this->employeeService->getWorkingDaysInMonth($employee->id);
 
-        if ($request->input('key')) {
-            $salaries = $this->salaryService->searchSalary($request->input('key'));
-        }
+            if ($request->input('key')) {
+                $salaries = $this->salaryService->searchSalary($request->input('key'));
+            }
 
-        return view('admin.pages.salary.index', compact('salaries', 'employeeNames'));
+            return view('admin.pages.salary.index', compact('salaries', 'employeeNames'));
+        }
     }
 
     /**
@@ -48,6 +48,7 @@ class SalaryController extends Controller
         $salaryCode = $this->salaryService->getSalaryCode($prefix);
         $employees = $this->salaryService->getAllEmployee();
         $countWorkDays = [];
+
 
         foreach ($employees as $employee) {
             $countWorkDays[$employee->id] = $this->employeeService->getWorkingDaysInMonth($employee->id);
@@ -63,7 +64,6 @@ class SalaryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
 
         if (isset($data['selected_employees']) && !empty($data['selected_employees'])) {
             $employeeId = $data['selected_employees'];

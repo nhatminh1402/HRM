@@ -18,11 +18,6 @@ class DepartmentController extends Controller
         $this->employeeeService = $employeeeService;
     }
 
-    public function showallBlockDeparment()
-    {
-        $departments = $this->departmentService->getAllDeparment();
-        return view("admin.pages.department.show-department", compact("departments"));
-    }
 
     public function showallDeparment()
     {

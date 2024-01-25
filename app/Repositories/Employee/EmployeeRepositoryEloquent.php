@@ -3,13 +3,11 @@
 namespace App\Repositories\Employee;
 
 use App\Models\Employee;
+use App\Models\Timesheet;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Employee\EmployeeRepository;
-use App\Validators\EmployeeRepository\EmployeeValidator;
-use Carbon\Carbon;
-use Illuminate\Http\Response;
 
 /**
  * Class EmployeeRepositoryEloquent.
@@ -56,7 +54,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
                     ->orWhere('email', 'LIKE', "%{$key}%")
                     ->orWhere('phone_number', 'LIKE', "%{$key}%")
                     ->orWhere('dob', 'LIKE', "%{$key}%")
-                    ->orWhere('nationality', 'LIKE', "%{$key}%")
                     ->orWhere('degree', 'LIKE', "%{$key}%");
             });
         }
@@ -94,7 +91,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             }
 
             $employee->update($attributes);
-
         } catch (ModelNotFoundException $exeption) {
             return abort(404);
         }
@@ -118,6 +114,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $this->model->whereIn('id', $employeeIds)->get();
     }
 
+<<<<<<< Updated upstream
+
     public function countWorkDayInMonth($employeeId)
     {
         $firstDayOfMonth = now()->startOfMonth();
@@ -139,6 +137,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $workDays;
     }
 
+=======
+>>>>>>> Stashed changes
     public function getBasicSalary($employeeId)
     {
         $employee = $this->model->findOrFail($employeeId);
@@ -147,5 +147,22 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             return $employee->basic_salary;
         }
         return null;
+    }
+
+    public function exportData($KeySearch = null)
+    {
+        if ($KeySearch == null) {
+            return $this->model->all();
+        }
+
+        return $this->model
+            ->latest('id')
+            ->where('code_employee', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('full_name', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('email', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('phone_number', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('dob', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('degree', 'LIKE', "%{$KeySearch}%")
+            ->get();
     }
 }

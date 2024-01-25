@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
 class Employee extends Authenticatable
 {
     use HasFactory;
 
-    protected $guard = "employee";
+    protected $guard = 'employee';
 
     protected $fillable = [
         'full_name',
@@ -30,7 +29,6 @@ class Employee extends Authenticatable
         'position_id',
         'province_id',
         'district_id',
-        'salary_id',
         'ward_id',
         'password',
         'status',
@@ -68,7 +66,7 @@ class Employee extends Authenticatable
     }
 
     protected $casts = [
-        'password' => 'hashed'
+        'password' => 'hashed',
     ];
 
     /**
@@ -96,6 +94,10 @@ class Employee extends Authenticatable
         return $this->hasMany(Timesheet::class, 'employee_id', 'id');
     }
 
+    public function leave()
+    {
+        return $this->hasMany(Leave::class, 'employee_id', 'id');
+    }
     public function timelines()
     {
         return $this->hasMany(Timeline::class, 'employee_id', 'id');

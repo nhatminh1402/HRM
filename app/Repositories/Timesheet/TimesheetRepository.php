@@ -17,6 +17,5 @@ interface TimesheetRepository extends RepositoryInterface
     public function checkin(array $data);
     public function updateOnDay($data);
     public function showTimesheet($id);
-
-
+    public function countWorkDayInMonth($employeeId, $month, $year);
 }

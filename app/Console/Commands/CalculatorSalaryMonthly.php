@@ -6,8 +6,10 @@ use App\Helpers;
 use App\Models\Salary;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Repositories\Salary\SalaryRepository;
+use App\Repositories\Timesheet\TimesheetRepository;
 use App\Services\Employee\EmployeeService;
 use App\Services\Salary\SalaryService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
 
@@ -34,25 +36,29 @@ class CalculatorSalaryMonthly extends Command
     {
         try {
             $employeeRepository = app()->make(EmployeeRepository::class);
+            $timeSheetRepository = app()->make(TimesheetRepository::class);
             $employees = $employeeRepository->all();
+            $month = Carbon::now()->month;
+            $year = Carbon::now()->year;
 
             foreach ($employees as $employee) {
+
                 $prefix = 'ML';
-                $codeSalary = Helpers::generateCode($prefix);
                 $basicSalary = $employee->basic_salary;
-                $workDays = $employeeRepository->countWorkDayInMonth($employee->id);
+                $workDays = $timeSheetRepository->countWorkDayInMonth($employee->id, $month, $year);
                 $totalSalary = ($basicSalary / 22) * $workDays;
+                $timeNow = now()->format('Y-m-d H:i:s');
 
                 $salary = Salary::updateOrCreate(
                     ['employee_id' => $employee->id],
                     [
-                        'code_salary' => $codeSalary,
+                        'code_salary' => Helpers::generateCode($prefix),
                         'monthly_salary' => $totalSalary,
                         'workday' => $workDays,
                         'real_leaders' => $totalSalary,
                     ]
                 );
-                
+
                 $salary->whereMonth('created_at', '=', now()->month)
                     ->whereYear('created_at', '=', now()->year)
                     ->first();

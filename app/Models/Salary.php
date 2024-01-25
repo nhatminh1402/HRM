@@ -13,7 +13,8 @@ class Salary extends Model
         'code_salary',
         'monthly_salary',
         'workday',
-        'real_leaders'
+        'real_leaders',
+        'employee_id'
     ];
 
     public function employee()

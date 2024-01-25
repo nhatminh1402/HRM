@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\User\Timeline\TimelineController;
+use App\Http\Controllers\User\leave\LeaveController;
 use App\Http\Controllers\User\Timesheet\TimesheetController;
 use App\Http\Controllers\User\Detail\UserUploadImgController;
 use App\Http\Controllers\User\Auth\PasswordController;
@@ -24,7 +26,7 @@ Route::get('home-page', function () {
 })->name('home');
 
 // 2. Router cho trang xem thông tin chi tiết nhân viên
-Route::get("employee-infor", [UserDetailController::class, 'getEmployeeInfor'])->name('employee-info');
+Route::get('employee-infor', [UserDetailController::class, 'getEmployeeInfor'])->name('employee-info');
 
 // 3. Router cho trang xem các phòng ban
 Route::get('departments', function () {
@@ -68,13 +70,26 @@ Route::get('change-password', [PasswordController::class, 'showViewChangePasswor
 Route::post('change-password', [PasswordController::class, 'changePassword'])->name('change-password');
 
 //12. Router cho trang hiển thị timesheet
-Route::get("timesheet-user", [TimesheetController::class, 'showtimesheet'])->name("timesheet-user");
+Route::get('timesheet-user', [TimesheetController::class, 'showtimesheet'])->name('timesheet-user');
 
-//11. Router cho trang hiển thị ảnh train model
-Route::group(['prefix' => 'images'], function () {
+//13. Router cho trang xem timeline nhân viên
+Route::get('timeline', [TimelineController::class, 'index'])->name('timeline');
+
+//14. Router cho trang hiển thị ảnh train model
+Route::prefix('images')->group(function () {
     Route::get('/', [UserUploadImgController::class, 'index'])->name('images');
     Route::post('/upload', [UserUploadImgController::class, 'upload'])->name('dropzone.upload');
     Route::get('/fetch', [UserUploadImgController::class, 'fetch'])->name('dropzone.fetch');
     Route::get('/delete', [UserUploadImgController::class, 'delete'])->name('dropzone.delete');
 });
 
+//15 Router cho gửi email xin nghỉ
+Route::prefix('leave')
+    ->name('leave.')
+    ->group(function () {
+        Route::get('/', [LeaveController::class, 'index'])->name('show');
+        Route::get('/add', [LeaveController::class, 'viewaddleave'])->name('add');
+        Route::post('/add', [LeaveController::class, 'create'])->name('post_add');
+        Route::get('/sendEmail', [LeaveController::class, 'mail']);
+        Route::get('/detail/{id}', [LeaveController::class, 'detail'])->name('detailEmail');
+    });
