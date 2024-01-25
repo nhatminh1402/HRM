@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\Timeline\TimelineController;
+use App\Http\Controllers\User\leave\LeaveController;
 use App\Http\Controllers\User\Timesheet\TimesheetController;
 use App\Http\Controllers\User\Detail\UserUploadImgController;
 use App\Http\Controllers\User\Auth\PasswordController;
@@ -74,11 +75,21 @@ Route::get('timesheet-user', [TimesheetController::class, 'showtimesheet'])->nam
 //13. Router cho trang xem timeline nhân viên
 Route::get('timeline', [TimelineController::class, 'index'])->name('timeline');
 
-//11. Router cho trang hiển thị ảnh train model
-Route::group(['prefix' => 'images'], function () {
+//14. Router cho trang hiển thị ảnh train model
+Route::prefix('images')->group(function () {
     Route::get('/', [UserUploadImgController::class, 'index'])->name('images');
     Route::post('/upload', [UserUploadImgController::class, 'upload'])->name('dropzone.upload');
     Route::get('/fetch', [UserUploadImgController::class, 'fetch'])->name('dropzone.fetch');
     Route::get('/delete', [UserUploadImgController::class, 'delete'])->name('dropzone.delete');
 });
 
+//15 Router cho gửi email xin nghỉ
+Route::prefix('leave')
+    ->name('leave.')
+    ->group(function () {
+        Route::get('/', [LeaveController::class, 'index'])->name('show');
+        Route::get('/add', [LeaveController::class, 'viewaddleave'])->name('add');
+        Route::post('/add', [LeaveController::class, 'create'])->name('post_add');
+        Route::get('/sendEmail', [LeaveController::class, 'mail']);
+        Route::get('/detail/{id}', [LeaveController::class, 'detail'])->name('detailEmail');
+    });
