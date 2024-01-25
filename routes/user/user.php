@@ -82,9 +82,8 @@ Route::prefix('images')->group(function () {
 //14 Routr cho gửi email xin nghỉ 
 Route::prefix('leave')->name('leave.')->group(function () {
     Route::get('/', [LeaveController::class, 'index'])->name('show');
+    Route::get('/add', [LeaveController::class,'viewaddleave'])->name('add');
     Route::post('/add', [LeaveController::class, 'create'])->name('post_add');
-    Route::get('/add', function () {return view('user.pages.leave_add');})->name('add');
-    Route::get('/detail', function () {return view('user.pages.leave_detail');});
     Route::get('/sendEmail',[LeaveController::class,'mail']);
     Route::get('/detail/{id}', [LeaveController::class,'detail'])->name('detailEmail');
 });

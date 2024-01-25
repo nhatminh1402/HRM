@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
-@section('title', 'Add Department')
-@section('page-title', 'TẠO PHÒNG BAN')
+@section('title', 'List leave')
+@section('page-title', 'Danh sách đơn')
 @section('css')
 @endsection
 @section('content')
@@ -13,7 +13,7 @@
                         <tr>
                             <th class="text-center" scope="col">STT</th>
                             <th class="text-center" scope="col">Mã nhân viên</th>
-                            <th class="text-center" scope="col">Tên phòng ban</th>
+                            <th class="text-center" scope="col">Tên nhân viên</th>
                             <th class="text-center" scope="col">Ngày làm đơn</th>
                             <th class="text-center" scope="col">Trạng thái</th>
                             <th class="text-center" scope="col">Sửa</th>
@@ -26,15 +26,15 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $leave->employee->code_employee }}</td>
                                     <td class='text-center'>{{ $leave->employee->full_name }}</td>
-                                    <td class='text-center'>{{ $leave->created_at->format('Y-m-d') }}</td>
+                                    <td class='text-center'>{{ $leave->created_at->format('d-m-Y') }}</td>
                                     <td class='text-center'>
                                         <h6 style="margin-left: 20px" class="mb-0">
                                             @if ($leave->status == 0)
-                                                <span class="bg-gradient-warning">Đang chờ</span>
+                                                <span class="rounded bg-warning text-white small font-weight-bold p-1">Đang chờ</span>
                                             @elseif ($leave->status == 1)
-                                                <span class="bg-gradient-success">Đã duyệt</span>
+                                                <span class="rounded bg-success text-white small font-weight-bold p-1">Đã duyệt</span>
                                             @elseif ( $leave->status == 2)
-                                                <span class="bg-gradient-danger">Không duyệt</span>
+                                                <span class="rounded bg-danger text-white small font-weight-bold p-1">Không duyệt</span>
                                             @endif
                                         </h6>
                                     </td>

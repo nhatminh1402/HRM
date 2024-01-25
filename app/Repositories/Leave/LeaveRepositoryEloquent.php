@@ -28,7 +28,7 @@ class LeaveRepositoryEloquent extends BaseRepository implements LeaveRepository
 
     public function getByEmployeeId($employeeId)
     {
-        return $this->model->with('employee')->where('employee_id', $employeeId)->paginate(self::DEFAULT_PER_PAGE);
+        return $this->model->with('employee')->where('employee_id', $employeeId)->latest('id')->paginate(self::DEFAULT_PER_PAGE);
     }
 
     public function getById($id)

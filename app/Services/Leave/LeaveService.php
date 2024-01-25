@@ -32,7 +32,7 @@ class LeaveService
         $idUser = Auth::guard('employee')->user()->id;
         $data['employee_id'] = $idUser;
         $employee = $this->userRepository->getById($idUser);
-        $dataHtml = Helpers::stripHtmlTags($data);
+        $dataHtml = $data;
 
         $content = [
             'name' => $employee->full_name,

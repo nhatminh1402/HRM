@@ -34,7 +34,7 @@
                         <li>Ngày kết thúc: {{ $leave->end_leave }}  </li>
                         <li>Tổng số ngày nghỉ: {{ $leave->number_days }}</li>
                     </ul>
-            <p>Tôi xin được nghỉ phép vì {{ $leave->description }}</p> 
+            <p>Tôi xin được nghỉ phép vì: {!! $leave->description !!}</p> 
             <p>Tôi cam đoan sẽ hoàn thành tất cả các công việc
                 trước khi nghỉ và chắc chắn rằng không gây ảnh hưởng đến sự hoạt động của công ty/đơn vị.</p>
             <p>Tôi đã thông báo về việc nghỉ này cho đồng nghiệp và tôi sẽ cung cấp mọi thông tin cần thiết để đảm bảo sự

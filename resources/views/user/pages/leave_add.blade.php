@@ -23,25 +23,30 @@
             <div class="card mb-4">
                 <div class="card-header">TẠO ĐƠN NGHỈ PHÉP</div>
                 <div class="card-body">
-                    <form  action="{{ route('user.leave.post_add') }}" method="POST" >
+                    <form id="submit-leave" action="{{ route('user.leave.post_add') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="formFile" class="form-label mb-2 font-weight-bold">Chọn người gửi</label>
-                            {{-- <input class="form-control" type="file" id="formFile"> --}}
-                        </div>
-                        <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Lý do xin nghỉ phép</label>
-                            <textarea name="description" class="form-control" value="" id="description" rows="50" cols="50"></textarea>
+                            <textarea name="description" class="form-control" id="description" rows="50" cols="50"></textarea>
+                            @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1 font-weight-bold">Ngày bắt đầu nghỉ phép</label>
                                 <input id="startDate" name="start_leave" class="form-control" type="date">
+                                @error('start_leave')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label class="small mb-1 font-weight-bold">Ngày kết thúc nghỉ phép</label>
-                                <input id="endDate" name="end_leave"  class="form-control" type="date">
+                                <input id="endDate" name="end_leave" class="form-control" type="date">
+                                @error('end_leave')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- Form Row-->
@@ -49,14 +54,20 @@
                             <div class="col-md-3">
                                 <label class="small mb-1">Số ngày nghỉ</label>
                                 <input class="form-control FontLarger" name="number_days" type="text" value="">
+                                @error('number_days')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+
                             </div>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="submit">Tạo đơn nghỉ phép</button>
+                        <button class="btn btn-primary" id="btn-submit" type="button">Tạo đơn nghỉ phép</button>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
+@section('script')
+    <script src="{{ asset('assets/js/leave.js') }}"></script>
+@endsection
 @endsection

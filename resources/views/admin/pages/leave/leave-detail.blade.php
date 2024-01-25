@@ -1,9 +1,6 @@
 @extends('admin.layouts.app')
-@section('title', 'Add Department')
-@section('page-title', 'TẠO PHÒNG BAN')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('assets/css/create-department.css') }}">
-@endsection
+@section('title', 'Detail Leave')
+@section('page-title', 'Detail Leave')
 @section('content')
     <div class="container-xl px-4 mt-4">
         <hr class="mt-0 mb-4">
@@ -20,7 +17,7 @@
                     <li>Ngày kết thúc: {{ $leave->end_leave }} </li>
                     <li>Tổng số ngày nghỉ: {{ $leave->number_days }}</li>
                 </ul>
-                <p>Tôi xin được nghỉ phép vì {{ $leave->description }}</p>
+                <p>Tôi xin được nghỉ phép vì: {!! $leave->description !!}</p>
                 <p>Tôi cam đoan sẽ hoàn thành tất cả các công việc
                     trước khi nghỉ và chắc chắn rằng không gây ảnh hưởng đến sự hoạt động của công ty/đơn vị.</p>
                 <p>Tôi đã thông báo về việc nghỉ này cho đồng nghiệp và tôi sẽ cung cấp mọi thông tin cần thiết để đảm bảo
@@ -39,10 +36,10 @@
         </div>
         <div>
             @if ($leave->status == 0)
-                <a type="button" class="btn btn-success" href="{{ route('admin.leave.accept', $leave->id) }}">
+                <a type="button" class="btn btn-success" id="accept-leave" href="{{ route('admin.leave.accept', $leave->id) }}">
                     Duyệt
                 </a>
-                <a type="button" class="btn btn-danger" href="{{ route('admin.leave.Non-accept', $leave->id) }}">
+                <a type="button" class="btn btn-danger"  id ="Non-accept-leave" href="{{ route('admin.leave.Non-accept', $leave->id) }}">
                     Không duyệt
                 </a>
             @else
@@ -50,4 +47,7 @@
         </div>
         @endif
     </div>
+@section('script')
+    <script src="{{ asset('assets/js/leave.js') }}"></script>
+@endsection
 @endsection

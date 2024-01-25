@@ -28,9 +28,12 @@
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
     <script src="{{ asset('lib/jquery-3.7.1.min') }}"></script>
+
     <script src="{{ asset('lib/dropzone/dropzone.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('lib/dropzone/dropzone.min.css') }}" type="text/css" />
     <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
     @yield('include-script')
 </head>
 

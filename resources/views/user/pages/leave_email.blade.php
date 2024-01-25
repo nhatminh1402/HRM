@@ -14,7 +14,7 @@
         <li>Ngày kết thúc: {{ $mailData['endleave'] }}</li>
         <li>Tổng số ngày nghỉ: {{ $mailData['number_days'] }}</li>
     </ul>
-    <p>Tôi xin được nghỉ phép vì {{ $mailData['decsription'] }}. Tôi cam đoan sẽ hoàn thành tất cả các công việc trước
+    <p>Tôi xin được nghỉ phép vì: {!! $mailData['decsription'] !!}. Tôi cam đoan sẽ hoàn thành tất cả các công việc trước
         khi nghỉ và chắc chắn rằng không gây ảnh hưởng đến sự hoạt động của công ty/đơn vị.</p>
     <p>Tôi đã thông báo về việc nghỉ này cho đồng nghiệp và tôi sẽ cung cấp mọi thông tin cần thiết để đảm bảo sự liên
         tục trong công việc.</p>

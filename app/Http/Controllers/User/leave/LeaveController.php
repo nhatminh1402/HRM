@@ -4,8 +4,8 @@ namespace App\Http\Controllers\User\leave;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateLeaveRequest;
 use App\Services\Leave\LeaveService;
-use Illuminate\Http\Request;
 
 
 class LeaveController extends Controller
@@ -23,7 +23,12 @@ class LeaveController extends Controller
         return view('user.pages.leave_list', compact('leaves'));
     }
 
-    public function create(Request $request)
+    public function viewaddleave()
+    {
+        return view('user.pages.leave_add');
+    }
+
+    public function create(CreateLeaveRequest $request)
     {
         $leave = $this->leaveService->createLeave($request);
         return redirect()->route('user.leave.detailEmail', $leave->id)->with('success', 'Tạo đơn thành công');
