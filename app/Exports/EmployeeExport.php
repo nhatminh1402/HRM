@@ -2,17 +2,18 @@
 
 namespace App\Exports;
 
-use App\Models\Employee;
-use App\Models\User;
-use App\Services\Employee\EmployeeService;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
 class EmployeeExport implements FromView
 {
+    private $dataExport;
+    public function __construct($dataExport)
+    {
+        $this->dataExport = $dataExport;
+    }
     public function view(): View
     {
-        $listEmployee = Employee::all();
-        return view('export.list_employee', compact('listEmployee'));
+        return view('export.list_employee', ['dataExport' => $this->dataExport]);
     }
 }

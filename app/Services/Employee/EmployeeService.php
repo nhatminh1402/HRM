@@ -69,4 +69,9 @@ class EmployeeService
     {
         return $this->employeeRepository->all($columns);
     }
+
+    public function exportData($KeySearch = null)
+    {
+        return $this->employeeRepository->exportData($KeySearch);
+    }
 }

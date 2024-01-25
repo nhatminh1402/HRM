@@ -55,7 +55,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
                     ->orWhere('email', 'LIKE', "%{$key}%")
                     ->orWhere('phone_number', 'LIKE', "%{$key}%")
                     ->orWhere('dob', 'LIKE', "%{$key}%")
-                    ->orWhere('nationality', 'LIKE', "%{$key}%")
                     ->orWhere('degree', 'LIKE', "%{$key}%");
             });
         }
@@ -88,13 +87,13 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             $salaryUpdate = $attributes['basic_salary'];
             $positionUpdate = $attributes['position_id'];
 
-            if ($salaryUpdate != $employee->basic_salary || $positionUpdate != $employee->position_id) { // nếu có thay đổi về lương hoặc chức vụ thì lưu vào timeline
+            if ($salaryUpdate != $employee->basic_salary || $positionUpdate != $employee->position_id) {
+                // nếu có thay đổi về lương hoặc chức vụ thì lưu vào timeline
                 $employee->timelines()->create($attributes);
             }
 
             // Cập nhật lại thông tin nhân viên
             $employee->update($attributes);
-
         } catch (ModelNotFoundException $exeption) {
             return abort(404);
         }
@@ -116,5 +115,22 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function getByIds(array $employeeIds)
     {
         return $this->model->whereIn('id', $employeeIds)->get();
+    }
+
+    public function exportData($KeySearch = null)
+    {
+        if ($KeySearch == null) {
+            return $this->model->all();
+        }
+
+        return $this->model
+            ->latest('id')
+            ->where('code_employee', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('full_name', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('email', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('phone_number', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('dob', 'LIKE', "%{$KeySearch}%")
+            ->orWhere('degree', 'LIKE', "%{$KeySearch}%")
+            ->get();
     }
 }

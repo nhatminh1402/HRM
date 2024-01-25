@@ -18,4 +18,5 @@ interface EmployeeRepository extends RepositoryInterface
     public function getEmployeDepartmentNull();
     public function all($columns = ['*']);
     public function update(array $attributes, $id);
+    public function exportData($KeySearch = null);
 }

@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($listEmployee as $employee)
+        @foreach ($dataExport as $employee)
             <tr>
                 <td>{{ $employee->code_employee }}</td>
                 <td>{{ $employee->full_name }}</td>

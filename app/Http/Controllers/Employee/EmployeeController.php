@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Employee;
 
 use App\Exports\EmployeeExport;
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
 use App\Services\Employee\EmployeeService;
-use DB;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -40,7 +38,9 @@ class EmployeeController extends Controller
 
     public function export()
     {
-        $response = Excel::download(new EmployeeExport, 'DANH_SACH_NHAN_VIEN.xlsx');
+        $keySearch = request()->keySearch;
+        $dataExport = $this->employeeService->exportData($keySearch);
+        $response = Excel::download(new EmployeeExport($dataExport), 'DANH_SACH_NHAN_VIEN.xlsx');
         ob_end_clean();
         return $response;
     }

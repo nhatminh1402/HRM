@@ -5,24 +5,11 @@
 @endsection
 
 @section('content')
-    <h2 class="mt-3 mb-4 pb-2 border-bottom text-primary">Danh sách nhân viên </h2>
     <div class="d-flex justify-content-between w-100 flex-wrap mb-4">
         <div class="mb-3">
-            <a class="me-3" href="">
-                <button type="button" class="btn btn-success text-white"> <span class="mr-5">Thêm mới nhân viên</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
-                        <path
-                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                    </svg>
-                </button>
-            </a>
-            <a href="{{ route('admin.employee.export') }}">
-                <button type="button" class="btn btn-success text-white"><span>Xuất file Excel</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
-                        <path
-                            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                    </svg>
-                </button>
+            <button type="button" class="btn btn-primary">Thêm mới</button>
+            <a href="/admin/employees/export?keySearch={{ request('key') }}">
+                <button type="button" class="btn btn-success text-white">Xuất dữ liệu</button>
             </a>
         </div>
         <form class="navbar-search w-10" id="navbar-search-main" action="{{ route('admin.employee.search-employee') }}"
@@ -49,7 +36,7 @@
                         <tr>
                             <th class="border-0 rounded-start text-center">STT</th>
                             <th class="border-0  text-center">Mã nhân viên</th>
-                            <th style="width: 250px" class="border-0  text-center">Ảnh</th>
+                            <th style="width: 150px;" class="border-0  text-center">Ảnh</th>
                             <th class="border-0  text-center">Tên nhân viên</th>
                             <th class="border-0  text-center">Giới tính</th>
                             <th class="border-0  text-center">Ngày sinh</th>
@@ -65,7 +52,7 @@
                                     <td class='text-center'>{{ $key + 1 }}</td>
                                     <td class='text-center'>{{ $employee->code_employee }}</td>
                                     <td class='text-center'>
-                                        <img style="width: 100%" class="image image-md" alt="Image placeholder"
+                                        <img style="width: 80%; height: auto" class="image image-md" alt="Image placeholder"
                                             src="/uploads/{{ $employee->image }}">
                                     </td>
                                     <td class='text-center'>{{ $employee->full_name }}</td>
