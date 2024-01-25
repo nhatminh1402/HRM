@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class TimelineController extends Controller
 {
     private $timelineService;
+
     public function __construct(TimelineService $timelineservice)
     {
         $this->timelineService = $timelineservice;
     }
+
     public function index()
     {
         $employeeId = Auth::guard('employee')->id();
