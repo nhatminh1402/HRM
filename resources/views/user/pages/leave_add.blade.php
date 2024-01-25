@@ -2,8 +2,6 @@
 
 {{-- Thêm script file ở head --}}
 @section('include-script')
-  
-
     <link rel="stylesheet" href="{{ asset('material-template/assets/css/user/account_infor.css') }}">
 @endsection
 
