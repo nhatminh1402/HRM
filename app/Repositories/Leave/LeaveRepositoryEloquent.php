@@ -20,7 +20,7 @@ class LeaveRepositoryEloquent extends BaseRepository implements LeaveRepository
      *
      * @return string
      */
-    const DEFAULT_PER_PAGE = 6;
+    const DEFAULT_PER_PAGE = 4;
     public function model()
     {
         return Leave::class;
@@ -43,7 +43,7 @@ class LeaveRepositoryEloquent extends BaseRepository implements LeaveRepository
 
     public function updateStatus($id, $status)
     {
-        $leave = $this->findOrFail($id);
+        $leave = $this->model->findOrFail($id);
         $leave->status = $status;
         $leave->save();
     }

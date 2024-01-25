@@ -60,6 +60,7 @@
                         @endif
                     </tbody>
                 </table>
+                {{ $leaves->links() }}
             </div>
         </div>
     </div>
