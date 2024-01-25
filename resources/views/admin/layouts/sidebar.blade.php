@@ -77,7 +77,12 @@
                         Quản lý kỷ luật</a></li>
             </ul>
         </li>
-
+        {{-- Đơn nghỉ phép  --}}
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.leave.list') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('CoreUI/vendors/@coreui/icons/svg/free.svg#cil-notes') }}"></use>
+                </svg> Đơn nghỉ phép </a>
+        </li>
         <li class="nav-group">
             <a class="nav-link nav-group-toggle" href="#">
                 <svg class="nav-icon">
@@ -85,9 +90,11 @@
                 </svg> Quản lý lương
             </a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.salary.show')}}"><span class="nav-icon"></span>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.salary.show') }}"><span
+                            class="nav-icon"></span>
                         Bảng tính lương</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.salary.calculator')}}"><span class="nav-icon"></span>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.salary.calculator') }}"><span
+                            class="nav-icon"></span>
                         Tính lương</a></li>
             </ul>
         </li>
