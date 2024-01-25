@@ -114,8 +114,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $this->model->whereIn('id', $employeeIds)->get();
     }
 
-<<<<<<< Updated upstream
-
     public function countWorkDayInMonth($employeeId)
     {
         $firstDayOfMonth = now()->startOfMonth();
@@ -137,8 +135,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         return $workDays;
     }
 
-=======
->>>>>>> Stashed changes
     public function getBasicSalary($employeeId)
     {
         $employee = $this->model->findOrFail($employeeId);
