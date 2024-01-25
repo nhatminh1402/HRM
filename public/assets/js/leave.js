@@ -44,7 +44,7 @@ $(document).ready(function () {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Xác nhân!",
+            confirmButtonText: "Xác nhận!",
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = event.target.href;
