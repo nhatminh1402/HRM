@@ -12,4 +12,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface SalaryRepository extends RepositoryInterface
 {
     public function search($key);
+
+    public function exportData($keySearch);
+
 }

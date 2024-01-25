@@ -13,4 +13,6 @@ Route::prefix('/salary')->name('salary.')->group(function(){
         Route::post('/store', [SalaryController::class, 'store'])->name('store');
 
         Route::get('/seach', [SalaryController::class, 'index'])->name('search');
+
+        Route::get('/export', [SalaryController::class, 'export'])->name('export');
     });

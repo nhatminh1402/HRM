@@ -23,7 +23,7 @@ class Salary extends Model
     }
 
 
-    public function scopeSearchByMonthYear(mixed $query, string $month, $year)
+    public function scopeSearchByMonthYear(mixed $query, $month, $year)
     {
         return ($month && $year)
             ? $query->whereRaw('MONTH(created_at)) = ? OR YEAR(created_at)) = ?', [$month, $year])
@@ -36,8 +36,6 @@ class Salary extends Model
             $query->where('full_name', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%');
         })->latest('id') : $query;
     }
-
-
     public function scopeSearchByNamePosition($query, $key)
     {
         return $key ? $query->whereHas('employee', function ($query) use ($key) {
@@ -47,22 +45,22 @@ class Salary extends Model
         })->latest('id') : $query;
     }
 
-    public function scopeSearchByMonthSalary(mixed $query, string $key)
+    public function scopeSearchByMonthSalary(mixed $query, $key)
     {
         return $key ? $query->where('monthly_salary', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
 
-    public function scopeSearchByCreatedAt(mixed $query, string $key)
+    public function scopeSearchByCreatedAt(mixed $query, $key)
     {
         return $key ? $query->where('created_at', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
 
-    public function scopeSearchByCodeSalary(mixed $query, string $key)
+    public function scopeSearchByCodeSalary(mixed $query, $key)
     {
         return $key ? $query->where('code_salary', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }
 
-    public function scopeSearchByWorkDay(mixed $query, string $key)
+    public function scopeSearchByWorkDay(mixed $query, $key)
     {
         return $key ? $query->where('workday', 'LIKE', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
     }

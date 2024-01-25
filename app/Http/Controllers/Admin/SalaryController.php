@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\SalaryExport;
 use App\Http\Controllers\Controller;
 use App\Services\Employee\EmployeeService;
 use App\Services\Salary\SalaryService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SalaryController extends Controller
 {
     protected $salaryService;
     protected $employeeService;
+
 
     public function __construct(SalaryService $salaryService, EmployeeService $employeeService)
     {
@@ -75,5 +78,13 @@ class SalaryController extends Controller
         }
 
         return response()->json(['message' => 'Không tìm thấy dự án!'], Response::HTTP_NOT_FOUND);
+    }
+
+    public function export()
+    {
+        $dataExport = $this->salaryService->exportData(request()->input('key'));
+        $response = Excel::download(new SalaryExport($dataExport), 'salary.xlsx');
+        ob_end_clean();
+        return $response;
     }
 }

@@ -74,7 +74,6 @@ class SalaryService
         return $salary;
     }
 
-
     public function getNamePosition()
     {
         return $this->salaryRepository->getNamePosition();
@@ -87,5 +86,10 @@ class SalaryService
 
     public function searchSalary($key) {
         return $this->salaryRepository->search($key);
+    }
+
+    public function exportData($keySearch)
+    {
+        return $this->salaryRepository->exportData($keySearch);
     }
 }
