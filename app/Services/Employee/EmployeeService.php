@@ -3,7 +3,9 @@
 namespace App\Services\Employee;
 
 use App\Repositories\Employee\EmployeeRepository;
+use App\Repositories\Timesheet\TimesheetRepository;
 use App\Traits\ImgProcess;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -15,9 +17,12 @@ class EmployeeService
 
     protected $employeeRepository;
 
-    public function __construct(EmployeeRepository $employeeRepository)
+    protected $timesheetRepository;
+
+    public function __construct(EmployeeRepository $employeeRepository, TimesheetRepository $timesheetRepository)
     {
         $this->employeeRepository = $employeeRepository;
+        $this->timesheetRepository = $timesheetRepository;
     }
 
     public function showallemployee()
@@ -63,6 +68,13 @@ class EmployeeService
     public function update(array $attributes, $id)
     {
         $this->employeeRepository->update($attributes, $id);
+    }
+
+    public function getWorkingDaysInMonth($employeeId)
+    {
+        $month = Carbon::now()->month;
+        $year =  Carbon::now()->year;
+        return $this->timesheetRepository->countWorkDayInMonth($employeeId, $month, $year);
     }
 
     public function all($columns = ['*'])
