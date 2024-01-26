@@ -8,17 +8,15 @@
 
 @section('content')
     <div class="row">
-        <div class="py-4">
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
-                <!-- Breadcrumb navigation goes here -->
-            </nav>
-            <div class="d-flex justify-content-between w-100 flex-wrap">
-                <div class="mb-3 mb-lg-0">
-                    <h1 class="h1">Danh sách lương nhân viên</h1>
-                </div>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+            <!-- Breadcrumb navigation goes here -->
+        </nav>
+        <div class="d-flex justify-content-between w-100 flex-wrap mt-4 mb-2">
+            <div class="mb-3 mb-lg-0">
+                <h2 class="h2 mb-2">Danh sách lương nhân viên</h2>
             </div>
         </div>
-        <div class="col-12 mb-4 d-flex justify-content-between">
+        <div class="col-12 mb-2 d-flex justify-content-between">
             <a href="/admin/salary/export?key={{ request()->key }}">
                 <button class="btn btn-success text-white">
                     Xuất Excel<svg class="icon icon-xxs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -45,7 +43,7 @@
                 </div>
             </form>
         </div>
-        <div class="card border-0 shadow">
+        <div class="card shadow">
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -55,10 +53,10 @@
                                 <th class="border-gray-200 text-center">Mã lương</th>
                                 <th class="border-gray-200 text-center">Tên Nhân viên</th>
                                 <th class="border-gray-200 text-center">Chức vụ</th>
-                                <th class="border-gray-200 text-center">Lương tháng</th>
+                                <th class="border-gray-200 text-start">Lương tháng</th>
                                 <th class="border-gray-200 text-center">Ngày công</th>
-                                <th class="border-gray-200 text-center">Thực nhận</th>
-                                <th class="border-gray-200 text-center">Thời gian tính lương</th>
+                                <th class="border-gray-200 text-start">Thực nhận</th>
+                                <th class="border-gray-200 text-start">Thời gian tính lương</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,14 +69,12 @@
                                         <td class='text-center'>{{ $salary->code_salary }}</td>
                                         <td class='text-center'>{{ $salary->employee->full_name }}</td>
                                         <td class='text-center'>{{ $salary->employee->position->name }}</td>
-                                        <td class='text-center'>
+                                        <td class='text-start'>
                                             {{ number_format($salary->monthly_salary, 0, '', ',') . ' VNĐ' }}</td>
                                         <td class='text-center'>{{ $salary->workday }}</td>
-                                        <td class='text-center'>
+                                        <td class='text-start'>
                                             {{ number_format($salary->real_leaders, 0, '', ',') . ' VNĐ' }}</td>
-                                        <td class='text-center'>{{ date_format($salary->created_at, 'H:i:s d-m-Y') }}</td>
-                                        <td class='text-center'>
-                                        </td>
+                                        <td class='text-start'>{{ date_format($salary->created_at, 'H:i:s d-m-Y') }}</td>
                                     </tr>
                                 @endforeach
                             @endif
