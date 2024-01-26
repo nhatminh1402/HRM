@@ -6,7 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Timesheet\TimesheetRepository;
 use App\Models\Timesheet;
-
+use Carbon\Carbon;
 
 /**
  * Class TimesheetRepositoryEloquent.
@@ -48,10 +48,21 @@ class TimesheetRepositoryEloquent extends BaseRepository implements TimesheetRep
     }
 
     public function showTimesheet($id)
-    {  
+    {
         return $this->model->with('employee')->where('employee_id', $id)->selectRaw('*, timediff(updated_at, created_at) as workingtime')->get();
     }
-    
+
+    public function countWorkDayInMonth($employeeId, $month, $year)
+    {
+        $count = $this->model->whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->whereHas('employee', function ($query) use ($employeeId) {
+                $query->where('id', $employeeId);
+            })
+            ->count();
+        return $count;
+    }
+
     /**
      * Boot up the repository, pushing criteria
      */

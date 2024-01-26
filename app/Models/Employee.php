@@ -14,7 +14,26 @@ class Employee extends Authenticatable
 
     protected $guard = 'employee';
 
-    protected $fillable = ['full_name', 'code_employee', 'phone_number', 'image', 'email', 'identify_number', 'dob', 'gender', 'degree', 'major', 'department_id', 'position_id', 'province_id', 'district_id', 'ward_id', 'password', 'status', 'basic_salary'];
+    protected $fillable = [
+        'full_name',
+        'code_employee',
+        'phone_number',
+        'image',
+        'email',
+        'identify_number',
+        'dob',
+        'gender',
+        'degree',
+        'major',
+        'department_id',
+        'position_id',
+        'province_id',
+        'district_id',
+        'ward_id',
+        'password',
+        'status',
+        'basic_salary'
+    ];
 
     public function province()
     {
@@ -39,6 +58,11 @@ class Employee extends Authenticatable
     public function position()
     {
         return $this->belongsTo(Position::class, 'position_id', 'id');
+    }
+
+    public function salary()
+    {
+        return $this->belongsTo(Salary::class, 'salary_id', 'id');
     }
 
     protected $casts = [
@@ -67,7 +91,7 @@ class Employee extends Authenticatable
 
     public function timeSheet()
     {
-        return $this->hasMany(TimeSheet::class, 'employee_id', 'id');
+        return $this->hasMany(Timesheet::class, 'employee_id', 'id');
     }
 
     public function leave()

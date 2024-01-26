@@ -24,6 +24,8 @@ use App\Repositories\Project\ProjectRepository;
 use App\Repositories\Project\ProjectRepositoryEloquent;
 use App\Repositories\Reward\RewardRepository;
 use App\Repositories\Reward\RewardRepositoryEloquent;
+use App\Repositories\Salary\SalaryRepository;
+use App\Repositories\Salary\SalaryRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -43,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RewardRepository::class, RewardRepositoryEloquent::class);
         $this->app->bind(DisciplineRepository::class, DisciplineRepositoryEloquent::class);
         $this->app->bind(ProjectRepository::class, ProjectRepositoryEloquent::class);
+        $this->app->bind(SalaryRepository::class, SalaryRepositoryEloquent::class);
         $this->app->bind(TimelineRepository::class, TimelineRepositoryEloquent::class);
         $this->app->bind(LeaveRepository::class, LeaveRepositoryEloquent::class);
     }

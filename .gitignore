@@ -21,3 +21,4 @@ public/uploads
 package.lock.json
 public/usersimages
 .DS_Store
+/app/Entities
