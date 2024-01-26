@@ -49,7 +49,7 @@
                         @endforeach
                     </select>
                     @error('selected_employees')
-                        <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger" id="error_select">{{ $message }}</div>
                     @enderror
                 </div>
                 <input type="hidden" name="page" value="{{ $pageNumber }}">
@@ -85,6 +85,11 @@
                 .catch(error => {
                     console.error(error);
                 });
+            $('.select-employees').on('change', function() {
+                if ($(this).val() && $(this).val().length > 0) {
+                    $('#error_select').html('');
+                }
+            });
         });
     </script>
 @endsection

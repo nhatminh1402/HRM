@@ -31,7 +31,7 @@
         @include('admin.layouts.header')
         <!-- end header -->
         <div class="body flex-grow-1 px-3 bg-white">
-            <div class="container-fluid">
+            <div class="container-fluid mb-5">
                 @yield('content')
             </div>
         </div>
@@ -41,7 +41,6 @@
     </div>
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('CoreUI/vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
-    <script src="{{ asset('CoreUI/vendors/simplebar/js/simplebar.min.js') }}"></script>
     <!-- Plugins and scripts required by this view-->
     <script src="{{ asset('CoreUI/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
     <script src="{{ asset('CoreUI/js/main.js') }}"></script>
