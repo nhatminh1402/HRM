@@ -14,6 +14,8 @@ class Salary extends Model
         'monthly_salary',
         'workday',
         'real_leaders',
+        'month',
+        'year',
         'employee_id'
     ];
 

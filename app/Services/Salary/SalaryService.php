@@ -54,23 +54,22 @@ class SalaryService
         $employeeId = $dataHtml['selected_employees'] ?? '';
         $basicSalary = $this->employeeRepository->getBasicSalary($employeeId);
         $month = Carbon::now()->month;
-        $year =  Carbon::now()->year;
-        $workDays =  $this->timesheetRepository->countWorkDayInMonth($employeeId, $month, $year);
+        $year = Carbon::now()->year;
+        $workDays = $this->timesheetRepository->countWorkDayInMonth($employeeId, $month, $year);
         $totalSalary = ($basicSalary / 22) * $workDays;
 
         $salary = Salary::updateOrCreate(
-            ['employee_id' => $employeeId],
+            ['employee_id' => $employeeId, 'month' => $month, 'year' => $year],
             [
                 'code_salary' => $dataHtml['code_salary'],
                 'monthly_salary' => $totalSalary,
                 'workday' => $workDays,
+                'month' => $month,
+                'year' => $year,
                 'real_leaders' => $totalSalary,
             ]
         );
-
-        $salary->whereMonth('created_at', '=', now()->month)
-            ->whereYear('created_at', '=', now()->year)
-            ->first();
+        
         return $salary;
     }
 
@@ -84,7 +83,8 @@ class SalaryService
         return $this->salaryRepository->getMonthSalaries();
     }
 
-    public function searchSalary($key) {
+    public function searchSalary($key)
+    {
         return $this->salaryRepository->search($key);
     }
 

@@ -16,6 +16,6 @@ class SalaryExport implements FromView
 
     public function view(): View
     {
-        return view('export.list_salary',['salaries' => $this->salaries ] );
+        return view('export.list_salary', ['salaries' => $this->salaries]);
     }
 }

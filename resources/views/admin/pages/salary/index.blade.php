@@ -57,8 +57,8 @@
                                 <th class="border-gray-200 text-center">Chức vụ</th>
                                 <th class="border-gray-200 text-center">Lương tháng</th>
                                 <th class="border-gray-200 text-center">Ngày công</th>
-                                <th class="border-gray-200 text-center">Thục lãnh</th>
-                                <th class="border-gray-200 text-center">Ngày chấm</th>
+                                <th class="border-gray-200 text-center">Thực nhận</th>
+                                <th class="border-gray-200 text-center">Thời gian tính lương</th>
                             </tr>
                         </thead>
                         <tbody>

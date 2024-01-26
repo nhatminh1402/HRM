@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\SalaryExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SalaryRequest;
 use App\Services\Employee\EmployeeService;
 use App\Services\Salary\SalaryService;
 use Carbon\Carbon;
@@ -64,7 +65,7 @@ class SalaryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SalaryRequest $request)
     {
         $data = $request->all();
 
@@ -73,11 +74,11 @@ class SalaryController extends Controller
 
             $salary = $this->salaryService->create($data, $employeeId);
             return redirect()->route('admin.salary.index')
-                ->with('success', 'Cập nhật dự án thành công !')
+                ->with('success', 'Cập nhật bảng lương thành công !')
                 ->with('salary', $salary);
         }
 
-        return response()->json(['message' => 'Không tìm thấy dự án!'], Response::HTTP_NOT_FOUND);
+        return response()->json(['message' => 'Không tìm thấy bảng lương!'], Response::HTTP_NOT_FOUND);
     }
 
     public function export()

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <h2 class="mb-4 pb-2 border-bottom">Tính lương nhân viên </h2>
+    <h2 class="mb-4 pb-2 border-bottom">Cập nhật lương nhân viên </h2>
     <div class="row ml-4">
         <div class="col-12 mb-4">
             <form class="row" action="{{ route('admin.salary.store') }}" method="POST">

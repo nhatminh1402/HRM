@@ -17,6 +17,8 @@ return new class extends Migration
             $table->double('monthly_salary')->default(0);
             $table->unsignedBigInteger('workday')->default(0);
             $table->double('real_leaders')->default(0);
+            $table->unsignedBigInteger('month');
+            $table->unsignedBigInteger('year');
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();

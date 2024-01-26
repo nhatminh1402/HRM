@@ -38,19 +38,21 @@ class CalculatorSalaryMonthly extends Command
             $employeeRepository = app()->make(EmployeeRepository::class);
             $timeSheetRepository = app()->make(TimesheetRepository::class);
             $employees = $employeeRepository->all();
-            $month = Carbon::now()->month;
-            $year = Carbon::now()->year;
+            $currentMonth = Carbon::now()->month;
+            $currentYear = Carbon::now()->year;
 
             foreach ($employees as $employee) {
-
                 $prefix = 'ML';
                 $basicSalary = $employee->basic_salary;
-                $workDays = $timeSheetRepository->countWorkDayInMonth($employee->id, $month, $year);
+                $workDays = $timeSheetRepository->countWorkDayInMonth($employee->id, $currentMonth, $currentYear);
                 $totalSalary = ($basicSalary / 22) * $workDays;
-                $timeNow = now()->format('Y-m-d H:i:s');
 
-                $salary = Salary::updateOrCreate(
-                    ['employee_id' => $employee->id],
+                Salary::updateOrCreate(
+                    [
+                        'employee_id' => $employee->id,
+                        'month' => $currentMonth,
+                        'year' => $currentYear
+                    ],
                     [
                         'code_salary' => Helpers::generateCode($prefix),
                         'monthly_salary' => $totalSalary,
@@ -58,10 +60,6 @@ class CalculatorSalaryMonthly extends Command
                         'real_leaders' => $totalSalary,
                     ]
                 );
-
-                $salary->whereMonth('created_at', '=', now()->month)
-                    ->whereYear('created_at', '=', now()->year)
-                    ->first();
             }
         } catch (Exception $e) {
             logger($e->getMessage());
