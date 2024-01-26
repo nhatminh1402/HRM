@@ -11,14 +11,16 @@
     <div class="row">
         <div class="col-md-12">
             <div class="bg-white rounded shadow p-3 mb-4 mt-4">
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#create-deparment">
-                            THÊM MỚI
-                        </button>
-                    </div>
-
+                <div class="mb-2 mb-lg-0">
+                    <h4 class="mb-4">Danh sách phòng ban </h4>
+                    <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#create-deparment">
+                        <svg class="mb-1 me-2" xmlns="http://www.w3.org/2000/svg" height="16" width="14"
+                            viewBox="0 0 448 512">
+                            <path
+                                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                                fill="white"></path>
+                        </svg>Thêm phòng ban
+                    </button>
                 </div>
                 <table class="table text-center">
                     <thead>

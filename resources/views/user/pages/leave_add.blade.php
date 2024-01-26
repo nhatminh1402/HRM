@@ -6,8 +6,8 @@
 @endsection
 
 {{-- Định nghĩa tiêu đề --}}
-@section('title', 'Thông tin tài khoản')
-
+@section('title', 'Leave')
+    
 @section('breadcrumb-item-after', 'Nghỉ phép')
 @section('breadcrumb-item-before', 'Thêm nghỉ phép')
 
@@ -24,7 +24,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Lý do xin nghỉ phép</label>
-                            <textarea name="description" class="form-control" id="description" rows="50" cols="50"></textarea>
+                            <textarea name="description" class="form-control border-5" id="description" rows="10" cols="50"></textarea>
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
