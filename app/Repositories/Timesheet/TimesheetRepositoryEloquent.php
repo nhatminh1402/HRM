@@ -63,17 +63,6 @@ class TimesheetRepositoryEloquent extends BaseRepository implements TimesheetRep
         return $count;
     }
 
-    // public function countWorkDayInMonth($employeeId, $month, $year)
-    // {
-    //     $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfDay();
-    //     $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth()->endOfDay();
-
-    //     return $this->model->where('employee_id', $employeeId)
-    //         ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
-    //         ->distinct('created_at')
-    //         ->count();
-    // }
-
     /**
      * Boot up the repository, pushing criteria
      */
