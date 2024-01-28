@@ -10,34 +10,36 @@
 {{-- Đinh nghĩa nội dung cho trang hiển thị thông tin cá nhân ở đây --}}
 @section('content')
 @section('include-script')
-    <script type="text/javascript" src="{{ asset('assets/js/add-images-trainModel.js') }}" > </script>
+    <script type="text/javascript" src="{{ asset('assets/js/add-images-trainModel.js') }}"></script>
 @endsection
 <div class="container-fluid">
     <br />
-    <h3>Image Upload For Train Model</h3>
+    <h3>Ảnh xác thực khuôn mặt</h3>
     <br />
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Select Image</h3>
+            <h5 class="panel-title">Hãy thêm một sô ảnh khuôn mặt</h5>
         </div>
         <div class="panel-body">
-            <form id="dropzoneForm" class="dropzone dz-clickable" method="POST"  action="{{ route('user.dropzone.upload') }}">
+            <form id="dropzoneForm" class="dropzone dz-clickable" method="POST"
+                action="{{ route('user.dropzone.upload') }}">
+                <div class="dz-message" data-dz-message><span>Nhân vào đây để tải lên hình ảnh</span></div>
                 @csrf
             </form>
-            <div>
-                <button type="button" class="btn btn-info" id="submit-all">Upload</button>
+            <div class='mt-3'>
+                <button type="button" class="btn btn-success" id="submit-all">Upload</button>
             </div>
         </div>
     </div>
     <br />
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Uploaded Image</h3>
+            <h3 class="panel-title">Ảnh đã tải lên</h3>
         </div>
         <div class="panel-body">
             <div class="row" id="uploaded_image">
-            
+
             </div>
         </div>
     </div>

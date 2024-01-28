@@ -94,10 +94,4 @@ $(document).ready(function () {
     $("input[name=name]").on("keydown ", function () {
         $("#error_name").html("");
     });
-
-
-     $('#selected_employees').on('change', function() {
-                var selectedOptions = $(this).children('option:selected');
-                selectedOptions.hide();
-            });
 });
