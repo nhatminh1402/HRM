@@ -51,10 +51,7 @@ class LeaveService
 
     public function getLeaveDetail($id)
     {
-        $idUser = Auth::guard('employee')->user()->id;
         $leave = $this->leaveRepository->getById($id);
-        if ($leave->employee_id !== $idUser) {
-        }
         return $leave;
     }
 
