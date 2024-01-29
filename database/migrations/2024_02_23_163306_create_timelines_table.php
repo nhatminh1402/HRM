@@ -12,13 +12,13 @@ return new class extends Migration {
     {
         Schema::create('timelines', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->double('basic_salary');
             $table->date('start_date')->default(now());
             // Liên kết khóa ngoại
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('position_id')->references('id')->on('positions')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -52,8 +52,7 @@ class PositionService
 
     public function update(array $data, $id)
     {
-        $dataHtml = Helpers::stripHtmlTags($data);
-        return $this->positionRepository->update($dataHtml, $id);
+        return $this->positionRepository->update($data, $id);
     }
 
     public function searchPosition($key)

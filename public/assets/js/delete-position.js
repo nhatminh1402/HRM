@@ -5,15 +5,26 @@ $(document).ready(function () {
         var form = $(this).closest('#form-delete');
 
         Swal.fire({
-            title: 'Xác nhận',
-            text: 'Bạn có chắc chắn muốn xóa chức vụ này không?',
-            icon: 'warning',
+            title: "Bạn có chắc xóa chức vụ này không?",
+            icon: "warning",
             showCancelButton: true,
-            confirmButtonText: 'Xóa',
-            cancelButtonText: 'Hủy',
+            cancelButtonText: "HỦY",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "XÓA",
+            confirmButtonColor: "#3085D6",
+            reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                form.submit();
+                Swal.fire({
+                    title: "Đã xóa!",
+                    text: "Bạn đã xóa thành công!",
+                    icon: "success",
+                    showConfirmButton: false,
+                });
+
+                setTimeout(function () {
+                    form.submit();
+                }, 1500);
             }
         });
     });

@@ -50,7 +50,7 @@ class PositionController extends Controller
     {
         $position = $this->positionService->edit($id);
         $pageNumber = request('page');
-        return view('admin.pages.employee_management.edit_position', compact('position', 'pageNumber'));
+        return response()->json(['position' => $position, 'pageNumber' => $pageNumber]);
     }
 
     /**
@@ -63,7 +63,6 @@ class PositionController extends Controller
             $position = $this->positionService->update($data, $id);
             $pageNumber = $request->input('page');
             return redirect()->route('admin.employee.home', ['page' => $pageNumber])
-                ->with('success', 'Cập nhật chức vụ thành công!')
                 ->with('position', $position);
         } catch (\Exception $e) {
             return redirect()->back()
@@ -76,7 +75,12 @@ class PositionController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->positionService->delete($id);
-        return redirect()->back()->with('success','Xóa chức vụ thành công!');
+        try {
+            $this->positionService->delete($id);
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Lỗi xóa chức vụ: ' . $e->getMessage());
+        }
     }
 }

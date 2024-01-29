@@ -1,15 +1,4 @@
 $(document).ready(function () {
-
-    let editor;
-    ClassicEditor
-        .create(document.querySelector('#description'))
-        .then(newEditor => {
-            editor = newEditor;
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

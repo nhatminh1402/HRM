@@ -46,13 +46,13 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th class="border-gray-200 text-center rounded-start">STT</th>
-                                <th class="border-gray-200 text-center">Mã lương</th>
-                                <th class="border-gray-200 text-center">Tên Nhân viên</th>
-                                <th class="border-gray-200 text-center">Chức vụ</th>
+                                <th class="border-gray-200 text-start">Mã lương</th>
+                                <th class="border-gray-200 text-start">Tên Nhân viên</th>
+                                <th class="border-gray-200 text-start">Chức vụ</th>
                                 <th class="border-gray-200 text-start">Lương tháng</th>
                                 <th class="border-gray-200 text-center">Ngày công</th>
                                 <th class="border-gray-200 text-start">Thực nhận</th>
@@ -66,15 +66,15 @@
                                 @foreach ($salaries as $key => $salary)
                                     <tr>
                                         <td class='text-center'>{{ $key + 1 }}</td>
-                                        <td class='text-center'>{{ $salary->code_salary }}</td>
-                                        <td class='text-center'>{{ $salary->employee->full_name }}</td>
-                                        <td class='text-center'>{{ $salary->employee->position->name }}</td>
+                                        <td class='text-start'>{{ $salary->code_salary }}</td>
+                                        <td class='text-start'>{{ $salary->employee->full_name }}</td>
+                                        <td class='text-start'>{{ $salary->employee->position->name ?? ''}}</td>
                                         <td class='text-start'>
                                             {{ number_format($salary->monthly_salary, 0, '', ',') . ' VNĐ' }}</td>
                                         <td class='text-center'>{{ $salary->workday }}</td>
                                         <td class='text-start'>
                                             {{ number_format($salary->real_leaders, 0, '', ',') . ' VNĐ' }}</td>
-                                        <td class='text-start'>{{ date_format($salary->created_at, 'H:i:s d-m-Y') }}</td>
+                                        <td class='text-start'>{{ date_format($salary->created_at, 'd/m/Y') }}</td>
                                     </tr>
                                 @endforeach
                             @endif

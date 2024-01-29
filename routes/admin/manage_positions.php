@@ -10,8 +10,8 @@ Route::prefix('/position')->name('employee.')->group(function () {
     //Thêm mới chức vụ
     Route::post('/create', [PositionController::class, 'store'])->name('positions.store');
     // Sửa chức vụ
-    Route::get('/edit-position/{id}', [PositionController::class, 'edit'])->name('edit-position');
-    Route::put('/update/{id}', [PositionController::class, 'update'])->name('positions.update');
+    Route::get('/{id}', [PositionController::class, 'edit'])->name('edit-position');
+    Route::put('/{id}', [PositionController::class, 'update'])->name('position.update');
     // Danh sách + thêm mới chuyên ngành
     Route::get('/major', function () {
         return view('admin.pages.employee_management.major');
@@ -20,6 +20,4 @@ Route::prefix('/position')->name('employee.')->group(function () {
     Route::get('/search', [PositionController::class, 'index'])->name('search-position');
     // Xóa chức vụ
     Route::delete('/position/{id}', [PositionController::class, 'destroy'])->name('position.destroy');
-
-
 });
