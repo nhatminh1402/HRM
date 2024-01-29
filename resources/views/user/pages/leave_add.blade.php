@@ -33,30 +33,29 @@
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
-                            <div class="col-md-6">
-                                <label class="small mb-1 font-weight-bold">Ngày bắt đầu nghỉ phép</label>
-                                <input id="startDate" name="start_leave" class="form-control" type="date">
-                                @error('start_leave')
+                            <div class="col-md-6"> <label class="small mb-1 font-weight-bold">Ngày bắt đầu nghỉ</label>
+                                <input id="startDate" name="start_leave" class="form-control" type="date"
+                                    onchange="calculateNumberOfDays()"> @error('start_leave')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
-                                <label class="small mb-1 font-weight-bold">Ngày kết thúc nghỉ phép</label>
-                                <input id="endDate" name="end_leave" class="form-control" type="date">
+                            <div class="col-md-6"> <label class="small mb-1 font-weight-bold">Ngày kết thúc nghỉ</label>
+                                <input id="endDate" name="end_leave" class="form-control" type="date"
+                                    onchange="calculateNumberOfDays()">
+                                <div id='error_date' class="text-danger"></div>
                                 @error('end_leave')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
-                        <!-- Form Row-->
+                        </div> <!-- Form Row-->
                         <div class="row gx-3 mb-3">
-                            <div class="col-md-3">
-                                <label class="small mb-1">Số ngày nghỉ</label>
-                                <input class="form-control FontLarger" name="number_days" type="text" value="">
+                            <div class="col-md-3"> <label class="small mb-1">Số ngày nghỉ</label> <input id="numberDays"
+                                    class="form-control FontLarger" name="number_days" type="text" value=""
+                                    onchange="calculateEndDate()">
+                                    <div id='error_num_date' class="text-danger"></div>
                                 @error('number_days')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-
                             </div>
                         </div>
                         <!-- Save changes button-->

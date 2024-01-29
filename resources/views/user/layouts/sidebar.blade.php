@@ -17,23 +17,15 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white active bg-gradient-primary" href="{{ route('user.departments') }}">
+                <a class="nav-link text-white {{ (request()->routeIs('user.employee-info')) ? 'active bg-gradient-primary' : '' }} " href=" {{ route('user.employee-info') }} ">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">dashboard</i>
+                        <i class="material-icons opacity-10">person</i>
                     </div>
-                    <span class="nav-link-text ms-1">Quản lý phòng ban</span>
+                    <span class="nav-link-text ms-1">Thông tin nhân sự</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="{{ route('user.schedule') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">calendar_month</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Lịch công tác</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="{{ route('user.salary') }}">
+                <a class="nav-link text-white {{ (request()->routeIs('user.salary')) ? 'active bg-gradient-primary' : '' }} " href="{{ route('user.salary') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">price_check</i>
                     </div>
@@ -41,7 +33,40 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="{{ route('user.reward') }}">
+                <a class="nav-link text-white {{ (request()->routeIs('user.timesheet-user')) ? 'active bg-gradient-primary' : '' }}" href="{{ route('user.timesheet-user') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">timer</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Bảng chấm công</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link text-white {{ (request()->routeIs('user.timeline')) ? 'active bg-gradient-primary' : '' }} " href=" {{ route('user.timeline') }} ">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Lịch sử làm việc</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ (request()->routeIs('user.leave.show'))||(request()->routeIs('user.leave.add')) ? 'active bg-gradient-primary' : '' }} " href=" {{ route('user.leave.show') }} ">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">assignment_turned_in</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Nghỉ phép</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ (request()->routeIs('user.images')) ? 'active bg-gradient-primary' : '' }}  " href=" {{ route('user.images') }} ">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">image</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Ảnh nhận dạng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ (request()->routeIs('user.reward')) ? 'active bg-gradient-primary' : '' }}" href="{{ route('user.reward') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">star</i>
                     </div>
@@ -49,7 +74,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="{{ route('user.punishments') }}">
+                <a class="nav-link text-white {{ (request()->routeIs('user.punishments')) ? 'active bg-gradient-primary' : '' }} " href="{{ route('user.punishments') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">notifications</i>
                     </div>
@@ -61,55 +86,7 @@
                 </h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('user.timesheet-user') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">timer</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Bảng chấm công</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href=" {{ route('user.employee-info') }} ">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">person</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Thông tin nhân sự</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href=" {{ route('user.timeline') }} ">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">person</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Lịch sử làm việc</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href=" {{ route('user.leave.show') }} ">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">assignment_turned_in</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Nghỉ phép</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href=" {{ route('user.images') }} ">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">image</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Ảnh nhận dạng</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href=" {{ route('user.infors') }} ">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">account_box</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Thông tin tài khoản</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="{{ route('user.view-change-password') }}">
+                <a class="nav-link text-white {{ (request()->routeIs('user.view-change-password')) ? 'active bg-gradient-primary' : '' }} " href="{{ route('user.view-change-password') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">vpn_key</i>
                     </div>

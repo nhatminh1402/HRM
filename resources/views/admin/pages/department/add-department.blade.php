@@ -27,8 +27,8 @@
                     <thead class="thead-light">
                         <tr>
                             <th class="text-center">STT</th>
-                            <th class="text-start text-center">Mã chức vụ</th>
-                            <th class="text-start text-center">Tên chức vụ</th>
+                            <th class="text-start text-center">Mã phòng ban</th>
+                            <th class="text-start text-center">Tên phòng ban</th>
                             <th class="text-start text-center">Mô tả</th>
                             <th class="text-start text-center">Ngày tạo</th>
                             <th class="text-center">Thao tác</th>
@@ -41,10 +41,10 @@
                             @foreach ($departments as $key => $department)
                                 <tr>
                                     <td class='align-middle text-center'>{{ $key + 1 }}</td>
-                                    <td class='align-middle text-start'>{{ $department->code_department }}</td>
-                                    <td class='align-middle text-start'>{{ $department->name }}</td>
-                                    <td class='align-middle text-start'>{{ $department->description }}</td>
-                                    <td class='align-middle text-start'>{{ $department->created_at->format('d-m-Y') }}</td>
+                                    <td class='align-middle text-center'>{{ $department->code_department }}</td>
+                                    <td class='align-middle text-center text-area'>{{ $department->name }}</td>
+                                    <td class='align-middle text-center text-area' >{{ $department->description }}</td>
+                                    <td class='align-middle text-center'>{{ $department->created_at->format('d-m-Y') }}</td>
                                     <td class='text-center'>
                                         <div class="d-flex justify-content-center">
                                             <a class="btn border-0"
@@ -115,7 +115,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                            <textarea name="description" class="form-control border-5" id="description" rows="10" cols="50">{{ old('description') }}</textarea>
+                            <textarea name="description" class="form-control border-5" id="description" rows="5" cols="20">{{ old('description') }}</textarea>
                             <div class="text-danger" id="error_description"></div>
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>

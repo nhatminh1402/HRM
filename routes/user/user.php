@@ -39,9 +39,7 @@ Route::get('department-detail', function () {
 })->name('department-detail');
 
 // 5. Router cho trang xem bảng lương cá nhân
-Route::get('salary', function () {
-    return view('user.pages.manage_salary');
-})->name('salary');
+Route::get('salary',  [UserDetailController::class, 'getsalaryEmployee'])->name('salary');
 
 // 6. Router cho trang xem danh sách công tác
 Route::get('schedule', function () {

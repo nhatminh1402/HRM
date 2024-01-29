@@ -16,10 +16,19 @@ class UserDetailController extends Controller
         $this->employeeService = $employeeService;
         $this->userService = $userService;
     }
-       public function getEmployeeInfor()
+    public function getEmployeeInfor()
     {
         $idUser = $this->userService->getIdUser();
         $user = $this->employeeService->getById($idUser);
-        return view('user.pages.employee_Infor', compact('user'));
+        $userSalary = $user->salary;
+        return view('user.pages.employee_Infor', compact('user', 'userSalary'));
+    }
+
+    public function getsalaryEmployee()
+    {
+        $idUser = $this->userService->getIdUser();
+        $user = $this->employeeService->getById($idUser);
+        $userSalary = $user->salary;
+        return view('user.pages.manage_salary', compact('userSalary'));
     }
 }
