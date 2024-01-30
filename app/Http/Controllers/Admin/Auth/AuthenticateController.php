@@ -12,10 +12,12 @@ class AuthenticateController extends Controller
 {
     private $loginService;
 
+
     public function __construct(LoginService $loginService)
     {
         $this->loginService = $loginService;
     }
+
     public function index()
     {
         return view("admin.pages.authentication.login");

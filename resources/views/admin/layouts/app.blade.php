@@ -20,19 +20,9 @@
     {{-- ckeditor --}}
     <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     {{-- chart-js --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
-    <style>
-        #profileImage {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #323C4E;
-            font-size: 20px;
-            color: #fff;
-            text-align: center;
-        }
-    </style>
+    <script src="{{ asset('lib/Chart.min.js') }}"></script>
+    {{-- avatar css --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/avatar.css') }}">
 
     @yield('css')
 </head>

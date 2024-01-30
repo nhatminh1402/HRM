@@ -18,6 +18,7 @@ class StatisticsController extends Controller
     {
         $this->employeeService = $employeeService;
     }
+
     public function countEmployeeChangesByMonth()
     {
         return $this->employeeService->countEmployeeChangesByMonth();
