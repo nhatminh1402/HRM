@@ -17,6 +17,11 @@
 
     <script src="{{ asset('assets/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    {{-- chart-js --}}
+    <script src="{{ asset('lib/Chart.min.js') }}"></script>
+    {{-- avatar css --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/avatar.css') }}">
+
     @yield('css')
 </head>
 

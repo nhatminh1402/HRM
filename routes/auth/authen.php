@@ -33,7 +33,7 @@ Route::prefix('admin/login')
         Route::post('/', [AdminAuthenticate::class, 'login'])->name('submit');
 
         // Router capcha validate
-        Route::post('/capcha-validate', [CaptChaController::class, 'validateCapchaCode'])->name('validateCapchaCode');
+        Route::post('/capcha-validate', [CaptChaController::class, 'adminValidateCapchaCode'])->name('validateCapchaCode');
     });
 
 // Router for employee logout

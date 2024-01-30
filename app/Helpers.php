@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Auth;
 use Ramsey\Uuid\Uuid;
+use Session;
 
 class Helpers
 {
@@ -20,5 +22,19 @@ class Helpers
             $data['description'] = strip_tags($data['description']);
         }
         return $data;
+    }
+
+    public static function setAvatarCharacterNameOfAdmin()
+    {
+        $fullName = Auth::user()->name;
+        $index = strlen($fullName) - 1;
+        $characterName = $fullName[$index];
+
+        while ($index > -1 && $fullName[$index] != " ") {
+            $characterName = $fullName[$index];
+            $index--;
+        }
+
+        Session::put('characterName', $characterName);
     }
 }
