@@ -6,8 +6,6 @@
     <!-- Primary Meta Tags -->
     <title>ĐĂNG NHẬP HỆ THỐNG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
-
     <!-- Favicon -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">

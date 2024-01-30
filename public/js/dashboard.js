@@ -1,4 +1,4 @@
-// 
+// draw employee chart
 $.ajax({
     type: "get",
     url: "/admin/statistics/employees",
@@ -19,7 +19,6 @@ function drawEmployeeChart(response) {
         yValues.push(item.total);
     })
 
-    console.log(yValues)
     new Chart("chartEmployee", {
         type: "line",
         data: {
