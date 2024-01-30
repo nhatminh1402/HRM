@@ -21,28 +21,27 @@ $(document).ready(function () {
     $(".btn-delete").on("click", function (event) {
         event.preventDefault();
         var deleteUrl = $(this).attr("href");
-
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: "Bạn có chắc xóa thành viên này khỏi phòng ban?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            cancelButtonText: "HỦY",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "XÓA",
+            confirmButtonColor: "#3085D6",
+            reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = deleteUrl;
+                Swal.fire({
+                    title: "Đã xóa!",
+                    text: "Bạn đã xóa thành công!",
+                    icon: "success",
+                    showConfirmButton: false,
+                });
+                setTimeout(function () {
+                    window.location.href = deleteUrl;
+                }, 1500);
             }
         });
     });
-
-    let editor;
-    ClassicEditor.create(document.querySelector("#description"))
-        .then((newEditor) => {
-            editor = newEditor;
-        })
-        .catch((error) => {
-            console.error(error);
-        });
 });

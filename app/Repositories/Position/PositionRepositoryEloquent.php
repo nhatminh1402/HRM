@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Position\PositionRepository;
 use App\Models\Position;
+use Exception;
 use Illuminate\Http\Response;
 
 /**
@@ -41,7 +42,7 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         $position = $this->model->find($id);
 
         if (!$position) {
-            throw new \Exception("Không tìm thấy chức vụ!");
+            throw new Exception("Không tìm thấy chức vụ!");
         }
 
         $position->fill($data);
@@ -64,13 +65,14 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         try {
             $position = $this->model->find($id);
             if (!$position) {
-                return response()->json(['message' => 'Không tìm thấy loại chức vụ !'], Response::HTTP_INTERNAL_SERVER_ERROR);
+                throw new Exception('Không tìm thấy loại chức vụ!');
             }
 
-            $position->delete($id);
-        } catch (\Throwable $th) {
-            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại !'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            $position->delete();
+            return redirect()->back()->with('success', 'Xóa thành công loại chức vụ!');
 
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi, vui lòng thử lại!');
         }
     }
 
