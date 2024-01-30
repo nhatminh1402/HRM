@@ -26,7 +26,7 @@ $(document).ready(function () {
         });
 
         $.ajax({
-            url: '/admin/position/create',
+            url: CREATE_POSITION_URL,
             type: 'POST',
             data: {
                 code_position: codePosition,

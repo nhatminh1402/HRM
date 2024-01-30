@@ -38,7 +38,7 @@
                 $table->foreign('province_id')->references('id')->on('provinces');
                 $table->foreign('district_id')->references('id')->on('districts');
                 $table->foreign('ward_id')->references('id')->on('wards');
-                $table->foreign('position_id')->references('id')->on('positions')->nullOnDelete();
+                $table->foreign('position_id')->references('id')->on('positions');
                 $table->foreign('department_id')->references('id')->on('departments')->nullOnDelete();
             });
         }

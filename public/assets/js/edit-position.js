@@ -18,8 +18,11 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: '/admin/position/' + positionId,
+            url: GET_POSITION_URL,
             type: 'GET',
+            data: {
+                idPosition: positionId,
+            },
             success: function (response) {
                 let positionData = response.position;
                 let pageNumber = response.pageNumber;
@@ -58,6 +61,7 @@ $(document).ready(function () {
 
         let positionData = {
             _method: 'PUT',
+            idPosition: positionId,
             code_position: codePosition,
             name: name,
             salary_day: salaryDay,
@@ -65,7 +69,7 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: '/admin/position/' + positionId,
+            url: UPDATE_POSITION_URL,
             type: 'POST',
             data: positionData,
             success: function (data) {

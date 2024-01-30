@@ -39,10 +39,7 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     public function update(array $data, $id)
     {
         $position = $this->model->find($id);
-        $position->code_position = request()->input('code_position_update');
-        $position->name = request()->input('name_update');
-        $position->salary_day = request()->input('salary_day_update');
-        $position->description = request()->input('description_update');
+
         if (!$position) {
             throw new \Exception("Không tìm thấy chức vụ!");
         }
@@ -67,12 +64,12 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         try {
             $position = $this->model->find($id);
             if (!$position) {
-                return response()->json(['message' => 'Không tìm thấy loại kỷ luật !'], Response::HTTP_NOT_FOUND);
+                return response()->json(['message' => 'Không tìm thấy loại chức vụ !'], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
 
             $position->delete($id);
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại !'], Response::HTTP_NOT_FOUND);
+            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại !'], Response::HTTP_INTERNAL_SERVER_ERROR);
 
         }
     }
