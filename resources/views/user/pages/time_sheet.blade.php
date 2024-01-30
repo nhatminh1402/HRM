@@ -69,29 +69,29 @@
                                 <tr class="text-center">
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        NO.</th>
+                                        STT</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                        DATE</th>
+                                        Ngày</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                        DATE OF WEEK</th>
+                                        Thứ</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        NAME</th>
+                                        Họ và tên</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ID EMPLOYEE</th>
+                                        Mã nhân viên</th>
 
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        TIME CHECK IN</th>
+                                        Thời gian vào</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        TIME CHECK OUT</th>
+                                        Thời gian ra</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        WORKING TIME</th>
+                                        Số giờ làm việc</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,7 +102,7 @@
                                         </td>
                                         <td class="text-center">
                                             <h6 style="margin-left: 20px" class="mb-0">
-                                                {{ $date['date']->format('Y-m-d') }}</h6>
+                                                {{ $date['date']->format('d-m-Y') }}</h6>
                                         </td>
                                         <td class="text-center">
                                             <h6 style="margin-left: 20px"

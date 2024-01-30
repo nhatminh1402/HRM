@@ -21,28 +21,28 @@ $(document).ready(function () {
         event.preventDefault();
         var form = $(this).closest("#formDeleteDeparment");
         Swal.fire({
-            title: "Bạn có chắc xóa phòng ban?",
-            text: " Không thể hoàn tác!",
+            title: "Bạn có chắc xóa phòng ban   này không?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            cancelButtonText: "HỦY",
             cancelButtonColor: "#d33",
-            confirmButtonText: "ĐỒNG Ý, XÓA!",
+            confirmButtonText: "XÓA",
+            confirmButtonColor: "#3085D6",
+            reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                form.submit();
+                Swal.fire({
+                    title: "Đã xóa!",
+                    text: "Bạn đã xóa thành công!",
+                    icon: "success",
+                    showConfirmButton: false,
+                });
+                setTimeout(function () {
+                    form.submit();
+                }, 1500);
             }
         });
     });
-
-    let editor;
-    ClassicEditor.create(document.querySelector("#description"))
-        .then((newEditor) => {
-            editor = newEditor;
-        })
-        .catch((error) => {
-            console.error(error);
-        });
 
     $.ajaxSetup({
         headers: {
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
     $("#add-department-btn").on("click", function () {
         let name = $("#name").val();
-        let description = editor.getData();
+        let description = $("#description").val();
         let selected_employees = $('#selected_employees').val();
 
 
@@ -94,10 +94,4 @@ $(document).ready(function () {
     $("input[name=name]").on("keydown ", function () {
         $("#error_name").html("");
     });
-
-
-     $('#selected_employees').on('change', function() {
-                var selectedOptions = $(this).children('option:selected');
-                selectedOptions.hide();
-            });
 });

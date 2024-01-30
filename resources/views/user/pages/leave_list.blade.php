@@ -5,7 +5,7 @@
 @section('breadcrumb-item-before', 'Ngày phép')
 
 {{-- Định nghĩa tiêu đề --}}
-@section('title', 'Thông tin nhân sự')
+@section('title', 'Leave')
 
 {{-- Đinh nghĩa nội dung cho trang hiển thị thông tin cá nhân ở đây --}}
 @section('content')
