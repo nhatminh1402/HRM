@@ -5,8 +5,6 @@ namespace App\Services\Position;
 use App\Helpers;
 use App\Models\Position;
 use App\Repositories\Position\PositionRepository;
-use Exception;
-use Illuminate\Http\Request;
 
 class PositionService
 {

@@ -30,22 +30,22 @@ class Position extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function employees(): HasMany
-{
-    return $this->hasMany(Employee::class, 'position_id', 'id');
-}
+    {
+        return $this->hasMany(Employee::class, 'position_id', 'id');
+    }
 
     public function scopeSearchByCodePosition(mixed $query, string $key)
     {
-        return trim($key) ? $query->where('code_position', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+        return trim($key) ? $query->where('code_position', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByName(mixed $query, string $key)
     {
-        return trim($key) ? $query->where('name', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+        return trim($key) ? $query->where('name', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByDescription(mixed $query, string $key)
     {
-        return trim($key) ? $query->where('description', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+        return trim($key) ? $query->where('description', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 }

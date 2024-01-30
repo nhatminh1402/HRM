@@ -10,10 +10,10 @@ Route::prefix('/discipline')->name('discipline.')->group(function () {
     //Thêm mới  loại kỷ luật
     Route::post('/create', [DisciplineController::class, 'store'])->name('store');
     // Sửa loại kỷ luật
-    Route::get('/edit-discipline/{id}', [DisciplineController::class, 'edit'])->name('edit');
-    Route::put('/update/{id}', [DisciplineController::class, 'update'])->name('update');
+    Route::get('/edit', [DisciplineController::class, 'edit'])->name('edit');
+    Route::put('/update', [DisciplineController::class, 'update'])->name('update');
     // Xóa loại lỷ luật
-    Route::delete('/discipline/{id}', [DisciplineController::class, 'destroy'])->name('destroy');
-    //Tìm kiếm loại kry luật
+    Route::delete('/{id}', [DisciplineController::class, 'destroy'])->name('destroy');
+    //Tìm kiếm loại kỷ luật
     Route::get('/search', [DisciplineController::class, 'index'])->name('search');
 });

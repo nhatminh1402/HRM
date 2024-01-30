@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     $('.btn-update').click(function () {
         let positionId = $(this).data('id');
-        console.log(positionId);
         getPositionData(positionId);
     });
 

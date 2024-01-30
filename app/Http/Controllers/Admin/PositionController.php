@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreatePositionRequest;
 use App\Http\Requests\Admin\UpdatePositionRequest;
@@ -26,6 +25,7 @@ class PositionController extends Controller
         $prefix = 'MCV';
         $employeeCode = $this->positionService->getEmployeeCode($prefix);
         $positions = $this->positionService->getAll();
+
         if ($request->input('key')) {
             $positions = $this->positionService->searchPosition($request->input('key'));
         }
@@ -39,7 +39,7 @@ class PositionController extends Controller
     public function store(CreatePositionRequest $request)
     {
         $data = $request->all();
-        $positionCreate =  $this->positionService->create($data);
+        $positionCreate = $this->positionService->create($data);
         return $this->senSuccessResponse($positionCreate, 'Chức vụ đã được thêm thành công', Response::HTTP_CREATED);
     }
 
@@ -59,17 +59,12 @@ class PositionController extends Controller
      */
     public function update(UpdatePositionRequest $request)
     {
-        try {
-            $data = $request->all();
-            $id = $request->idPosition;
-            $position = $this->positionService->update($data, $id);
-            $pageNumber = $request->input('page');
-            return redirect()->route('admin.position.home', ['page' => $pageNumber])
-                ->with('position', $position);
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Lỗi khi cập nhật chức vụ: ' . $e->getMessage());
-        }
+        $data = $request->all();
+        $id = $request->idPosition;
+        $position = $this->positionService->update($data, $id);
+        $pageNumber = $request->input('page');
+        return redirect()->route('admin.position.home', ['page' => $pageNumber])
+            ->with('position', $position);
     }
 
     /**
@@ -77,12 +72,7 @@ class PositionController extends Controller
      */
     public function destroy(string $id)
     {
-        try {
-            $this->positionService->delete($id);
-            return redirect()->back();
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Lỗi xóa chức vụ: ' . $e->getMessage());
-        }
+        $this->positionService->delete($id);
+        return redirect()->back();
     }
 }
