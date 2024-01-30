@@ -34,9 +34,9 @@ class Discipline extends Model
         return trim($key) ? $query->where('name', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 
-    public function scopeSearchByDiscipline(mixed $query, string $key)
+    public function scopeSearchByDisciplineCode(mixed $query, string $key)
     {
-        return trim($key) ? $query->where('name', 'like', '%' . $key . '%')->latest('id') : $query;
+        return trim($key) ? $query->where('code_discipline', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByDescription(mixed $query, string $key)

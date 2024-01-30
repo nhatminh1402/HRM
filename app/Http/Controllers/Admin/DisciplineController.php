@@ -47,29 +47,25 @@ class DisciplineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
+        $id = request()->idDiscipline;
         $discipline = $this->disciplineService->edit($id);
         $pageNumber = request('page');
-        return view('admin.pages.discipline.edit_discipline', compact('discipline', 'pageNumber'));
+        return response()->json(['discipline' => $discipline, 'pageNumber' => $pageNumber]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(CreateDisciplineRequest $request, string $id)
+    public function update(CreateDisciplineRequest $request)
     {
-        try {
-            $data = $request->all();
-            $discipline = $this->disciplineService->update($data, $id);
-            $pageNumber = $request->input('page');
-            return redirect()->route('admin.discipline.home', ['page' => $pageNumber])
-                ->with('success', 'Cập nhật loại kỷ luật thành công !')
-                ->with('discipline', $discipline);
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Lỗi khi cập nhật loại kỷ luật !: ' . $e->getMessage());
-        }
+        $data = $request->all();
+        $id = $request->idDiscipline;
+        $discipline = $this->disciplineService->update($data, $id);
+        $pageNumber = $request->input('page');
+        return redirect()->route('admin.discipline.home', ['page' => $pageNumber])
+            ->with('discipline', $discipline);
     }
 
     /**
@@ -78,6 +74,6 @@ class DisciplineController extends Controller
     public function destroy($id)
     {
         $this->disciplineService->delete($id);
-        return redirect()->back()->with('success', 'Xóa loại kỷ luật thành công!');
+        return redirect()->back();
     }
 }

@@ -7,7 +7,6 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Position\PositionRepository;
 use App\Models\Position;
 use Exception;
-use Illuminate\Http\Response;
 
 /**
  * Class PositionRepositoryEloquent.
@@ -69,20 +68,12 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
             }
 
             $position->delete();
-            return redirect()->back()->with('success', 'Xóa thành công loại chức vụ!');
 
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Đã xảy ra lỗi, vui lòng thử lại!');
         }
     }
 
-    /**
-     * Boot up the repository, pushing criteria
-     */
-    public function boot()
-    {
-        $this->pushCriteria(app(RequestCriteria::class));
-    }
 
     public function search($key)
     {
@@ -95,6 +86,14 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
                 $query->searchByDescription($key);
             })
             ->paginate(self::DEFAULT_PER_PAGE);
+    }
+
+    /**
+     * Boot up the repository, pushing criteria
+     */
+    public function boot()
+    {
+        $this->pushCriteria(app(RequestCriteria::class));
     }
 }
 
