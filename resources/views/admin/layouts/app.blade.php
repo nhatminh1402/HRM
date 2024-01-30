@@ -21,7 +21,6 @@
     <script src="{{ asset('lib/Chart.min.js') }}"></script>
     {{-- avatar css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/avatar.css') }}">
-
     @yield('css')
 </head>
 
