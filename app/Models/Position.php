@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -28,18 +29,23 @@ class Position extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function employee(): BelongsToMany
+    public function employees(): HasMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(Employee::class, 'position_id', 'id');
+    }
+
+    public function scopeSearchByCodePosition(mixed $query, string $key)
+    {
+        return trim($key) ? $query->where('code_position', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByName(mixed $query, string $key)
     {
-        return $key ? $query->where('name', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+        return trim($key) ? $query->where('name', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 
     public function scopeSearchByDescription(mixed $query, string $key)
     {
-        return $key ? $query->where('description', 'like', '%' . str_replace('%', '\\%', $key) . '%')->latest('id') : $query;
+        return trim($key) ? $query->where('description', 'like', '%' . $key . '%')->latest('id') : $query;
     }
 }

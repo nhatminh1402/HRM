@@ -5,8 +5,6 @@ namespace App\Services\Position;
 use App\Helpers;
 use App\Models\Position;
 use App\Repositories\Position\PositionRepository;
-use Exception;
-use Illuminate\Http\Request;
 
 class PositionService
 {
@@ -52,8 +50,7 @@ class PositionService
 
     public function update(array $data, $id)
     {
-        $dataHtml = Helpers::stripHtmlTags($data);
-        return $this->positionRepository->update($dataHtml, $id);
+        return $this->positionRepository->update($data, $id);
     }
 
     public function searchPosition($key)

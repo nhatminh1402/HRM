@@ -1,15 +1,4 @@
 $(document).ready(function () {
-
-    let editor;
-    ClassicEditor
-        .create(document.querySelector('#description'))
-        .then(newEditor => {
-            editor = newEditor;
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -19,7 +8,7 @@ $(document).ready(function () {
     $('#add-discipline-btn').on('click', function () {
         var codediscipline = $('#code_discipline').val();
         var name = $('#name').val();
-        var description = editor.getData();
+        var description = $('#description').val();
 
         $.ajax({
             url: '/admin/discipline/create',

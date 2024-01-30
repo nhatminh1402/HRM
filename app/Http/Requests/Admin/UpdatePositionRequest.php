@@ -24,8 +24,7 @@ class UpdatePositionRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
-            // 'employee_id' => 'required|integer',
-            'salary_day' => 'required|numeric',
+            'salary_day' => 'required|numeric|min:0',
         ];
     }
 
@@ -41,8 +40,9 @@ class UpdatePositionRequest extends FormRequest
             'name.string' => 'Tên chức vụ phải là một chuỗi.',
             'name.max' => 'Tên chức vụ không được vượt quá :max ký tự.',
             'description.string' => 'Mô tả phải là một chuỗi.',
-            'salary_day.required' => 'Vui lòng nhập ngày lương.',
+            'salary_day.required' => 'Vui lòng nhập số tỉền lương.',
             'salary_day.numeric' => 'Ngày lương phải là một số.',
+            'salary_day.min' => 'Tiền lương không được là số âm.'
         ];
     }
 }

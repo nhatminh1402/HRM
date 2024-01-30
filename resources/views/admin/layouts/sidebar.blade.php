@@ -31,12 +31,9 @@
                 </svg> Quản lý nhân viên
             </a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="{{ route('admin.employee.home') }}"><span
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.position.home') }}"><span
                             class="nav-icon"></span>
                         Chức vụ</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('admin.employee.major') }}"><span
-                            class="nav-icon"></span>
-                        Chuyên môn</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('admin.employee.create-employee') }}"><span
                             class="nav-icon"></span>
                         Thêm mới nhân viên</a></li>

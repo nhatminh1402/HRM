@@ -24,14 +24,6 @@ class Salary extends Model
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-
-    public function scopeSearchByMonthYear(mixed $query, $month, $year)
-    {
-        return ($month && $year)
-            ? $query->whereRaw('MONTH(created_at)) = ? OR YEAR(created_at)) = ?', [$month, $year])
-            : $query;
-    }
-
     public function scopeSearchByNameEmployee($query, $key)
     {
         return $key ? $query->whereHas('employee', function ($query) use ($key) {

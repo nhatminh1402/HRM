@@ -1,14 +1,4 @@
 $(document).ready(function () {
-    let editor;
-    ClassicEditor
-        .create(document.querySelector('#description'))
-        .then(newEditor => {
-            editor = newEditor;
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -16,18 +6,32 @@ $(document).ready(function () {
     });
 
     $('#add-posiiton-btn').on('click', function () {
-        var codePosition = $('#code_position').val();
-        var name = $('#name').val();
-        var salaryDay = $('#salary_day').val();
-        var description = editor.getData();
+        var codePosition = $('#code_position').val().trim();
+        var name = $('#name').val().trim();
+        var salary_day = $('#salary_day').val().trim();
+        var description = $('#description').val().trim();
+
+        $('input[name=name]').on('keydown', function() {
+            $('#error_name').html('');
+        });
+
+        $('input[name=salary_day]').on('keyup', function() {
+            var value = $(this).val();
+
+            if (!/^\d+(\.\d+)?$/.test(value) || parseFloat(value) < 0) {
+                $('#error_salary').html('Xin vui lòng nhập số tiền lương hợp lệ!');
+            } else {
+                $('#error_salary').html('');
+            }
+        });
 
         $.ajax({
-            url: '/admin/position/create',
+            url: CREATE_POSITION_URL,
             type: 'POST',
             data: {
                 code_position: codePosition,
                 name: name,
-                salary_day: salaryDay,
+                salary_day: salary_day,
                 description: description
             },
             success: function (data) {
@@ -48,20 +52,12 @@ $(document).ready(function () {
                     $('#error_name').html('Xin vui lòng nhập tên chức vụ.');
                 }
 
-                if (salaryDay) {
+                if (salary_day) {
                     $('#error_salary').html('');
                 } else {
                     $('#error_salary').html('Xin vui lòng nhập số tiền lương.');
                 }
             }
         });
-    });
-
-    $('input[name=name]').on('keydown ', function() {
-        $('#error_name').html('');
-    });
-
-    $('input[name=salary_day]').on('keydown ', function() {
-        $('#error_salary').html('');
     });
 });

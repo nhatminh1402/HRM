@@ -6,6 +6,8 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Position\PositionRepository;
 use App\Models\Position;
+use Exception;
+use Illuminate\Http\Response;
 
 /**
  * Class PositionRepositoryEloquent.
@@ -14,7 +16,7 @@ use App\Models\Position;
  */
 class PositionRepositoryEloquent extends BaseRepository implements PositionRepository
 {
-    const DEFAULT_PER_PAGE = 4;
+    const DEFAULT_PER_PAGE = 10;
     /**
      * Specify Model class name
      *
@@ -38,8 +40,9 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     public function update(array $data, $id)
     {
         $position = $this->model->find($id);
+
         if (!$position) {
-            throw new \Exception("Không tìm thấy chức vụ!");
+            throw new Exception("Không tìm thấy chức vụ!");
         }
 
         $position->fill($data);
@@ -62,12 +65,14 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
         try {
             $position = $this->model->find($id);
             if (!$position) {
-                throw new \Exception("Không tìm thấy chức vụ!");
+                throw new Exception('Không tìm thấy loại chức vụ!');
             }
 
-            $position->delete($id);
-        } catch (\Throwable $th) {
-            throw new \Exception("Đã xảy ra lỗi, vui lòng thử lại !");
+            $position->delete();
+            return redirect()->back()->with('success', 'Xóa thành công loại chức vụ!');
+
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi, vui lòng thử lại!');
         }
     }
 
@@ -82,7 +87,10 @@ class PositionRepositoryEloquent extends BaseRepository implements PositionRepos
     public function search($key)
     {
         return $this->model
-            ->searchByName($key)
+            ->searchByCodePosition($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByName($key);
+            })
             ->orWhere(function ($query) use ($key) {
                 $query->searchByDescription($key);
             })

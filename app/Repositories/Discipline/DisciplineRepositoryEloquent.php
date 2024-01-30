@@ -69,11 +69,14 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
     public function search($key)
     {
         return $this->model
-        ->searchByName($key)
-        ->orWhere(function ($query) use ($key){
-            $query->searchByDescription($key);
-        })
-        ->paginate(self::DEFAULT_PER_PAGE);
+            ->searchByName($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByDiscipline($key);
+            })
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByDescription($key);
+            })
+            ->paginate(self::DEFAULT_PER_PAGE);
     }
 
     /**

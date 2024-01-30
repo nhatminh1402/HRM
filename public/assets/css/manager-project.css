@@ -1,0 +1,15 @@
+.text-area, .text-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+form#form-delete {
+    position: relative;
+    top: 8px;
+}
+
+.modal-content {
+    top: 184px;
+}
