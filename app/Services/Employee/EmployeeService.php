@@ -35,6 +35,12 @@ class EmployeeService
         return $this->employeeRepository->getById($id);
     }
 
+    public function getSalary($id)
+    {
+        $user = $this->getById($id);
+        return $user->salary;
+    }
+
     public function searchEmploy($key)
     {
         return $this->employeeRepository->search($key);

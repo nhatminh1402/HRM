@@ -21,10 +21,8 @@
     <script src="{{ asset('lib/jquery-3.7.1.min') }}"></script>
     <script src="{{ asset('lib/dropzone/dropzone.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('lib/dropzone/dropzone.min.css') }}" type="text/css" />
-    <script src="{{ asset('assets/ckeditor5-build-classic/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
     @yield('include-script')
 </head>
-
 <body class="g-sidenav-show  bg-gray-200">
