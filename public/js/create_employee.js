@@ -54,6 +54,8 @@ $(function () {
 
             // Thêm ảnh vào formdata và render
             form_data.append("image_file", fileUpload)
+            //remove err message
+            $("#img-err").html("")
             $("#upload-img-area").html(img)
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -125,7 +127,7 @@ $("#btn-submit").on("click", () => {
     //password
     let password = $("#form-employee input[name='password']")
     //password
-    let rePassword = $("#form-employee input[name='re-password']")
+    let rePassword = $("#form-employee input[name='re_password']")
     let basic_salary = $("#form-employee input[name='basic_salary']")
     //=======get all input type is select==========
     // gender input
@@ -150,11 +152,7 @@ $("#btn-submit").on("click", () => {
     //validate img
     if (!form_data.get("image_file")) {
         isError = true
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "VUI LÒNG CẬP NHẬT ẢNH!",
-        });
+        $("#img-err").html(" Vui lòng bổ sung ảnh đại diện")
     }
 
     if (isError == false) {

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AdminLoginRequest;
+use App\Services\Authentication\LoginService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticateController extends Controller
 {
+
     public function index()
     {
         return view("admin.pages.authentication.login");
@@ -19,6 +22,7 @@ class AuthenticateController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            Helpers::setAvatarCharacterNameOfAdmin();
             return redirect()->route("admin.dashboard")->with("success", "ĐĂNG NHẬP THÀNH CÔNG");
         }
 

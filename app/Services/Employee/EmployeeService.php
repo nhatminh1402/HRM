@@ -92,4 +92,9 @@ class EmployeeService
     {
         return $this->employeeRepository->exportData($KeySearch);
     }
+
+    public function countEmployeeChangesByMonth()
+    {
+        return $this->employeeRepository->countEmployeeChangesByMonth();
+    }
 }
