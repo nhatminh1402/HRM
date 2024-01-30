@@ -4,6 +4,8 @@ namespace App\Repositories\Employee;
 
 use App\Models\Employee;
 use App\Models\Timesheet;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -159,6 +161,16 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             ->orWhere('phone_number', 'LIKE', "%{$KeySearch}%")
             ->orWhere('dob', 'LIKE', "%{$KeySearch}%")
             ->orWhere('degree', 'LIKE', "%{$KeySearch}%")
+            ->get();
+    }
+
+    public function countEmployeeChangesByMonth()
+    {
+        $currentYear = Carbon::now()->year;
+
+        return $this->model->select(DB::raw('Month(created_at) as month,COUNT(id) as total'))
+            ->whereYear('created_at', $currentYear)
+            ->groupBy(DB::raw('MONTH(created_at)'))
             ->get();
     }
 }

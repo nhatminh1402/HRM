@@ -73,7 +73,7 @@ class EmployeeService
     public function getWorkingDaysInMonth($employeeId)
     {
         $month = Carbon::now()->month;
-        $year =  Carbon::now()->year;
+        $year = Carbon::now()->year;
         return $this->timesheetRepository->countWorkDayInMonth($employeeId, $month, $year);
     }
 
@@ -85,5 +85,10 @@ class EmployeeService
     public function exportData($KeySearch = null)
     {
         return $this->employeeRepository->exportData($KeySearch);
+    }
+
+    public function countEmployeeChangesByMonth()
+    {
+        return $this->employeeRepository->countEmployeeChangesByMonth();
     }
 }
