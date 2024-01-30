@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 
 @section('title', 'Position')
-<link rel="stylesheet" href="{{ asset('assets/css/manager-project.css') }}">
-@section('css')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/manager-project.css') }}">
 @endsection
 
 @section('script')
@@ -165,6 +165,7 @@
                             <label for="description" class="form-label mb-2 font-weight-bold">Mô tả:</label>
                             <textarea name="description" class="form-control" id="description" rows="3" cols="3">{{ strip_tags(old('description')) }}</textarea>
                         </div>
+                        <input type="hidden" id="page_number_input" name="page" value="{{ $pageNumber }}">
                     </form>
                 </div>
                 <div class="modal-footer">

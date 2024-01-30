@@ -5,6 +5,7 @@ namespace App\Repositories\Discipline;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Models\Discipline;
+use Exception;
 use Illuminate\Http\Response;
 
 /**
@@ -14,7 +15,7 @@ use Illuminate\Http\Response;
  */
 class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineRepository
 {
-    const DEFAULT_PER_PAGE = 4;
+    const DEFAULT_PER_PAGE = 10;
     /**
      * Specify Model class name
      *
@@ -44,7 +45,7 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
     {
         $discipline = $this->model->find($id);
         if (!$discipline) {
-            return response()->json(['Không tìm thấy loại kỷ luật'], Response::HTTP_NOT_FOUND);
+            throw new Exception("Không tìm thấy loại kỷ luật!");
         }
 
         $discipline->fill($data);
@@ -56,13 +57,16 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
     {
         try {
             $discipline = $this->model->find($id);
+
             if (!$discipline) {
-                return response()->json(['message' => 'Không tìm thấy loại kỷ luật !'], Response::HTTP_NOT_FOUND);
+                throw new Exception('Không tìm thấy loại kỷ luật!');
             }
 
             $discipline->delete($id);
-        } catch (\Throwable $th) {
-            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại !'], Response::HTTP_NOT_FOUND);
+
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi, vui lòng thử lại!');
+
         }
     }
 
@@ -71,7 +75,7 @@ class DisciplineRepositoryEloquent extends BaseRepository implements DisciplineR
         return $this->model
             ->searchByName($key)
             ->orWhere(function ($query) use ($key) {
-                $query->searchByDiscipline($key);
+                $query->searchByDisciplineCode($key);
             })
             ->orWhere(function ($query) use ($key) {
                 $query->searchByDescription($key);
