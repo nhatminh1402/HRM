@@ -5,16 +5,7 @@
 @section('css')
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
-
-    <style>
-        #upload-img-area {
-            cursor: pointer;
-        }
-
-        .attention {
-            color: red;
-        }
-    </style>
+    <script src="{{ asset('assets/css/create_employee.css') }}"></script>
 @endsection
 
 @section('content')
