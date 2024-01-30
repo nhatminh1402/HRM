@@ -17,7 +17,7 @@
             {{-- end content area --}}
 
             {{-- start footer  area --}}
-            @include('user.layouts.footer')
+
             {{-- end footer area --}}
         </div>
         

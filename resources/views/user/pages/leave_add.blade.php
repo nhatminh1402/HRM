@@ -3,10 +3,12 @@
 {{-- Thêm script file ở head --}}
 @section('include-script')
     <link rel="stylesheet" href="{{ asset('material-template/assets/css/user/account_infor.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 @endsection
 
 {{-- Định nghĩa tiêu đề --}}
-@section('title', 'Thông tin tài khoản')
+@section('title', 'Leave')
 
 @section('breadcrumb-item-after', 'Nghỉ phép')
 @section('breadcrumb-item-before', 'Thêm nghỉ phép')
@@ -24,37 +26,36 @@
                         @csrf
                         <div class="mb-3">
                             <label for="description" class="form-label mb-2 font-weight-bold">Lý do xin nghỉ phép</label>
-                            <textarea name="description" class="form-control" id="description" rows="50" cols="50"></textarea>
+                            <textarea name="description" class="form-control border-5" id="description" rows="10" cols="50"></textarea>
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
-                            <div class="col-md-6">
-                                <label class="small mb-1 font-weight-bold">Ngày bắt đầu nghỉ phép</label>
-                                <input id="startDate" name="start_leave" class="form-control" type="date">
-                                @error('start_leave')
+                            <div class="col-md-6"> <label class="small mb-1 font-weight-bold">Ngày bắt đầu nghỉ</label>
+                                <input id="startDate" name="start_leave" class="form-control" type="date"
+                                    onchange="calculateNumberOfDays()"> @error('start_leave')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
-                                <label class="small mb-1 font-weight-bold">Ngày kết thúc nghỉ phép</label>
-                                <input id="endDate" name="end_leave" class="form-control" type="date">
+                            <div class="col-md-6"> <label class="small mb-1 font-weight-bold">Ngày kết thúc nghỉ</label>
+                                <input id="endDate" name="end_leave" class="form-control" type="date"
+                                    onchange="calculateNumberOfDays()">
+                                <div id='error_date' class="text-danger"></div>
                                 @error('end_leave')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
-                        <!-- Form Row-->
+                        </div> <!-- Form Row-->
                         <div class="row gx-3 mb-3">
-                            <div class="col-md-3">
-                                <label class="small mb-1">Số ngày nghỉ</label>
-                                <input class="form-control FontLarger" name="number_days" type="text" value="">
+                            <div class="col-md-3"> <label class="small mb-1">Số ngày nghỉ</label> <input id="numberDays"
+                                    class="form-control FontLarger" name="number_days" type="text" value=""
+                                    onchange="calculateEndDate()">
+                                    <div id='error_num_date' class="text-danger"></div>
                                 @error('number_days')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-
                             </div>
                         </div>
                         <!-- Save changes button-->

@@ -53,7 +53,8 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
 
     public function getListEmployee($id)
     {
-        return $this->getById($id)->employee;
+        $department = $this->getById($id);
+        return $department->employee()->paginate(self::DEFAULT_PER_PAGE);
     }
     /**
      * Boot up the repository, pushing criteria

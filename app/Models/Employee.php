@@ -62,7 +62,7 @@ class Employee extends Authenticatable
 
     public function salary()
     {
-        return $this->belongsTo(Salary::class, 'salary_id', 'id');
+        return $this->hasMany(Salary::class, 'employee_id', 'id');
     }
 
     protected $casts = [
