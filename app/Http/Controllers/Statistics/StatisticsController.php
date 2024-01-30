@@ -21,6 +21,13 @@ class StatisticsController extends Controller
 
     public function countEmployeeChangesByMonth()
     {
-        return $this->employeeService->countEmployeeChangesByMonth();
+        $year = request()->input("year");
+
+        return $this->employeeService->countEmployeeChangesByMonth($year);
+    }
+
+    public function countEmployeeInEachDepartment()
+    {
+        return $this->employeeService->countEmployeeInEachDepartment();
     }
 }
