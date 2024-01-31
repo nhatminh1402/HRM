@@ -82,10 +82,6 @@
                                                     <a href="{{ route('user.leave.detailEmail', $leave->id ) }}" class="">
                                                         <i class="material-icons opacity-10">border_color</i>
                                                     </a>
-        
-                                                    <a href="link1.html">
-                                                        <i class="material-icons opacity-10">delete_sweep</i>
-                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
