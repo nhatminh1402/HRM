@@ -15,7 +15,7 @@ use Exception;
  */
 class ProjectRepositoryEloquent extends BaseRepository implements ProjectRepository
 {
-    const DEFAULT_PER_PAGE = 4;
+    const DEFAULT_PER_PAGE = 10;
     /**
      * Specify Model class name
      *
@@ -72,7 +72,10 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
     public function search($key)
     {
         return $this->model
-            ->searchByName($key)
+            ->searchByProjectCode($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByName($key);
+            })
             ->orWhere(function ($query) use ($key) {
                 $query->searchByDescription($key);
             })

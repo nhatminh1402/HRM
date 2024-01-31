@@ -77,8 +77,8 @@
                                     <td class='align-middle text-start text-name'>{{ $project->name }}</td>
                                     <td class='align-middle text-start text-area'>
                                         {{ e($project->description ?? 'Chưa có mô tả!') }}</td>
-                                    <td class='align-middle text-start'>{{ $project->created_at }}</td>
-                                    <td class='align-middle text-start'>{{ $project->updated_at }}</td>
+                                    <td class='align-middle text-start'> {{ date('d/m/Y', strtotime($project->created_at)) }}</td>
+                                    <td class='align-middle text-start'>{{ date('d/m/Y', strtotime($project->updated_ath)) }}</td>
                                     <td class='text-center'>
                                         <div class="d-flex justify-content-center">
                                             <button class="btn border-0 btn-update" data-bs-toggle="modal"
