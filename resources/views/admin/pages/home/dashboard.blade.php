@@ -1,10 +1,24 @@
 @extends('admin.layouts.app')
 @section('title', 'Dashboard')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('lib/year-picker/yearpicker.css') }}">
+    <script src="{{ asset('lib/year-picker/yearpicker.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="row mt-4">
         <div class="col-md-12">
             <div class="card mb-4">
-                <div class="card-header"><strong>BIỂU ĐỒ MÔ TẢ BIẾN ĐỘNG NHÂN SỰ TRONG NĂM</strong></div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>BIỂU ĐỒ MÔ TẢ BIẾN ĐỘNG NHÂN SỰ TRONG NĂM</strong>
+                    </div>
+                    <div>
+                        <input placeholder="Chọn năm" id="selectYearPickerEmployee" type="text" class="form-select"
+                            value="">
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="example">
                         <div class="tab-content rounded-bottom">
@@ -52,7 +66,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
 

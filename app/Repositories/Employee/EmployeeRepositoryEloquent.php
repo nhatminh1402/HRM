@@ -37,7 +37,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function Jointable()
     {
-        return $this->model->with('province', 'district', 'ward', 'department', 'position','salary')->get();
+        return $this->model->with('province', 'district', 'ward', 'department', 'position', 'salary')->get();
     }
 
     public function getById($id)
@@ -159,13 +159,19 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
             ->get();
     }
 
-    public function countEmployeeChangesByMonth()
+    public function countEmployeeChangesByMonth($year)
     {
-        $currentYear = Carbon::now()->year;
-
         return $this->model->select(DB::raw('Month(created_at) as month,COUNT(id) as total'))
-            ->whereYear('created_at', $currentYear)
+            ->whereYear('created_at', $year)
             ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get();
+    }
+
+    public function countEmployeeInEachDepartment()
+    {
+        return $this->model->select('departments.name', DB::raw('count(employees.id) as total'))
+            ->rightJoin('departments', 'departments.id', '=', 'employees.department_id')
+            ->groupBy('departments.id', 'departments.name')
             ->get();
     }
 }
