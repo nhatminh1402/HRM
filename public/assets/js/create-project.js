@@ -15,7 +15,6 @@ $(document).ready(function () {
     $('.select-employees').select2({
         maximumSelectionLength: 10,
         templateResult: hideSelected,
-
     });
 
     $.ajaxSetup({
@@ -29,7 +28,6 @@ $(document).ready(function () {
         let name = $('#name').val();
         let selected_employees = $('#selected_employees').val();
         let description = $('#description').val();
-
 
         $('input[name=name]').on('keydown ', function () {
             $('#error_name').html('');

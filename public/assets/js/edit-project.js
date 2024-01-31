@@ -10,7 +10,6 @@ $(document).ready(function () {
         getProjectData(projectId);
     });
 
-
     function getProjectData(projectId) {
         if (typeof projectId === 'undefined') {
             console.error('Invalid projectId');
@@ -38,7 +37,6 @@ $(document).ready(function () {
         $('#code_project_update').val(projectData.code_project);
         $('#name_update').val(projectData.name);
         $('#description_update').val(projectData.description);
-
     }
 
     $('#update-project-btn').on('click', function () {
