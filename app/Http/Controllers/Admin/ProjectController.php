@@ -41,7 +41,7 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $porjectCreate = $this->projectService->createProject($data);
-        return $this->senSuccessResponse($porjectCreate, 'Thêm mới dự án thành công', Response::HTTP_CREATED);
+        return $this->responseSuccess($porjectCreate, 'Thêm mới dự án thành công', Response::HTTP_CREATED);
     }
 
     /**
@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $id = request()->id;
         $project = $this->projectService->edit($id);
         $projectResource = new ProjectResource($project);
-        return $this->senSuccessResponse($projectResource, 'success', Response::HTTP_OK);
+        return $projectResource;
     }
 
     /**
@@ -74,6 +74,6 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $this->projectService->delete($id);
-        return redirect()->back()->with('success', 'Xóa dự án thành công!');
+        return redirect()->back();
     }
 }

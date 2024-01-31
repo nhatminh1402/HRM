@@ -10,7 +10,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function senSuccessResponse($data = [], $message = 'successs', $status = '')
+    public function responseSuccess($data = [], $message = 'successs', $status = '')
     {
         return \response()->json([
             'data' => $data,

@@ -14,7 +14,7 @@ use App\Models\Salary;
  */
 class SalaryRepositoryEloquent extends BaseRepository implements SalaryRepository
 {
-    const DEFAULT_PER_PAGE = 4;
+    const DEFAULT_PER_PAGE = 10;
     /**
      * Specify Model class name
      *
@@ -47,7 +47,7 @@ class SalaryRepositoryEloquent extends BaseRepository implements SalaryRepositor
             })
             ->orWhere(function ($query) use ($key) {
                 $query->searchByCreatedAt($key);
-            })->paginate(self::DEFAULT_PER_PAGE);   
+            })->paginate(self::DEFAULT_PER_PAGE);
     }
 
     public function exportData($keySearch)

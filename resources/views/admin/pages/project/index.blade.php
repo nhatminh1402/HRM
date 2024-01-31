@@ -182,12 +182,12 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Thêm mới dự án</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Sửa dự án</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     @if (isset($project))
-                        <form class="row" action="{{ route('admin.project.update', ['id' => $project->id]) }}"
+                        <form class="row" action="{{ route('admin.project.update', ['id' => $project->id, 'page' => $pageNumber])}}"
                             method="POST">
                             @csrf
                             @method('PUT')
@@ -206,7 +206,7 @@
                             <div class="mb-3 d-flex flex-column">
                                 <label for="employee" class="form-label mb-2 font-weight-bold">Chọn nhân viên<span
                                         class="text-danger">*</span>:</label>
-                                <select class="form-control mx-auto" name="select-employees[]" id="select-employees" multiple="multiple"></select>
+                                <select class="form-control mx-auto selected-employees" name="select-employees[]" id="select-employees" multiple="multiple"></select>
                                 <div class="text-danger" id="error_employee_update"></div>
                                 @error('selected_employees')
                                     <div class="text-danger" id="error_select">{{ $message }}</div>
@@ -216,6 +216,7 @@
                                 <label for="description_update" class="form-label mb-2 font-weight-bold">Mô tả</label>
                                 <textarea name="description_update" class="form-control" id="description_update" rows="3" cols="3">{{ strip_tags(old('description')) }}</textarea>
                             </div>
+                            <input type="hidden" name="page" value="{{ $pageNumber }}">
                         </form>
                     @else
                         <div class="alert alert-danger">Không tìm thấy dự án!</div>

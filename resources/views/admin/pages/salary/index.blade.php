@@ -3,7 +3,7 @@
 @section('title', 'Show Salary')
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('assets/css/manager-salary.css')}}">
 @endsection
 
 @section('content')
@@ -67,12 +67,12 @@
                                     <tr>
                                         <td class='text-center'>{{ $key + 1 }}</td>
                                         <td class='text-start'>{{ $salary->code_salary }}</td>
-                                        <td class='text-start'>{{ $salary->employee->full_name }}</td>
-                                        <td class='text-start'>{{ $salary->employee->position->name ?? ''}}</td>
-                                        <td class='text-start'>
+                                        <td class='text-start text-name-employee'>{{ $salary->employee->full_name }}</td>
+                                        <td class='text-start text-name-position'>{{ $salary->employee->position->name ?? ''}}</td>
+                                        <td class='text-start text-salary'>
                                             {{ number_format($salary->monthly_salary, 0, '', ',') . ' VNĐ' }}</td>
                                         <td class='text-center'>{{ $salary->workday }}</td>
-                                        <td class='text-start'>
+                                        <td class='text-start text-salary'>
                                             {{ number_format($salary->real_leaders, 0, '', ',') . ' VNĐ' }}</td>
                                         <td class='text-start'>{{ date_format($salary->created_at, 'd/m/Y') }}</td>
                                     </tr>

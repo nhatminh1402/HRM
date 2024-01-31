@@ -6,12 +6,6 @@ $(document).ready(function () {
         }
     }
 
-    function hideSelected(value) {
-        if (value && !value.selected) {
-            return $('<span>' + value.text + '</span>');
-        }
-    }
-
     $('.select-employees').select2({
         maximumSelectionLength: 10,
         templateResult: hideSelected,

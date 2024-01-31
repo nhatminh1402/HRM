@@ -59,16 +59,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            let editor;
-            ClassicEditor
-                .create(document.querySelector('#description'))
-                .then(newEditor => {
-                    editor = newEditor;
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-
             $('.select-employees').change(function() {
                 var selectedEmployeeId = $(this).val();
                 var selectedEmployeeWorkday = {!! json_encode($countWorkDaysString) !!};

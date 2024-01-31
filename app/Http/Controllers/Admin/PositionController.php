@@ -40,7 +40,7 @@ class PositionController extends Controller
     {
         $data = $request->all();
         $positionCreate = $this->positionService->create($data);
-        return $this->senSuccessResponse($positionCreate, 'Chức vụ đã được thêm thành công', Response::HTTP_CREATED);
+        return $this->responseSuccess($positionCreate, 'Chức vụ đã được thêm thành công', Response::HTTP_CREATED);
     }
 
     /**
