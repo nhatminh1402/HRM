@@ -156,8 +156,6 @@ function drawProjectChart(response) {
         yValues.push(item.total)
     })
 
-    console.log(xValues)
-
     var barColors = getArrRandomColor(xValues.length)
 
     new Chart("chartProject", {
