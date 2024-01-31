@@ -44,7 +44,7 @@
                                         </td>
                                         <td class="align-middle">
                                             <h5 style="text-align: center" class="mb-0 ">
-                                                {{ $timeline->start_date }}
+                                                {{ $timeline->created_at->format('d-m-Y')   }}
                                             </h5>
                                         </td>
                                         <td>
