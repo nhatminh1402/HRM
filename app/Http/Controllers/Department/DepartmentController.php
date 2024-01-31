@@ -19,15 +19,10 @@ class DepartmentController extends Controller
         $this->employeeeService = $employeeeService;
     }
 
-
     public function showallDeparment(Request $request)
     {
-        $departments = $this->departmentService->getAllDeparment();
+        $departments = $request->input('key') ? $this->departmentService->searchDepartment($request->input('key')) : $this->departmentService->getAllDeparment();
         $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
-
-        if ($request->input('key')) {
-            $departments = $this->departmentService->searchDepartment($request->input('key'));
-        }
         $pageNumber = $request->query('page');
         return view("admin.pages.department.add-department", compact('departments', 'employeesHaveDeparmentNull', 'pageNumber'));
     }
@@ -45,18 +40,19 @@ class DepartmentController extends Controller
 
     public function getEmployeeDepartment($id, Request $request)
     {
-        $department = $this->departmentService->getDetailDepartment($id);
-        $employees = $this->departmentService->getEmployees($id);
-
-        if ($request->input('key')) {
-            $employees = $this->employeeeService->searchEmploy($request->input('key'));
-            $employees->where('id_department', $id);
+        try {
+            $employees = $this->departmentService->getEmployees($id);
+            if ($request->input('key')) {
+                $employees = $this->employeeeService->searchEmploy($request->input('key'));
+                $employees->where('id_department', $id);
+            }
+            $department = $this->departmentService->getDetailDepartment($id);
+            $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
+            $pageNumber = $request->query('page');
+            return view('admin.pages.department.manage-department', compact('department', 'employees', 'employeesHaveDeparmentNull'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'không tìm thấy phòng bang ');
         }
-
-        $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
-        $pageNumber = $request->query('page');
-        return view('admin.pages.department.manage-department', compact('department', 'employees', 'employeesHaveDeparmentNull'));
-
     }
 
     public function getDetailDepartment($id)
