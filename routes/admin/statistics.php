@@ -9,5 +9,7 @@ Route::prefix('/statistics')->name('statistics.')->group(function () {
     Route::get('/employees', [StatisticsController::class, 'countEmployeeChangesByMonth'])->name('employees');
     //Thống kê tổng số lượng nhân viên theo từng phòng ban
     Route::get('/EmployeeEachDepartment', [StatisticsController::class, 'countEmployeeInEachDepartment'])->name('EmployeeEachDepartment');
+    //Thống kê tổng số lượng nhân viên theo từng project
+    Route::get('/EmployeeEachProject', [StatisticsController::class, 'countEmployeeInEachProject'])->name('EmployeeEachProject');
 });
 
