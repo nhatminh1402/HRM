@@ -9,7 +9,7 @@
 .yearpicker-container {
     position: absolute;
     color: var(--text-color);
-    width: 280px;
+    width: 240px;
     border: 1px solid var(--border-color);
     border-radius: 3px;
     font-size: 1rem;
@@ -17,6 +17,7 @@
     background-color: var(--background-color);
     z-index: 10;
     margin-top: 0.2rem;
+    right: 0;
 }
 
 .yearpicker-header {

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Department;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateDepartmentRequest;
+use App\Models\Department;
 use App\Services\Department\DepartmentService;
 use App\Services\Employee\EmployeeService;
-
+use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -18,12 +19,12 @@ class DepartmentController extends Controller
         $this->employeeeService = $employeeeService;
     }
 
-
-    public function showallDeparment()
+    public function showallDeparment(Request $request)
     {
-        $departments = $this->departmentService->getAllDeparment();
+        $departments = $request->input('key') ? $this->departmentService->searchDepartment($request->input('key')) : $this->departmentService->getAllDeparment();
         $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
-        return view("admin.pages.department.add-department", compact('departments', 'employeesHaveDeparmentNull'));
+        $pageNumber = $request->query('page');
+        return view("admin.pages.department.add-department", compact('departments', 'employeesHaveDeparmentNull', 'pageNumber'));
     }
 
     public function addDepartment(CreateDepartmentRequest $request)
@@ -37,13 +38,28 @@ class DepartmentController extends Controller
         }
     }
 
+    public function getEmployeeDepartment($id, Request $request)
+    {
+        try {
+            $employees = $this->departmentService->getEmployees($id);
+            if ($request->input('key')) {
+                $employees = $this->employeeeService->searchEmploy($request->input('key'));
+                $employees->where('id_department', $id);
+            }
+            $department = $this->departmentService->getDetailDepartment($id);
+            $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
+            $pageNumber = $request->query('page');
+            return view('admin.pages.department.manage-department', compact('department', 'employees', 'employeesHaveDeparmentNull'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'không tìm thấy phòng bang ');
+        }
+    }
+
     public function getDetailDepartment($id)
     {
         try {
             $department = $this->departmentService->getDetailDepartment($id);
-            $employees = $this->departmentService->getEmployees($id);
-            $employeesHaveDeparmentNull = $this->employeeeService->getEmployeeDepartmentNull();
-            return view('admin.pages.department.manage-department', compact('department', 'employees', 'employeesHaveDeparmentNull'));
+            return $department;
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'không tìm thấy phòng bang ');
         }
@@ -52,21 +68,27 @@ class DepartmentController extends Controller
     public function updateDepartment(CreateDepartmentRequest $request, $id)
     {
         try {
-
             $data['name'] = $request->name;
             $data['description'] = $request->description;
+            $this->departmentService->updateDepartment($data, $id);
+            return response()->json(['success' => 'Cập nhật phòng ban thành công!']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Lỗi cập nhật']);
+        }
+    }
 
-            $employees_id = $request->id_employee;
+    public function addEmployeeDepartment($id)
+    {
+        try {
+            $employees_id = request()->id_employee;
             if (!empty($employees_id)) {
                 foreach ($employees_id as $employee_id) {
                     $this->employeeeService->setDepartmentId($employee_id, $id);
                 }
             }
-            $this->departmentService->updateDepartment($data, $id);
-            return redirect()->back()->with('success', 'Cập nhật phòng ban thành công!');
+            return response()->json(['success' => 'Cập nhật nhân viên phòng ban thành công!']);
         } catch (\Exception $e) {
-            return redirect()->route('admin.department.add')
-                ->with('error', 'Lỗi khi cập nhật phòng ban: ' . $e->getMessage());
+            return response()->json(['error' => 'Lỗi cập nhật']);
         }
     }
 

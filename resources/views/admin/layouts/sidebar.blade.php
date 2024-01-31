@@ -1,27 +1,14 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        <a href="{{ route('admin.dashboard')}}"><img class="image image-md" alt="Image placeholder"
-            src="/logo/logo.png"></a>
+        <a href="{{ route('admin.dashboard') }}"><img class="image image-md" alt="Image placeholder"
+                src="/logo/logo.png"></a>
     </div>
     {{-- Tổng quan --}}
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-        <li class="nav-group">
-            <a class="nav-link nav-group-toggle">
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('CoreUI/vendors/@coreui/icons/svg/free.svg#cil-apps') }}"></use>
-                </svg> Tổng quan
-            </a>
-            <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}"><span
-                            class="nav-icon"></span>
-                        Thống kê</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard.employee') }}"><span
-                            class="nav-icon"></span>
-                        Danh sách nhân viên</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard.account') }}"><span
-                            class="nav-icon"></span>
-                        Danh sách tài khoản</a></li>
-            </ul>
+                </svg> Tổng quan</a>
         </li>
         {{-- Quản lý nhân viên --}}
         <li class="nav-group">
@@ -83,9 +70,11 @@
                 </svg> Quản lý lương
             </a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.salary.index')}}"><span class="nav-icon"></span>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.salary.index') }}"><span
+                            class="nav-icon"></span>
                         Bảng tính lương</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.salary.create')}}"><span class="nav-icon"></span>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.salary.create') }}"><span
+                            class="nav-icon"></span>
                         Tính lương</a></li>
             </ul>
         </li>
@@ -97,15 +86,13 @@
                 </svg> Tài khoản
             </a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="notifications/alerts.html"><span
-                            class="nav-icon"></span>
-                        Thông tin cá nhân</a></li>
-                <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span
-                            class="nav-icon"></span>
-                        Danh sách tài khoản</a></li>
+
+
                 <li class="nav-item"><a class="nav-link" href="{{ route('admin.account.change-password') }}"><span
                             class="nav-icon"></span>
                         Đổi mật khẩu</a></li>
+                <li class="nav-item"><a class="nav-link" href="notifications/alerts.html"><span class="nav-icon"></span>
+                        Thông tin cá nhân</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('admin.logout') }}"><span
                             class="nav-icon"></span>
                         Đăng xuất</a></li>

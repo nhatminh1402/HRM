@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Statistics;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
+use App\Http\Requests\YearRequest;
 use App\Services\Employee\EmployeeService;
-use Carbon\Carbon;
-use DB;
-use Illuminate\Http\Request;
+use App\Services\Project\ProjectService;
 
 class StatisticsController extends Controller
 {
 
     private $employeeService;
+    private $projectService;
 
-    public function __construct(EmployeeService $employeeService)
+    public function __construct(EmployeeService $employeeService, ProjectService $projectService)
     {
         $this->employeeService = $employeeService;
+        $this->projectService = $projectService;
     }
 
-    public function countEmployeeChangesByMonth()
+    public function countEmployeeChangesByMonth(YearRequest $request)
     {
-        $year = request()->input("year");
+        $year = $request->input("year");
 
         return $this->employeeService->countEmployeeChangesByMonth($year);
     }
@@ -29,5 +29,12 @@ class StatisticsController extends Controller
     public function countEmployeeInEachDepartment()
     {
         return $this->employeeService->countEmployeeInEachDepartment();
+    }
+
+    public function countEmployeeInEachProject(YearRequest $request)
+    {
+        $year = $request->input("year");
+
+        return $this->projectService->countEmployeeInEachProject($year);
     }
 }

@@ -14,9 +14,10 @@
                     <div>
                         <strong>BIỂU ĐỒ MÔ TẢ BIẾN ĐỘNG NHÂN SỰ TRONG NĂM</strong>
                     </div>
-                    <div>
-                        <input placeholder="Chọn năm" id="selectYearPickerEmployee" type="text" class="form-select"
-                            value="">
+                    <div id="select-year-employee-area">
+                        <input name="year" style="width: 140px" id="selectYearPickerEmployee" type="text"
+                            class="form-select yearpicker" value="">
+                        <div class="err-area invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,13 +33,13 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-4">
-                <div class="card-header"><strong>PHÒNG BAN</strong></div>
+                <div style="height: 86px" class="card-header d-flex align-items-center"><strong>PHÒNG BAN</strong></div>
                 <div class="card-body">
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1001">
                                 <div class="c-chart-wrapper">
-                                    <canvas id="chartDepartment" style="width:100%;max-width:600px; height: 420px"></canvas>
+                                    <canvas id="chartDepartment" style="width:100%;max-width:600px; height: 430px"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -48,17 +49,22 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-4">
-                <div class="card-header"><strong>DỰ ÁN</strong></div>
+                <div style="height: 86px" class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>DỰ ÁN</strong>
+                    </div>
+                    <div id="select-year-project-area">
+                        <input name="year" style="width: 140px" id="selectYearPickerProject" type="text"
+                            class="form-select yearpicker" value="">
+                        <div class="err-area invalid-feedback"></div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="example">
-
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
                                 <div class="c-chart-wrapper">
-                                    {{-- <canvas id="canvas-3" width="1140" height="1140"
-                                        style="display: block; box-sizing: border-box; height: 570px; width: 570px;"></canvas> --}}
-                                    <canvas id="chartProject" style="width:100%;max-width:600px; height:420px"></canvas>
-
+                                    <canvas id="chartProject" style="width:100%;max-width:600px; height:430px"></canvas>
                                 </div>
                             </div>
                         </div>
