@@ -16,4 +16,6 @@ Route::prefix('/reward')
         Route::get('/edit/{id}', [ManageRewardController::class, 'edit'])->name('edit');
         // Update
         Route::post('/update/{id}', [ManageRewardController::class, 'update'])->name('update');
+        // Tìm kiếm loại khen thưởng theo id
+        Route::get('/find/{id}', [ManageRewardController::class, 'find'])->name('find');
     });

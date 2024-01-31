@@ -45,7 +45,6 @@
                             <th class="text-center rounded-end">Tình trạng</th>
                             <th class="text-center rounded-end">Xem</th>
                             <th class="text-center rounded-end">Sửa</th>
-
                         </tr>
                     </thead>
                     <tbody>
