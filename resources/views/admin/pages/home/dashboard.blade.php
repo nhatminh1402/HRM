@@ -14,9 +14,10 @@
                     <div>
                         <strong>BIỂU ĐỒ MÔ TẢ BIẾN ĐỘNG NHÂN SỰ TRONG NĂM</strong>
                     </div>
-                    <div>
-                        <input style="width: 100px" id="selectYearPickerEmployee" type="text" class="form-select"
-                            value="">
+                    <div id="select-year-employee-area">
+                        <input name="year" style="width: 140px" id="selectYearPickerEmployee" type="text"
+                            class="form-select yearpicker" value="">
+                        <div class="err-area invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,7 +33,7 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-4">
-                <div style="height: 55px" class="card-header d-flex align-items-center"><strong>PHÒNG BAN</strong></div>
+                <div style="height: 86px" class="card-header d-flex align-items-center"><strong>PHÒNG BAN</strong></div>
                 <div class="card-body">
                     <div class="example">
                         <div class="tab-content rounded-bottom">
@@ -48,18 +49,18 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div style="height: 86px" class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <strong>DỰ ÁN</strong>
                     </div>
-                    <div>
-                        <input style="width: 100px" id="selectYearPickerProject" type="text" class="form-select"
-                            value="">
+                    <div id="select-year-project-area">
+                        <input name="year" style="width: 140px" id="selectYearPickerProject" type="text"
+                            class="form-select yearpicker" value="">
+                        <div class="err-area invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="example">
-
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
                                 <div class="c-chart-wrapper">
