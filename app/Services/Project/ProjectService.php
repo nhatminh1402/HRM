@@ -75,8 +75,8 @@ class ProjectService
         return $this->projectRepository->search($key);
     }
 
-    public function countEmployeeInEachProject()
+    public function countEmployeeInEachProject($year)
     {
-        return $this->projectRepository->countEmployeeInEachProject();
+        return $this->projectRepository->countEmployeeInEachProject($year);
     }
 }

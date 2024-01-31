@@ -14,5 +14,5 @@ interface ProjectRepository extends RepositoryInterface
     public function getAll();
     public function update(array $data, $id);
     public function search($key);
-    public function countEmployeeInEachProject();
+    public function countEmployeeInEachProject($year);
 }

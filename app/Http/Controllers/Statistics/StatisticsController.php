@@ -32,6 +32,8 @@ class StatisticsController extends Controller
 
     public function countEmployeeInEachProject()
     {
-        return $this->projectService->countEmployeeInEachProject();
+        $year = request()->input("year");
+
+        return $this->projectService->countEmployeeInEachProject($year);
     }
 }

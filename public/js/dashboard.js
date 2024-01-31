@@ -133,30 +133,49 @@ function drawDepartmentChart(response) {
     });
 }
 
-
-// draw project chart
-$.ajax({
-    type: "get",
-    url: "/admin/statistics/EmployeeEachProject",
-    dataType: "json",
-    success: function (response) {
-        drawProjectChart(response)
-    }, error: function (xhr, status, error) {
-        window.location.reload();
-    }
+// init year picker
+$('#selectYearPickerProject').yearpicker({
+    // Start Year
+    startYear: 2023,
 });
 
-function drawProjectChart(response) {
+$("#selectYearPickerProject").val(currentYear)
 
-    var xValues = [];
-    var yValues = [];
+//draw a chart with current year if this is the 1st load into the website
+drawProjectChart(currentYear)
 
-    response.forEach(item => {
-        xValues.push(item.name)
-        yValues.push(item.total)
-    })
+// ajax request to get a new dataset project if user change year
+$('#selectYearPickerProject').on("change", function () {
+    drawProjectChart($(this).val())
+});
 
-    var barColors = getArrRandomColor(xValues.length)
+function drawProjectChart(statisticalYear) {
+    $.ajax({
+        type: "get",
+        url: "/admin/statistics/EmployeeEachProject",
+        dataType: "json",
+        data: {
+            year: statisticalYear
+        },
+        success: function (response) {
+            var xValues = [];
+            var yValues = [];
+
+            response.forEach(item => {
+                xValues.push(item.name)
+                yValues.push(item.total)
+            })
+
+            renderProjectChart(xValues, yValues)
+        }, error: function (xhr, status, error) {
+            window.location.reload();
+        }
+    });
+}
+
+function renderProjectChart(xValues, yValues) {
+
+    let barColors = getArrRandomColor(xValues.length)
 
     new Chart("chartProject", {
         type: "bar",

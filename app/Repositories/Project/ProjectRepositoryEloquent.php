@@ -82,12 +82,11 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
             ->paginate(self::DEFAULT_PER_PAGE);
     }
 
-    public function countEmployeeInEachProject()
+    public function countEmployeeInEachProject($year)
     {
-        $currentYear = now()->year;
-
         return $this->model->select('projects.name', DB::raw('count(employee_has_project.employee_id) as total'))
             ->leftJoin('employee_has_project', 'employee_has_project.project_id', '=', 'projects.id')
+            ->whereYear('projects.created_at', $year)
             ->groupBy('projects.id', 'projects.name')
             ->get();
     }
