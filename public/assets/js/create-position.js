@@ -46,17 +46,9 @@ $(document).ready(function () {
                 }, 1000);
             },
             error: function (xhr) {
-                if (name) {
-                    $('#error_name').html('');
-                } else {
-                    $('#error_name').html('Xin vui lòng nhập tên chức vụ.');
-                }
-
-                if (salary_day) {
-                    $('#error_salary').html('');
-                } else {
-                    $('#error_salary').html('Xin vui lòng nhập số tiền lương.');
-                }
+                let errors = xhr.responseJSON.errors;
+                $('#error_name').html(errors && errors.name ? errors.name[0] : '');
+                $('#error_salary').html(errors && errors.salary_day ? errors.salary_day[0] : '');
             }
         });
     });
