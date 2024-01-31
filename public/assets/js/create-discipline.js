@@ -11,7 +11,7 @@ $(document).ready(function () {
         var description = $('#description').val();
 
         $.ajax({
-            url: '/admin/discipline/create',
+            url: CREATE_DISCIPLINE_URL,
             type: 'POST',
             data: {
                 code_discipline: codediscipline,

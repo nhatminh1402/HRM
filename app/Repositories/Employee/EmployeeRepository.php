@@ -20,5 +20,6 @@ interface EmployeeRepository extends RepositoryInterface
     public function getBasicSalary($employeeId);
     public function update(array $attributes, $id);
     public function exportData($KeySearch = null);
-    public function countEmployeeChangesByMonth();
+    public function countEmployeeChangesByMonth($year);
+    public function countEmployeeInEachDepartment();
 }
