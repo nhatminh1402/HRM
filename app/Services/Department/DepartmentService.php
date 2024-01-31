@@ -53,6 +53,10 @@ class DepartmentService
     {
         return $this->departmentRepository->getListEmployee($id);
     }
+    public function searchDepartment($key)
+    {
+        return $this->departmentRepository->search($key);
+    }
 
     public function all($columns = ['*'])
     {
