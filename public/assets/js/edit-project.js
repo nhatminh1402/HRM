@@ -1,31 +1,128 @@
 $(document).ready(function () {
-    $('.btn-delete').on('click', function (event) {
-        event.preventDefault();
 
-        var form = $(this).closest('#form-delete');
+    function hideSelected(value) {
+        if (value && !value.selected) {
+            return $('<span>' + value.text + '</span>');
+        }
+    }
 
-        Swal.fire({
-            title: "Bạn có chắc xóa dự án này không?",
-            icon: "warning",
-            showCancelButton: true,
-            cancelButtonText: "HỦY",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "XÓA",
-            confirmButtonColor: "#3085D6",
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Đã xóa!",
-                    text: "Bạn đã xóa thành công!",
-                    icon: "success",
-                    showConfirmButton: false,
-                });
+    $('.btn-update').click(function () {
+        let projectId = $(this).data('id');
+        getProjectData(projectId);
+    });
 
-                setTimeout(function () {
-                    form.submit();
-                }, 1500);
+    function getProjectData(projectId) {
+        if (typeof projectId === 'undefined') {
+            console.error('Invalid projectId');
+            return;
+        }
+
+        $.ajax({
+            url: GET_PROJECT_URL,
+            type: 'GET',
+            data: {
+                id: projectId,
+            },
+            success: function (response) {
+                let projectData = response.data;
+                updateProjectForm(projectData);
+                renderOptionEmployees(response.data.selectedEmployees);
+            },
+            error: function (xhr) {
             }
         });
+    }
+
+    function updateProjectForm(projectData) {
+        $('#project_id').val(projectData.id);
+        $('#code_project_update').val(projectData.code_project);
+        $('#name_update').val(projectData.name);
+        $('#description_update').val(projectData.description);
+    }
+
+    function renderOptionEmployees(selectedIds) {
+        $.ajax({
+            url: GET_ALL_EMPLOYEES,
+            type: 'GET',
+            success: function (response) {
+                let selectEmployees = $('#select-employees');
+                selectEmployees.empty();
+                if (response.employees !== undefined) {
+                    response.employees.forEach(function (employee) {
+                        let selected = selectedIds.includes(employee.id) ? 'selected' : '';
+                        let option = `<option value="${employee.id}" ${selected}>${employee.full_name}</option>`;
+                        selectEmployees.append(option);
+                    });
+                }
+
+                selectEmployees.select2({
+                    maximumSelectionLength: 10,
+                    templateResult: hideSelected,
+                });
+            },
+            error: function (xhr) {
+            }
+        });
+    }
+
+    $('#update-project-btn').on('click', function () {
+        let projectId = $('#project_id').val();
+        updateProject(projectId);
+    });
+
+    function updateProject(projectId) {
+        let codeProject = $('#code_project_update').val();
+        let name = $('#name_update').val();
+        let selectedEmployees = $('#select-employees').val();
+        let description = $('#description_update').val();
+
+        let projectData = {
+            _method: 'PUT',
+            id: projectId,
+            code_project: codeProject,
+            selected_employees: selectedEmployees,
+            name: name,
+            description: description
+        };
+
+        $.ajax({
+            url: UPDATE_PROJECT_URL,
+            type: 'POST',
+            data: projectData,
+            success: function (data) {
+                handleUpdateSuccess();
+            },
+            error: function (xhr) {
+                handleUpdateError(xhr);
+            }
+        });
+    }
+
+    function handleUpdateSuccess() {
+        $('#update-project').modal('hide');
+        Swal.fire({
+            icon: 'success',
+            title: 'Cập nhật dự án thành công',
+            showConfirmButton: false
+        });
+        setTimeout(function () {
+            location.replace("/admin/project");
+        }, 1000);
+    }
+
+    function handleUpdateError(xhr) {
+        let errors = xhr.responseJSON.errors;
+        $('#error_name_update').html(errors && errors.name ? errors.name[0] : '');
+        $('#error_employee_update').html(errors && errors.selected_employees ? errors.selected_employees[0] : '');
+    }
+
+    $('input[name=name_update]').on('keydown', function () {
+        $('#error_name_update').html('');
+    });
+
+    $('#select-employees').on('change', function () {
+        if ($(this).val() && $(this).val().length > 0) {
+            $('#error_employee_update').html('');
+        }
     });
 });
