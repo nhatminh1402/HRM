@@ -52,7 +52,7 @@
         </div>
         <div class="card border-0">
             <div class="table-responsive">
-                <table class="table table-bordered table-nowrap mb-0 rounded">
+                <table class="table table-bordered mb-3 table-nowrap mb-0 rounded">
                     <thead class="thead-light">
                         <tr>
                             <th class="text-center">STT</th>
@@ -207,7 +207,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-primary" id="update-discipline-btn">Thêm kỷ luật</button>
+                        <button type="button" class="btn btn-primary" id="update-discipline-btn">Lưu lại</button>
                     </div>
                 </div>
             </div>

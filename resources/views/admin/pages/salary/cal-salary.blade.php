@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="description" class="form-label mb-2 font-weight-bold">Mô tả</label>
-                    <textarea name="description" class="form-control" id="description" rows="50" cols="50">{{ old('description') }}</textarea>
+                    <textarea name="description" class="form-control" id="description" rows="3" cols="3">{{ old('description') }}</textarea>
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-success text-white">

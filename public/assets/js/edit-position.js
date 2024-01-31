@@ -20,7 +20,7 @@ $(document).ready(function () {
             url: GET_POSITION_URL,
             type: 'GET',
             data: {
-                idPosition: positionId,
+                id: positionId,
             },
             success: function (response) {
                 let positionData = response.position;

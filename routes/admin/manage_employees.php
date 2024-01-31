@@ -14,6 +14,7 @@ Route::prefix('/employees')
         Route::post('/store', [CreateEmployeeController::class, 'store'])->name('store-employee');
         // Danh sách nhân viên
         Route::get('/lists', [EmployeeController::class, 'showallemployee'])->name('list-employee');
+        Route::get('/list', [EmployeeController::class, 'showAllEmployees'])->name('list');
         // Xem chi tiết nhân viên
         Route::get('/detail/{id}', [EmployeeController::class, 'getDetailEmployee'])->name('detail-employee');
         // Tìm kiếm nhân viên

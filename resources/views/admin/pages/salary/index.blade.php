@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row shadow">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <!-- Breadcrumb navigation goes here -->
         </nav>
@@ -43,8 +43,8 @@
                 </div>
             </form>
         </div>
-        <div class="card shadow">
-            <div class="card-body">
+        <div class="card shadow border-0">
+            <div class="card-body border-0">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>

@@ -23,7 +23,7 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
      *
      * @return string
      */
-    const DEFAULT_PER_PAGE = 4;
+    const DEFAULT_PER_PAGE = 10;
 
     public function model()
     {
@@ -104,11 +104,6 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
-    }
-
-    public function getAllEmployee()
-    {
-        $this->model->all();
     }
 
     public function getByIds(array $employeeIds)
