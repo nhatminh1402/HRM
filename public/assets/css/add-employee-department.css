@@ -1,0 +1,10 @@
+.select2-container {
+    z-index: 1600;
+}
+
+.text-area{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}

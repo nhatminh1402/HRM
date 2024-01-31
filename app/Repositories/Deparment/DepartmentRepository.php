@@ -17,4 +17,5 @@ interface DepartmentRepository extends RepositoryInterface
     public function update(array $data, $id);
     public function delete($id);
     public function getListEmployee($id);
+    public function search($key);
 }

@@ -44,4 +44,43 @@ $(document).ready(function () {
             }
         });
     });
+
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+
+    $("#add-employee-btn").on("click", function () {
+        let selected_employees = $("#selected_employees").val();
+        let id_department = $("#id-deparment").val();
+    
+        if (selected_employees.length==0) {
+            $('#update_error_select').html('Vui lòng chọn nhân viên !')
+            return;
+        }
+        
+        $.ajax({
+            url: "/admin/department/employee/add/"+id_department,
+            method: "POST",
+            data: {
+                id_employee: selected_employees,
+            },
+            success: function (data) {
+                $("#add-employee").modal("hide");
+                Swal.fire({
+                    icon: "success",
+                    title: "Thêm mới phòng ban thành công",
+                    showConfirmButton: false,
+                });
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            },
+        });
+    });
+
+    $('#selected_employees').on('change', function () {
+            $('#update_error_select').html('');
+    });
 });

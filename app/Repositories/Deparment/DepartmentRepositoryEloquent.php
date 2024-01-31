@@ -56,6 +56,20 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
         $department = $this->getById($id);
         return $department->employee()->paginate(self::DEFAULT_PER_PAGE);
     }
+
+    public function search($key)
+    {
+        return $this->model
+            ->searchByCodeDeparment($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByName($key);
+            })
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByDescription($key);
+            })
+            ->paginate(self::DEFAULT_PER_PAGE)->withQueryString();
+    }
+    
     /**
      * Boot up the repository, pushing criteria
      */
