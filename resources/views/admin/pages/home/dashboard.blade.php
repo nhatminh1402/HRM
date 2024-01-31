@@ -55,10 +55,7 @@
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
                                 <div class="c-chart-wrapper">
-                                    {{-- <canvas id="canvas-3" width="1140" height="1140"
-                                        style="display: block; box-sizing: border-box; height: 570px; width: 570px;"></canvas> --}}
                                     <canvas id="chartProject" style="width:100%;max-width:600px; height:420px"></canvas>
-
                                 </div>
                             </div>
                         </div>

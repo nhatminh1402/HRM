@@ -102,4 +102,9 @@ class EmployeeService
     {
         return $this->employeeRepository->countEmployeeInEachDepartment();
     }
+
+    public function countEmployeeInEachProject()
+    {
+        return $this->employeeRepository->countEmployeeInEachProject();
+    }
 }

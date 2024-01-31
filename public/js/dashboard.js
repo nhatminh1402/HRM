@@ -132,3 +132,47 @@ function drawDepartmentChart(response) {
         }
     });
 }
+
+
+// draw project chart
+$.ajax({
+    type: "get",
+    url: "/admin/statistics/EmployeeEachProject",
+    dataType: "json",
+    success: function (response) {
+        drawProjectChart(response)
+    }, error: function (xhr, status, error) {
+        window.location.reload();
+    }
+});
+
+function drawProjectChart(response) {
+
+    var xValues = [];
+    var yValues = [];
+
+    response.forEach(item => {
+        xValues.push(item.name)
+        yValues.push(item.total)
+    })
+
+    var barColors = getArrRandomColor(xValues.length)
+
+    new Chart("chartProject", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "CÁC DỰ ÁN TRONG NĂM VÀ SỐ LƯỢNG NHÂN VIÊN MỖI DỰ ÁN"
+            }
+        }
+    });
+}

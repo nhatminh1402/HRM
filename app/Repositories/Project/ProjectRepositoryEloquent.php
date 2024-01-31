@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Project;
 
+use DB;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Project\ProjectRepository;
@@ -79,6 +80,16 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
                 $query->searchByDescription($key);
             })
             ->paginate(self::DEFAULT_PER_PAGE);
+    }
+
+    public function countEmployeeInEachProject()
+    {
+        $currentYear = now()->year;
+
+        return $this->model->select('projects.name', DB::raw('count(employee_has_project.employee_id) as total'))
+            ->leftJoin('employee_has_project', 'employee_has_project.project_id', '=', 'projects.id')
+            ->groupBy('projects.id', 'projects.name')
+            ->get();
     }
 
     /**

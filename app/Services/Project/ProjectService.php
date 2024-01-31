@@ -74,4 +74,9 @@ class ProjectService
     {
         return $this->projectRepository->search($key);
     }
+
+    public function countEmployeeInEachProject()
+    {
+        return $this->projectRepository->countEmployeeInEachProject();
+    }
 }
