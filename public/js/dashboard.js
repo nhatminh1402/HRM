@@ -156,6 +156,8 @@ function drawProjectChart(response) {
         yValues.push(item.total)
     })
 
+    console.log(xValues)
+
     var barColors = getArrRandomColor(xValues.length)
 
     new Chart("chartProject", {
@@ -172,6 +174,13 @@ function drawProjectChart(response) {
             title: {
                 display: true,
                 text: "CÁC DỰ ÁN TRONG NĂM VÀ SỐ LƯỢNG NHÂN VIÊN MỖI DỰ ÁN"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }]
             }
         }
     });
