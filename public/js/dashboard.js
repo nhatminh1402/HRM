@@ -77,7 +77,17 @@ function drawEmployeeChart(statisticalYear) {
             //draw a chart
             renderEmployeeChart(yValues, statisticalYear)
         }, error: function (xhr, status, error) {
-            window.location.reload();
+            if (xhr.status == 422) {
+                let errorData = xhr.responseJSON.errors;
+
+                for (let errName in errorData) {
+                    let inputTag = $("#select-year-employee-area [name='" + errName + "']")
+                    $(inputTag).addClass("is-invalid")
+                    $('#select-year-employee-area .err-area').html("<div style='color: red; font-size: 14px; margin-top: 10px'>" + errorData[errName][0] + "</div>")
+                }
+            } else {
+                window.location.reload();
+            }
         }
     });
 }
@@ -88,6 +98,7 @@ drawEmployeeChart(currentYear)
 // ajax request to get a new dataset employee if user change year
 $('#selectYearPickerEmployee').on("change", function () {
     drawEmployeeChart($(this).val())
+    $(this).removeClass('is-invalid')
 });
 
 
@@ -128,6 +139,87 @@ function drawDepartmentChart(response) {
             title: {
                 display: true,
                 text: "DANH SÁCH PHÒNG BAN VÀ SỐ LƯỢNG NHÂN VIÊN"
+            }
+        }
+    });
+}
+
+// init year picker
+$('#selectYearPickerProject').yearpicker({
+    // Start Year
+    startYear: 2023,
+});
+
+$("#selectYearPickerProject").val(currentYear)
+
+//draw a chart with current year if this is the 1st load into the website
+drawProjectChart(currentYear)
+
+// ajax request to get a new dataset project if user change year
+$('#selectYearPickerProject').on("change", function () {
+    drawProjectChart($(this).val())
+    $(this).removeClass('is-invalid')
+});
+
+function drawProjectChart(statisticalYear) {
+    $.ajax({
+        type: "get",
+        url: "/admin/statistics/EmployeeEachProject",
+        dataType: "json",
+        data: {
+            year: statisticalYear
+        },
+        success: function (response) {
+            var xValues = [];
+            var yValues = [];
+
+            response.forEach(item => {
+                xValues.push(item.name)
+                yValues.push(item.total)
+            })
+
+            renderProjectChart(xValues, yValues)
+        }, error: function (xhr, status, error) {
+            if (xhr.status == 422) {
+                let errorData = xhr.responseJSON.errors;
+
+                for (let errName in errorData) {
+                    let inputTag = $("#select-year-project-area [name='" + errName + "']")
+                    $(inputTag).addClass("is-invalid")
+                    $('#select-year-project-area .err-area').html(errorData[errName][0])
+                }
+            } else {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+function renderProjectChart(xValues, yValues) {
+
+    let barColors = getArrRandomColor(xValues.length)
+
+    new Chart("chartProject", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "CÁC DỰ ÁN TRONG NĂM VÀ SỐ LƯỢNG NHÂN VIÊN MỖI DỰ ÁN"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }]
             }
         }
     });
