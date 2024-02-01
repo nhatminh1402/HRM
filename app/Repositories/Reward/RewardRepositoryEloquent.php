@@ -17,7 +17,7 @@ use Exception;
  */
 class RewardRepositoryEloquent extends BaseRepository implements RewardRepository
 {
-    const DEFAULT_PER_PAGE = 5;
+    const DEFAULT_PER_PAGE = 10;
 
     public function model()
     {
@@ -67,7 +67,7 @@ class RewardRepositoryEloquent extends BaseRepository implements RewardRepositor
             return abort(404);
         }
     }
-    
+
     /**
      * Boot up the repository, pushing criteria
      */
