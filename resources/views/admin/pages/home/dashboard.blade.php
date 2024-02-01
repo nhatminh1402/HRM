@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-4">
-                <div style="height: 86px" class="card-header d-flex align-items-center"><strong>PHÒNG BAN</strong></div>
+                <div style="height: 59px" class="card-header d-flex align-items-center"><strong>PHÒNG BAN</strong></div>
                 <div class="card-body">
                     <div class="example">
                         <div class="tab-content rounded-bottom">
@@ -49,7 +49,7 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-4">
-                <div style="height: 86px" class="card-header d-flex justify-content-between align-items-center">
+                <div style="height: 59px" class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <strong>DỰ ÁN</strong>
                     </div>

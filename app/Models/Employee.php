@@ -14,26 +14,7 @@ class Employee extends Authenticatable
 
     protected $guard = 'employee';
 
-    protected $fillable = [
-        'full_name',
-        'code_employee',
-        'phone_number',
-        'image',
-        'email',
-        'identify_number',
-        'dob',
-        'gender',
-        'degree',
-        'major',
-        'department_id',
-        'position_id',
-        'province_id',
-        'district_id',
-        'ward_id',
-        'password',
-        'status',
-        'basic_salary'
-    ];
+    protected $fillable = ['full_name', 'code_employee', 'phone_number', 'image', 'email', 'identify_number', 'dob', 'gender', 'degree', 'major', 'department_id', 'position_id', 'province_id', 'district_id', 'ward_id', 'password', 'status', 'basic_salary', 'remember_token'];
 
     public function province()
     {

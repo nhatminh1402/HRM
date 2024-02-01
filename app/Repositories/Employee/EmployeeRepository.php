@@ -22,4 +22,6 @@ interface EmployeeRepository extends RepositoryInterface
     public function exportData($KeySearch = null);
     public function countEmployeeChangesByMonth($year);
     public function countEmployeeInEachDepartment();
+    public function findByEmail($email);
+    public function verifyToken($id, $token);
 }

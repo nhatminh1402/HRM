@@ -21,17 +21,6 @@
         <!-- Section -->
         <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
             <div class="container">
-                <p class="text-center">
-                    <a href="{{ route('login.index') }}" class="d-flex align-items-center justify-content-center">
-                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        TRỞ VỀ TRANG DÀNH CHO NHÂN VIÊN
-                    </a>
-                </p>
                 <div class="row justify-content-center form-bg-image"
                     data-background-lg="{{ asset('CoreUI/assets/img/avatars/signin.svg') }}">
                     <div class="col-12 d-flex align-items-center justify-content-center">
@@ -70,7 +59,7 @@
                                     <div class="form-group">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
-                                            <label for="password">MẬT KHẨU</label>
+                                            <label for="password">Mật khẩu</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon2">
                                                     <svg class="icon icon-xs text-gray-600" fill="currentColor"
