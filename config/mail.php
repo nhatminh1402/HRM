@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Default Mailer
@@ -36,11 +37,11 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
-            'host' => 'smtp.gmail.com',
-            'port' => 587,
-            'encryption' => 'tls',
-            'username' => 'nhatminhle1402@gmail.com',
-            'password' => 'adjyiqbdtharznjw',
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
@@ -80,12 +81,18 @@ return [
 
         'failover' => [
             'transport' => 'failover',
-            'mailers' => ['smtp', 'log'],
+            'mailers' => [
+                'smtp',
+                'log',
+            ],
         ],
 
         'roundrobin' => [
             'transport' => 'roundrobin',
-            'mailers' => ['ses', 'postmark'],
+            'mailers' => [
+                'ses',
+                'postmark',
+            ],
         ],
     ],
 
@@ -101,8 +108,8 @@ return [
     */
 
     'from' => [
-        'address' => 'nhatminhle1402@gmail.com',
-        'name' => 'DEHA-HRM',
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
     /*
@@ -119,6 +126,9 @@ return [
     'markdown' => [
         'theme' => 'default',
 
-        'paths' => [resource_path('views/vendor/mail')],
+        'paths' => [
+            resource_path('views/vendor/mail'),
+        ],
     ],
+
 ];
