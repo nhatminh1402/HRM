@@ -102,4 +102,14 @@ class EmployeeService
     {
         return $this->employeeRepository->countEmployeeInEachDepartment();
     }
+
+    public function findByEmail($email)
+    {
+        return $this->employeeRepository->findByEmail($email);
+    }
+
+    public function verifyToken($id, $token)
+    {
+        return $this->employeeRepository->verifyToken($id, $token);
+    }
 }

@@ -5,7 +5,7 @@
 @section('css')
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/css/create_employee.css') }}"></script>
+    <link href="{{ asset('assets/css/create_employee.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <!-- Form Row-->
                                 <div class="mb-3">
-                                    <label class="small mb-1">MÃ NHÂN VIÊN <span class="attention">*</span></label>
+                                    <label class="small mb-1">Mã nhân viên <span class="attention">*</span></label>
                                     <input name="employee_code" class="form-control" type="text"
                                         value="{{ $employee->code_employee }}" disabled>
                                     <div class="err-area"></div>
@@ -30,13 +30,13 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
-                                        <label class="small mb-1">HỌ TÊN <span class="attention">*</span></label>
+                                        <label class="small mb-1">Họ tên <span class="attention">*</span></label>
                                         <input name="full_name" class="form-control" type="text"
                                             placeholder="Nhập họ tên" value="{{ $employee->full_name }}">
                                         <div class="err-area"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="small mb-1">SỐ ĐIỆN THOẠI LIÊN HỆ <span
+                                        <label class="small mb-1">Số điện thoại liên hệ <span
                                                 class="attention">*</span></label>
                                         <input name="phone_number" class="form-control" type="text"
                                             placeholder="Nhập số điện thoại" value="{{ $employee->phone_number }}">
@@ -52,7 +52,7 @@
                                         <div class="err-area"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="small mb-1">SỐ CCCD <span class="attention">*</span></label>
+                                        <label class="small mb-1">Số CCCD <span class="attention">*</span></label>
                                         <input name="identify_number" class="form-control" type="text"
                                             placeholder="Nhập CCCD" value="{{ $employee->identify_number }}">
                                         <div class="err-area"></div>
@@ -61,13 +61,13 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
-                                        <label class="small mb-1">NGÀY SINH <span class="attention">*</span></label>
+                                        <label class="small mb-1">Ngày sinh <span class="attention">*</span></label>
                                         <input name="dob" type="date" class="form-select"
                                             value="{{ $employee->dob }}">
                                         <div class="err-area"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="small mb-1">GIỚI TÍNH <span class="attention">*</span></label>
+                                        <label class="small mb-1">Giới tính <span class="attention">*</span></label>
                                         <select name="gender" class="form-select">
                                             <option value="0" {{ $employee->gender == 0 ? 'selected' : '' }}>Nữ
                                             </option>
@@ -80,7 +80,7 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
-                                        <label class="small mb-1">BẰNG CẤP <span class="attention">*</span></label>
+                                        <label class="small mb-1">Bằng cấp <span class="attention">*</span></label>
                                         <select name="degree" class="form-select" aria-label="Default select example">
                                             <option value="{{ $listDegree['THPT'] }}"
                                                 {{ $employee->degree == $listDegree['THPT'] ? 'selected' : '' }}>THPT
@@ -99,7 +99,7 @@
                                         <div class="err-area"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="small mb-1">CHUYÊN MÔN <span class="attention">*</span></label>
+                                        <label class="small mb-1">Chuyên môn <span class="attention">*</span></label>
                                         <input name="major" type="text" class="form-control"
                                             placeholder="Nhập chuyên môn" value="{{ $employee->major }}">
                                         <div class="err-area"></div>
@@ -108,7 +108,7 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
-                                        <label class="small mb-1">PHÒNG BAN <span class="attention">*</span></label>
+                                        <label class="small mb-1">Phòng ban <span class="attention">*</span></label>
                                         <select name="department_id" class="form-select"
                                             aria-label="Default select example">
                                             @foreach ($listDepartments as $department)
@@ -120,7 +120,7 @@
                                         <div class="err-area"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="small mb-1">CHỨC VỤ <span class="attention">*</span></label>
+                                        <label class="small mb-1">Chức vụ <span class="attention">*</span></label>
                                         <select name="position_id" class="form-select"
                                             aria-label="Default select example">
                                             @foreach ($listPositons as $position)
@@ -135,7 +135,7 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="row">
-                                        <label class="small mb-1">TRẠNG THÁI HOẠT ĐỘNG <span
+                                        <label class="small mb-1">Trạng thái hoạt động <span
                                                 class="attention">*</span></label>
                                         <div>
                                             <div class="form-check form-check-inline">
@@ -158,7 +158,7 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-12">
-                                        <label class="small mb-1">LƯƠNG CƠ BẢN <span class="attention">*</span></label>
+                                        <label class="small mb-1">Lương cơ bản <span class="attention">*</span></label>
                                         <input name="basic_salary" type="number" class="form-control"
                                             placeholder="Nhập lương cơ bản" value="{{ $employee->basic_salary }}">
                                         <div class="err-area"></div>
@@ -167,7 +167,7 @@
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <div class="row">
-                                        <label class="small mb-1">ĐỊA CHỈ <span class="attention">*</span></label>
+                                        <label class="small mb-1">Địa chỉ <span class="attention">*</span></label>
                                         <div class="col-md-4">
                                             <label style="font-size: 11px" class="small mb-1">TỈNH/THÀNH PHỐ</label>
                                             <select name="province_id" style="border: 1px solid red !important"
@@ -221,11 +221,10 @@
                             {{-- Hidden input to select file  --}}
                             <input id="file-field" type="file" class="form-control" id="image" name="img-upload"
                                 hidden>
-                            <div id="upload-img-area" class="card-body text-center" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="CLICK ĐỂ UPLOAD ẢNH">
+                            <div id="upload-img-area" class="card-body text-center">
                                 <!-- Profile picture image-->
-                                <img class="img-account-profile" src="{{ asset('uploads/' . $employee->image) }}"
-                                    alt="">
+                                <img style="width: 100%; height: auto" class="img-account-profile"
+                                    src="{{ asset('uploads/' . $employee->image) }}">
                                 <!-- Profile picture help block-->
                             </div>
                         </div>

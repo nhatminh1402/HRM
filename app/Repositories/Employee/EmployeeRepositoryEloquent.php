@@ -121,7 +121,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
         $firstDayOfMonth = now()->startOfMonth();
         $lastDayOfMonth = now()->endOfMonth();
 
-        $workDays = $this->model->with('timeSheet')
+        $workDays = $this->model
+            ->with('timeSheet')
             ->where('id', $employeeId)
             ->whereHas('timeSheet', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
                 $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
@@ -166,7 +167,8 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function countEmployeeChangesByMonth($year)
     {
-        return $this->model->select(DB::raw('Month(created_at) as month,COUNT(id) as total'))
+        return $this->model
+            ->select(DB::raw('Month(created_at) as month,COUNT(id) as total'))
             ->whereYear('created_at', $year)
             ->groupBy(DB::raw('MONTH(created_at)'))
             ->get();
@@ -174,9 +176,23 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
 
     public function countEmployeeInEachDepartment()
     {
-        return $this->model->select('departments.name', DB::raw('count(employees.id) as total'))
+        return $this->model
+            ->select('departments.name', DB::raw('count(employees.id) as total'))
             ->rightJoin('departments', 'departments.id', '=', 'employees.department_id')
             ->groupBy('departments.id', 'departments.name')
             ->get();
+    }
+
+    public function findByEmail($email)
+    {
+        return $this->model->where('email', $email)->first();
+    }
+
+    public function verifyToken($id, $token)
+    {
+        return $this->model
+            ->where('id', $id)
+            ->where('remember_token', $token)
+            ->first();
     }
 }

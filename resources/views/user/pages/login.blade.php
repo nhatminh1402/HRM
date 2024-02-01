@@ -43,7 +43,7 @@
                                     <form action="{{ route('login.submit') }}" method="post" class="text-start">
                                         @csrf
                                         {{-- email input area --}}
-                                        <div class="input-group input-group-outline my-3 focused is-focused">
+                                        <div class="input-group input-group-outline my-4 focused is-focused">
                                             <label class="form-label">Email</label>
                                             <input name="email" value="{{ old('email') }}" type="text"
                                                 class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}">
@@ -54,7 +54,7 @@
                                             @enderror
                                         </div>
                                         {{-- password input --}}
-                                        <div class="input-group input-group-outline mb-3 focused is-focused">
+                                        <div class="input-group input-group-outline mb-1 focused is-focused">
                                             <label class="form-label">Password</label>
                                             <input name="password" value="{{ old('password') }}" type="password"
                                                 class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
@@ -64,18 +64,15 @@
                                                 </div>
                                             @enderror
                                         </div>
-
-
-                                        <div class="form-check form-switch d-flex align-items-center mb-3">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe" checked>
-                                            <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember
-                                                me</label>
-                                        </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">ĐĂNG
                                                 NHẬP</button>
                                         </div>
                                     </form>
+                                    <p class="mt-1 text-sm text-center">
+                                        <a href="{{ route('forgotPassword.view') }}"
+                                            class="text-primary text-gradient font-weight-bold">Quên mật khẩu?</a>
+                                    </p>
                                 @endif
 
                                 @if (session('numberLoginFailed') > 3)

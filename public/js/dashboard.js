@@ -83,7 +83,6 @@ function drawEmployeeChart(statisticalYear) {
                 for (let errName in errorData) {
                     let inputTag = $("#select-year-employee-area [name='" + errName + "']")
                     $(inputTag).addClass("is-invalid")
-                    $('#select-year-employee-area .err-area').html("<div style='color: red; font-size: 14px; margin-top: 10px'>" + errorData[errName][0] + "</div>")
                 }
             } else {
                 window.location.reload();
@@ -186,7 +185,6 @@ function drawProjectChart(statisticalYear) {
                 for (let errName in errorData) {
                     let inputTag = $("#select-year-project-area [name='" + errName + "']")
                     $(inputTag).addClass("is-invalid")
-                    $('#select-year-project-area .err-area').html(errorData[errName][0])
                 }
             } else {
                 window.location.reload();

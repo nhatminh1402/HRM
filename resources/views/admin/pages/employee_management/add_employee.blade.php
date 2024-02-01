@@ -5,7 +5,7 @@
 @section('css')
     <link href="{{ asset('lib/select/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('lib/select/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/css/create_employee.css') }}"></script>
+    <link href="{{ asset('assets/css/create_employee.css') }}" rel="stylesheet" />
 @endsection
 
 @section('page-title', 'THÊM MỚI NHÂN VIÊN')
@@ -27,13 +27,13 @@
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
-                                            <label class="small mb-1">HỌ TÊN <span class="attention">*</span></label>
+                                            <label class="small mb-1">Họ tên <span class="attention">*</span></label>
                                             <input name="full_name" class="form-control" type="text"
                                                 placeholder="Nhập họ tên">
                                             <div class="err-area"></div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="small mb-1">SỐ ĐIỆN THOẠI LIÊN HỆ <span
+                                            <label class="small mb-1">Số điện thoại liên hệ <span
                                                     class="attention">*</span></label>
                                             <input name="phone_number" class="form-control" type="text"
                                                 placeholder="Nhập số điện thoại">
@@ -49,7 +49,7 @@
                                             <div class="err-area"></div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="small mb-1">SỐ CCCD <span class="attention">*</span></label>
+                                            <label class="small mb-1">Số CCCD <span class="attention">*</span></label>
                                             <input name="identify_number" class="form-control" type="text"
                                                 placeholder="Nhập CCCD">
                                             <div class="err-area"></div>
@@ -58,12 +58,12 @@
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
-                                            <label class="small mb-1">NGÀY SINH <span class="attention">*</span></label>
+                                            <label class="small mb-1">Ngày sinh <span class="attention">*</span></label>
                                             <input name="dob" type="date" class="form-select">
                                             <div class="err-area"></div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="small mb-1">GIỚI TÍNH <span class="attention">*</span></label>
+                                            <label class="small mb-1">Giới tính <span class="attention">*</span></label>
                                             <select name="gender" class="form-select">
                                                 <option value="1">Nam</option>
                                                 <option value="0">Nữ</option>
@@ -90,7 +90,7 @@
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
-                                            <label class="small mb-1">BẰNG CẤP <span class="attention">*</span></label>
+                                            <label class="small mb-1">Bằng cấp <span class="attention">*</span></label>
                                             <select name="degree" class="form-select">
                                                 <option value="{{ $listDegree['THPT'] }}">THPT</option>
                                                 <option value="{{ $listDegree['CAO_DANG'] }}">CAO ĐẲNG</option>
@@ -100,7 +100,7 @@
                                             <div class="err-area"></div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="small mb-1">CHUYÊN MÔN <span class="attention">*</span></label>
+                                            <label class="small mb-1">Chuyên môn <span class="attention">*</span></label>
                                             <input name="major" type="text" class="form-control"
                                                 placeholder="Nhập chuyên môn">
                                             <div class="err-area"></div>
@@ -109,7 +109,7 @@
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
-                                            <label class="small mb-1">PHÒNG BAN <span class="attention">*</span></label>
+                                            <label class="small mb-1">Phòng ban <span class="attention">*</span></label>
                                             <select name="department_id" class="form-select"
                                                 aria-label="Default select example">
                                                 @foreach ($listDepartments as $department)
@@ -120,7 +120,7 @@
                                             <div class="err-area"></div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="small mb-1">CHỨC VỤ <span class="attention">*</span></label>
+                                            <label class="small mb-1">Chức vụ <span class="attention">*</span></label>
                                             <select name="position_id" class="form-select"
                                                 aria-label="Default select example">
                                                 @foreach ($listPositons as $position)
@@ -133,7 +133,7 @@
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-12">
-                                            <label class="small mb-1">LƯƠNG CƠ BẢN <span
+                                            <label class="small mb-1">Lương cơ bản <span
                                                     class="attention">*</span></label>
                                             <input name="basic_salary" type="number" class="form-control"
                                                 placeholder="Nhập lương cơ bản">
@@ -143,7 +143,7 @@
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <div class="row">
-                                            <label class="small mb-1">ĐỊA CHỈ <span class="attention">*</span></label>
+                                            <label class="small mb-1">Địa chỉ <span class="attention">*</span></label>
                                             <div class="col-md-4">
                                                 <label style="font-size: 11px" class="small mb-1">TỈNH/THÀNH PHỐ</label>
                                                 <select name="province_id" style="border: 1px solid red !important"

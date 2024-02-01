@@ -13,12 +13,12 @@
         {{-- <h5 class="mb-4 pb-2 border-bottom text-primary">Mã nhân viên:{{ $employee->code_employee }}</h5> --}}
         <div class="container">
             <div class="row">
-                <div class="column">
+                <div class="col-md-4">
                     <p>Ảnh nhân viên:</p>
-                    <img class="image image-lg w-auto" alt="Image placeholder"
+                    <img style="width: 100%; height: auto" alt="Image placeholder"
                         src="/uploads/{{ $employee->image }}">
                 </div>
-                <div class="column">
+                <div class="col-md-4">
                     <p>Tên nhân viên: {{ $employee->full_name }}</p>
                     <p>Mã nhân viên: {{ $employee->code_employee }}</p>
                     <p>Giới tính: @if ($employee->gender == 1)
@@ -32,7 +32,7 @@
                     <p>Email: {{ $employee->email }}</p>
                     <p>Số CCCD: {{ $employee->identify_number }}</p>
                 </div>
-                <div class="column">
+                <div class="col-md-4">
                     <p>Bằng cấp: {{ $employee->degree }} </p>
                     <p>Địa chỉ: {{ $employee->ward->name ?? '' }}, {{ $employee->district->name ?? '' }},
                         {{ $employee->province->name ?? '' }}</p>
