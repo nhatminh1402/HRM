@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Middleware\Auth\CheckAdmin;
+use App\Http\Middleware\Auth\CheckUser;
+use App\Http\Middleware\Auth\IsAdmin;
+use App\Http\Middleware\Auth\IsEmployee;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +17,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Router cho admin
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(IsAdmin::class)
+    ->group(function () {
+        $listRouteAdminFile = glob(__DIR__ . '/admin/*.php');
+        foreach ($listRouteAdminFile as $routeFile) {
+            require $routeFile;
+        }
+
+        Route::get('/dashboard', function () {
+            return view('admin.pages.home.dashboard');
+        })->name('dashboard');
+    });
+
+// Router cho User
+Route::prefix('user')
+    ->name('user.')
+    ->middleware(IsEmployee::class)
+    ->group(function () {
+        $listRouteUserFile = glob(__DIR__ . '/user/*.php');
+
+        foreach ($listRouteUserFile as $routeFile) {
+            require $routeFile;
+        }
+    });
+
+// Router xác thực tài khoản người dùng
+$listRouteAuthFile = glob(__DIR__ . '/auth/*.php');
+
+foreach ($listRouteAuthFile as $routeFile) {
+    require $routeFile;
+}

@@ -1,0 +1,10 @@
+.text-area, .text-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.modal-content {
+    top: 184px;
+}
