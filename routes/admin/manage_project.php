@@ -11,10 +11,10 @@ Route::prefix('/project')->name('project.')->group(function () {
     //Thêm mới dự án
     Route::post('/create', [ProjectController::class, 'store'])->name('store');
     // Sửa chức dự án
-    Route::get('/edit-project/{id}', [ProjectController::class, 'edit'])->name('edit-project');
-    Route::put('/update/{id}', [ProjectController::class, 'update'])->name('update');
+    Route::get('/edit', [ProjectController::class, 'edit'])->name('edit');
+    Route::put('/update', [ProjectController::class, 'update'])->name('update');
     // Xóa dự án
-    Route::delete('/project/{id}', [ProjectController::class, 'destroy'])->name('destroy');
+    Route::delete('/{id}', [ProjectController::class, 'destroy'])->name('destroy');
     //Tìm kiếm dự án
     Route::get('/search', [ProjectController::class, 'index'])->name('search');
 });

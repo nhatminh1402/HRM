@@ -41,7 +41,7 @@ class DisciplineController extends Controller
     {
         $data = $request->all();
         $disciplineCretae = $this->disciplineService->create($data);
-        return $this->senSuccessResponse($disciplineCretae, 'Kỷ luật đã thêm thành công', Response::HTTP_CREATED);
+        return $this->responseSuccess($disciplineCretae, 'Kỷ luật đã thêm thành công', Response::HTTP_CREATED);
     }
 
     /**

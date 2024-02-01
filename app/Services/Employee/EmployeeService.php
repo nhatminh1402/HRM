@@ -30,6 +30,11 @@ class EmployeeService
         return $this->employeeRepository->showall();
     }
 
+    public function getAllEmployee()
+    {
+        return $this->employeeRepository->all();
+    }
+
     public function getById($id)
     {
         return $this->employeeRepository->getById($id);

@@ -1,0 +1,8 @@
+.text-name-employee,
+.text-name-position,
+.text-salary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}

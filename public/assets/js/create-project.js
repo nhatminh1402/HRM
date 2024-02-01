@@ -9,18 +9,7 @@ $(document).ready(function () {
     $('.select-employees').select2({
         maximumSelectionLength: 10,
         templateResult: hideSelected,
-
     });
-
-    let editor;
-    ClassicEditor
-        .create(document.querySelector('#description'))
-        .then(newEditor => {
-            editor = newEditor;
-        })
-        .catch(error => {
-            console.error(error);
-        });
 
     $.ajaxSetup({
         headers: {
@@ -32,10 +21,20 @@ $(document).ready(function () {
         let codeProject = $('#code_project').val();
         let name = $('#name').val();
         let selected_employees = $('#selected_employees').val();
-        let description = editor.getData();
+        let description = $('#description').val();
+
+        $('input[name=name]').on('keydown ', function () {
+            $('#error_name').html('');
+        });
+
+        $('#selected_employees').on('change', function () {
+            if ($(this).val() && $(this).val().length > 0) {
+                $('#error_select').html('');
+            }
+        });
 
         $.ajax({
-            url: '/admin/project/create',
+            url: CREATE_PROJECT_URL,
             type: 'POST',
             data: {
                 code_project: codeProject,
@@ -61,22 +60,12 @@ $(document).ready(function () {
                     $('#error_name').html('Xin vui lòng nhập tên dự án');
                 }
 
-                if (selected_employees || selected_employees.length > 0) {
-                    $('#error_select').html('Xin vui lòng chọn nhân viên');
-                } else {
+                if (selected_employees.length > 0) {
                     $('#error_select').html('');
+                } else {
+                    $('#error_select').html('Xin vui lòng chọn nhân viên');
                 }
             }
         });
-    });
-
-    $('input[name=name]').on('keydown ', function () {
-        $('#error_name').html('');
-    });
-
-    $('#selected_employees').on('change', function () {
-        if ($(this).val() && $(this).val().length > 0) {
-            $('#error_select').html('');
-        }
     });
 });

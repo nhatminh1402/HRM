@@ -7,7 +7,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Project\ProjectRepository;
 use App\Models\Project;
-use Illuminate\Http\Response;
+use Exception;
 
 /**
  * Class ProjectRepositoryEloquent.
@@ -16,7 +16,7 @@ use Illuminate\Http\Response;
  */
 class ProjectRepositoryEloquent extends BaseRepository implements ProjectRepository
 {
-    const DEFAULT_PER_PAGE = 4;
+    const DEFAULT_PER_PAGE = 10;
     /**
      * Specify Model class name
      *
@@ -37,7 +37,7 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         $project = $this->model->find($id);
 
         if (!$project) {
-            return response()->json(['message' => 'Không tìm thấy dự án'], Response::HTTP_NOT_FOUND);
+            throw new Exception("Không tìm thấy dự án!");
         }
 
         $project->fill($data);
@@ -47,7 +47,7 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
 
     public function edit($id)
     {
-        return $this->model->with('employees')->find($id);
+        return $this->model->find($id);
     }
 
     public function delete($id)
@@ -56,26 +56,27 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
             $project = $this->model->find($id);
 
             if (!$project) {
-                return response()->json(['message' => 'Không tìm thấy dự án!'], Response::HTTP_NOT_FOUND);
+                throw new Exception("Không tìm thấy dự án!");
             }
 
             $project->removeAllEmployee();
 
             if (!$project->delete()) {
-                return response()->json(['message' => 'Lỗi khi xóa dự án!'], Response::HTTP_INTERNAL_SERVER_ERROR);
+                throw new Exception("Đã xảy ra lỗi, vui lòng thử lại!");
             }
 
-            return response()->json(['message' => 'Xóa dự án thành công!'], Response::HTTP_OK);
-
-        } catch (\Throwable $th) {
-            return response()->json(['message' => 'Đã xảy ra lỗi, vui lòng thử lại!'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi, vui lòng thử lại!');
         }
     }
 
     public function search($key)
     {
         return $this->model
-            ->searchByName($key)
+            ->searchByProjectCode($key)
+            ->orWhere(function ($query) use ($key) {
+                $query->searchByName($key);
+            })
             ->orWhere(function ($query) use ($key) {
                 $query->searchByDescription($key);
             })

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateOrUpdateProjectRequest;
+use App\Http\Resources\Project\ProjectResource;
 use App\Services\Project\ProjectService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -40,45 +41,39 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $porjectCreate = $this->projectService->createProject($data);
-        return $this->senSuccessResponse($porjectCreate, 'Thêm mới dự án thành công', Response::HTTP_CREATED);
+        return $this->responseSuccess($porjectCreate, 'Thêm mới dự án thành công', Response::HTTP_CREATED);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
+        $id = request()->id;
         $project = $this->projectService->edit($id);
-        $pageNumber = request('page');
-        $selectedEmployees = $project->employees->pluck('id')->toArray();
-        $employees = $this->projectService->getAllEmployee();
-        return view('admin.pages.project.edit_project', compact('project', 'pageNumber', 'selectedEmployees', 'employees'));
+        $projectResource = new ProjectResource($project);
+        return $projectResource;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(CreateOrUpdateProjectRequest $request, string $id)
+    public function update(CreateOrUpdateProjectRequest $request)
     {
-        try {
-            $data = $request->all();
-            $project = $this->projectService->update($data, $id);
-            $pageNumber = $request->input('page');
-            return redirect()->route('admin.project.home', ['page' => $pageNumber])
-                ->with('success', 'Cập nhật dự án thành công !')
-                ->with('project', $project);
-        } catch (\Exception $e) {
-            return redirect()->back()
-            ->with('error', 'Lỗi khi cập nhật dự án !' . $e->getMessage());
-        }
+        $data = $request->all();
+        $id = $request->id;
+        $project = $this->projectService->update($data, $id);
+        $pageNumber = $request->input('page');
+        return redirect()->route('admin.project.home', ['page' => $pageNumber])
+            ->with('project', $project);
     }
 
-        /**
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
         $this->projectService->delete($id);
-        return redirect()->back()->with('success', 'Xóa dự án thành công!');
+        return redirect()->back();
     }
 }

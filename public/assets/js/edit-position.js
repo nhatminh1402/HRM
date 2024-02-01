@@ -53,11 +53,6 @@ $(document).ready(function () {
         let salaryDay = $('#salary_day_update').val();
         let description = $('#description_update').val();
 
-        if (isNaN(salaryDay) || parseFloat(salaryDay) < 0) {
-            $('#error_salary_update').html('Xin vui lòng nhập số tiền lương hợp lệ.');
-            return;
-        }
-
         let positionData = {
             _method: 'PUT',
             idPosition: positionId,
@@ -102,7 +97,7 @@ $(document).ready(function () {
         $('#error_name_update').html('');
     });
 
-    $('input[name=salary_day_update]').on('keyup', function () {
+    $('input[name=salary_day_update]').on('keydown', function () {
         var value = $(this).val();
 
         if (!/^\d+(\.\d+)?$/.test(value) || parseFloat(value) < 0) {

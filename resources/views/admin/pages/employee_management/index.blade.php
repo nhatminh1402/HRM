@@ -3,7 +3,7 @@
 @section('title', 'Position')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('assets/css/manager-project.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/manager-position.css') }}">
 @endsection
 
 @section('script')
@@ -73,7 +73,7 @@
                                     <td class='align-middle text-center'>{{ $key + 1 }}</td>
                                     <td class='align-middle text-start'>{{ $position->code_position }}</td>
                                     <td class='align-middle text-start text-name'>{{ $position->name }}</td>
-                                    <td class='align-middle text-start'>
+                                    <td class='align-middle text-start text-salary'>
                                         {{ number_format($position->salary_day, 0, '', ',') . ' VNĐ' }}</td>
                                     <td class='align-middle text-start text-area'>
                                         {{ e($position->description ?? 'Chưa có mô tả') }}

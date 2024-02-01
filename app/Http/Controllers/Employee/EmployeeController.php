@@ -23,6 +23,12 @@ class EmployeeController extends Controller
         return view('admin.pages.employee_management.list_employee', compact('employees'));
     }
 
+    public function showAllEmployees()
+    {
+        $employees = $this->employeeService->getAllEmployee();
+        return response()->json(['employees' => $employees]);
+    }
+
     public function getDetailEmployee($id)
     {
         $employee = $this->employeeService->getById($id);
